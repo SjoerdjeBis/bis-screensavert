@@ -14,6 +14,7 @@ import os
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 
 from PIL import Image
@@ -122,7 +123,12 @@ def lang_of(entry):
 
 
 def rijks_object(obj_url):
-    obj = get_json(obj_url, LA)
+    try:
+        obj = get_json(obj_url, LA)
+    except Exception:  # noqa: BLE001
+        obj = get_json(obj_url + "?_profile=la", "application/ld+json")
+    if not os.path.exists("data/debug/rijks_object_ruw.json"):
+        debug("rijks_object_ruw", obj)
     names = [n for n in obj.get("identified_by", []) if n.get("type") == "Name"]
     ids = [n for n in obj.get("identified_by", []) if n.get("type") == "Identifier"]
     title_nl = next((n["content"] for n in names if lang_of(n) == "nl"), None) or (names[0]["content"] if names else None)
@@ -174,7 +180,10 @@ def fetch_rijks():
             try:
                 obj, item = rijks_object(u)
             except Exception as e:  # noqa: BLE001
+                import traceback
                 print(f"  {u}: fout {e}")
+                if not os.path.exists("data/debug/rijks_fout.txt"):
+                    open("data/debug/rijks_fout.txt", "w").write(u + "\n" + traceback.format_exc())
                 continue
             if debugged < 3:
                 debug(f"rijks_object_{debugged}", obj)
@@ -219,15 +228,44 @@ def fingerprints(sources):
     print(f"{len(hashes)} vingerafdrukken")
 
 
+def diagnose_aic(items):
+    """Probeert één AIC-afbeelding met verschillende headers en legt de statuscodes vast."""
+    if not items:
+        return
+    url = f"https://www.artic.edu/iiif/2/{items[0]['image_id']}/full/200,/0/default.jpg"
+    variants = {
+        "eigen": {"User-Agent": UA, "Accept": "image/*"},
+        "met_aic_header": {"User-Agent": UA, "AIC-User-Agent": UA, "Accept": "image/*"},
+        "okhttp": {"User-Agent": "okhttp/4.12.0"},
+        "browser": {"User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/126 Mobile Safari/537.36",
+                    "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"},
+        "geen": {},
+    }
+    result = {"url": url}
+    for name, headers in variants.items():
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
+                result[name] = r.status
+        except urllib.error.HTTPError as e:
+            result[name] = f"{e.code} {e.headers.get('server')} {e.headers.get('cf-mitigated')}"
+        except Exception as e:  # noqa: BLE001
+            result[name] = str(e)
+    debug("aic_afbeelding", result)
+    print("AIC-afbeelding:", result)
+
+
 def main():
     wanted = set(sys.argv[1:]) or {"cma", "rijks"}
     sources = {"aic": json.load(open("data/aic_raw.json"))}
-    if "cma" in wanted:
+    diagnose_aic(sources["aic"])
+    if "cma" in wanted and not os.path.exists("data/cma_raw.json"):
         try:
             sources["cma"] = fetch_cma()
             json.dump(sources["cma"], open("data/cma_raw.json", "w"), ensure_ascii=False, indent=1)
         except Exception as e:  # noqa: BLE001
             print("CMA mislukt:", e)
+    if "cma" not in sources and os.path.exists("data/cma_raw.json"):
+        sources["cma"] = json.load(open("data/cma_raw.json"))
     if "rijks" in wanted:
         try:
             sources["rijks"] = fetch_rijks()
