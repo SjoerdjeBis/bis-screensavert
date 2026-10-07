@@ -4,6 +4,7 @@ Draait in GitHub Actions (vanuit de ontwikkelomgeving is de API niet bereikbaar)
 Resultaat: data/aic_raw.json, de basis voor de Nederlandse collectie in de app.
 """
 import json
+import os
 import time
 import urllib.request
 
@@ -63,6 +64,7 @@ def main():
             time.sleep(1)
         if len(out) >= 400:
             break
+    os.makedirs("data", exist_ok=True)
     with open("data/aic_raw.json", "w") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     print(f"Opgeslagen: {len(out)} werken")
