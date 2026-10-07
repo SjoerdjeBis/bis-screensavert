@@ -104,7 +104,7 @@ class MainActivity : ComponentActivity() {
 
         fun summary(p: Program) = when (p) {
             Program.SMART -> SmartMix.plan(p, customModes, media.isNotEmpty(), hour).summary
-            Program.ART -> "${art.size} schilderijen uit Chicago, elk met een korte Nederlandse toelichting."
+            Program.ART -> "${art.size} kunstwerken uit ${art.map { it.museum }.distinct().size} musea, elk met een korte Nederlandse toelichting."
             Program.AERIALS -> "De luchtopnames van de Apple TV: steden, kusten en bergen van bovenaf."
             Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's toe te voegen."
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
@@ -131,7 +131,7 @@ class MainActivity : ComponentActivity() {
                     when (p) {
                         Program.ART, Program.CUSTOM -> heroArt?.let {
                             AsyncImage(
-                                model = it.fallbackUrl,
+                                model = it.fallbackUrl ?: it.thumbnailUrl,
                                 contentDescription = null,
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier.fillMaxSize().blur(6.dp).alpha(0.55f),

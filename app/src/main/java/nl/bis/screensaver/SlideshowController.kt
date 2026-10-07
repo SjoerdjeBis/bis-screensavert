@@ -288,7 +288,7 @@ class SlideshowController(
 
     private fun setCaption(slide: Slide, mode: Mode) {
         captionEyebrow.text = when (mode) {
-            Mode.ART -> "KUNST · ART INSTITUTE OF CHICAGO"
+            Mode.ART -> "KUNST · " + ((slide as? Slide.Image)?.source ?: "MUSEUM").uppercase()
             Mode.AERIALS -> "LUCHTOPNAME"
             Mode.PHOTOS -> if (slide is Slide.Video) "MIJN VIDEO'S" else "MIJN FOTO'S"
         }

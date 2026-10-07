@@ -6,24 +6,21 @@ import org.json.JSONObject
 
 /** Eén kunstwerk uit de meegeleverde collectie, met Nederlandse uitleg. */
 data class Artwork(
-    val id: Long,
-    val imageId: String,
+    val id: String,
+    val museum: String,
     val title: String,
     val artist: String?,
     val date: String?,
     val explanation: String,
-) {
-    val imageUrl get() = iiif(1686)
-    val fallbackUrl get() = iiif(843)
-    val thumbnailUrl get() = iiif(400)
-
-    private fun iiif(width: Int) = "https://www.artic.edu/iiif/2/$imageId/full/$width,/0/default.jpg"
-}
+    val imageUrl: String,
+    val fallbackUrl: String?,
+    val thumbnailUrl: String,
+)
 
 /**
- * De kunstcollectie: werken uit het publieke domein van het Art Institute of Chicago,
- * met vooraf vertaalde toelichtingen (assets/kunst_nl.json). De afbeeldingen komen live
- * van de server van het museum.
+ * De kunstcollectie uit meerdere musea, met Nederlandse toelichtingen en zonder
+ * dubbelingen (assets/kunst_nl.json, gemaakt door tools/build_kunst_nl.py).
+ * De afbeeldingen komen live van de servers van de musea.
  */
 object ArtCollection {
     @Volatile private var cached: List<Artwork>? = null
@@ -35,20 +32,28 @@ object ArtCollection {
 
     private fun parse(json: String): List<Artwork> {
         val array = JSONArray(json)
+        val seen = mutableSetOf<String>()
         return (0 until array.length()).mapNotNull { i ->
             val o = array.getJSONObject(i)
+            val id = o.optStringOrNull("id") ?: return@mapNotNull null
+            if (!seen.add(id)) return@mapNotNull null
+            val image = o.optStringOrNull("afbeelding") ?: return@mapNotNull null
             Artwork(
-                id = o.optLong("id"),
-                imageId = o.optStringOrNull("image_id") ?: return@mapNotNull null,
+                id = id,
+                museum = o.optStringOrNull("bron") ?: "Museum",
                 title = o.optStringOrNull("titel") ?: "Zonder titel",
                 artist = o.optStringOrNull("kunstenaar"),
                 date = o.optStringOrNull("datum"),
                 explanation = o.optStringOrNull("uitleg") ?: return@mapNotNull null,
+                imageUrl = image,
+                fallbackUrl = o.optStringOrNull("afbeelding_reserve"),
+                thumbnailUrl = o.optStringOrNull("afbeelding_klein") ?: image,
             )
         }
     }
 }
 
+/** Toont elk werk één keer per ronde, in willekeurige volgorde. */
 class ArtSource(private val context: Context) : SlideSource {
     private val queue = ArrayDeque<Artwork>()
 
@@ -61,6 +66,7 @@ class ArtSource(private val context: Context) : SlideSource {
             title = art.title,
             subtitle = listOfNotNull(art.artist, art.date).joinToString(" · ").ifEmpty { null },
             body = art.explanation,
+            source = art.museum,
         )
     }
 }

@@ -12,6 +12,8 @@ sealed interface Slide {
         override val title: String,
         override val subtitle: String?,
         override val body: String?,
+        /** Herkomst, bijvoorbeeld het museum; staat boven de titel. */
+        val source: String? = null,
     ) : Slide
 
     data class Video(
