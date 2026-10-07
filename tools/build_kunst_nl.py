@@ -60,6 +60,24 @@ def shorten(text, limit=MAX_TEKST):
     return out or text[:limit].rsplit(" ", 1)[0] + "…"
 
 
+def short_title(title):
+    """'Het korporaalschap ..., bekend als de 'Nachtwacht'' -> 'De Nachtwacht'; 'De Staalmeesters: ...' -> 'De Staalmeesters'."""
+    if not title:
+        return "Zonder titel"
+    m = re.search(r"bekend als (de |het )?['‘\"]([^'’\"]+)['’\"]", title)
+    if m:
+        return ((m.group(1) or "").strip().capitalize() + " " + m.group(2)).strip()
+    if ":" in title and len(title) > 60:
+        title = title.split(":")[0]
+    if len(title) > 90:
+        title = title[:90].rsplit(" ", 1)[0] + "…"
+    return title
+
+
+def clean_maker(name):
+    return re.sub(r"\s*\((I|II|III)\)$", "", name or "").strip() or None
+
+
 def hamming(a, b):
     return bin(int(a, 16) ^ int(b, 16)).count("1")
 
@@ -96,9 +114,9 @@ for a in load("data/rijks_raw.json", []):
     small = image.replace("/full/max/", "/full/400,/") if "/full/max/" in image else image
     medium = image.replace("/full/max/", "/full/1920,/") if "/full/max/" in image else image
     if key not in translations:
-        translations[key] = [a.get("titel") or "Zonder titel", shorten(max(a["teksten_nl"], key=len))]
+        translations[key] = [short_title(a.get("titel")), shorten(max(a["teksten_nl"], key=len))]
     candidates.append({
-        "id": key, "kunstenaar": a.get("kunstenaar"), "datum": a.get("datum"),
+        "id": key, "kunstenaar": clean_maker(a.get("kunstenaar") or a.get("zoekterm")), "datum": dutch_date(a.get("datum")),
         "afbeelding": medium, "afbeelding_reserve": small.replace("/400,/", "/843,/"), "afbeelding_klein": small,
     })
 
