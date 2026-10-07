@@ -145,41 +145,73 @@ def diagnose_rijks(obj_url):
     debug("rijks_varianten", result)
 
 
-def rijks_object(obj_url):
-    obj = None
+def fetch_la(url):
+    """Haalt een Linked Art-document op; probeert de vraagvormen die het Rijksmuseum begrijpt."""
+    last = None
     for suffix, accept in RIJKS_VARIANTEN:
         try:
-            obj = get_json(obj_url + suffix, accept)
-            break
-        except Exception:  # noqa: BLE001
-            continue
-    if obj is None:
-        if not os.path.exists("data/debug/rijks_varianten.json"):
-            diagnose_rijks(obj_url)
-        raise ValueError("geen JSON van het Rijksmuseum")
+            return get_json(url + suffix, accept)
+        except Exception as e:  # noqa: BLE001
+            last = e
+    raise ValueError(f"geen JSON voor {url}: {last}")
+
+
+DUTCH = "300388256"
+LABEL_TEXT = "300048722"
+
+
+def is_dutch(entry):
+    return any(DUTCH in (l.get("id") or "") for l in entry.get("language", []))
+
+
+def classified(entry, aat):
+    return any(aat in (c.get("id") or "") for c in entry.get("classified_as", []))
+
+
+def walk_parts(entry):
+    yield entry
+    for part in entry.get("part", []):
+        yield from walk_parts(part)
+
+
+def rijks_object(obj_url):
+    obj = fetch_la(obj_url)
     if not os.path.exists("data/debug/rijks_object_ruw.json"):
         debug("rijks_object_ruw", obj)
     names = [n for n in obj.get("identified_by", []) if n.get("type") == "Name"]
     ids = [n for n in obj.get("identified_by", []) if n.get("type") == "Identifier"]
-    title_nl = next((n["content"] for n in names if lang_of(n) == "nl"), None) or (names[0]["content"] if names else None)
-    texts = [t for t in obj.get("referred_to_by", []) if t.get("type") == "LinguisticObject" and t.get("content")]
-    desc_nl = [t["content"] for t in texts if lang_of(t) == "nl"]
+    title_nl = next((n["content"] for n in names if is_dutch(n)), None) or (names[0]["content"] if names else None)
+    # De zaaltekst staat in subject_of, als onderdeel met het type 'label text'.
+    label = None
+    for subject in obj.get("subject_of", []):
+        if not is_dutch(subject):
+            continue
+        for part in walk_parts(subject):
+            if part.get("content") and classified(part, LABEL_TEXT):
+                label = label or part["content"]
     produced = obj.get("produced_by") or {}
     maker = None
     for part in [produced] + produced.get("part", []):
         for c in part.get("carried_out_by", []):
             maker = maker or c.get("_label")
-        for r in part.get("referred_to_by", []):
-            if lang_of(r) == "nl" and not maker:
-                maker = r.get("content")
+    if not maker:
+        for subject in obj.get("subject_of", []):
+            for part in walk_parts(subject):
+                text = part.get("content") or ""
+                if " (" in text and ")," in text and not maker:
+                    maker = text.split(" (")[0]
     timespan = produced.get("timespan") or {}
     date = next((n.get("content") for n in timespan.get("identified_by", [])), None)
     image = None
     for shown in obj.get("shows", []):
         try:
-            visual = get_json(shown["id"], LA)
+            visual = fetch_la(shown["id"])
+            if not os.path.exists("data/debug/rijks_visual.json"):
+                debug("rijks_visual", visual)
             for d in visual.get("digitally_shown_by", []):
-                digital = get_json(d["id"], LA)
+                digital = fetch_la(d["id"]) if not d.get("access_point") else d
+                if not os.path.exists("data/debug/rijks_digital.json"):
+                    debug("rijks_digital", digital)
                 for ap in digital.get("access_point", []):
                     image = image or ap.get("id")
         except Exception as e:  # noqa: BLE001
@@ -190,7 +222,7 @@ def rijks_object(obj_url):
         "titel": title_nl,
         "kunstenaar": maker,
         "datum": date,
-        "teksten_nl": desc_nl,
+        "teksten_nl": [label] if label else [],
         "afbeelding": image,
     }
 
