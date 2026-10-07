@@ -1,7 +1,7 @@
 <title>Bis Screensavert keuzes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Rubik:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Rubik:wght@400;500;700&family=Nunito:wght@900&display=swap">
 <style>
 /* Indeling: één kolom met beslissingen; per beslissing drie tv-schermpjes naast elkaar. */
 :root{
@@ -71,6 +71,19 @@ h2{font:600 italic clamp(23px,3.4vw,30px)/1.15 var(--display);margin:4px 0 4px;t
 .notitie label{font-size:13px;color:var(--muted)}
 .notitie textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:10px 12px;min-height:56px;resize:vertical}
 .notitie textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.thuis{position:absolute;inset:0;background:linear-gradient(160deg,#F4C9A8,#E9A882);display:flex;gap:6cqw;align-items:center;justify-content:center}
+.thuis figure{margin:0;display:grid;gap:1.6cqw;justify-items:center;font:500 2.4cqw/1 var(--body);color:#2b1d14}
+.thuis .app{width:17cqw;height:17cqw;border-radius:4.4cqw;display:grid;place-items:center;font:900 6cqw/1 "Nunito",var(--body);color:#F4ECDD}
+.thuis img{width:17cqw;height:17cqw}
+.thuis .groot img{width:24cqw;height:24cqw}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;padding:10px 16px;border-radius:99px;border:2px solid var(--line);background:var(--panel);font-weight:500;font-size:15px}
+.chip:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--groen);border-color:var(--rim);color:var(--ground)}
+.voorstel{background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:18px;max-width:760px}
+.voorstel h3{margin:0 0 6px;font:700 17px/1.3 var(--body)}
+.voorstel p{margin:0 0 8px;color:var(--muted);font-size:15px}
+.voorstel ul{margin:0;padding-left:20px;color:var(--muted);font-size:15px;display:grid;gap:6px}
 footer{padding-block:30px;color:var(--muted);font-size:14px;max-width:66ch}
 
 /* ---------- tv-schermpjes ---------- */
@@ -95,10 +108,10 @@ footer{padding-block:30px;color:var(--muted);font-size:14px;max-width:66ch}
 
 <div class="wrap">
   <header>
-    <img src="{{I_VENSTER}}" alt="Huidig icoon van Bis Screensavert">
+    <img src="{{IC_MAAN_AUBERGINE}}" alt="Voorgesteld icoon van Bis Screensavert">
     <div>
       <h1>Bis Screensavert: wat kiezen we?</h1>
-      <p class="lede">Zes beslissingen voor het uiterlijk van de app. Tik op het schermpje dat je het mooist vindt. Wat nu in de app zit, staat gemarkeerd als <b>nu</b>. Je keuzes worden bewaard; ik lees ze daarna uit en bouw ze in.</p>
+      <p class="lede">Een paar beslissingen voor het uiterlijk van de app, en een voorstel voor sfeerbeelden. Tik op het schermpje dat je het mooist vindt. Wat nu in de app zit, staat gemarkeerd als <b>nu</b>. Je keuzes worden bewaard; ik lees ze daarna uit en bouw ze in.</p>
     </div>
   </header>
 </div>
@@ -106,7 +119,7 @@ footer{padding-block:30px;color:var(--muted);font-size:14px;max-width:66ch}
 <div class="status" role="status">
   <div class="inner">
     <div class="voortgang" id="voortgang" aria-hidden="true"></div>
-    <span id="teller">0 van 6 gekozen</span>
+    <span id="teller">0 gekozen</span>
     <span id="melding">Keuzes worden geladen…</span>
   </div>
 </div>
@@ -115,13 +128,11 @@ footer{padding-block:30px;color:var(--muted);font-size:14px;max-width:66ch}
 
 <div class="wrap">
   <footer>
-    Sla je er een over, dan houd ik wat er nu in zit. Twijfel je tussen twee? Zet het in het notitieveld eronder, dan maak ik er een mengvorm van.
+    Sla je er een over, dan houd ik wat er nu in zit, of mijn voorstel. Twijfel je tussen twee? Zet het in het notitieveld eronder, dan maak ik er een mengvorm van.
   </footer>
 </div>
 
 <script>
-const ICONEN = { venster: "{{I_VENSTER}}", maan: "{{I_MAAN}}", lijst: "{{I_LIJST}}" };
-const BANNERS = { venster: "{{B_VENSTER}}", maan: "{{B_MAAN}}", lijst: "{{B_LIJST}}" };
 
 // Een geschilderd landschap als stand-in voor een kunstwerk (externe afbeeldingen mogen hier niet laden).
 const SCHILDERIJ = `<svg class="doek" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -138,15 +149,27 @@ const LUCHT = `<svg class="doek" viewBox="0 0 160 90" preserveAspectRatio="xMidY
 
 const VRAGEN = [
   {
-    id: "icoon", eyebrow: "Op het startscherm", titel: "Welk icoon?",
-    vraag: "Het icoon en de banner die je tussen je apps ziet. Allemaal in de kleuren van Bis Weekmenu.",
+    id: "icoon", eyebrow: "Op het startscherm", titel: "Welk symbool in BiS?",
+    vraag: "Zelfde opzet als Bis Stappenteller en Bis Weekmenu: B, een symbool als i, S. Hier tussen je andere twee Bis-apps.",
     opties: [
-      { id: "venster", naam: "Venster", nu: true, uitleg: "Een tv met avondlucht. Zegt meteen: dit is iets voor op je scherm.",
-        tv: () => `<img class="doek" src="${BANNERS.venster}" alt="" style="width:100%;height:100%;object-fit:cover">` },
-      { id: "maan", naam: "Maan", uitleg: "Een boterkleurige maan met sterren. Rustig, past bij 'de tv slaapt'.",
-        tv: () => `<img class="doek" src="${BANNERS.maan}" alt="" style="width:100%;height:100%;object-fit:cover">` },
-      { id: "lijst", naam: "Lijst", uitleg: "Een schilderijtje aan de muur, op porselein. Het meest 'Bis Weekmenu', minst tv.",
-        tv: () => `<img class="doek" src="${BANNERS.lijst}" alt="" style="width:100%;height:100%;object-fit:cover">` },
+      { id: "maan", naam: "Maan", nu: true, uitleg: "De i met een maantje als puntje: de tv gaat slapen, de screensaver komt.",
+        tv: () => thuis(IC.maan_aubergine) },
+      { id: "scherm", naam: "Scherm", uitleg: "De i als tv'tje op een paal. Het meest letterlijk.",
+        tv: () => thuis(IC.scherm_aubergine) },
+      { id: "penseel", naam: "Penseel", uitleg: "De i als penseel: de nadruk op de kunst.",
+        tv: () => thuis(IC.penseel_aubergine) },
+    ],
+  },
+  {
+    id: "icoonkleur", eyebrow: "Op het startscherm", titel: "Welke kleur krijgt het icoon?",
+    vraag: "Stappenteller is blauw, Weekmenu groen. Deze moet ernaast duidelijk anders zijn.",
+    opties: [
+      { id: "aubergine", naam: "Aubergine", nu: true, uitleg: "Warm paars. Duidelijk anders dan blauw en groen, en het past bij de avond.",
+        tv: () => thuis(IC.maan_aubergine) },
+      { id: "nachtpaars", naam: "Nachtpaars", uitleg: "Koeler en blauwer. Rustig, maar dichter bij Stappenteller.",
+        tv: () => thuis(IC.maan_nachtpaars) },
+      { id: "petrol", naam: "Petrol", uitleg: "Diep blauwgroen. Mooi, maar het zit tussen je andere twee in.",
+        tv: () => thuis(IC.maan_petrol) },
     ],
   },
   {
@@ -217,7 +240,48 @@ const VRAGEN = [
         tv: () => `<div class="doek">${SCHILDERIJ}</div>${bewegingslabel("geen")}` },
     ],
   },
+  {
+    id: "sfeerbron", eyebrow: "Sfeerbeelden", titel: "Waar komen de sfeerbeelden vandaan?",
+    vraag: "Bewegende sfeerbeelden zonder YouTube: gratis, in hoge resolutie (4K) en zonder reclame. Hieronder mijn voorstel; kies de mix die jou het meest aanspreekt.",
+    voorstel: true,
+    opties: [
+      { id: "pexels-nasa", naam: "Pexels + NASA", aanbevolen: true,
+        uitleg: "Pexels voor haardvuur, regen, bos en zee (gratis sleutel nodig), NASA voor de aarde vanuit het ISS (geen sleutel). Grootste keuze, beste kwaliteit.",
+        tv: () => sfeer("vuur", "PEXELS · 4K", "Haardvuur") },
+      { id: "alleen-nasa", naam: "Alleen NASA", uitleg: "De aarde vanuit de ruimte, publiek domein, geen account nodig. Prachtig, maar steeds hetzelfde soort beeld.",
+        tv: () => sfeer("ruimte", "NASA · ISS", "Noorderlicht boven Canada") },
+      { id: "pexels-pixabay", naam: "Pexels + Pixabay", uitleg: "Twee grote gratis bibliotheken: meer variatie, maar Pixabay wisselt in kwaliteit. Twee sleutels nodig.",
+        tv: () => sfeer("bos", "PIXABAY · 4K", "Mist in het bos") },
+    ],
+  },
+  {
+    id: "sfeerthemas", eyebrow: "Sfeerbeelden", titel: "Welke sferen wil je zien?", multi: true,
+    vraag: "Kies er zoveel als je wilt. Per thema zoekt de app passende clips en laat ze rustig in elkaar overlopen.",
+    themas: ["Haardvuur", "Regen op het raam", "Bos en mist", "Zee en golven", "Sneeuw", "Sterrenhemel",
+             "Steden bij nacht", "Aarde vanuit de ruimte", "Bloemen en tuin", "Onderwater", "Herfstbladeren", "Kaarslicht"],
+  },
 ];
+
+const IC = {
+  maan_aubergine: "{{IC_MAAN_AUBERGINE}}", scherm_aubergine: "{{IC_SCHERM_AUBERGINE}}", penseel_aubergine: "{{IC_PENSEEL_AUBERGINE}}",
+  maan_nachtpaars: "{{IC_MAAN_NACHTPAARS}}", maan_petrol: "{{IC_MAAN_PETROL}}",
+};
+function thuis(icoon){
+  return `<div class="thuis">
+    <figure><div class="app" style="background:#1f4e79">BiS</div><figcaption>Stappenteller</figcaption></figure>
+    <figure class="groot"><img src="${icoon}" alt=""><figcaption>Screensavert</figcaption></figure>
+    <figure><div class="app" style="background:#2f6b4f">BiS</div><figcaption>Weekmenu</figcaption></figure></div>`;
+}
+const SFEER = {
+  vuur: "radial-gradient(60% 50% at 50% 85%,#FFD27A,#F07A2E 35%,#7A2410 65%,#1A0904)",
+  ruimte: "radial-gradient(140% 90% at 50% 140%,#3D7FB8 0 38%,#0E2846 39%,#04070F 70%)",
+  bos: "linear-gradient(#C9D3CF,#8FA79C 45%,#3E5B4C 75%,#1C2E25)",
+};
+function sfeer(soort, bron, titel){
+  const extra = soort === "ruimte" ? `<div class="doek" style="background:linear-gradient(180deg,transparent 40%,rgba(104,255,170,.35) 55%,transparent 62%)"></div>` : "";
+  return `<div class="doek" style="background:${SFEER[soort]}"></div>${extra}<div class="scrim"></div>
+    <div style="position:absolute;left:5cqw;bottom:4cqw;display:grid;gap:.7cqw"><div class="t-eyebrow">SFEER · ${bron}</div><div class="t-titel">${titel}</div></div>${klok()}`;
+}
 
 function klok(){ return `<div class="klok">21:47</div>`; }
 function kunsttekst(){
@@ -258,15 +322,29 @@ const main = document.getElementById("vragen");
 for (const v of VRAGEN) {
   const s = document.createElement("section");
   s.id = v.id;
-  s.innerHTML = `<div class="eyebrow">${v.eyebrow}</div><h2>${v.titel}</h2><p class="vraag">${v.vraag}</p>
+  if (v.multi) {
+    s.innerHTML = `<div class="eyebrow">${v.eyebrow}</div><h2>${v.titel}</h2><p class="vraag">${v.vraag}</p>
+      <div class="chips">${v.themas.map(th => `<button class="chip" type="button" data-vraag="${v.id}" data-thema="${th}" aria-pressed="false">${th}</button>`).join("")}</div>
+      <div class="notitie"><label for="notitie-${v.id}">Nog een sfeer die je mist?</label>
+      <textarea id="notitie-${v.id}" data-vraag="${v.id}" placeholder="Bijvoorbeeld: Hollandse polders, onweer"></textarea></div>`;
+    main.appendChild(s);
+    continue;
+  }
+  const voorstel = v.voorstel ? `<div class="voorstel"><h3>Mijn voorstel: Pexels + NASA</h3>
+      <p>YouTube laat zich niet netjes in een eigen app afspelen. Deze bronnen mogen dat wel, gratis en zonder reclame:</p>
+      <ul><li><b>Pexels</b>: duizenden 4K-clips van haardvuur, regen, bos, zee en sneeuw. Gratis, maar je maakt één keer een account voor een sleutel (2 minuten). Naamsvermelding hoeft niet; de app zet de maker er toch klein bij.</li>
+      <li><b>NASA</b>: time-lapses van de aarde vanuit het ISS, publiek domein, geen account nodig.</li>
+      <li>Clips duren meestal 10 tot 60 seconden. De app speelt er een paar van hetzelfde thema achter elkaar en laat ze in elkaar overlopen, zodat het als één lange sfeervideo voelt.</li>
+      <li>Een eigen lange sfeervideo kan daarnaast gewoon via Google Foto's.</li></ul></div>` : "";
+  s.innerHTML = `<div class="eyebrow">${v.eyebrow}</div><h2>${v.titel}</h2><p class="vraag">${v.vraag}</p>${voorstel}
     <div class="opties">${v.opties.map(o => `
       <button class="optie" type="button" data-vraag="${v.id}" data-optie="${o.id}" aria-pressed="false">
         <div class="tv">${o.tv()}</div>
-        <div class="naam">${o.naam}${o.nu ? ` <span class="pil nu">nu</span>` : ""} <span class="pil gekozen">gekozen</span></div>
+        <div class="naam">${o.naam}${o.nu ? ` <span class="pil nu">nu</span>` : ""}${o.aanbevolen ? ` <span class="pil nu">aanbevolen</span>` : ""} <span class="pil gekozen">gekozen</span></div>
         <div class="uitleg">${o.uitleg}</div>
       </button>`).join("")}</div>
     <div class="notitie"><label for="notitie-${v.id}">Opmerking (mag leeg blijven)</label>
-      <textarea id="notitie-${v.id}" data-vraag="${v.id}" placeholder="Bijvoorbeeld: venster, maar dan met de maan erin"></textarea></div>`;
+      <textarea id="notitie-${v.id}" data-vraag="${v.id}" placeholder="Bijvoorbeeld: deze, maar dan iets lichter"></textarea></div>`;
   main.appendChild(s);
 }
 
@@ -284,13 +362,21 @@ function toon(){
   let n = 0;
   for (const v of VRAGEN) {
     const k = keuzes[v.id]?.keuze;
+    if (v.multi) {
+      const lijst = keuzes[v.id]?.themas || [];
+      if (lijst.length) n++;
+      document.querySelectorAll(`.chip[data-vraag="${v.id}"]`).forEach(c => c.setAttribute("aria-pressed", String(lijst.includes(c.dataset.thema))));
+      const tm = document.getElementById(`notitie-${v.id}`);
+      if (document.activeElement !== tm) tm.value = keuzes[v.id]?.notitie || "";
+      continue;
+    }
     if (k) n++;
     document.querySelectorAll(`.optie[data-vraag="${v.id}"]`).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.optie === k)));
     const t = document.getElementById(`notitie-${v.id}`);
     if (document.activeElement !== t) t.value = keuzes[v.id]?.notitie || "";
   }
   document.getElementById("teller").textContent = `${n} van ${VRAGEN.length} gekozen`;
-  document.getElementById("voortgang").innerHTML = VRAGEN.map(v => `<span class="${keuzes[v.id]?.keuze ? "klaar" : ""}"></span>`).join("");
+  document.getElementById("voortgang").innerHTML = VRAGEN.map(v => `<span class="${(keuzes[v.id]?.keuze || keuzes[v.id]?.themas?.length) ? "klaar" : ""}"></span>`).join("");
 }
 
 function melding(tekst, soort){
@@ -312,6 +398,7 @@ async function bewaar(vraagId){
   try {
     await db.doc(`keuzes/${vraagId}`).set({
       keuze: keuzes[vraagId]?.keuze || null,
+      themas: keuzes[vraagId]?.themas || [],
       notitie: keuzes[vraagId]?.notitie || "",
       bijgewerkt: new Date().toISOString(),
     });
@@ -322,6 +409,16 @@ async function bewaar(vraagId){
 }
 
 main.addEventListener("click", e => {
+  const chip = e.target.closest(".chip");
+  if (chip) {
+    const v = chip.dataset.vraag;
+    const lijst = new Set(keuzes[v]?.themas || []);
+    if (lijst.has(chip.dataset.thema)) lijst.delete(chip.dataset.thema); else lijst.add(chip.dataset.thema);
+    keuzes[v] = { ...(keuzes[v] || {}), themas: [...lijst] };
+    toon();
+    bewaar(v);
+    return;
+  }
   const b = e.target.closest(".optie");
   if (!b) return;
   const v = b.dataset.vraag;
@@ -349,7 +446,7 @@ toon();
   db.collection("keuzes").onSnapshot(snap => {
     for (const d of snap.docs) {
       const data = d.data() || {};
-      keuzes[d.id] = { keuze: data.keuze || null, notitie: data.notitie || "" };
+      keuzes[d.id] = { keuze: data.keuze || null, themas: data.themas || [], notitie: data.notitie || "" };
     }
     toon();
     melding("Je keuzes worden bewaard.", "ok");

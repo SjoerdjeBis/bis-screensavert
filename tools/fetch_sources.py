@@ -41,7 +41,7 @@ def debug(name, data):
 def dhash(image_bytes, size=8):
     """Verschil-hash: gelijke of bijna gelijke afbeeldingen geven (bijna) dezelfde 64 bits."""
     img = Image.open(io.BytesIO(image_bytes)).convert("L").resize((size + 1, size), Image.LANCZOS)
-    px = list(img.getdata())
+    px = list(img.tobytes())
     bits = 0
     for y in range(size):
         for x in range(size):
@@ -122,11 +122,41 @@ def lang_of(entry):
     return "?"
 
 
+RIJKS_VARIANTEN = [
+    ("", LA),
+    ("", "application/ld+json"),
+    ("?_profile=la&_mediatype=application/ld%2Bjson", "*/*"),
+    ("", "application/json"),
+]
+
+
+def diagnose_rijks(obj_url):
+    """Legt vast wat het Rijksmuseum per vraagvorm teruggeeft."""
+    result = {}
+    for suffix, accept in RIJKS_VARIANTEN:
+        try:
+            req = urllib.request.Request(obj_url + suffix, headers={"User-Agent": UA, "Accept": accept})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                body = r.read()
+                result[f"{suffix} | {accept}"] = {"status": r.status, "url": r.geturl(),
+                                                   "type": r.headers.get("content-type"), "begin": body[:300].decode("utf-8", "replace")}
+        except Exception as e:  # noqa: BLE001
+            result[f"{suffix} | {accept}"] = str(e)
+    debug("rijks_varianten", result)
+
+
 def rijks_object(obj_url):
-    try:
-        obj = get_json(obj_url, LA)
-    except Exception:  # noqa: BLE001
-        obj = get_json(obj_url + "?_profile=la", "application/ld+json")
+    obj = None
+    for suffix, accept in RIJKS_VARIANTEN:
+        try:
+            obj = get_json(obj_url + suffix, accept)
+            break
+        except Exception:  # noqa: BLE001
+            continue
+    if obj is None:
+        if not os.path.exists("data/debug/rijks_varianten.json"):
+            diagnose_rijks(obj_url)
+        raise ValueError("geen JSON van het Rijksmuseum")
     if not os.path.exists("data/debug/rijks_object_ruw.json"):
         debug("rijks_object_ruw", obj)
     names = [n for n in obj.get("identified_by", []) if n.get("type") == "Name"]
@@ -219,7 +249,9 @@ def fingerprints(sources):
             if key in hashes or not url:
                 continue
             try:
-                hashes[key] = dhash(get(url, "image/*"))
+                req = urllib.request.Request(url, headers={"User-Agent": UA, "AIC-User-Agent": UA, "Accept": "image/*"})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    hashes[key] = dhash(r.read())
             except Exception as e:  # noqa: BLE001
                 print(f"hash {key}: fout {e}")
             time.sleep(0.1)
