@@ -279,7 +279,8 @@ class SlideshowController(
     }
 
     private suspend fun loadImage(url: String): Drawable? {
-        val request = ImageRequest.Builder(context).data(url).build()
+        // Nooit groter dan een 1080p-scherm: scheelt veel geheugen op de Chromecast.
+        val request = ImageRequest.Builder(context).data(url).size(1920, 1080).build()
         return (context.imageLoader.execute(request) as? SuccessResult)?.drawable
     }
 

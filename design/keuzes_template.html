@@ -1,0 +1,358 @@
+<title>Bis Screensavert keuzes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Rubik:wght@400;500;700&display=swap">
+<style>
+/* Indeling: één kolom met beslissingen; per beslissing drie tv-schermpjes naast elkaar. */
+:root{
+  --ground:#F3F1E8;      /* porselein */
+  --panel:#FFFFFF;
+  --ink:#12302B;
+  --muted:#5E6F67;
+  --line:#D9DCD2;
+  --rim:#12302B;
+  --boter:#B87C0E;
+  --tomaat:#C8402B;
+  --groen:#1D5049;
+  --focus:#F0B23F;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Rubik",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* tv-kleuren: in elk thema gelijk, het zijn schermen */
+  --tv-emaille:#0E2E2A; --tv-emaille2:#16403A; --tv-emaille3:#1D5049;
+  --tv-room:#F6EFE0; --tv-dim:#A9B8B0; --tv-boter:#F0B23F; --tv-tomaat:#E2523C; --tv-rim:#08201D;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0B1F1C; --panel:#12302B; --ink:#F1ECDF; --muted:#9DB0A7; --line:#24453F;
+    --rim:#061512; --boter:#F0B23F; --tomaat:#F07A63; --groen:#7FC0A6; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0B1F1C; --panel:#12302B; --ink:#F1ECDF; --muted:#9DB0A7; --line:#24453F;
+  --rim:#061512; --boter:#F0B23F; --tomaat:#F07A63; --groen:#7FC0A6; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:400 16px/1.55 var(--body);padding-inline:18px;padding-block:0 80px}
+.wrap{max-width:1080px;margin:0 auto}
+header{padding-block:44px 18px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+header img{width:72px;height:72px;border-radius:18px;border:2px solid var(--rim)}
+h1{font:600 italic clamp(30px,5vw,46px)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--muted);max-width:62ch;margin:6px 0 0}
+.status{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-inline:-18px;padding:10px 18px;
+  background:color-mix(in srgb,var(--ground) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.status .inner{max-width:1080px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:14px}
+.voortgang{display:flex;gap:5px}
+.voortgang span{width:22px;height:6px;border-radius:3px;background:var(--line)}
+.voortgang span.klaar{background:var(--groen)}
+#melding{color:var(--muted)}
+#melding.ok{color:var(--groen)}
+#melding.fout{color:var(--tomaat)}
+
+section{padding-block:40px 6px;border-bottom:1px solid var(--line)}
+.kop{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.eyebrow{font:500 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--boter)}
+h2{font:600 italic clamp(23px,3.4vw,30px)/1.15 var(--display);margin:4px 0 4px;text-wrap:balance}
+.vraag{color:var(--muted);margin:0 0 18px;max-width:64ch}
+.opties{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.opties{grid-template-columns:1fr}}
+
+.optie{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:10px 10px 14px;border-radius:20px;
+  background:var(--panel);border:2px solid var(--line);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;min-width:0}
+.optie:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(8,32,29,.14)}
+.optie:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.optie[aria-pressed="true"]{border-color:var(--rim);box-shadow:0 0 0 3px var(--focus)}
+.optie .naam{display:flex;gap:8px;align-items:center;font-weight:700;font-size:16px;padding-inline:4px}
+.optie .uitleg{font-size:13.5px;color:var(--muted);padding-inline:4px;line-height:1.45}
+.pil{font:700 9.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:99px;border:1.5px solid var(--rim)}
+.pil.nu{background:var(--tv-boter);color:#20180A}
+.pil.gekozen{background:var(--tomaat);color:#fff;display:none}
+.optie[aria-pressed="true"] .pil.gekozen{display:inline-block}
+.notitie{margin-top:14px;display:grid;gap:6px;max-width:640px}
+.notitie label{font-size:13px;color:var(--muted)}
+.notitie textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:10px 12px;min-height:56px;resize:vertical}
+.notitie textarea:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+footer{padding-block:30px;color:var(--muted);font-size:14px;max-width:66ch}
+
+/* ---------- tv-schermpjes ---------- */
+.tv{position:relative;aspect-ratio:16/9;width:100%;border-radius:12px;overflow:hidden;background:var(--tv-emaille);
+  border:2px solid var(--tv-rim);container-type:inline-size;color:var(--tv-room);font-family:var(--body)}
+.tv .doek{position:absolute;inset:0}
+.tv .scrim{position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(to top,rgba(0,0,0,.82),transparent)}
+.tv .t-eyebrow{font:500 1.5cqw/1 var(--body);letter-spacing:.16em;color:var(--tv-boter)}
+.tv .t-titel{font:600 italic 4.2cqw/1.05 var(--display)}
+.tv .t-sub{font:500 2cqw/1.3 var(--body);opacity:.9}
+.tv .t-body{font:400 1.7cqw/1.4 var(--body);opacity:.85}
+.tv .klok{position:absolute;top:4.5cqw;right:5cqw;font:500 3.6cqw/1 var(--body);text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.balk{display:block;height:.7cqw;border-radius:99px;background:rgba(246,239,224,.25);overflow:hidden}
+.balk i{display:block;height:100%;width:42%;background:var(--tv-boter)}
+.hoes{border-radius:1.6cqw;background:conic-gradient(from 210deg,#E2523C,#F0B23F,#2A5C7A,#1D5049,#E2523C);border:.3cqw solid var(--tv-rim)}
+.kaartje{border-radius:2cqw;background:var(--tv-emaille2);border:.3cqw solid var(--tv-rim)}
+.mini-kaart{border-radius:1.4cqw;border:.25cqw solid var(--tv-rim);background:var(--tv-emaille2);overflow:hidden;display:flex;flex-direction:column}
+.mini-kaart .plaat{flex:0 0 55%}
+.mini-kaart .tekst{padding:.8cqw 1cqw;font:700 1.5cqw/1.2 var(--body)}
+.mini-kaart.focus{outline:.45cqw solid var(--tv-boter);transform:scale(1.06)}
+</style>
+
+<div class="wrap">
+  <header>
+    <img src="{{I_VENSTER}}" alt="Huidig icoon van Bis Screensavert">
+    <div>
+      <h1>Bis Screensavert: wat kiezen we?</h1>
+      <p class="lede">Zes beslissingen voor het uiterlijk van de app. Tik op het schermpje dat je het mooist vindt. Wat nu in de app zit, staat gemarkeerd als <b>nu</b>. Je keuzes worden bewaard; ik lees ze daarna uit en bouw ze in.</p>
+    </div>
+  </header>
+</div>
+
+<div class="status" role="status">
+  <div class="inner">
+    <div class="voortgang" id="voortgang" aria-hidden="true"></div>
+    <span id="teller">0 van 6 gekozen</span>
+    <span id="melding">Keuzes worden geladen…</span>
+  </div>
+</div>
+
+<main class="wrap" id="vragen"></main>
+
+<div class="wrap">
+  <footer>
+    Sla je er een over, dan houd ik wat er nu in zit. Twijfel je tussen twee? Zet het in het notitieveld eronder, dan maak ik er een mengvorm van.
+  </footer>
+</div>
+
+<script>
+const ICONEN = { venster: "{{I_VENSTER}}", maan: "{{I_MAAN}}", lijst: "{{I_LIJST}}" };
+const BANNERS = { venster: "{{B_VENSTER}}", maan: "{{B_MAAN}}", lijst: "{{B_LIJST}}" };
+
+// Een geschilderd landschap als stand-in voor een kunstwerk (externe afbeeldingen mogen hier niet laden).
+const SCHILDERIJ = `<svg class="doek" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><linearGradient id="LG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FA7C9"/><stop offset="1" stop-color="#F2D3A8"/></linearGradient></defs>
+  <rect width="160" height="90" fill="url(#LG)"/><circle cx="112" cy="40" r="11" fill="#F4B860"/>
+  <path d="M0 58 C40 44 70 52 96 58 C120 50 140 48 160 54 V90 H0Z" fill="#6F8F5C"/>
+  <path d="M0 70 C50 60 100 76 160 64 V90 H0Z" fill="#3E5B3A"/>
+  <rect x="22" y="52" width="10" height="8" fill="#B5543E"/><path d="M21 52 L27 47 L33 52Z" fill="#7A2E22"/></svg>`;
+const LUCHT = `<svg class="doek" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><linearGradient id="LL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2A5C"/><stop offset=".6" stop-color="#B9566A"/><stop offset="1" stop-color="#F0A35A"/></linearGradient></defs>
+  <rect width="160" height="90" fill="url(#LL)"/><circle cx="100" cy="62" r="14" fill="#F0B23F"/>
+  <path d="M0 64 C40 50 70 58 100 64 C124 56 146 54 160 58 V90 H0Z" fill="#1D5049"/>
+  <path d="M0 76 C60 66 110 82 160 70 V90 H0Z" fill="#0E2E2A"/></svg>`;
+
+const VRAGEN = [
+  {
+    id: "icoon", eyebrow: "Op het startscherm", titel: "Welk icoon?",
+    vraag: "Het icoon en de banner die je tussen je apps ziet. Allemaal in de kleuren van Bis Weekmenu.",
+    opties: [
+      { id: "venster", naam: "Venster", nu: true, uitleg: "Een tv met avondlucht. Zegt meteen: dit is iets voor op je scherm.",
+        tv: () => `<img class="doek" src="${BANNERS.venster}" alt="" style="width:100%;height:100%;object-fit:cover">` },
+      { id: "maan", naam: "Maan", uitleg: "Een boterkleurige maan met sterren. Rustig, past bij 'de tv slaapt'.",
+        tv: () => `<img class="doek" src="${BANNERS.maan}" alt="" style="width:100%;height:100%;object-fit:cover">` },
+      { id: "lijst", naam: "Lijst", uitleg: "Een schilderijtje aan de muur, op porselein. Het meest 'Bis Weekmenu', minst tv.",
+        tv: () => `<img class="doek" src="${BANNERS.lijst}" alt="" style="width:100%;height:100%;object-fit:cover">` },
+    ],
+  },
+  {
+    id: "keuzescherm", eyebrow: "Keuzescherm", titel: "Hoe ziet het keuzescherm eruit?",
+    vraag: "Het scherm waar je kiest wat je wilt zien. Bekijk het als op de bank, van drie meter afstand.",
+    opties: [
+      { id: "emaille", naam: "Emaille", nu: true, uitleg: "Diep groen met roomwitte letters. Rustig in een donkere kamer.",
+        tv: () => keuzescherm("#0E2E2A", "#16403A", "#F6EFE0", "#F0B23F") },
+      { id: "porselein", naam: "Porselein", uitleg: "Licht, zoals Bis Weekmenu overdag. Opvallend fel als het licht uit is.",
+        tv: () => keuzescherm("#F3F1E8", "#FFFFFF", "#12302B", "#C8402B") },
+      { id: "nacht", naam: "Nacht", uitleg: "Bijna zwart, kleur alleen in de plaatjes. Het minst aanwezig.",
+        tv: () => keuzescherm("#0A0F0E", "#151B1A", "#E8E4D8", "#F0B23F") },
+    ],
+  },
+  {
+    id: "uitleg", eyebrow: "Kunst", titel: "Waar staat de uitleg bij een kunstwerk?",
+    vraag: "De Nederlandse toelichting is vier à vijf regels. Hij mag het schilderij niet in de weg zitten.",
+    opties: [
+      { id: "onderbalk", naam: "Onderbalk", nu: true, uitleg: "Over de hele breedte onderin, met een donker verloop. Klassiek museumgevoel.",
+        tv: () => `${SCHILDERIJ}<div class="scrim"></div>
+          <div style="position:absolute;left:5cqw;bottom:4cqw;right:35cqw;display:grid;gap:.8cqw">${kunsttekst()}</div>${klok()}` },
+      { id: "zijpaneel", naam: "Zijpaneel", uitleg: "Schilderij links, tekst in een rustig groen paneel rechts. Niets valt over het werk.",
+        tv: () => `<div class="doek" style="right:36%">${SCHILDERIJ}</div>
+          <div style="position:absolute;inset:0 0 0 64%;background:var(--tv-emaille);padding:5cqw 3.5cqw;display:grid;align-content:end;gap:.8cqw">${kunsttekst()}</div>${klok()}` },
+      { id: "kaartje", naam: "Kaartje", uitleg: "Een klein kaartje linksonder, zoals het bordje naast een schilderij in een museum.",
+        tv: () => `${SCHILDERIJ}<div class="kaartje" style="position:absolute;left:4cqw;bottom:4cqw;width:42cqw;padding:2.4cqw;display:grid;gap:.7cqw">${kunsttekst()}</div>${klok()}` },
+    ],
+  },
+  {
+    id: "muziek", eyebrow: "Muziek", titel: "Hoe ziet het muziekscherm eruit?",
+    vraag: "Als Spotify speelt, neemt dit scherm het over. Op de achtergrond foto's van de artiest.",
+    opties: [
+      { id: "hoes-links", naam: "Hoes links", nu: true, uitleg: "Hoes en titel samen linksonder, artiestfoto groot erachter.",
+        tv: () => `${LUCHT}<div class="doek" style="background:linear-gradient(45deg,rgba(14,46,42,.95),rgba(14,46,42,.2))"></div>
+          <div style="position:absolute;left:5cqw;bottom:5cqw;display:flex;gap:3cqw;align-items:flex-end">
+            <div class="hoes" style="width:20cqw;aspect-ratio:1"></div>${muziektekst()}</div>` },
+      { id: "hoes-midden", naam: "Hoes midden", uitleg: "Grote hoes in het midden, titel eronder. Als een platenhoes op een standaard.",
+        tv: () => `${LUCHT}<div class="doek" style="background:rgba(14,46,42,.72)"></div>
+          <div style="position:absolute;inset:0;display:grid;justify-items:center;align-content:center;gap:2cqw;text-align:center">
+            <div class="hoes" style="width:27cqw;aspect-ratio:1"></div>${muziektekst(true)}</div>` },
+      { id: "alleen-foto", naam: "Alleen artiest", uitleg: "Geen hoes: de artiestfoto vult het scherm, de titel staat er klein bij.",
+        tv: () => `${LUCHT}<div class="scrim"></div><div style="position:absolute;left:5cqw;bottom:5cqw">${muziektekst()}</div>` },
+    ],
+  },
+  {
+    id: "klok", eyebrow: "Klok", titel: "Welke klok?",
+    vraag: "De klok staat over alle beelden heen. Je kunt hem in de app ook helemaal uitzetten.",
+    opties: [
+      { id: "klein", naam: "Klein rechtsboven", nu: true, uitleg: "Alleen de tijd, bescheiden in de hoek.",
+        tv: () => `${LUCHT}${klok()}` },
+      { id: "groot", naam: "Groot met datum", uitleg: "Grote tijd met de dag eronder, linksboven. Handig als je hem echt als klok gebruikt.",
+        tv: () => `${LUCHT}<div style="position:absolute;top:5cqw;left:5cqw;text-shadow:0 1px 8px rgba(0,0,0,.5)">
+          <div style="font:600 italic 11cqw/1 var(--display)">21:47</div><div class="t-sub" style="margin-top:.6cqw">woensdag 7 oktober</div></div>` },
+      { id: "wisselend", naam: "Wandelende klok", uitleg: "Klein, en schuift elk uur naar een andere hoek, zodat er niets inbrandt.",
+        tv: () => `${LUCHT}<div class="klok" style="top:auto;bottom:5cqw;right:5cqw">21:47</div>
+          <div class="klok" style="opacity:.25;right:auto;left:5cqw">21:47</div>` },
+    ],
+  },
+  {
+    id: "beweging", eyebrow: "Beweging", titel: "Hoeveel beweging bij stilstaande beelden?",
+    vraag: "Een kunstwerk of foto staat standaard 45 seconden. Een beetje beweging houdt het levendig.",
+    opties: [
+      { id: "zacht", naam: "Zacht inzoomen", nu: true, uitleg: "Heel langzaam 6% inzoomen, en zacht overvloeien naar het volgende beeld.",
+        tv: () => `<div class="doek zoom-zacht">${SCHILDERIJ}</div>${bewegingslabel("6% zoom")}` },
+      { id: "verkennen", naam: "Verkennen", uitleg: "Langzaam over het beeld schuiven, zoals een camera in een documentaire.",
+        tv: () => `<div class="doek zoom-pan">${SCHILDERIJ}</div>${bewegingslabel("schuiven + zoom")}` },
+      { id: "stil", naam: "Stil", uitleg: "Het beeld staat stil; alleen overvloeien tussen beelden. Het rustigst.",
+        tv: () => `<div class="doek">${SCHILDERIJ}</div>${bewegingslabel("geen")}` },
+    ],
+  },
+];
+
+function klok(){ return `<div class="klok">21:47</div>`; }
+function kunsttekst(){
+  return `<div class="t-eyebrow">KUNST · ART INSTITUTE OF CHICAGO</div>
+    <div class="t-titel">Graanstapels</div>
+    <div class="t-sub">Claude Monet · 1890–91</div>
+    <div class="t-body">Deze graanstapels stonden vlak bij Monets boerderij in Giverny. Hij schilderde ze steeds opnieuw, om het wisselende licht te vangen.</div>`;
+}
+function muziektekst(midden){
+  return `<div style="display:grid;gap:.7cqw;${midden ? "justify-items:center" : ""}">
+    <div class="t-eyebrow">NU SPEELT</div>
+    <div class="t-titel">Holocene</div>
+    <div class="t-sub">Bon Iver · Bon Iver, Bon Iver</div>
+    <span class="balk" style="width:30cqw"><i></i></span></div>`;
+}
+function keuzescherm(grond, kaart, inkt, accent){
+  const plaatjes = [SCHILDERIJ, LUCHT, SCHILDERIJ, LUCHT];
+  const namen = ["Slimme mix", "Kunst", "Luchtopnames", "Mijn foto's"];
+  return `<div class="doek" style="background:${grond};color:${inkt};padding:4cqw 5cqw;display:grid;align-content:start;gap:1.4cqw">
+    <div style="display:flex;gap:1cqw;align-items:center;font:600 italic 2.2cqw/1 var(--display)"><i style="width:1.2cqw;height:1.2cqw;border-radius:50%;background:${accent}"></i>Bis Screensavert</div>
+    <div style="font:600 italic 5cqw/1 var(--display);margin-top:1.5cqw">Wat wil je zien?</div>
+    <div style="font:400 1.7cqw/1.3 var(--body);opacity:.8">Avond: rustiger, met luchtopnames en je eigen foto's.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw;margin-top:1.5cqw">
+      ${namen.map((n, i) => `<div class="mini-kaart ${i === 0 ? "focus" : ""}" style="background:${kaart};outline-color:${accent}">
+        <div class="plaat" style="position:relative;aspect-ratio:16/10">${plaatjes[i]}</div>
+        <div class="tekst" style="color:${inkt}">${n}</div></div>`).join("")}
+    </div></div>`;
+}
+function bewegingslabel(t){
+  return `<div style="position:absolute;left:3cqw;bottom:3cqw;font:500 1.6cqw/1 var(--body);background:rgba(8,32,29,.8);padding:.8cqw 1.2cqw;border-radius:99px">${t}</div>`;
+}
+
+// ---------- opbouwen ----------
+const keuzes = {};      // vraag-id -> {keuze, notitie}
+let db = null;
+const main = document.getElementById("vragen");
+
+for (const v of VRAGEN) {
+  const s = document.createElement("section");
+  s.id = v.id;
+  s.innerHTML = `<div class="eyebrow">${v.eyebrow}</div><h2>${v.titel}</h2><p class="vraag">${v.vraag}</p>
+    <div class="opties">${v.opties.map(o => `
+      <button class="optie" type="button" data-vraag="${v.id}" data-optie="${o.id}" aria-pressed="false">
+        <div class="tv">${o.tv()}</div>
+        <div class="naam">${o.naam}${o.nu ? ` <span class="pil nu">nu</span>` : ""} <span class="pil gekozen">gekozen</span></div>
+        <div class="uitleg">${o.uitleg}</div>
+      </button>`).join("")}</div>
+    <div class="notitie"><label for="notitie-${v.id}">Opmerking (mag leeg blijven)</label>
+      <textarea id="notitie-${v.id}" data-vraag="${v.id}" placeholder="Bijvoorbeeld: venster, maar dan met de maan erin"></textarea></div>`;
+  main.appendChild(s);
+}
+
+// Beweging: laat de opties echt bewegen.
+const stijl = document.createElement("style");
+stijl.textContent = `
+@keyframes zacht{from{transform:scale(1)}to{transform:scale(1.06)}}
+@keyframes pan{from{transform:scale(1.12) translateX(-3%)}to{transform:scale(1.12) translateX(3%)}}
+.zoom-zacht{animation:zacht 6s linear infinite alternate}
+.zoom-pan{animation:pan 7s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.zoom-zacht,.zoom-pan{animation:none}}`;
+document.head.appendChild(stijl);
+
+function toon(){
+  let n = 0;
+  for (const v of VRAGEN) {
+    const k = keuzes[v.id]?.keuze;
+    if (k) n++;
+    document.querySelectorAll(`.optie[data-vraag="${v.id}"]`).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.optie === k)));
+    const t = document.getElementById(`notitie-${v.id}`);
+    if (document.activeElement !== t) t.value = keuzes[v.id]?.notitie || "";
+  }
+  document.getElementById("teller").textContent = `${n} van ${VRAGEN.length} gekozen`;
+  document.getElementById("voortgang").innerHTML = VRAGEN.map(v => `<span class="${keuzes[v.id]?.keuze ? "klaar" : ""}"></span>`).join("");
+}
+
+function melding(tekst, soort){
+  const m = document.getElementById("melding");
+  m.textContent = tekst;
+  m.className = soort || "";
+}
+
+function lokaalLezen(){
+  try { Object.assign(keuzes, JSON.parse(localStorage.getItem("bis-keuzes") || "{}")); } catch (e) {}
+}
+function lokaalBewaren(){
+  try { localStorage.setItem("bis-keuzes", JSON.stringify(keuzes)); } catch (e) {}
+}
+
+async function bewaar(vraagId){
+  lokaalBewaren();
+  if (!db) { melding("Bewaard in deze browser. Claude kan dit niet uitlezen; stuur je keuzes dan even in de chat.", "fout"); return; }
+  try {
+    await db.doc(`keuzes/${vraagId}`).set({
+      keuze: keuzes[vraagId]?.keuze || null,
+      notitie: keuzes[vraagId]?.notitie || "",
+      bijgewerkt: new Date().toISOString(),
+    });
+    melding("Opgeslagen", "ok");
+  } catch (e) {
+    melding("Opslaan lukte niet: " + (e?.message || e?.code || "onbekende fout") + ". Probeer het nog eens.", "fout");
+  }
+}
+
+main.addEventListener("click", e => {
+  const b = e.target.closest(".optie");
+  if (!b) return;
+  const v = b.dataset.vraag;
+  keuzes[v] = { ...(keuzes[v] || {}), keuze: b.dataset.optie };
+  toon();
+  bewaar(v);
+});
+
+const wachtrij = {};
+main.addEventListener("input", e => {
+  const t = e.target.closest("textarea");
+  if (!t) return;
+  const v = t.dataset.vraag;
+  keuzes[v] = { ...(keuzes[v] || {}), notitie: t.value };
+  clearTimeout(wachtrij[v]);
+  wachtrij[v] = setTimeout(() => bewaar(v), 900);
+});
+
+lokaalLezen();
+toon();
+
+(async () => {
+  try { db = await window.claude?.use?.("db"); } catch (e) { db = null; }
+  if (!db) { melding("Keuzes worden alleen in deze browser bewaard."); return; }
+  db.collection("keuzes").onSnapshot(snap => {
+    for (const d of snap.docs) {
+      const data = d.data() || {};
+      keuzes[d.id] = { keuze: data.keuze || null, notitie: data.notitie || "" };
+    }
+    toon();
+    melding("Je keuzes worden bewaard.", "ok");
+  }, err => melding("Keuzes laden lukte niet: " + (err?.message || err?.code || "onbekend"), "fout"));
+})();
+</script>
