@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Apple's aerial-servers gebruiken een certificaat dat Android niet altijd vertrouwt;
+         de app valt dan terug op gewoon http voor alleen deze domeinen. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">sylvan.apple.com</domain>
+        <domain includeSubdomains="true">a1.phobos.apple.com</domain>
+    </domain-config>
+</network-security-config>

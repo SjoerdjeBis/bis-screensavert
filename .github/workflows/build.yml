@@ -1,0 +1,53 @@
+name: Bouw Bis ScreenSaver
+
+on:
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bouw-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: App bouwen
+        run: ./gradlew --no-daemon assembleRelease
+
+      - name: Installatiepakket maken
+        run: |
+          mkdir BisScreenSaver
+          cp app/build/outputs/apk/release/app-release.apk BisScreenSaver/BisScreenSaver.apk
+          cp installatie/installeer.command installatie/HANDLEIDING.md BisScreenSaver/
+          chmod +x BisScreenSaver/installeer.command
+          zip -r BisScreenSaver.zip BisScreenSaver
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BisScreenSaver
+          path: BisScreenSaver.zip
+
+      - name: Downloadpagina bijwerken
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete laatste --yes --cleanup-tag || true
+          gh release create laatste BisScreenSaver.zip \
+            --target "${{ github.sha }}" \
+            --title "Bis ScreenSaver – laatste versie" \
+            --notes "Versie 0.1.${{ github.run_number }} (branch ${{ github.ref_name }}). Download BisScreenSaver.zip en volg HANDLEIDING.md." \
+            --prerelease
