@@ -1,9 +1,10 @@
 #!/bin/bash
-# Bis ScreenSaver installeren op een Chromecast met Google TV, vanaf een Mac.
+# Bis Screensavert installeren op een Chromecast met Google TV, vanaf een Mac.
 # Gebruik: open Terminal, typ "bash " (met spatie), sleep dit bestand in het venster en druk op Enter.
 
 PAKKET="nl.bis.screensaver"
 SCREENSAVER="$PAKKET/.ScreenSaverDream"
+MUZIEK="$PAKKET/$PAKKET.MediaListener"
 MAP="$HOME/.bis-screensaver"
 ADB="$MAP/platform-tools/adb"
 HIER="$(cd "$(dirname "$0")" && pwd)"
@@ -19,8 +20,8 @@ klaar_met_fout() {
 }
 
 clear
-echo "Bis ScreenSaver – installatie"
-echo "=============================="
+echo "Bis Screensavert – installatie"
+echo "================================"
 
 [ -f "$APK" ] || klaar_met_fout "BisScreenSaver.apk staat niet naast dit script. Pak de zip opnieuw uit en probeer het nog eens."
 mkdir -p "$MAP"
@@ -99,7 +100,7 @@ echo
 echo "✔  Verbonden met je tv."
 
 # 3. App installeren.
-stap "Stap 3: Bis ScreenSaver installeren"
+stap "Stap 3: Bis Screensavert installeren"
 RESULTAAT="$("$ADB" -s "$TV" install -r "$APK" 2>&1)"
 if echo "$RESULTAAT" | grep -qE "INSTALL_FAILED_UPDATE_INCOMPATIBLE|INSTALL_FAILED_VERSION_DOWNGRADE"; then
     echo "Oude versie gevonden die niet past; die haal ik eerst weg."
@@ -115,7 +116,51 @@ stap "Stap 4: instellen als screensaver"
 "$ADB" -s "$TV" shell settings put secure screensaver_components "$SCREENSAVER"
 INGESTELD="$("$ADB" -s "$TV" shell settings get secure screensaver_components | tr -d '\r')"
 [ "$INGESTELD" = "$SCREENSAVER" ] || klaar_met_fout "De tv nam de screensaver-instelling niet over (staat nu op: $INGESTELD)."
-echo "✔  Bis ScreenSaver is nu je screensaver."
+echo "✔  Bis Screensavert is nu je screensaver."
+
+# 5. Muziek: de app laten zien wat Spotify afspeelt.
+stap "Stap 5: muziek (Spotify) zichtbaar maken"
+"$ADB" -s "$TV" shell cmd notification allow_listener "$MUZIEK" >/dev/null 2>&1
+if "$ADB" -s "$TV" shell settings get secure enabled_notification_listeners | grep -q "$PAKKET"; then
+    echo "✔  De app mag zien wat er speelt."
+else
+    echo "!  Dit lukte niet. De rest werkt gewoon; alleen het muziekscherm blijft uit."
+fi
+
+# 6. Google Foto's koppelen (optioneel, eenmalig).
+stap "Stap 6: Google Foto's (optioneel)"
+GOOGLE="$MAP/google"
+if [ -f "$GOOGLE" ]; then
+    echo "Google-sleutels van de vorige keer gevonden; die stuur ik opnieuw naar de tv."
+    KOPPELEN="j"
+else
+    echo "Hiervoor heb je eerst een Client ID en Client secret van Google nodig."
+    echo "Hoe je die krijgt, staat in GOOGLE-FOTOS.md (in dezelfde map als dit script)."
+    read -r -p "Heb je ze en wil je Google Foto's nu koppelen? (j/n): " KOPPELEN
+    if [ "$KOPPELEN" = "j" ] || [ "$KOPPELEN" = "J" ]; then
+        read -r -p "Plak de Client ID en druk op Enter: " CLIENT_ID
+        read -r -p "Plak het Client secret en druk op Enter: " CLIENT_SECRET
+        CLIENT_ID="$(echo "$CLIENT_ID" | tr -d '[:space:]')"
+        CLIENT_SECRET="$(echo "$CLIENT_SECRET" | tr -d '[:space:]')"
+        if [ -n "$CLIENT_ID" ] && [ -n "$CLIENT_SECRET" ]; then
+            printf '%s\n%s\n' "$CLIENT_ID" "$CLIENT_SECRET" > "$GOOGLE"
+            chmod 600 "$GOOGLE"
+        else
+            echo "Niet ingevuld; ik sla deze stap over."
+            KOPPELEN="n"
+        fi
+    fi
+fi
+if [ "$KOPPELEN" = "j" ] || [ "$KOPPELEN" = "J" ]; then
+    CLIENT_ID="$(sed -n 1p "$GOOGLE")"
+    CLIENT_SECRET="$(sed -n 2p "$GOOGLE")"
+    "$ADB" -s "$TV" shell am start -n "$PAKKET/.SetupActivity" \
+        --es google_client_id "$CLIENT_ID" --es google_client_secret "$CLIENT_SECRET" >/dev/null 2>&1 \
+        && echo "✔  Doorgegeven aan de tv. Open op de tv Bis Screensavert › Foto's beheren om foto's toe te voegen." \
+        || echo "!  Doorgeven lukte niet. Probeer het script nog eens."
+else
+    echo "Overgeslagen. Je kunt dit later altijd nog doen door het script opnieuw te draaien."
+fi
 
 echo
 read -r -p "Wil je de screensaver nu meteen op de tv zien? (j/n): " TEST

@@ -1,4 +1,4 @@
-# Bis ScreenSaver installeren
+# Bis Screensavert installeren
 
 Je hebt nodig: je Mac, je Chromecast met Google TV aan, en beide op hetzelfde wifi-netwerk.
 Dit duurt de eerste keer zo'n 5 minuten. Daarna gaat een update in 1 minuut.
@@ -34,21 +34,38 @@ bijvoorbeeld `192.168.1.23`. Schrijf het op of laat dit scherm open staan.
 
 Het script vraagt om het IP-adres van je tv. Typ het in en druk op Enter.
 
-## 5. Toestaan op de tv
+## 5. Toestemming geven op de tv
 
 Op de tv verschijnt de vraag of je foutopsporing wilt toestaan. Vink **Altijd toestaan vanaf
-deze computer** aan en kies **Toestaan**. Het script doet de rest: app installeren en
-instellen als screensaver. Aan het eind kun je hem meteen testen.
+deze computer** aan en kies **Toestaan**. Het script doet de rest:
+
+- de app installeren;
+- hem instellen als screensaver;
+- de app laten zien wat Spotify afspeelt (voor het muziekscherm);
+- als je wilt: Google Foto's koppelen. Dat kan ook later; zie **GOOGLE-FOTOS.md**.
+
+Aan het eind kun je de screensaver meteen testen.
+
+## Zo werkt de app
+
+- **Keuzescherm:** open *Bis Screensavert* tussen je apps. Kies met OK wat je wilt zien:
+  Slimme mix, Kunst, Luchtopnames, Mijn foto's & video's of Eigen mix. Je keuze start meteen
+  en wordt ook je screensaver. Met Terug ga je terug; met ▶ spring je naar het volgende beeld.
+- **Slimme mix:** past zich aan het tijdstip aan: 's ochtends kunst, 's avonds rustiger met
+  je eigen foto's, 's nachts alleen luchtopnames zonder tekst.
+- **Muziek:** speelt Spotify op de tv, dan toont de screensaver hoes, titel en foto's van de
+  artiest. Met de afstandsbediening: **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
+  Elke andere knop maakt de tv wakker.
+- **Instellingen** staan onderaan het keuzescherm: tijd per beeld, uitleg bij kunst, klok,
+  eigen mix en of muziek het scherm mag overnemen.
 
 ## Goed om te weten
 
-- **Wanneer start hij?** Zodra de tv een tijdje niets doet. Hoe lang dat duurt stel je in onder
-  **Instellingen › Systeem › Energie en energie › Wanneer inactief** (de precieze naam kan per
-  versie iets verschillen).
-- **Zelf starten:** de app staat ook gewoon tussen je apps als *Bis ScreenSaver*.
+- **Wanneer start de screensaver?** Als de tv een tijdje niets doet. Hoe lang dat duurt stel je
+  in onder **Instellingen › Systeem › Energie en energie** (de precieze naam verschilt per versie).
 - **Na een systeemupdate** van Google kan de screensaver terugspringen naar die van Google.
   Voer stap 4 dan opnieuw uit.
 - **Nieuwe versie?** Download de zip opnieuw en voer stap 3 en 4 opnieuw uit. Het IP-adres
-  hoeft niet nog eens, het script onthoudt het.
+  en de Google-sleutels hoeven niet nog eens; het script onthoudt ze.
 - **Weer terug naar de screensaver van Google?** Verwijder de app via
-  Instellingen › Apps › Bis ScreenSaver › Verwijderen.
+  Instellingen › Apps › Bis Screensavert › Verwijderen.
