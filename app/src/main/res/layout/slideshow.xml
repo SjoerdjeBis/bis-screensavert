@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
-            android:padding="24dp"
+            android:padding="20dp"
             android:scaleType="fitCenter" />
     </FrameLayout>
 
@@ -43,60 +43,193 @@
         android:alpha="0"
         android:background="@drawable/scrim_bottom"
         android:orientation="vertical"
-        android:paddingStart="48dp"
-        android:paddingTop="64dp"
-        android:paddingEnd="48dp"
-        android:paddingBottom="32dp">
+        android:paddingStart="56dp"
+        android:paddingTop="72dp"
+        android:paddingEnd="56dp"
+        android:paddingBottom="36dp">
+
+        <TextView
+            android:id="@+id/caption_eyebrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_medium"
+            android:letterSpacing="0.16"
+            android:shadowColor="#000000"
+            android:shadowRadius="6"
+            android:textColor="@color/boter"
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/caption_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:maxWidth="620dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/fraunces_italic_semibold"
+            android:maxWidth="640dp"
             android:shadowColor="#000000"
-            android:shadowRadius="6"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:shadowRadius="8"
+            android:textColor="@color/room"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/caption_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:maxWidth="620dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/rubik_medium"
+            android:maxWidth="640dp"
             android:shadowColor="#000000"
             android:shadowRadius="6"
-            android:textColor="#E0E0E0"
-            android:textSize="16sp" />
+            android:textColor="#E6F6EFE0"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/caption_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:ellipsize="end"
-            android:lineSpacingMultiplier="1.15"
+            android:fontFamily="@font/rubik_regular"
+            android:lineSpacingMultiplier="1.25"
             android:maxLines="6"
-            android:maxWidth="620dp"
+            android:maxWidth="640dp"
             android:shadowColor="#000000"
             android:shadowRadius="6"
-            android:textColor="#D8D8D8"
+            android:textColor="#DDF6EFE0"
             android:textSize="14sp" />
     </LinearLayout>
+
+    <!-- Muziek: neemt het scherm over zolang er iets speelt. -->
+    <FrameLayout
+        android:id="@+id/music_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/emaille"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/music_backdrop_a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/music_backdrop_b"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/scrim_music" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="56dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/music_cover"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@color/emaille_3"
+                android:elevation="12dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/music_eyebrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:letterSpacing="0.16"
+                    android:text="NU SPEELT"
+                    android:textColor="@color/boter"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/music_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/fraunces_italic_semibold"
+                    android:maxLines="2"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="8"
+                    android:textColor="@color/room"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/music_artist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="6"
+                    android:textColor="@color/room"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/music_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="6"
+                    android:textColor="@color/room_dim"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/music_progress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="420dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="18dp"
+                    android:max="1000"
+                    android:progressDrawable="@drawable/progress_music" />
+
+                <TextView
+                    android:id="@+id/music_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:textColor="@color/room_dim"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 
     <TextClock
         android:id="@+id/clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_margin="32dp"
+        android:layout_margin="36dp"
+        android:fontFamily="@font/rubik_medium"
         android:format12Hour="HH:mm"
         android:format24Hour="HH:mm"
         android:shadowColor="#000000"
         android:shadowRadius="8"
-        android:textColor="#F0FFFFFF"
+        android:textColor="#F0F6EFE0"
         android:textSize="30sp" />
 
     <TextView
@@ -104,7 +237,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:fontFamily="@font/fraunces_italic_semibold"
         android:text="@string/loading"
-        android:textColor="#B0FFFFFF"
-        android:textSize="18sp" />
+        android:textColor="#B0F6EFE0"
+        android:textSize="20sp" />
 </FrameLayout>

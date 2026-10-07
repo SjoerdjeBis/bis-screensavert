@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bis-huisstijl, emaille-variant voor de tv -->
+    <color name="emaille">#0E2E2A</color>
+    <color name="emaille_2">#16403A</color>
+    <color name="emaille_3">#1D5049</color>
+    <color name="room">#F6EFE0</color>
+    <color name="room_dim">#A9B8B0</color>
+    <color name="tomaat">#E2523C</color>
+    <color name="boter">#F0B23F</color>
+    <color name="rim">#08201D</color>
+</resources>

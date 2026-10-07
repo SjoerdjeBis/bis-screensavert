@@ -1,54 +1,69 @@
 package nl.bis.screensaver
 
-import androidx.core.text.HtmlCompat
+import android.content.Context
+import org.json.JSONArray
 import org.json.JSONObject
-import kotlin.random.Random
+
+/** Eén kunstwerk uit de meegeleverde collectie, met Nederlandse uitleg. */
+data class Artwork(
+    val id: Long,
+    val imageId: String,
+    val title: String,
+    val artist: String?,
+    val date: String?,
+    val explanation: String,
+) {
+    val imageUrl get() = iiif(1686)
+    val fallbackUrl get() = iiif(843)
+    val thumbnailUrl get() = iiif(400)
+
+    private fun iiif(width: Int) = "https://www.artic.edu/iiif/2/$imageId/full/$width,/0/default.jpg"
+}
 
 /**
- * Kunstwerken uit de open collectie van het Art Institute of Chicago:
- * alleen werken in het publieke domein, met afbeelding en beschrijving.
+ * De kunstcollectie: werken uit het publieke domein van het Art Institute of Chicago,
+ * met vooraf vertaalde toelichtingen (assets/kunst_nl.json). De afbeeldingen komen live
+ * van de server van het museum.
  */
-class ArtSource : SlideSource {
-    private val queue = ArrayDeque<Slide.Image>()
+object ArtCollection {
+    @Volatile private var cached: List<Artwork>? = null
+
+    fun load(context: Context): List<Artwork> = cached ?: synchronized(this) {
+        cached ?: parse(context.assets.open("kunst_nl.json").use { it.readBytes().toString(Charsets.UTF_8) })
+            .also { cached = it }
+    }
+
+    private fun parse(json: String): List<Artwork> {
+        val array = JSONArray(json)
+        return (0 until array.length()).mapNotNull { i ->
+            val o = array.getJSONObject(i)
+            Artwork(
+                id = o.optLong("id"),
+                imageId = o.optStringOrNull("image_id") ?: return@mapNotNull null,
+                title = o.optStringOrNull("titel") ?: "Zonder titel",
+                artist = o.optStringOrNull("kunstenaar"),
+                date = o.optStringOrNull("datum"),
+                explanation = o.optStringOrNull("uitleg") ?: return@mapNotNull null,
+            )
+        }
+    }
+}
+
+class ArtSource(private val context: Context) : SlideSource {
+    private val queue = ArrayDeque<Artwork>()
 
     override suspend fun next(): Slide? {
-        if (queue.isEmpty()) queue.addAll(fetchBatch().shuffled())
-        return queue.removeFirstOrNull()
-    }
-
-    private suspend fun fetchBatch(): List<Slide.Image> {
-        // De zoek-API geeft maximaal 1000 resultaten; met 50 per pagina zijn dat 20 pagina's.
-        val page = Random.nextInt(1, 21)
-        val url = "https://api.artic.edu/api/v1/artworks/search" +
-            "?query%5Bterm%5D%5Bis_public_domain%5D=true" +
-            "&fields=id,title,artist_display,date_display,image_id,description,short_description" +
-            "&limit=50&page=$page"
-        val data = JSONObject(Http.getString(url)).getJSONArray("data")
-        return (0 until data.length()).mapNotNull { i -> toSlide(data.getJSONObject(i)) }
-    }
-
-    private fun toSlide(artwork: JSONObject): Slide.Image? {
-        val imageId = artwork.optStringOrNull("image_id") ?: return null
-        val description = artwork.optStringOrNull("description")
-            ?: artwork.optStringOrNull("short_description")
-            ?: return null
-        val text = HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT)
-            .toString()
-            .replace(Regex("\\s+"), " ")
-            .trim()
-        if (text.isEmpty()) return null
-
-        val artist = artwork.optStringOrNull("artist_display")?.lines()?.firstOrNull()
-        val date = artwork.optStringOrNull("date_display")
+        if (queue.isEmpty()) queue.addAll(ArtCollection.load(context).shuffled())
+        val art = queue.removeFirstOrNull() ?: return null
         return Slide.Image(
-            url = "https://www.artic.edu/iiif/2/$imageId/full/1686,/0/default.jpg",
-            fallbackUrl = "https://www.artic.edu/iiif/2/$imageId/full/843,/0/default.jpg",
-            title = artwork.optStringOrNull("title") ?: "Zonder titel",
-            subtitle = listOfNotNull(artist, date).joinToString(" · ").ifEmpty { null },
-            body = text,
+            url = art.imageUrl,
+            fallbackUrl = art.fallbackUrl,
+            title = art.title,
+            subtitle = listOfNotNull(art.artist, art.date).joinToString(" · ").ifEmpty { null },
+            body = art.explanation,
         )
     }
 }
 
 internal fun JSONObject.optStringOrNull(key: String): String? =
-    if (isNull(key)) null else optString(key).takeIf { it.isNotBlank() }
+    if (!has(key) || isNull(key)) null else optString(key).takeIf { it.isNotBlank() }

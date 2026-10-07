@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bis ScreenSaver</string>
+    <string name="app_name">Bis Screensavert</string>
     <string name="loading">Even geduld…</string>
     <string name="no_connection">Geen verbinding met internet. Ik probeer het zo opnieuw.</string>
 </resources>

@@ -1,6 +1,7 @@
 package nl.bis.screensaver
 
 import android.service.dreams.DreamService
+import android.view.KeyEvent
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 
@@ -11,7 +12,8 @@ class ScreenSaverDream : DreamService() {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        isInteractive = false
+        // Interactief, zodat je de muziek met de afstandsbediening kunt bedienen.
+        isInteractive = true
         isFullscreen = true
         isScreenBright = true
         setContentView(R.layout.slideshow)
@@ -31,5 +33,17 @@ class ScreenSaverDream : DreamService() {
     override fun onDetachedFromWindow() {
         scope.cancel()
         super.onDetachedFromWindow()
+    }
+
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (controller?.handleKey(event, inScreensaver = true) == true) return true
+        if (event.keyCode == KeyEvent.KEYCODE_VOLUME_UP || event.keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||
+            event.keyCode == KeyEvent.KEYCODE_VOLUME_MUTE
+        ) {
+            return super.dispatchKeyEvent(event)
+        }
+        // Elke andere knop maakt de tv weer wakker.
+        if (event.action == KeyEvent.ACTION_UP) finish()
+        return true
     }
 }
