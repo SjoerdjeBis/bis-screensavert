@@ -1,0 +1,24 @@
+{
+ "@context": "https://linked.art/ns/v1/search.json",
+ "id": "https://data.rijksmuseum.nl/search/collection?creator=Charley+Toorop&type=painting&imageAvailable=true",
+ "type": "OrderedCollectionPage",
+ "partOf": {
+  "id": "https://data.rijksmuseum.nl/search/collection?creator=Charley+Toorop&type=painting&imageAvailable=true",
+  "type": "OrderedCollection",
+  "totalItems": 1,
+  "first": {
+   "id": "https://data.rijksmuseum.nl/search/collection?creator=Charley+Toorop&type=painting&imageAvailable=true",
+   "type": "OrderedCollectionPage"
+  },
+  "last": {
+   "id": "https://data.rijksmuseum.nl/search/collection?creator=Charley+Toorop&type=painting&imageAvailable=true",
+   "type": "OrderedCollectionPage"
+  }
+ },
+ "orderedItems": [
+  {
+   "id": "https://id.rijksmuseum.nl/200815187",
+   "type": "HumanMadeObject"
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+[
+ {
+  "id": 94979,
+  "accession_number": "1915.534",
+  "title": "Nathaniel Hurd",
+  "creation_date": "c. 1765",
+  "culture": [
+   "America"
+  ],
+  "department": "American Painting and Sculpture",
+  "type": "Painting",
+  "did_you_know": "The artist Copley’s in-laws were consignees for the cargo dumped during the Boston Tea Party.",
+  "description": "Hurd was a prominent silversmith and engraver in Boston, and the warm gaze and unforced smile in his portrait by Copley suggest the friendship between the two artists. Hurd's open-collared shirt, as well as the rakishly tilted turban that covers his shaved head in place of a ceremonial powdered wig, create an air of informality that is unusual for a portrait of this time.",
+  "images": {
+   "annotation": "",
+   "web": {
+    "url": "https://openaccess-cdn.clevelandart.org/1915.534/1915.534_web.jpg",
+    "width": "748",
+    "height": "893",
+    "filesize": "402404",
+    "filename": "1915.534_web.jpg"
+   },
+   "print": {
+    "url": "https://openaccess-cdn.clevelandart.org/1915.534/1915.534_print.jpg",
+    "width": "2849",
+    "height": "3400",
+    "filesize": "5904910",
+    "filename": "1915.534_print.jpg"
+   },
+   "full": {
+    "url": "https://openaccess-cdn.clevelandart.org/1915.534/1915.534_full.tif",
+    "width": "4609",
+    "height": "5500",
+    "filesize": "76080612",
+    "filename": "1915.534_full.tif"
+   }
+  },
+  "creators": [
+   {
+    "id": 2409,
+    "description": "John Singleton Copley (American, born The Thirteen Colonies, 1738–1815)",
+    "extent": null,
+    "qualifier": null,
+    "role": "artist",
+    "biography": null,
+    "name_in_original_language": null,
+    "birth_year": "1738",
+    "death_year": "1815",
+    "use_in_caption": true,
+    "include_extent": false,
+    "weight": 1
+   }
+  ],
+  "has_conservation_images": false
+ },
+ {
+  "id": 102578,
+  "accession_number": "1921.1239",
+  "title": "Portrait of Dora Wheeler",
+  "creation_date": "1882–83",
+  "culture": [
+   "America"
+  ],
+  "department": "American Painting and Sculpture",
+  "type": "Painting",
+  "did_you_know": "Chase and Wheeler worked together to raise money for constructing the Statue of Liberty's pedestal.",
+  "description": "Dora Wheeler became Chase's first student when he returned from overseas study in Munich and set up a teaching studio in New York. At the time, few American artists accepted women as private pupils. After her course of study, Wheeler joined her mother in launching a successful decorating firm, one of the first businesses in the country to be operated entirely by women. For the firm, she designed luxurious textiles, and the embroidered silk tapestry that fills the background in her portrait references her occupational interest. Chase's portrait was awarded a gold medal at an international exhibition of contemporary art in Munich in 1883, and later that year was also shown in Paris. At some later point, the painting was acquired by the sitter, who subsequently donated it to the museum.",
+  "images": {
+   "annotation": null,
+   "web": {
+    "url": "https://openaccess-cdn.clevelandart.org/1921.1239/1921.1239_web.jpg",
+    "width": "939",
+    "height": "893",
+    "filesize": "175673",
+    "filename": "1921.1239_web.jpg"
+   },
+   "print": {
+    "url": "https://openaccess-cdn.clevelandart.org/1921.1239/1921.1239_print.jpg",
+    "width": "3400",
+    "height": "3254",
+    "filesize": "8163185",
+    "filename": "1921.1239_print.jpg"
+   },
+   "full": {
+    "url": "https://openaccess-cdn.clevelandart.org/1921.1239/1921.1239_full.tif",
+    "width": "5000",
+    "height": "4786",
+    "filesize": "71824808",
+    "filename": "1921.1239_full.tif"
+   }
+  },
+  "creators": [
+   {
+    "id": 3071,
+    "description": "William Merritt Chase (American, 1849–1916)",
+    "extent": null,
+    "qualifier": null,
+    "role": "artist",
+    "biography": null,
+    "name_in_original_language": null,
+    "birth_year": "1849",
+    "death_year": "1916",
+    "use_in_caption": true,
+    "include_extent": false,
+    "weight": 1
+   }
+  ],
+  "has_conservation_images": false
+ }
+]
