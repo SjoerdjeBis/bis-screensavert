@@ -71,13 +71,18 @@ for t in load("data/extra/toen.json", []):
     if re.search(r"(?i)portret", field(desc, "Trefwoorden") or ""):
         continue
     beschrijving = field(desc, "Beschrijving") or ""
+    # Een deel van de Londense en Indische series heeft Engelse bijschriften; die slaan we over.
+    if len(re.findall(r"\b(?:the|of|and|into|with|from|is|are)\b", beschrijving)) >= 2:
+        continue
     locatie = field(desc, "Locatie")
     fallback = re.split(r"\s*(?:Bestanddeelnr|Bestanddeelnummer|,)\s*", t["titel"])[0].strip()
     # De eerste zin (ingekort) wordt de titel; is er meer, dan wordt het geheel de uitleg.
-    first = re.split(r"(?<=[.!?])\s+", beschrijving)[0] if beschrijving else ""
+    # Alleen splitsen na een echt woord, niet na afkortingen als "m.s." of "Dr.".
+    first = re.split(r"(?<=[a-zà-ÿ]{3}[.!?])\s+(?=[A-Z\"'])", beschrijving)[0] if beschrijving else ""
     if len(first) > 90:
         first = first[:90].rsplit(" ", 1)[0] + "…"
     title = first or fallback or "Nederland"
+    title = title[:1].upper() + title[1:]
     uitleg = shorten(beschrijving) if len(beschrijving) > len(first) + 10 else None
     toen.append({
         "id": t["id"], "titel": title.rstrip("."),
