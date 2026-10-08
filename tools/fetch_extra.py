@@ -109,7 +109,7 @@ def keur(source, items, limits, drop_share=0.15):
             measured.append(item)
         if i % 50 == 0:
             print(f"  {source}: {i}/{len(items)} gekeurd", flush=True)
-        time.sleep(0.2)
+        time.sleep(0.05)
     # Het minst scherpe deel valt altijd af, ook als het boven de grens zat.
     measured.sort(key=lambda it: it["scores"]["scherp"])
     cut = int(len(measured) * drop_share)
@@ -155,7 +155,7 @@ def fetch_ruimte():
     key = os.environ.get("NASA_KEY") or "DEMO_KEY"
     entries = []
     today = datetime.date.today()
-    for years_back in range(0, 4):
+    for years_back in range(0, 3):
         end = today - datetime.timedelta(days=365 * years_back)
         start = end - datetime.timedelta(days=364)
         url = f"https://api.nasa.gov/planetary/apod?api_key={key}&start_date={start}&end_date={end}"
@@ -179,7 +179,6 @@ def fetch_ruimte():
             continue
         small, large = e.get("url"), e.get("hdurl") or e.get("url")
         size = header_size(large)
-        time.sleep(0.2)
         if not size or not landscape_ok("ruimte", *size):
             continue
         candidates.append({
@@ -196,7 +195,7 @@ def fetch_ruimte():
 
 # ---------- Nederland van toen: Nationaal Archief / Anefo via Wikimedia Commons ----------
 
-def fetch_toen(per_letter=1500, per_day=4):
+def fetch_toen(per_letter=700, per_day=3):
     api = "https://commons.wikimedia.org/w/api.php"
     by_day = defaultdict(list)
     first = True
@@ -256,7 +255,7 @@ def fetch_toen(per_letter=1500, per_day=4):
             if "continue" not in data:
                 break
             cont = {k: v for k, v in data["continue"].items()}
-            time.sleep(0.5)
+            time.sleep(0.2)
         print(f"toen: letter {letter} klaar, {sum(len(v) for v in by_day.values())} kandidaten", flush=True)
     candidates = []
     for day, items in by_day.items():
@@ -275,11 +274,11 @@ def fetch_toen(per_letter=1500, per_day=4):
 
 # ---------- Natuur: iNaturalist, waarnemingen in Nederland ----------
 
-def fetch_natuur(per_group=300):
+def fetch_natuur(per_group=120):
     groups = ["Aves", "Insecta", "Plantae", "Mammalia", "Fungi", "Amphibia", "Reptilia", "Arachnida"]
     candidates, per_taxon = [], Counter()
     for group in groups:
-        for page in range(1, 4):
+        for page in range(1, 3):
             params = {
                 "place_id": 7506,  # Nederland
                 "quality_grade": "research",

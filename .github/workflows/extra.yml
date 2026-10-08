@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       bronnen:
-        description: "Welke bronnen (ruimte natuur toen); leeg = alleen opnieuw bouwen"
+        description: "Welke bronnen ophalen (JSON-lijst); [] = alleen opnieuw bouwen"
         required: false
-        default: "ruimte natuur toen"
+        default: '["ruimte", "natuur", "toen"]'
   push:
     paths: ["tools/build_extra.py", "data/vertalingen/ruimte.json"]
 
@@ -15,23 +15,44 @@ permissions:
 
 jobs:
   fetch:
+    if: github.event_name == 'workflow_dispatch' && inputs.bronnen != '[]'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      matrix:
+        bron: ${{ fromJSON(inputs.bronnen) }}
     steps:
       - uses: actions/checkout@v4
       - run: pip install pillow numpy
       - name: Beelden ophalen en keuren
-        if: github.event_name == 'workflow_dispatch' && inputs.bronnen != ''
         env:
           NASA_KEY: ${{ secrets.NASA_KEY }}
-        run: python3 tools/fetch_extra.py ${{ inputs.bronnen }}
+        run: python3 tools/fetch_extra.py ${{ matrix.bron }}
+      - name: Resultaat vastleggen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mv data/extra/afgekeurd.json data/extra/afgekeurd_${{ matrix.bron }}.json
+          git add data/extra/ data/debug/
+          git diff --cached --quiet || git commit -m "Beelden voor ${{ matrix.bron }} ophalen"
+          for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break; sleep 5; done
+
+  build:
+    needs: fetch
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - name: App-bestanden bouwen
         run: python3 tools/build_extra.py
       - name: Resultaat vastleggen
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ app/src/main/assets/
+          git add app/src/main/assets/
           git diff --cached --quiet || git commit -m "Beelden voor Ruimte, Toen en Natuur bijwerken"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
