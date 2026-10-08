@@ -1,0 +1,1982 @@
+[
+ {
+  "id": "inat:15580787",
+  "groep": "Insecta",
+  "naam": "Heideblaaskaakje",
+  "wetenschappelijk": "Myopa fasciata",
+  "plaats": "5527 Hapert, Nederland",
+  "datum": "2018-08-17",
+  "maker": "(c) Stefan, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/23301019/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/23301019/medium.jpeg",
+  "scores": {
+   "helder": 133.0,
+   "contrast": 41.5,
+   "scherp": 210.8,
+   "hash": "23a699997c6999ba"
+  }
+ },
+ {
+  "id": "inat:348430030",
+  "groep": "Mammalia",
+  "naam": "Edelhert",
+  "wetenschappelijk": "Cervus elaphus",
+  "plaats": "Het Nationale Park De Hoge Veluwe, Netherlands",
+  "datum": "2021-09-16",
+  "maker": "(c) Ingmar Rondeel, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/635457797/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/635457797/medium.jpg",
+  "scores": {
+   "helder": 92.2,
+   "contrast": 31.3,
+   "scherp": 224.6,
+   "hash": "0f23333b19011313"
+  }
+ },
+ {
+  "id": "inat:3614281",
+  "groep": "Aves",
+  "naam": "IJsvogel",
+  "wetenschappelijk": "Alcedo atthis",
+  "plaats": "Losser, Netherlands",
+  "datum": "2016-07-03",
+  "maker": "no rights reserved",
+  "licentie": "cc0",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/4172736/original.JPG",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/4172736/medium.JPG",
+  "scores": {
+   "helder": 138.9,
+   "contrast": 41.0,
+   "scherp": 225.2,
+   "hash": "0d59d88c9e8ada94"
+  }
+ },
+ {
+  "id": "inat:244542058",
+  "groep": "Insecta",
+  "naam": "Behaarde rode bosmier",
+  "wetenschappelijk": "Formica rufa",
+  "plaats": "6733 Wekerom, Holandia",
+  "datum": "2024-09-21",
+  "maker": "(c) Bartosz Fidor, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/436216304/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/436216304/medium.jpeg",
+  "scores": {
+   "helder": 110.2,
+   "contrast": 44.1,
+   "scherp": 238.1,
+   "hash": "3070b23e33323439"
+  }
+ },
+ {
+  "id": "inat:16098704",
+  "groep": "Insecta",
+  "naam": "Gewone bladjager",
+  "wetenschappelijk": "Dioctria hyalipennis",
+  "plaats": "9261 Eastermar, Netherlands",
+  "datum": "2018-06-29",
+  "maker": "(c) Michael Bakker Paiva, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/24110549/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/24110549/medium.jpg",
+  "scores": {
+   "helder": 77.1,
+   "contrast": 71.5,
+   "scherp": 238.6,
+   "hash": "860793173539218b"
+  }
+ },
+ {
+  "id": "inat:146107626",
+  "groep": "Mammalia",
+  "naam": "Atlantische Gewone Zeehond",
+  "wetenschappelijk": "Phoca vitulina vitulina",
+  "plaats": "9166 Schiermonnikoog, Nederland",
+  "datum": "2023-01-03",
+  "maker": "(c) Kayo de Gruijter, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/251120666/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/251120666/medium.jpg",
+  "scores": {
+   "helder": 164.1,
+   "contrast": 29.7,
+   "scherp": 274.3,
+   "hash": "070f1f2723363a1b"
+  }
+ },
+ {
+  "id": "inat:165352134",
+  "groep": "Aves",
+  "naam": "Kokmeeuw",
+  "wetenschappelijk": "Chroicocephalus ridibundus",
+  "plaats": "Vondelpark, Amsterdam Oud-Zuid, Amsterdam, Países Bajos",
+  "datum": "2023-05-14",
+  "maker": "(c) eduardosfga, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/286211935/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/286211935/medium.jpeg",
+  "scores": {
+   "helder": 125.7,
+   "contrast": 46.6,
+   "scherp": 291.3,
+   "hash": "b9236564444c6426"
+  }
+ },
+ {
+  "id": "inat:296013821",
+  "groep": "Insecta",
+  "naam": "Schaduwmier",
+  "wetenschappelijk": "Lasius umbratus",
+  "plaats": "Sint Anthonis, Noord-Brabant, Netherlands",
+  "datum": "2025-07-05",
+  "maker": "(c) Max Devis, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/532953504/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/532953504/medium.jpg",
+  "scores": {
+   "helder": 126.5,
+   "contrast": 54.6,
+   "scherp": 293.7,
+   "hash": "decfdfdb3d67c78e"
+  }
+ },
+ {
+  "id": "inat:117897727",
+  "groep": "Insecta",
+  "naam": "Bruine Korenbout",
+  "wetenschappelijk": "Libellula fulva",
+  "plaats": "Naarden, Netherlands",
+  "datum": "2022-05-13",
+  "maker": "(c) margot_oorebeek, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/199138817/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/199138817/medium.jpeg",
+  "scores": {
+   "helder": 94.5,
+   "contrast": 48.8,
+   "scherp": 293.9,
+   "hash": "13590811444e1537"
+  }
+ },
+ {
+  "id": "inat:21212619",
+  "groep": "Insecta",
+  "naam": "Grote Keizerlibel",
+  "wetenschappelijk": "Anax imperator",
+  "plaats": "1935 Egmond-Binnen, Nederland",
+  "datum": "2014-06-13",
+  "maker": "(c) Joost ., some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/32789183/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/32789183/medium.jpeg",
+  "scores": {
+   "helder": 100.2,
+   "contrast": 32.5,
+   "scherp": 309.9,
+   "hash": "b5b2839a49343ca8"
+  }
+ },
+ {
+  "id": "inat:104337314",
+  "groep": "Aves",
+  "naam": "Paarse strandloper",
+  "wetenschappelijk": "Calidris maritima",
+  "plaats": "4361 Westkapelle, Niederlande",
+  "datum": "2021-12-28",
+  "maker": "(c) Christoph Moning, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/174807356/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/174807356/medium.jpeg",
+  "scores": {
+   "helder": 132.9,
+   "contrast": 41.5,
+   "scherp": 312.4,
+   "hash": "3a314099e938f2c2"
+  }
+ },
+ {
+  "id": "inat:270000531",
+  "groep": "Aves",
+  "naam": "Brandgans",
+  "wetenschappelijk": "Branta leucopsis",
+  "plaats": "Stadsdeel Oost, Enschede, Nederland",
+  "datum": "2025-04-08",
+  "maker": "(c) Bas van Hulst-Kuiper, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/485521812/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/485521812/medium.jpg",
+  "scores": {
+   "helder": 141.5,
+   "contrast": 49.7,
+   "scherp": 325.0,
+   "hash": "0b1323252526f393"
+  }
+ },
+ {
+  "id": "inat:41377420",
+  "groep": "Insecta",
+  "naam": "Oranjetipje",
+  "wetenschappelijk": "Anthocharis cardamines",
+  "plaats": "Wageningen, Nederland",
+  "datum": "2020-04-04",
+  "maker": "(c) Chris van Swaay, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/65635468/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/65635468/medium.jpeg",
+  "scores": {
+   "helder": 96.8,
+   "contrast": 50.9,
+   "scherp": 337.3,
+   "hash": "4d479b3d2d8d8e91"
+  }
+ },
+ {
+  "id": "inat:201034040",
+  "groep": "Mammalia",
+  "naam": "Mongoolse Gerbil",
+  "wetenschappelijk": "Meriones unguiculatus",
+  "plaats": "Netherlands",
+  "datum": "2024-03-02",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/354813151/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/354813151/medium.jpg",
+  "scores": {
+   "helder": 111.5,
+   "contrast": 32.5,
+   "scherp": 340.2,
+   "hash": "1f0b332763373f06"
+  }
+ },
+ {
+  "id": "inat:255208979",
+  "groep": "Aves",
+  "naam": "Grote bonte specht",
+  "wetenschappelijk": "Dendrocopos major",
+  "plaats": "Meerveld, Uddel, Nederland",
+  "datum": "2024-12-15",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/457308014/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/457308014/medium.jpg",
+  "scores": {
+   "helder": 149.7,
+   "contrast": 53.2,
+   "scherp": 341.0,
+   "hash": "649393b339998456"
+  }
+ },
+ {
+  "id": "inat:140041435",
+  "groep": "Fungi",
+  "naam": "Roze graskorstje",
+  "wetenschappelijk": "Laetisaria roseipellis",
+  "plaats": "Rhenen, Nederland",
+  "datum": "2022-10-22",
+  "maker": "(c) dgcurrywheel, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/239650146/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/239650146/medium.jpg",
+  "scores": {
+   "helder": 58.2,
+   "contrast": 29.9,
+   "scherp": 344.1,
+   "hash": "0c8cb0a0f05c4696"
+  }
+ },
+ {
+  "id": "inat:69519761",
+  "groep": "Insecta",
+  "naam": "Poelruitspanner",
+  "wetenschappelijk": "Gagitodes sagittata",
+  "plaats": "Netherlands",
+  "datum": "2019-07-21",
+  "maker": "(c) Joey Bom, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/112818632/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/112818632/medium.jpeg",
+  "scores": {
+   "helder": 117.9,
+   "contrast": 29.2,
+   "scherp": 347.0,
+   "hash": "ceceeaccb3333624"
+  }
+ },
+ {
+  "id": "inat:270475841",
+  "groep": "Aves",
+  "naam": "Brandgans",
+  "wetenschappelijk": "Branta leucopsis",
+  "plaats": "Oostwold Gem Leek, Netherlands",
+  "datum": "2025-04-13",
+  "maker": "(c) Joren van Schie, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/486427958/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/486427958/medium.jpg",
+  "scores": {
+   "helder": 185.6,
+   "contrast": 38.3,
+   "scherp": 352.3,
+   "hash": "03090d6c65431b19"
+  }
+ },
+ {
+  "id": "inat:251233340",
+  "groep": "Insecta",
+  "naam": "Zwartrugbosmier",
+  "wetenschappelijk": "Formica pratensis",
+  "plaats": "Molenhoek, Netherlands",
+  "datum": "2024-07-31",
+  "maker": "(c) Bartosz Fidor, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/449486829/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/449486829/medium.jpg",
+  "scores": {
+   "helder": 185.2,
+   "contrast": 39.5,
+   "scherp": 365.4,
+   "hash": "1547af5970f97958"
+  }
+ },
+ {
+  "id": "inat:322097956",
+  "groep": "Aves",
+  "naam": "Brileider",
+  "wetenschappelijk": "Somateria fischeri",
+  "plaats": "Oosterend, Niederlande",
+  "datum": "2025-10-12",
+  "maker": "(c) Frank Hartmann, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/582617303/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/582617303/medium.jpg",
+  "scores": {
+   "helder": 115.4,
+   "contrast": 49.0,
+   "scherp": 366.8,
+   "hash": "789135e6b49938f2"
+  }
+ },
+ {
+  "id": "inat:197720873",
+  "groep": "Mammalia",
+  "naam": "Gedomesticeerd Paard",
+  "wetenschappelijk": "Equus caballus",
+  "plaats": "Zeewolde, Nederland",
+  "datum": "2024-01-27",
+  "maker": "(c) Robbert van 't Veldt, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/348308554/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/348308554/medium.jpg",
+  "scores": {
+   "helder": 103.9,
+   "contrast": 40.6,
+   "scherp": 383.6,
+   "hash": "dd5c1d64868e6725"
+  }
+ },
+ {
+  "id": "inat:39329674",
+  "groep": "Insecta",
+  "naam": "Gouden dennenstamjager",
+  "wetenschappelijk": "Choerades ignea",
+  "plaats": "Zuid Tilburg, Tilburg, Nederland",
+  "datum": "2019-09-15",
+  "maker": "(c) Reinoud van den Broek, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/62380957/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/62380957/medium.jpeg",
+  "scores": {
+   "helder": 105.6,
+   "contrast": 41.4,
+   "scherp": 391.6,
+   "hash": "cd234b51a2e78fe1"
+  }
+ },
+ {
+  "id": "inat:215923077",
+  "groep": "Insecta",
+  "naam": "Lantaarntje",
+  "wetenschappelijk": "Ischnura elegans",
+  "plaats": "Alkmaar, Nederland",
+  "datum": "2024-05-15",
+  "maker": "(c) 05gi02el03, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/381807209/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/381807209/medium.jpeg",
+  "scores": {
+   "helder": 121.9,
+   "contrast": 50.7,
+   "scherp": 401.3,
+   "hash": "06c00159c1898919"
+  }
+ },
+ {
+  "id": "inat:304075256",
+  "groep": "Insecta",
+  "naam": "Hengelgraafwants",
+  "wetenschappelijk": "Adomerus biguttatus",
+  "plaats": "Soest, Nederland",
+  "datum": "2025-08-05",
+  "maker": "(c) pascallosekoot, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/548126828/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/548126828/medium.jpg",
+  "scores": {
+   "helder": 139.4,
+   "contrast": 58.8,
+   "scherp": 402.5,
+   "hash": "2269b8f4f478d804"
+  }
+ },
+ {
+  "id": "inat:253304203",
+  "groep": "Insecta",
+  "naam": "Goudkokermot",
+  "wetenschappelijk": "Coleophora chalcogrammella",
+  "plaats": "Katwijk aan Zee, Nederland",
+  "datum": "2024-06-02",
+  "maker": "(c) Joey Bom, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/453521092/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/453521092/medium.jpg",
+  "scores": {
+   "helder": 114.7,
+   "contrast": 28.6,
+   "scherp": 406.7,
+   "hash": "d7536171781c0631"
+  }
+ },
+ {
+  "id": "inat:230339053",
+  "groep": "Aves",
+  "naam": "Fuut",
+  "wetenschappelijk": "Podiceps cristatus",
+  "plaats": "Warmond, Nederland",
+  "datum": "2024-07-19",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/412363763/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/412363763/medium.jpg",
+  "scores": {
+   "helder": 155.4,
+   "contrast": 60.3,
+   "scherp": 407.7,
+   "hash": "7e6e637333785cd8"
+  }
+ },
+ {
+  "id": "inat:256417130",
+  "groep": "Aves",
+  "naam": "Stadsduif",
+  "wetenschappelijk": "Columba livia domestica",
+  "plaats": "Opmeer, Netherlands",
+  "datum": "2024-12-27",
+  "maker": "(c) thegreatdodo, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/459736142/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/459736142/medium.jpg",
+  "scores": {
+   "helder": 95.6,
+   "contrast": 38.3,
+   "scherp": 428.5,
+   "hash": "de9a1a0e4e42e834"
+  }
+ },
+ {
+  "id": "inat:298243283",
+  "groep": "Mammalia",
+  "naam": "Haas",
+  "wetenschappelijk": "Lepus europaeus",
+  "plaats": "Vleuten-De Meern, Utrecht, Netherlands",
+  "datum": "2025-07-13",
+  "maker": "(c) Anna Lychakova, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/537185017/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/537185017/medium.jpg",
+  "scores": {
+   "helder": 137.3,
+   "contrast": 29.3,
+   "scherp": 434.5,
+   "hash": "5a98ee2f65cc363c"
+  }
+ },
+ {
+  "id": "inat:22043841",
+  "groep": "Mammalia",
+  "naam": "Kleine Zeehond",
+  "wetenschappelijk": "Pusa hispida",
+  "plaats": "Vlieland, NL-FR, NL",
+  "datum": "2011-07-31",
+  "maker": "(c) Sealcentre Pieterburen, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/34234603/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/34234603/medium.jpg",
+  "scores": {
+   "helder": 139.9,
+   "contrast": 63.6,
+   "scherp": 439.4,
+   "hash": "0779f69399a48681"
+  }
+ },
+ {
+  "id": "inat:186670575",
+  "groep": "Amphibia",
+  "naam": "Bruine Kikker",
+  "wetenschappelijk": "Rana temporaria",
+  "plaats": "Den Helder, Nederland",
+  "datum": "2023-10-07",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/326272633/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/326272633/medium.jpeg",
+  "scores": {
+   "helder": 95.8,
+   "contrast": 47.9,
+   "scherp": 446.9,
+   "hash": "cb8996cc8e868686"
+  }
+ },
+ {
+  "id": "inat:112379098",
+  "groep": "Aves",
+  "naam": "Rietzanger",
+  "wetenschappelijk": "Acrocephalus schoenobaenus",
+  "plaats": "Leidschendam, Netherlands",
+  "datum": "2022-04-19",
+  "maker": "(c) Ad Konings, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/189813795/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/189813795/medium.jpg",
+  "scores": {
+   "helder": 115.9,
+   "contrast": 30.9,
+   "scherp": 471.4,
+   "hash": "b4b4b4b4654dd939"
+  }
+ },
+ {
+  "id": "inat:111818865",
+  "groep": "Aves",
+  "naam": "Putter",
+  "wetenschappelijk": "Carduelis carduelis",
+  "plaats": "Sassenheim, Nederland",
+  "datum": "2022-04-17",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/305569259/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/305569259/medium.jpeg",
+  "scores": {
+   "helder": 129.9,
+   "contrast": 34.3,
+   "scherp": 478.5,
+   "hash": "346e5a9853589cf5"
+  }
+ },
+ {
+  "id": "inat:255585944",
+  "groep": "Aves",
+  "naam": "Pimpelmees",
+  "wetenschappelijk": "Cyanistes caeruleus",
+  "plaats": "Meerveld, Uddel, Nederland",
+  "datum": "2024-12-15",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/458055708/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/458055708/medium.jpg",
+  "scores": {
+   "helder": 180.0,
+   "contrast": 42.2,
+   "scherp": 499.9,
+   "hash": "042436b230a0888c"
+  }
+ },
+ {
+  "id": "inat:272022494",
+  "groep": "Arachnida",
+  "naam": "Lentevuurspin",
+  "wetenschappelijk": "Eresus sandaliatus",
+  "plaats": "Hoog Buurlo, Apeldoorn, Nederland",
+  "datum": "2025-04-20",
+  "maker": "(c) ロビン, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/489353820/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/489353820/medium.jpeg",
+  "scores": {
+   "helder": 195.8,
+   "contrast": 51.6,
+   "scherp": 501.8,
+   "hash": "ae96f2e070f0b223"
+  }
+ },
+ {
+  "id": "inat:197059071",
+  "groep": "Mammalia",
+  "naam": "Grijze Zeehond",
+  "wetenschappelijk": "Halichoerus grypus",
+  "plaats": "West-Terschelling, Netherlands",
+  "datum": "2023-12-25",
+  "maker": "(c) Lars Willighagen, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/346978996/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/346978996/medium.jpeg",
+  "scores": {
+   "helder": 127.8,
+   "contrast": 35.3,
+   "scherp": 508.8,
+   "hash": "1733971b19680a0d"
+  }
+ },
+ {
+  "id": "inat:71710579",
+  "groep": "Aves",
+  "naam": "Gedomesticeerde Wilde Eend",
+  "wetenschappelijk": "Anas platyrhynchos domesticus",
+  "plaats": "Warmond, Zuid-Holland, Netherlands",
+  "datum": "2021-03-21",
+  "maker": "(c) Michel Langeveld, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/116793572/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/116793572/medium.jpeg",
+  "scores": {
+   "helder": 112.2,
+   "contrast": 42.2,
+   "scherp": 531.5,
+   "hash": "2ccf6466e3a66063"
+  }
+ },
+ {
+  "id": "inat:196022201",
+  "groep": "Aves",
+  "naam": "Halsbandparkiet",
+  "wetenschappelijk": "Psittacula krameri",
+  "plaats": "Sassenheim, Nederland",
+  "datum": "2024-01-07",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/345005106/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/345005106/medium.jpeg",
+  "scores": {
+   "helder": 103.7,
+   "contrast": 74.3,
+   "scherp": 556.6,
+   "hash": "19159f3627375e07"
+  }
+ },
+ {
+  "id": "inat:320398721",
+  "groep": "Aves",
+  "naam": "Lepelaar",
+  "wetenschappelijk": "Platalea leucorodia",
+  "plaats": "2761 Zevenhuizen, Netherlands",
+  "datum": "2025-09-18",
+  "maker": "(c) Ad Konings, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/579285974/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/579285974/medium.jpg",
+  "scores": {
+   "helder": 195.0,
+   "contrast": 30.3,
+   "scherp": 567.6,
+   "hash": "dcc8c4c1c8c480a0"
+  }
+ },
+ {
+  "id": "inat:298243208",
+  "groep": "Aves",
+  "naam": "Fuut",
+  "wetenschappelijk": "Podiceps cristatus",
+  "plaats": "Vleuten-De Meern, Utrecht, Netherlands",
+  "datum": "2025-07-13",
+  "maker": "(c) Anna Lychakova, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/537184243/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/537184243/medium.jpg",
+  "scores": {
+   "helder": 94.1,
+   "contrast": 40.7,
+   "scherp": 577.0,
+   "hash": "9fe7d363c3c3e3db"
+  }
+ },
+ {
+  "id": "inat:12603915",
+  "groep": "Insecta",
+  "naam": "Roodpootschildwants",
+  "wetenschappelijk": "Pentatoma rufipes",
+  "plaats": "De Krim, Nederland",
+  "datum": "2018-05-19",
+  "maker": "(c) Anneke, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/18221374/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/18221374/medium.jpeg",
+  "scores": {
+   "helder": 143.3,
+   "contrast": 43.7,
+   "scherp": 577.5,
+   "hash": "e3efc9bcf9787bad"
+  }
+ },
+ {
+  "id": "inat:307581670",
+  "groep": "Insecta",
+  "naam": "Scheefbloemwitje",
+  "wetenschappelijk": "Pieris mannii",
+  "plaats": "Schiedam, Nederland",
+  "datum": "2025-08-18",
+  "maker": "(c) Jan van Holten, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/554811515/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/554811515/medium.jpg",
+  "scores": {
+   "helder": 124.4,
+   "contrast": 29.3,
+   "scherp": 578.2,
+   "hash": "99120c0808484818"
+  }
+ },
+ {
+  "id": "inat:235174002",
+  "groep": "Aves",
+  "naam": "Boerenzwaluw",
+  "wetenschappelijk": "Hirundo rustica",
+  "plaats": "Ouddorp, Nederland",
+  "datum": "2024-08-10",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/418192539/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/418192539/medium.jpeg",
+  "scores": {
+   "helder": 199.4,
+   "contrast": 59.6,
+   "scherp": 606.5,
+   "hash": "0b075a1b292d1b17"
+  }
+ },
+ {
+  "id": "inat:333310769",
+  "groep": "Aves",
+  "naam": "Grote zilverreiger",
+  "wetenschappelijk": "Ardea alba",
+  "plaats": "Schiedam, Nederland",
+  "datum": "2025-12-26",
+  "maker": "(c) Jan van Holten, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/605097529/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/605097529/medium.jpg",
+  "scores": {
+   "helder": 91.8,
+   "contrast": 44.7,
+   "scherp": 615.1,
+   "hash": "25052606c626a7d6"
+  }
+ },
+ {
+  "id": "inat:329466829",
+  "groep": "Aves",
+  "naam": "Roodborst",
+  "wetenschappelijk": "Erithacus rubecula",
+  "plaats": "Serooskerke, Netherlands",
+  "datum": "2025-10-17",
+  "maker": "(c) Remco Hofland, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/597223899/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/597223899/medium.jpg",
+  "scores": {
+   "helder": 121.3,
+   "contrast": 54.1,
+   "scherp": 620.1,
+   "hash": "e6949e9e8ea63694"
+  }
+ },
+ {
+  "id": "inat:70106783",
+  "groep": "Insecta",
+  "naam": "Wilgenhoutrups",
+  "wetenschappelijk": "Cossus cossus",
+  "plaats": "Drenthe, NL",
+  "datum": "2016-08-14",
+  "maker": "(c) Gerben ter Haar, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/114143986/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/114143986/medium.jpg",
+  "scores": {
+   "helder": 113.9,
+   "contrast": 56.8,
+   "scherp": 622.6,
+   "hash": "240c0d0d06434944"
+  }
+ },
+ {
+  "id": "inat:49035579",
+  "groep": "Arachnida",
+  "naam": "Bonenspintmijt",
+  "wetenschappelijk": "Tetranychus urticae",
+  "plaats": "Groningen, NL",
+  "datum": "2020-06-09",
+  "maker": "(c) jtdai, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/77831460/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/77831460/medium.jpg",
+  "scores": {
+   "helder": 91.7,
+   "contrast": 49.5,
+   "scherp": 640.5,
+   "hash": "873078706c383838"
+  }
+ },
+ {
+  "id": "inat:52744946",
+  "groep": "Amphibia",
+  "naam": "Vuursalamander",
+  "wetenschappelijk": "Salamandra salamandra",
+  "plaats": "Netherlands",
+  "datum": "2020-07-10",
+  "maker": "(c) Lars Willighagen, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/83863205/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/83863205/medium.jpeg",
+  "scores": {
+   "helder": 110.7,
+   "contrast": 55.5,
+   "scherp": 644.2,
+   "hash": "f54d4a536dd0c264"
+  }
+ },
+ {
+  "id": "inat:145764721",
+  "groep": "Aves",
+  "naam": "Halsbandparkiet",
+  "wetenschappelijk": "Psittacula krameri",
+  "plaats": "Wassenaar, Netherlands",
+  "datum": "2022-12-12",
+  "maker": "(c) Paul Hoekman, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/250447156/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/250447156/medium.jpeg",
+  "scores": {
+   "helder": 137.2,
+   "contrast": 55.8,
+   "scherp": 653.7,
+   "hash": "89d173f6159c1e1e"
+  }
+ },
+ {
+  "id": "inat:264671435",
+  "groep": "Insecta",
+  "naam": "Bladpootrandwants",
+  "wetenschappelijk": "Leptoglossus occidentalis",
+  "plaats": "7951 Staphorst, Nederland",
+  "datum": "2025-03-08",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/475278321/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/475278321/medium.jpg",
+  "scores": {
+   "helder": 147.9,
+   "contrast": 66.1,
+   "scherp": 658.6,
+   "hash": "c0e09c90a0c0920b"
+  }
+ },
+ {
+  "id": "inat:144322014",
+  "groep": "Insecta",
+  "naam": "Heideblauwtje",
+  "wetenschappelijk": "Plebejus argus",
+  "plaats": "Oirschot, Nederland",
+  "datum": "2017-06-10",
+  "maker": "(c) Joey Bom, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/247677504/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/247677504/medium.jpeg",
+  "scores": {
+   "helder": 117.4,
+   "contrast": 28.6,
+   "scherp": 666.6,
+   "hash": "379baf8dd9c9a514"
+  }
+ },
+ {
+  "id": "inat:14447656",
+  "groep": "Insecta",
+  "naam": "Roodbont heide-uiltje",
+  "wetenschappelijk": "Anarta myrtilli",
+  "plaats": "Ede, Nederland",
+  "datum": "2018-07-17",
+  "maker": "(c) André Nagelhout, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/21503343/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/21503343/medium.jpeg",
+  "scores": {
+   "helder": 112.3,
+   "contrast": 40.6,
+   "scherp": 669.3,
+   "hash": "cdcfdf9e38726a7a"
+  }
+ },
+ {
+  "id": "inat:216992524",
+  "groep": "Insecta",
+  "naam": "Rozemarijngoudhaantje",
+  "wetenschappelijk": "Chrysolina americana",
+  "plaats": "Graafland, Groot-Ammers, South Holland, NL",
+  "datum": "2024-05-19",
+  "maker": "no rights reserved",
+  "licentie": "cc0",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/383823084/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/383823084/medium.jpg",
+  "scores": {
+   "helder": 141.9,
+   "contrast": 44.9,
+   "scherp": 711.5,
+   "hash": "d773d9bc68793767"
+  }
+ },
+ {
+  "id": "inat:29260791",
+  "groep": "Mammalia",
+  "naam": "Atlantische Gewone Zeehond",
+  "wetenschappelijk": "Phoca vitulina vitulina",
+  "plaats": "Delfzijl, NL-GR, NL",
+  "datum": "2019-07-16",
+  "maker": "(c) Lorenzo Vinciguerra, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/45656668/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/45656668/medium.jpeg",
+  "scores": {
+   "helder": 162.0,
+   "contrast": 55.6,
+   "scherp": 725.5,
+   "hash": "0b253431dcd83307"
+  }
+ },
+ {
+  "id": "inat:198797623",
+  "groep": "Mammalia",
+  "naam": "Hermelijn",
+  "wetenschappelijk": "Mustela erminea",
+  "plaats": "Nijkerk, Nederland",
+  "datum": "2024-02-09",
+  "maker": "(c) Robbert van 't Veldt, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/350460392/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/350460392/medium.jpg",
+  "scores": {
+   "helder": 65.0,
+   "contrast": 41.7,
+   "scherp": 738.4,
+   "hash": "031b1d6f0f112729"
+  }
+ },
+ {
+  "id": "inat:329734901",
+  "groep": "Aves",
+  "naam": "Brileider",
+  "wetenschappelijk": "Somateria fischeri",
+  "plaats": "Oosterend, Netherlands",
+  "datum": "2025-12-06",
+  "maker": "(c) Donna Pomeroy, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/597761573/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/597761573/medium.jpg",
+  "scores": {
+   "helder": 158.5,
+   "contrast": 30.3,
+   "scherp": 745.5,
+   "hash": "9ccc3aca8c3ce043"
+  }
+ },
+ {
+  "id": "inat:67133975",
+  "groep": "Insecta",
+  "naam": "Trage distelsnuitkever",
+  "wetenschappelijk": "Cleonis pigra",
+  "plaats": "Ede, Nederland",
+  "datum": "2020-09-20",
+  "maker": "(c) André Nagelhout, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/108389515/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/108389515/medium.jpeg",
+  "scores": {
+   "helder": 127.5,
+   "contrast": 39.6,
+   "scherp": 762.1,
+   "hash": "9f0f17078bda4722"
+  }
+ },
+ {
+  "id": "inat:247965951",
+  "groep": "Aves",
+  "naam": "Roodborst",
+  "wetenschappelijk": "Erithacus rubecula",
+  "plaats": "Hilversum, Nederland",
+  "datum": "2024-10-18",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/442967433/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/442967433/medium.jpg",
+  "scores": {
+   "helder": 95.2,
+   "contrast": 54.0,
+   "scherp": 793.6,
+   "hash": "3f77b3eb572d3d9b"
+  }
+ },
+ {
+  "id": "inat:198305183",
+  "groep": "Mammalia",
+  "naam": "Damhert",
+  "wetenschappelijk": "Dama dama",
+  "plaats": "Bentveld, Nederland",
+  "datum": "2024-02-03",
+  "maker": "(c) floris_heemskerk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/350064028/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/350064028/medium.jpeg",
+  "scores": {
+   "helder": 138.5,
+   "contrast": 56.1,
+   "scherp": 797.5,
+   "hash": "0f1d194f8d0b5365"
+  }
+ },
+ {
+  "id": "inat:40947017",
+  "groep": "Plantae",
+  "naam": "Zomerklokje",
+  "wetenschappelijk": "Leucojum aestivum",
+  "plaats": "Vondelpark, Amsterdam, North Holland, NL",
+  "datum": "2020-03-28",
+  "maker": "(c) jenninthewild, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/64921701/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/64921701/medium.jpg",
+  "scores": {
+   "helder": 82.4,
+   "contrast": 53.1,
+   "scherp": 806.7,
+   "hash": "b16464669acc447c"
+  }
+ },
+ {
+  "id": "inat:84741182",
+  "groep": "Insecta",
+  "naam": "Kleine Ijsvogelvlinder",
+  "wetenschappelijk": "Limenitis camilla",
+  "plaats": "6997 Hoog-Keppel, Nederland",
+  "datum": "2021-06-27",
+  "maker": "(c) Chris van Swaay, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/139310136/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/139310136/medium.jpeg",
+  "scores": {
+   "helder": 110.4,
+   "contrast": 60.3,
+   "scherp": 824.4,
+   "hash": "502b63a9b0d4a9d3"
+  }
+ },
+ {
+  "id": "inat:69737261",
+  "groep": "Insecta",
+  "naam": "Gevlamde vlinder",
+  "wetenschappelijk": "Endromis versicolora",
+  "plaats": "Arnhem, Nederland",
+  "datum": "2018-04-09",
+  "maker": "(c) Joey Bom, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/113224903/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/113224903/medium.jpeg",
+  "scores": {
+   "helder": 119.8,
+   "contrast": 38.8,
+   "scherp": 849.6,
+   "hash": "b67d1399f1c3e3a3"
+  }
+ },
+ {
+  "id": "inat:329844679",
+  "groep": "Mammalia",
+  "naam": "Damhert",
+  "wetenschappelijk": "Dama dama",
+  "plaats": "Noordwijk, Zuid-Holland, Netherlands",
+  "datum": "2025-09-14",
+  "maker": "(c) steffen592, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/597982341/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/597982341/medium.jpg",
+  "scores": {
+   "helder": 110.1,
+   "contrast": 55.9,
+   "scherp": 852.6,
+   "hash": "9b3b23b3a71f6923"
+  }
+ },
+ {
+  "id": "inat:136484238",
+  "groep": "Fungi",
+  "naam": "Gewoon eekhoorntjesbrood",
+  "wetenschappelijk": "Boletus edulis",
+  "plaats": "6445 Brunssum, Niederlande",
+  "datum": "2022-09-25",
+  "maker": "(c) Peter Bönnen, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/232939819/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/232939819/medium.jpeg",
+  "scores": {
+   "helder": 58.2,
+   "contrast": 37.2,
+   "scherp": 872.2,
+   "hash": "7bacca1e9b999a48"
+  }
+ },
+ {
+  "id": "inat:271654006",
+  "groep": "Insecta",
+  "naam": "Rozemarijngoudhaantje",
+  "wetenschappelijk": "Chrysolina americana",
+  "plaats": "Graafland, Groot-Ammers, Zuid-Holland, NL",
+  "datum": "2025-04-19",
+  "maker": "no rights reserved",
+  "licentie": "cc0",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/488669293/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/488669293/medium.jpg",
+  "scores": {
+   "helder": 149.9,
+   "contrast": 63.1,
+   "scherp": 896.1,
+   "hash": "8543f3f1e0c0e9a0"
+  }
+ },
+ {
+  "id": "inat:146542655",
+  "groep": "Aves",
+  "naam": "Meerkoet",
+  "wetenschappelijk": "Fulica atra",
+  "plaats": "Amsterdã, Países Baixos",
+  "datum": "2010-03-18",
+  "maker": "(c) alexandre callou sampaio, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/251965548/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/251965548/medium.jpeg",
+  "scores": {
+   "helder": 138.5,
+   "contrast": 31.1,
+   "scherp": 910.6,
+   "hash": "6666724c0c6decb2"
+  }
+ },
+ {
+  "id": "inat:251202501",
+  "groep": "Mammalia",
+  "naam": "Gestreept Stinkdier",
+  "wetenschappelijk": "Mephitis mephitis",
+  "plaats": "Bakkeveen, Nederland",
+  "datum": "2008-10-17",
+  "maker": "(c) teddydolstra, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/449416412/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/449416412/medium.jpeg",
+  "scores": {
+   "helder": 65.2,
+   "contrast": 44.9,
+   "scherp": 966.2,
+   "hash": "a91d1ab239184889"
+  }
+ },
+ {
+  "id": "inat:113106256",
+  "groep": "Aves",
+  "naam": "Gedomesticeerde Wilde Eend",
+  "wetenschappelijk": "Anas platyrhynchos domesticus",
+  "plaats": "Velp, Niederlande",
+  "datum": "2022-04-27",
+  "maker": "(c) markusgmeiner, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/191100981/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/191100981/medium.jpg",
+  "scores": {
+   "helder": 146.1,
+   "contrast": 36.2,
+   "scherp": 970.9,
+   "hash": "3b36541616356185"
+  }
+ },
+ {
+  "id": "inat:39535889",
+  "groep": "Fungi",
+  "naam": "Paarse korstzwam",
+  "wetenschappelijk": "Chondrostereum purpureum",
+  "plaats": "Voorschoten, Nederland",
+  "datum": "2018-11-16",
+  "maker": "(c) Rob Westerduijn, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/62733729/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/62733729/medium.jpeg",
+  "scores": {
+   "helder": 89.5,
+   "contrast": 49.4,
+   "scherp": 994.8,
+   "hash": "a66a5b139f939dcd"
+  }
+ },
+ {
+  "id": "inat:199221052",
+  "groep": "Aves",
+  "naam": "Eider",
+  "wetenschappelijk": "Somateria mollissima",
+  "plaats": "Friesland, NL",
+  "datum": "2024-02-04",
+  "maker": "(c) markusgmeiner, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/351296014/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/351296014/medium.jpeg",
+  "scores": {
+   "helder": 97.0,
+   "contrast": 55.6,
+   "scherp": 1003.0,
+   "hash": "0f07858d67335834"
+  }
+ },
+ {
+  "id": "inat:20874703",
+  "groep": "Fungi",
+  "naam": "Kopergroenbekerzwammen",
+  "wetenschappelijk": "Chlorociboria",
+  "plaats": "Heiloo, Nederland",
+  "datum": "2019-02-19",
+  "maker": "(c) Joost ., some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/32207643/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/32207643/medium.jpeg",
+  "scores": {
+   "helder": 97.4,
+   "contrast": 55.8,
+   "scherp": 1012.9,
+   "hash": "f43fcf9f5e1e71c9"
+  }
+ },
+ {
+  "id": "inat:126806257",
+  "groep": "Insecta",
+  "naam": "Glasvleugelpijlstaart",
+  "wetenschappelijk": "Hemaris fuciformis",
+  "plaats": "Wassenaar, Netherlands",
+  "datum": "2022-07-16",
+  "maker": "(c) Steven Schulting, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/215198720/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/215198720/medium.jpeg",
+  "scores": {
+   "helder": 136.7,
+   "contrast": 66.8,
+   "scherp": 1015.4,
+   "hash": "35b6f75736132393"
+  }
+ },
+ {
+  "id": "inat:109622734",
+  "groep": "Plantae",
+  "naam": "Wilde Gagel",
+  "wetenschappelijk": "Myrica gale",
+  "plaats": "Nianadreef, Boxtel, North Brabant, NL",
+  "datum": "2022-03-25",
+  "maker": "no rights reserved",
+  "licentie": "cc0",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/184794328/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/184794328/medium.jpg",
+  "scores": {
+   "helder": 100.3,
+   "contrast": 45.1,
+   "scherp": 1025.6,
+   "hash": "b98995d99e0eef42"
+  }
+ },
+ {
+  "id": "inat:101529104",
+  "groep": "Fungi",
+  "naam": "Geringde vlekplaat",
+  "wetenschappelijk": "Panaeolus semiovatus",
+  "plaats": "1871 PR Schoorl, Netherlands",
+  "datum": "2021-11-20",
+  "maker": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/169577866/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/169577866/medium.jpeg",
+  "scores": {
+   "helder": 113.9,
+   "contrast": 76.2,
+   "scherp": 1026.8,
+   "hash": "aeb6b6b6c8acc8a4"
+  }
+ },
+ {
+  "id": "inat:17914851",
+  "groep": "Mammalia",
+  "naam": "Edelhert",
+  "wetenschappelijk": "Cervus elaphus",
+  "plaats": "Groenlo, Nederland",
+  "datum": "2017-09-17",
+  "maker": "(c) Elise Bakker, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/27364799/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/27364799/medium.jpeg",
+  "scores": {
+   "helder": 113.4,
+   "contrast": 68.4,
+   "scherp": 1047.0,
+   "hash": "3226a3486025dd71"
+  }
+ },
+ {
+  "id": "inat:150045478",
+  "groep": "Fungi",
+  "naam": "Echt judasoor",
+  "wetenschappelijk": "Auricularia auricula-judae",
+  "plaats": "Landgoed Nijenburg, Heiloo, Noord-Holland, NL",
+  "datum": "2022-11-18",
+  "maker": "(c) wishauptr, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/258652786/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/258652786/medium.jpg",
+  "scores": {
+   "helder": 134.3,
+   "contrast": 55.0,
+   "scherp": 1055.3,
+   "hash": "63314b0f07676550"
+  }
+ },
+ {
+  "id": "inat:352328405",
+  "groep": "Aves",
+  "naam": "Chileense Smient",
+  "wetenschappelijk": "Mareca sibilatrix",
+  "plaats": "Aartswoud, Netherlands",
+  "datum": "2026-04-21",
+  "maker": "(c) thegreatdodo, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/643056188/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/643056188/medium.jpg",
+  "scores": {
+   "helder": 74.1,
+   "contrast": 44.3,
+   "scherp": 1059.1,
+   "hash": "e662cd5c63a37058"
+  }
+ },
+ {
+  "id": "inat:133040447",
+  "groep": "Aves",
+  "naam": "Blauwe Reiger",
+  "wetenschappelijk": "Ardea cinerea",
+  "plaats": "Landgoed Clingendael, Wassenaar, Netherlands",
+  "datum": "2007-11-22",
+  "maker": "(c) Laurel J. Ramseyer, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/226554587/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/226554587/medium.jpg",
+  "scores": {
+   "helder": 114.7,
+   "contrast": 54.9,
+   "scherp": 1071.3,
+   "hash": "790701280d08181d"
+  }
+ },
+ {
+  "id": "inat:198590975",
+  "groep": "Aves",
+  "naam": "Bergeend",
+  "wetenschappelijk": "Tadorna tadorna",
+  "plaats": "Schiermonnikoog National Park, Schiermonnikoog, Netherlands",
+  "datum": "2024-02-03",
+  "maker": "(c) markusgmeiner, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/350056543/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/350056543/medium.jpeg",
+  "scores": {
+   "helder": 98.5,
+   "contrast": 47.2,
+   "scherp": 1083.9,
+   "hash": "f6870f463f0f2f9f"
+  }
+ },
+ {
+  "id": "inat:288164195",
+  "groep": "Aves",
+  "naam": "Wilde Eend x Krooneend",
+  "wetenschappelijk": "Anas platyrhynchos × Netta rufina",
+  "plaats": "Heerhugowaard, Netherlands",
+  "datum": "2025-01-30",
+  "maker": "(c) thegreatdodo, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/518192995/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/518192995/medium.jpg",
+  "scores": {
+   "helder": 124.5,
+   "contrast": 57.0,
+   "scherp": 1089.6,
+   "hash": "2fe6d2e4e0c9dc94"
+  }
+ },
+ {
+  "id": "inat:307355548",
+  "groep": "Insecta",
+  "naam": "Buxusmot",
+  "wetenschappelijk": "Cydalima perspectalis",
+  "plaats": "Ubbergen, NL-GE, NL",
+  "datum": "2025-08-18",
+  "maker": "(c) gijskurstjens, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/554374957/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/554374957/medium.jpg",
+  "scores": {
+   "helder": 113.4,
+   "contrast": 53.5,
+   "scherp": 1147.8,
+   "hash": "0787078707050707"
+  }
+ },
+ {
+  "id": "inat:325657762",
+  "groep": "Mammalia",
+  "naam": "Euraziatische Wolf",
+  "wetenschappelijk": "Canis lupus lupus",
+  "plaats": "Gelderland, NL",
+  "datum": "2025-11-09",
+  "maker": "(c) Dion, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/589664397/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/589664397/medium.jpg",
+  "scores": {
+   "helder": 130.9,
+   "contrast": 31.3,
+   "scherp": 1251.8,
+   "hash": "58cf5b15458d9c64"
+  }
+ },
+ {
+  "id": "inat:20380087",
+  "groep": "Arachnida",
+  "naam": "Kraamwebspin",
+  "wetenschappelijk": "Pisaura mirabilis",
+  "plaats": "Zierikzee, Nederland",
+  "datum": "2019-02-14",
+  "maker": "(c) Stefan, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/31473863/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/31473863/medium.jpeg",
+  "scores": {
+   "helder": 132.4,
+   "contrast": 44.4,
+   "scherp": 1253.1,
+   "hash": "1b874ec1b0ee4414"
+  }
+ },
+ {
+  "id": "inat:198512288",
+  "groep": "Aves",
+  "naam": "Meenatortel",
+  "wetenschappelijk": "Streptopelia orientalis meena",
+  "plaats": "8608 CB Sneek, Niederlande",
+  "datum": "2024-02-04",
+  "maker": "(c) tobi123, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/349904571/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/349904571/medium.jpeg",
+  "scores": {
+   "helder": 144.8,
+   "contrast": 79.3,
+   "scherp": 1322.5,
+   "hash": "969a92d1d1e1d0f8"
+  }
+ },
+ {
+  "id": "inat:105792212",
+  "groep": "Plantae",
+  "naam": "Echt vetmos",
+  "wetenschappelijk": "Aneura pinguis",
+  "plaats": "Noordwijk, Zuid-Holland, Netherlands",
+  "datum": "2022-01-29",
+  "maker": "(c) Michel Langeveld, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/177584976/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/177584976/medium.jpg",
+  "scores": {
+   "helder": 94.7,
+   "contrast": 56.8,
+   "scherp": 1416.4,
+   "hash": "35c76663ab6bb0d9"
+  }
+ },
+ {
+  "id": "inat:384559731",
+  "groep": "Insecta",
+  "naam": "Strandzandloopkever",
+  "wetenschappelijk": "Cicindela maritima",
+  "plaats": "Schiermonnikoog, Niederlande",
+  "datum": "2026-07-20",
+  "maker": "(c) Samuel Büttler, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/703950896/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/703950896/medium.jpg",
+  "scores": {
+   "helder": 121.4,
+   "contrast": 49.4,
+   "scherp": 1432.6,
+   "hash": "c7c3db94646cf3f3"
+  }
+ },
+ {
+  "id": "inat:145103732",
+  "groep": "Insecta",
+  "naam": "Kleine wintervlinder",
+  "wetenschappelijk": "Operophtera brumata",
+  "plaats": "Haarenderweg, Maria Hoop, Limburg, NL",
+  "datum": "2022-12-26",
+  "maker": "(c) Berno Hellauer, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/249195202/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/249195202/medium.jpg",
+  "scores": {
+   "helder": 127.3,
+   "contrast": 68.8,
+   "scherp": 1552.1,
+   "hash": "e7cb65e010104040"
+  }
+ },
+ {
+  "id": "inat:343481116",
+  "groep": "Aves",
+  "naam": "Sperwer",
+  "wetenschappelijk": "Accipiter nisus",
+  "plaats": "Hoogkerk-Dorp, Groningen, Nederland",
+  "datum": "2026-03-15",
+  "maker": "(c) KJ, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/625691869/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/625691869/medium.jpg",
+  "scores": {
+   "helder": 105.2,
+   "contrast": 31.7,
+   "scherp": 1692.4,
+   "hash": "4b4b4f4d6ee4c716"
+  }
+ },
+ {
+  "id": "inat:201130712",
+  "groep": "Aves",
+  "naam": "Euraziatische ransuil",
+  "wetenschappelijk": "Asio otus otus",
+  "plaats": "Noord-Holland, NL",
+  "datum": "2024-02-01",
+  "maker": "(c) thegreatdodo, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/354990622/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/354990622/medium.jpg",
+  "scores": {
+   "helder": 99.4,
+   "contrast": 41.1,
+   "scherp": 1703.7,
+   "hash": "29c9a18d1913933a"
+  }
+ },
+ {
+  "id": "inat:95402156",
+  "groep": "Reptilia",
+  "naam": "Adder",
+  "wetenschappelijk": "Vipera berus",
+  "plaats": "Netherlands",
+  "datum": "2019-09-12",
+  "maker": "(c) broncoblue, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/158376567/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/158376567/medium.jpeg",
+  "scores": {
+   "helder": 117.2,
+   "contrast": 53.7,
+   "scherp": 2197.3,
+   "hash": "6b33321d2395c773"
+  }
+ },
+ {
+  "id": "inat:259787611",
+  "groep": "Aves",
+  "naam": "Kuifkoekoek",
+  "wetenschappelijk": "Clamator glandarius",
+  "plaats": "De Cocksdorp, Nederland",
+  "datum": "2024-05-21",
+  "maker": "(c) bas2006, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/466415396/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/466415396/medium.jpeg",
+  "scores": {
+   "helder": 94.7,
+   "contrast": 35.1,
+   "scherp": 2228.9,
+   "hash": "393c34584925266f"
+  }
+ },
+ {
+  "id": "inat:69371661",
+  "groep": "Plantae",
+  "naam": "Duizendblad",
+  "wetenschappelijk": "Achillea millefolium",
+  "plaats": "4357 Domburg, Nederland",
+  "datum": "2020-08-14",
+  "maker": "(c) dgcurrywheel, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/112538454/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/112538454/medium.jpg",
+  "scores": {
+   "helder": 94.9,
+   "contrast": 62.3,
+   "scherp": 2270.6,
+   "hash": "c0d99f2e4e4a9b33"
+  }
+ },
+ {
+  "id": "inat:233298233",
+  "groep": "Aves",
+  "naam": "Indische Kievit",
+  "wetenschappelijk": "Vanellus indicus",
+  "plaats": "8899 Oost-Vlieland, Nederland",
+  "datum": "2024-07-27",
+  "maker": "(c) harmkn, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/414596788/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/414596788/medium.jpeg",
+  "scores": {
+   "helder": 127.9,
+   "contrast": 37.9,
+   "scherp": 2414.9,
+   "hash": "07271b57430f0f36"
+  }
+ },
+ {
+  "id": "inat:192832087",
+  "groep": "Mammalia",
+  "naam": "Gedomesticeerd Rund",
+  "wetenschappelijk": "Bos taurus",
+  "plaats": "Schoorlse Duinen, Bergen (NH), Noord-Holland, NL",
+  "datum": "2023-12-02",
+  "maker": "(c) wishauptr, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/338606376/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/338606376/medium.jpg",
+  "scores": {
+   "helder": 125.8,
+   "contrast": 56.9,
+   "scherp": 2539.1,
+   "hash": "0f0f87952733152d"
+  }
+ },
+ {
+  "id": "inat:138193075",
+  "groep": "Reptilia",
+  "naam": "Scheltopusik",
+  "wetenschappelijk": "Pseudopus apodus",
+  "plaats": "7256 Keijenborg, Nederland",
+  "datum": "2022-09-28",
+  "maker": "(c) Erika, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/236151683/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/236151683/medium.jpeg",
+  "scores": {
+   "helder": 122.1,
+   "contrast": 56.6,
+   "scherp": 2539.5,
+   "hash": "90722cc4fc6fa42d"
+  }
+ },
+ {
+  "id": "inat:187478003",
+  "groep": "Aves",
+  "naam": "Meerkoet",
+  "wetenschappelijk": "Fulica atra",
+  "plaats": "Noord-Holland, NL",
+  "datum": "2023-10-14",
+  "maker": "(c) luukieluuk, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/330062393/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/330062393/medium.jpeg",
+  "scores": {
+   "helder": 78.1,
+   "contrast": 38.5,
+   "scherp": 2570.2,
+   "hash": "4f0eae8bc9adbcbe"
+  }
+ },
+ {
+  "id": "inat:226119665",
+  "groep": "Mammalia",
+  "naam": "Wolf",
+  "wetenschappelijk": "Canis lupus",
+  "plaats": "Gelderland, NL",
+  "datum": "2024-06-29",
+  "maker": "(c) Wilco Vertegaal, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/400987515/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/400987515/medium.jpeg",
+  "scores": {
+   "helder": 133.7,
+   "contrast": 30.0,
+   "scherp": 2593.8,
+   "hash": "33310fb6238b2788"
+  }
+ },
+ {
+  "id": "inat:106191963",
+  "groep": "Fungi",
+  "naam": "Slijmrandkaalkopje",
+  "wetenschappelijk": "Psilocybe liniformans",
+  "plaats": "Meyendel, Wassenaar, Zuid-Holland, Netherlands",
+  "datum": "2021-11-27",
+  "maker": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/178346856/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/178346856/medium.jpeg",
+  "scores": {
+   "helder": 80.2,
+   "contrast": 45.3,
+   "scherp": 2811.7,
+   "hash": "53d32839656cb626"
+  }
+ },
+ {
+  "id": "inat:86757235",
+  "groep": "Aves",
+  "naam": "Vale Gier",
+  "wetenschappelijk": "Gyps fulvus",
+  "plaats": "3648 Wilnis, Netherlands",
+  "datum": "2021-07-12",
+  "maker": "(c) Fred Derks, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/142976710/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/142976710/medium.jpeg",
+  "scores": {
+   "helder": 140.9,
+   "contrast": 65.6,
+   "scherp": 2925.6,
+   "hash": "142c2c1e1a7a6e6c"
+  }
+ },
+ {
+  "id": "inat:307587079",
+  "groep": "Mammalia",
+  "naam": "Gedomesticeerd Paard",
+  "wetenschappelijk": "Equus caballus",
+  "plaats": "Netherlands",
+  "datum": "2025-08-15",
+  "maker": "(c) hermann_gruber, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/554821347/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/554821347/medium.jpg",
+  "scores": {
+   "helder": 143.8,
+   "contrast": 47.5,
+   "scherp": 2992.1,
+   "hash": "bee3a7277373570f"
+  }
+ },
+ {
+  "id": "inat:9507681",
+  "groep": "Fungi",
+  "naam": "Duindaalder",
+  "wetenschappelijk": "Diploschistes muscorum",
+  "plaats": "Zuid-Holland, Nederland",
+  "datum": "2018-01-06",
+  "maker": "(c) Wessel Peters, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/12957166/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/12957166/medium.jpg",
+  "scores": {
+   "helder": 109.2,
+   "contrast": 48.0,
+   "scherp": 2997.1,
+   "hash": "a0b2345e96ecd84c"
+  }
+ },
+ {
+  "id": "inat:21939486",
+  "groep": "Reptilia",
+  "naam": "Adder",
+  "wetenschappelijk": "Vipera berus",
+  "plaats": "Gelderland, NL",
+  "datum": "2019-03-24",
+  "maker": "(c) pwink, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/34000283/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/34000283/medium.jpg",
+  "scores": {
+   "helder": 117.9,
+   "contrast": 43.0,
+   "scherp": 3868.1,
+   "hash": "857cb85894ad6ac8"
+  }
+ },
+ {
+  "id": "inat:31165452",
+  "groep": "Mammalia",
+  "naam": "Gewone zeehond",
+  "wetenschappelijk": "Phoca vitulina",
+  "plaats": "'s-Gravenhage, NL-ZH, NL",
+  "datum": "2019-07-20",
+  "maker": "(c) Sealcentre Pieterburen, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/48752061/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/48752061/medium.jpeg",
+  "scores": {
+   "helder": 119.9,
+   "contrast": 50.8,
+   "scherp": 3880.6,
+   "hash": "d9f2c68c98921018"
+  }
+ },
+ {
+  "id": "inat:69807568",
+  "groep": "Insecta",
+  "naam": "Wolfsmelkpijlstaart",
+  "wetenschappelijk": "Hyles euphorbiae",
+  "plaats": "Goedereede, Zuid-Holland, Netherlands",
+  "datum": "2018-09-21",
+  "maker": "(c) Joey Bom, some rights reserved (CC BY)",
+  "licentie": "cc-by",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/113359858/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/113359858/medium.jpeg",
+  "scores": {
+   "helder": 132.3,
+   "contrast": 46.9,
+   "scherp": 3905.2,
+   "hash": "531d7cc4ec80d4f2"
+  }
+ },
+ {
+  "id": "inat:295348714",
+  "groep": "Mammalia",
+  "naam": "Bunzing",
+  "wetenschappelijk": "Mustela putorius",
+  "plaats": "5954 PE Beesel, Nederland",
+  "datum": "2025-07-04",
+  "maker": "(c) Jomaro, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/531693070/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/531693070/medium.jpg",
+  "scores": {
+   "helder": 130.7,
+   "contrast": 39.5,
+   "scherp": 4124.9,
+   "hash": "f878bef370d32338"
+  }
+ },
+ {
+  "id": "inat:36220466",
+  "groep": "Aves",
+  "naam": "Schildraaf",
+  "wetenschappelijk": "Corvus albus",
+  "plaats": "Leeuwarden, Nederland",
+  "datum": "2019-11-30",
+  "maker": "(c) Gerben ter Haar, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/57229268/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/57229268/medium.jpg",
+  "scores": {
+   "helder": 167.5,
+   "contrast": 46.7,
+   "scherp": 4708.6,
+   "hash": "8d8705059399b193"
+  }
+ },
+ {
+  "id": "inat:178888214",
+  "groep": "Insecta",
+  "naam": "Heivlinder",
+  "wetenschappelijk": "Hipparchia semele",
+  "plaats": "Hilversum, Nederland",
+  "datum": "2023-08-14",
+  "maker": "(c) Steven Schulting, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/311357487/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/311357487/medium.jpeg",
+  "scores": {
+   "helder": 113.0,
+   "contrast": 71.3,
+   "scherp": 5303.7,
+   "hash": "343469f9fd6c388c"
+  }
+ },
+ {
+  "id": "inat:341876087",
+  "groep": "Aves",
+  "naam": "Blauwgele Ara",
+  "wetenschappelijk": "Ara ararauna",
+  "plaats": "Spijkenisse",
+  "datum": "2026-03-06",
+  "maker": "(c) stormpje, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/622464601/original.jpg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/622464601/medium.jpg",
+  "scores": {
+   "helder": 150.2,
+   "contrast": 73.1,
+   "scherp": 5686.5,
+   "hash": "69974c636aec7c4c"
+  }
+ },
+ {
+  "id": "inat:267673558",
+  "groep": "Aves",
+  "naam": "Oehoe",
+  "wetenschappelijk": "Bubo bubo",
+  "plaats": "Winterswijk Ratum, Netherlands",
+  "datum": "2025-03-29",
+  "maker": "(c) markusgmeiner, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/481064311/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/481064311/medium.jpeg",
+  "scores": {
+   "helder": 106.7,
+   "contrast": 47.6,
+   "scherp": 6911.7,
+   "hash": "489c1d59422830d0"
+  }
+ },
+ {
+  "id": "inat:257789884",
+  "groep": "Aves",
+  "naam": "Torenvalk",
+  "wetenschappelijk": "Falco tinnunculus tinnunculus",
+  "plaats": "2041 Zandvoort, Nederland",
+  "datum": "2025-01-08",
+  "maker": "(c) evd, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/462500999/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/462500999/medium.jpeg",
+  "scores": {
+   "helder": 150.5,
+   "contrast": 44.5,
+   "scherp": 9284.0,
+   "hash": "98dc99ececf0983f"
+  }
+ },
+ {
+  "id": "inat:247889807",
+  "groep": "Insecta",
+  "naam": "Behaarde rode bosmier",
+  "wetenschappelijk": "Formica rufa",
+  "plaats": "6581 Malden, Holandia",
+  "datum": "2024-10-16",
+  "maker": "(c) Bartosz Fidor, some rights reserved (CC BY-NC)",
+  "licentie": "cc-by-nc",
+  "afbeelding": "https://inaturalist-open-data.s3.amazonaws.com/photos/442824876/original.jpeg",
+  "klein": "https://inaturalist-open-data.s3.amazonaws.com/photos/442824876/medium.jpeg",
+  "scores": {
+   "helder": 125.9,
+   "contrast": 49.5,
+   "scherp": 12131.1,
+   "hash": "446a4a454c6da723"
+  }
+ }
+]
