@@ -6,17 +6,20 @@ import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.view.Gravity
 import android.view.KeyEvent
 import android.view.SurfaceView
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.view.animation.LinearInterpolator
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.media3.common.VideoSize
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import coil.imageLoader
@@ -42,7 +45,7 @@ import kotlin.coroutines.resume
  * @param forcedProgram een programma om te tonen in plaats van het opgeslagen programma.
  */
 class SlideshowController(
-    root: View,
+    private val root: View,
     private val scope: CoroutineScope,
     private val forcedProgram: Program? = null,
     /** In het voorbeeld (niet de screensaver) mag je sfeerclips wegstemmen en doorspoelen. */
@@ -89,6 +92,24 @@ class SlideshowController(
         .build().apply {
         volume = 0f
         setVideoSurfaceView(video)
+        addListener(object : Player.Listener {
+            override fun onVideoSizeChanged(videoSize: VideoSize) = fitVideo(videoSize)
+        })
+    }
+
+    /**
+     * Video in de juiste verhouding, met zwarte randen waar nodig. Zonder dit rekt een
+     * staande telefoonvideo uit tot het hele brede scherm.
+     */
+    private fun fitVideo(size: VideoSize) {
+        if (size.width == 0 || size.height == 0) return
+        root.post {
+            val width = size.width * size.pixelWidthHeightRatio
+            val height = size.height.toFloat()
+            val scale = minOf(root.width / width, root.height / height)
+            if (scale <= 0f) return@post
+            video.layoutParams = FrameLayout.LayoutParams((width * scale).toInt(), (height * scale).toInt(), Gravity.CENTER)
+        }
     }
 
     private val sources: Map<Mode, SlideSource> = mapOf(
