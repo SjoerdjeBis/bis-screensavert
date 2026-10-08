@@ -49,18 +49,20 @@ Aan het eind kun je de screensaver meteen testen.
 
 ## Lukt koppelen met de Mac niet? Zo kan het zonder Mac
 
-Op nieuwere Google TV's werkt koppelen via de Mac soms niet. Zo installeer je de app helemaal op de tv zelf:
+Op nieuwere Google TV's werkt koppelen via de Mac soms niet. Zo installeer en stel je de app helemaal op de tv zelf in:
 
 1. Open **Downloader** op de tv en typ dit adres:
    `https://github.com/SjoerdjeBis/bis-screensavert/releases/download/laatste/BisScreensavert.apk`
 2. Vraagt de tv om toestemming? Kies **Instellingen** en zet **Downloader** aan bij *Onbekende apps installeren*. Ga terug en kies **Installeren**.
-3. Open **Bis Screensavert**. Bovenaan staan knoppen voor wat nog niet geregeld is:
-   - **Nog geen screensaver: instellen** opent het screensaver-scherm van de tv. Kies daar *Bis Screensavert*.
-   - **♪ Muziek: toegang geven** opent het scherm voor meldingstoegang. Zet *Bis Screensavert* aan. Dit is nodig om te zien wat Spotify speelt.
-   - **Bijwerken** vraagt de eerste keer om toestemming om updates te installeren. Zet die aan.
+3. Open **Bis Screensavert** en kies bovenaan **Nog geen screensaver: instellen**. De app stelt zichzelf in via *Draadloze foutopsporing*:
+   1. Scan de QR-code op de tv met je telefoon. Je telefoon moet op dezelfde wifi zitten.
+   2. Druk op Home en ga naar **Instellingen › Systeem › Ontwikkelaarsopties › Draadloze foutopsporing**. Zet het aan.
+   3. Onder *IP-adres en poort* staat iets als `192.168.68.61:41363`. Vul het getal na de dubbele punt op je telefoon in bij **Poort**.
+   4. Kies op de tv **Apparaat koppelen met koppelingscode** en laat dat venster open. Vul de code en de poort uit dat venster op je telefoon in en tik op **Koppelen en instellen**.
+   5. Je telefoon laat zien of het gelukt is. De app is dan de screensaver, heeft muziektoegang en mag zichzelf bijwerken. Draadloze foutopsporing mag daarna weer uit.
 4. Sleutels vul je in via je telefoon (zie *Sleutels invullen via je telefoon*).
 
-Let op: Google TV verbergt sommige van deze schermen. Opent een knop niets, of zie je de app er niet tussen staan? Dan kan dat onderdeel alleen nog met adb. De app werkt verder gewoon; je mist dan alleen dat ene onderdeel.
+Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing aan, kies in de app opnieuw **Screensaver instellen** en vul alleen de poort in. Koppelen hoeft maar één keer.
 
 ## Zo werkt de app
 
