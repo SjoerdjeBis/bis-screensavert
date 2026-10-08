@@ -21,11 +21,22 @@ OK_LICENSES = ("cc0", "public domain", "pd", "cc by", "cc-by")
 
 SOUNDS = {
     # naam: (zoektermen, soort, minimale lengte in seconden)
-    "haardvuur": (["fireplace crackling", "fire crackling", "campfire crackling"], "loop", 40),
-    "regen": (["rain on roof", "rain sound", "heavy rain"], "loop", 40),
+    "haardvuur": (["fireplace crackling", "campfire crackling", "fire crackling", "fireplace"], "loop", 40),
+    "regen": (["rain on roof", "rain sound", "heavy rain", "rain"], "loop", 40),
     "zee": (["ocean waves beach", "sea waves", "waves breaking"], "loop", 40),
     "onweer": (["thunder rumble", "thunder", "thunderstorm"], "losse", 6),
 }
+
+# De titel moet over het juiste gaan, en mag geen bijgeluiden noemen.
+MUST = {
+    "haardvuur": ["fire", "campfire", "bonfire", "vuur", "feu"],
+    "regen": ["rain", "regen", "pluie", "lluvia"],
+    "zee": ["wave", "ocean", "sea", "surf", "beach", "zee"],
+    "onweer": ["thunder", "onweer", "donner"],
+}
+EXCLUDE = ["market", "car", "traffic", "bone", "breaking", "voice", "people", "crowd", "speech", "talk",
+           "music", "song", "bird", "dog", "train", "street", "city", "engine", "alarm", "footstep", "walk",
+           "child", "kid", "bell", "church", "radio", "tv", "phone", "ice", "glass", "metal", "door", "plane"]
 LOOP_SECONDS = 90
 CROSSFADE = 4
 
@@ -37,6 +48,11 @@ def api(params):
         return json.load(r)
 
 
+def title_ok(name, title):
+    t = title.lower()
+    return any(w in t for w in MUST[name]) and not any(re.search(rf"\b{w}", t) for w in EXCLUDE)
+
+
 def candidates(query):
     data = api({
         "action": "query", "generator": "search", "gsrnamespace": 6, "gsrlimit": 25,
@@ -44,7 +60,7 @@ def candidates(query):
         "iiprop": "url|size|mime|extmetadata",
     })
     pages = sorted(data.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99))
-    for page in pages[:3]:
+    for page in pages:
         info = (page.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata", {})
         license_name = meta.get("LicenseShortName", {}).get("value", "")
@@ -208,7 +224,7 @@ def main():
     for name, (queries, kind, min_len) in SOUNDS.items():
         done = False
         for query in queries:
-            for cand in candidates(query):
+            for cand in [c for c in candidates(query) if title_ok(name, c["titel"])][:3]:
                 src = os.path.join(tmp, f"{name}_bron")
                 try:
                     download(cand["url"], src)
