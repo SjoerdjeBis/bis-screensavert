@@ -19,7 +19,7 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
     private val token = fixedToken ?: newToken()
     private var server: ServerSocket? = null
 
-    /** De pagina: [form] is null bij openen, en bevat de ingevulde velden na versturen. */
+    /** De pagina: [form] is null bij openen, en bevat de ingevulde velden (of de velden uit het adres) na versturen. */
     protected abstract fun render(form: Map<String, String>?): String
 
     /** Elke keer dat de telefoon iets opvraagt. */
@@ -72,7 +72,8 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
             }
             respond(client, 200, render(parse(body)))
         } else {
-            respond(client, 200, render(null))
+            val query = path.substringAfter("?", "")
+            respond(client, 200, render(if (query.isEmpty()) null else parse(query)))
         }
     }
 

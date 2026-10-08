@@ -54,7 +54,7 @@ class PhotosActivity : ComponentActivity() {
 
     private sealed interface Step {
         data object Overview : Step
-        data class SignIn(val code: GoogleAuth.DeviceCode) : Step
+        data class SignIn(val url: String) : Step
         data class Picking(val uri: String) : Step
         data class Downloading(val done: Int, val total: Int) : Step
         data class Message(val text: String) : Step
@@ -83,9 +83,14 @@ class PhotosActivity : ComponentActivity() {
             job = scope.launch {
                 try {
                     if (!auth.isSignedIn) {
-                        val code = auth.startDeviceFlow()
-                        step = Step.SignIn(code)
-                        auth.waitForLogin(code)
+                        val form = GoogleLoginForm(this@PhotosActivity, auth)
+                        val address = form.start() ?: throw AuthException("De tv heeft geen wifi-verbinding. Controleer de wifi en probeer het opnieuw.")
+                        try {
+                            step = Step.SignIn(auth.authUrl(address))
+                            form.result.await()
+                        } finally {
+                            form.stop()
+                        }
                     }
                     val session = picker.createSession()
                     step = Step.Picking(session.pickerUri)
@@ -146,12 +151,13 @@ class PhotosActivity : ComponentActivity() {
                 is Step.SignIn -> QrStep(
                     eyebrow = "STAP 1 VAN 2 · INLOGGEN BIJ GOOGLE",
                     title = "Log in op je telefoon",
-                    qr = s.code.verificationUrl,
+                    qr = s.url,
                     lines = listOf(
-                        "Scan de code, of ga op je telefoon naar ${s.code.verificationUrl.removePrefix("https://")}.",
-                        "Vul daar deze code in, kies je Google-account en geef toestemming:",
+                        "Scan de code met je telefoon. Die moet op dezelfde wifi zitten als de tv.",
+                        "Kies je Google-account en geef toestemming. Je telefoon stuurt de inlog daarna vanzelf door naar de tv.",
+                        "Waarschuwt Google dat de app niet is geverifieerd? Kies Doorgaan; het is je eigen app.",
                     ),
-                    bigCode = s.code.userCode,
+                    bigCode = null,
                     footnote = "Dit hoeft maar af en toe; de tv onthoudt het.",
                     onCancel = { job?.cancel(); step = Step.Overview },
                 )

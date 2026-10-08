@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bis Screensavert – doorsturen</title>
+<style>
+body{margin:0;background:#0E2E2A;color:#F6EFE0;font:16px/1.5 system-ui,-apple-system,sans-serif;padding:20px}
+main{max-width:520px;margin:0 auto}
+h1{font:italic 600 28px/1.1 Georgia,serif;margin:8px 0 12px}
+p{color:#C9D3CC}
+a.knop{display:block;text-align:center;margin-top:20px;font-weight:700;padding:14px;border-radius:14px;border:2px solid #08201D;background:#E2523C;color:#fff;text-decoration:none}
+.melding{background:#16403A;border:2px solid #F0B23F;border-radius:12px;padding:12px;color:#F6EFE0}
+</style>
+</head>
+<body><main>
+<h1>Bis Screensavert</h1>
+<p id="tekst" class="melding">Even geduld, je inlog gaat naar de tv…</p>
+<a id="knop" class="knop" hidden>Naar de tv</a>
+</main>
+<script>
+// Google stuurt je hierheen na het inloggen. Deze pagina geeft de inlogcode door aan de tv
+// in je eigen wifi. Het adres van de tv zit in "state"; alleen adressen in een thuisnetwerk
+// worden gevolgd.
+(function () {
+  var q = new URLSearchParams(location.search);
+  var tv = q.get("state") || "";
+  var tekst = document.getElementById("tekst");
+  var knop = document.getElementById("knop");
+  var thuis = /^http:\/\/(10\.\d+|172\.(1[6-9]|2\d|3[01])|192\.168)\.\d+\.\d+:\d+\/[0-9a-f]+$/;
+  if (!thuis.test(tv)) {
+    tekst.textContent = "Deze pagina hoort bij Bis Screensavert. Begin op de tv bij Mijn foto's & video's.";
+    return;
+  }
+  var doel = tv + "?" + (q.get("code") ? "code=" + encodeURIComponent(q.get("code"))
+                                        : "error=" + encodeURIComponent(q.get("error") || "onbekend"));
+  knop.href = doel;
+  setTimeout(function () {
+    tekst.textContent = "Gaat het niet vanzelf? Tik op de knop. Je telefoon moet op dezelfde wifi zitten als de tv.";
+    knop.hidden = false;
+  }, 2500);
+  location.replace(doel);
+})();
+</script>
+</body>
+</html>

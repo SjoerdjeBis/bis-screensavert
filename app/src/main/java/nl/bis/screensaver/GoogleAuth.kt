@@ -1,76 +1,58 @@
 package nl.bis.screensaver
 
+import android.content.Context
 import android.os.SystemClock
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
+import java.net.URLEncoder
 
 class NeedsLoginException : Exception("Opnieuw inloggen bij Google is nodig")
 
 class AuthException(message: String) : Exception(message)
 
 /**
- * Inloggen bij Google zonder toetsenbord: de tv toont een code, jij vult die in op je
- * telefoon ("OAuth voor tv's"). Daarna bewaart de app een sleutel om zelf in te loggen.
+ * Inloggen bij Google via je telefoon. De tv toont een QR-code naar het inlogscherm van
+ * Google. Na het inloggen stuurt Google je telefoon naar een klein doorgeefpagina op GitHub,
+ * die de inlogcode doorgeeft aan de tv in je eigen wifi. Daarna bewaart de app een sleutel
+ * om zelf in te loggen. (Inloggen met een code op google.com/device mag niet voor de
+ * fotokiezer; vandaar deze route.)
  */
 class GoogleAuth(private val settings: Settings) {
-    data class DeviceCode(
-        val deviceCode: String,
-        val userCode: String,
-        val verificationUrl: String,
-        val intervalSeconds: Int,
-        val expiresInSeconds: Int,
-    )
-
     private var accessToken: String? = null
     private var accessTokenValidUntil = 0L
 
     val isConfigured get() = !settings.googleClientId.isNullOrBlank() && !settings.googleClientSecret.isNullOrBlank()
     val isSignedIn get() = settings.googleRefreshToken != null
 
-    suspend fun startDeviceFlow(): DeviceCode {
+    /** Het inlogadres voor de QR-code; [tvAddress] is het formulier op de tv dat de code ontvangt. */
+    fun authUrl(tvAddress: String): String = "https://accounts.google.com/o/oauth2/v2/auth?" + listOf(
+        "client_id" to clientId(),
+        "redirect_uri" to REDIRECT,
+        "response_type" to "code",
+        "scope" to SCOPE,
+        "access_type" to "offline",
+        "prompt" to "consent",
+        "state" to tvAddress,
+    ).joinToString("&") { (k, v) -> "$k=${URLEncoder.encode(v, "UTF-8")}" }
+
+    /** Wisselt de inlogcode van de telefoon in voor een blijvende sleutel. */
+    suspend fun exchange(code: String) {
         val response = Http.postForm(
-            "https://oauth2.googleapis.com/device/code",
-            mapOf("client_id" to clientId(), "scope" to SCOPE),
+            TOKEN_URL,
+            mapOf(
+                "client_id" to clientId(),
+                "client_secret" to clientSecret(),
+                "code" to code,
+                "redirect_uri" to REDIRECT,
+                "grant_type" to "authorization_code",
+            ),
         )
         val json = JSONObject(response.body.ifEmpty { "{}" })
         if (!response.ok) throw AuthException(explain(json.optString("error"), json.optString("error_description")))
-        return DeviceCode(
-            deviceCode = json.getString("device_code"),
-            userCode = json.getString("user_code"),
-            verificationUrl = json.optStringOrNull("verification_url") ?: "https://www.google.com/device",
-            intervalSeconds = json.optInt("interval", 5),
-            expiresInSeconds = json.optInt("expires_in", 1800),
-        )
-    }
-
-    /** Wacht tot de code op de telefoon is ingevuld; gooit een [AuthException] als het misgaat. */
-    suspend fun waitForLogin(code: DeviceCode) {
-        var interval = code.intervalSeconds
-        val deadline = SystemClock.elapsedRealtime() + code.expiresInSeconds * 1000L
-        while (SystemClock.elapsedRealtime() < deadline) {
-            delay(interval * 1000L)
-            val response = Http.postForm(
-                TOKEN_URL,
-                mapOf(
-                    "client_id" to clientId(),
-                    "client_secret" to clientSecret(),
-                    "device_code" to code.deviceCode,
-                    "grant_type" to "urn:ietf:params:oauth:grant-type:device_code",
-                ),
-            )
-            val json = JSONObject(response.body.ifEmpty { "{}" })
-            if (response.ok) {
-                settings.googleRefreshToken = json.getString("refresh_token")
-                remember(json)
-                return
-            }
-            when (json.optString("error")) {
-                "authorization_pending" -> Unit
-                "slow_down" -> interval += 5
-                else -> throw AuthException(explain(json.optString("error"), json.optString("error_description")))
-            }
-        }
-        throw AuthException("De code is verlopen. Probeer het opnieuw.")
+        settings.googleRefreshToken = json.optStringOrNull("refresh_token")
+            ?: throw AuthException("Google gaf geen blijvende sleutel. Probeer het opnieuw.")
+        remember(json)
     }
 
     suspend fun accessToken(): String {
@@ -114,14 +96,55 @@ class GoogleAuth(private val settings: Settings) {
 
     private fun explain(error: String, description: String): String = when (error) {
         "access_denied" -> "Je hebt de toegang geweigerd op je telefoon."
-        "expired_token" -> "De code is verlopen. Probeer het opnieuw."
-        "invalid_client" -> "De Google-sleutels kloppen niet. Draai het installatiescript opnieuw en plak ze nog eens."
-        "invalid_scope" -> "Google staat de fotokiezer niet toe voor dit soort sleutel. Zie GOOGLE-FOTOS.md, kopje 'Als het niet lukt'."
+        "invalid_grant" -> "De inlogcode was al gebruikt of verlopen. Probeer het opnieuw."
+        "invalid_client" -> "De Google-sleutels kloppen niet. Vul ze opnieuw in via Sleutels invullen."
+        "redirect_uri_mismatch" -> "Het doorstuuradres in Google Cloud klopt niet. Zie GOOGLE-FOTOS.md."
         else -> listOf("Google gaf een fout", error, description).filter { it.isNotBlank() }.joinToString(": ")
     }
 
     private companion object {
         const val TOKEN_URL = "https://oauth2.googleapis.com/token"
         const val SCOPE = "https://www.googleapis.com/auth/photospicker.mediaitems.readonly"
+
+        /** De doorgeefpagina (docs/google.html), via GitHub Pages. Moet exact zo in Google Cloud staan. */
+        const val REDIRECT = "https://sjoerdjebis.github.io/bis-screensavert/google.html"
+    }
+}
+
+/** Ontvangt de inlogcode die de doorgeefpagina vanaf je telefoon naar de tv stuurt. */
+class GoogleLoginForm(context: Context, private val auth: GoogleAuth) : PhoneForm(context) {
+    /** Klaar als de tv is ingelogd; mislukt met een [AuthException]. */
+    val result = CompletableDeferred<Unit>()
+
+    @Volatile private var signedIn = false
+
+    override fun render(form: Map<String, String>?): String {
+        val code = form?.get("code")
+        val error = form?.get("error")
+        val (ok, message) = when {
+            signedIn ->
+                true to "De tv is al ingelogd. Kijk weer op de tv."
+            code != null -> try {
+                runBlocking { auth.exchange(code) }
+                signedIn = true
+                result.complete(Unit)
+                true to "Gelukt! Kijk weer op de tv: daar verschijnt een nieuwe QR-code om je foto's en video's te kiezen."
+            } catch (e: Exception) {
+                val text = e.message ?: "Inloggen bij Google lukte niet."
+                result.completeExceptionally(AuthException(text))
+                false to text
+            }
+            error != null -> {
+                val text = if (error == "access_denied") "Je hebt de toegang geweigerd." else "Google gaf een fout: $error"
+                result.completeExceptionally(AuthException(text))
+                false to text
+            }
+            else -> false to "Scan de QR-code op de tv om in te loggen bij Google."
+        }
+        val safe = message.replace("&", "&amp;").replace("<", "&lt;")
+        return PhoneForm.page(
+            "Bis Screensavert – Google Foto's",
+            "<h1>Google Foto's</h1><p class='melding${if (ok) "" else " fout"}'>$safe</p>",
+        )
     }
 }

@@ -405,27 +405,35 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    /** Opent de afspeellijst in SmartTube; valt terug op elke app die YouTube-links opent. */
+    /**
+     * Opent de afspeellijst in SmartTube. Nooit in een andere app: Downloader en browsers
+     * openen ook YouTube-links, en daar heb je op de tv niets aan.
+     */
     private fun openSmartTube(playlist: String) {
         val uri = Uri.parse("https://www.youtube.com/playlist?list=$playlist")
-        for (pkg in SMARTTUBE_PACKAGES) {
-            if (packageManager.getLaunchIntentForPackage(pkg) == null) continue
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(pkg).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-                return
-            } catch (e: ActivityNotFoundException) {
-                // Deze versie opent geen links; dan de app gewoon starten.
-                packageManager.getLaunchIntentForPackage(pkg)?.let {
-                    startActivity(it)
-                    Toast.makeText(this, "SmartTube opent geen afspeellijsten via een link. Zoek de lijst in de bibliotheek.", Toast.LENGTH_LONG).show()
-                    return
-                }
-            }
+        val pkg = smartTubePackage(uri)
+        if (pkg == null) {
+            Toast.makeText(this, "SmartTube niet gevonden op deze tv.", Toast.LENGTH_LONG).show()
+            return
         }
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(pkg).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, "SmartTube niet gevonden op deze tv.", Toast.LENGTH_LONG).show()
+            // Deze versie opent geen links; dan de app gewoon starten.
+            (packageManager.getLeanbackLaunchIntentForPackage(pkg) ?: packageManager.getLaunchIntentForPackage(pkg))?.let {
+                startActivity(it)
+                Toast.makeText(this, "SmartTube opent geen afspeellijsten via een link. Zoek de lijst in de bibliotheek.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    /** SmartTube heeft door de jaren verschillende pakketnamen gehad; zoek op naam als de bekende niet bestaan. */
+    private fun smartTubePackage(uri: Uri): String? {
+        val handlers = packageManager.queryIntentActivities(Intent(Intent.ACTION_VIEW, uri), 0).map { it.activityInfo.packageName }
+        SMARTTUBE_PACKAGES.firstOrNull { it in handlers }?.let { return it }
+        return handlers.firstOrNull { pkg ->
+            val label = runCatching { packageManager.getApplicationLabel(packageManager.getApplicationInfo(pkg, 0)).toString() }.getOrDefault("")
+            label.contains("SmartTube", ignoreCase = true) || pkg.contains("smarttube", ignoreCase = true)
         }
     }
 
@@ -516,6 +524,7 @@ class MainActivity : ComponentActivity() {
 }
 
 private val SMARTTUBE_PACKAGES = listOf(
+    "com.teamsmart.videomanager.tv",
     "com.liskovsoft.smarttubetv.beta",
     "com.liskovsoft.smarttubetv",
     "org.smartteam.smarttube.beta",

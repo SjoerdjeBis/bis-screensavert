@@ -13,6 +13,7 @@
 
     <!-- Om SmartTube te kunnen vinden en openen vanaf de kaart "Sfeerlijst". -->
     <queries>
+        <package android:name="com.teamsmart.videomanager.tv" />
         <package android:name="com.liskovsoft.smarttubetv.beta" />
         <package android:name="com.liskovsoft.smarttubetv" />
         <package android:name="org.smartteam.smarttube.beta" />
