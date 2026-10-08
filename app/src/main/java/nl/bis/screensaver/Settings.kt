@@ -17,6 +17,7 @@ enum class Program(val key: String, val title: String) {
     AMBIENT("sfeer", "Sfeer"),
     PHOTOS("fotos", "Mijn foto's & video's"),
     CUSTOM("eigen", "Eigen mix"),
+    SPOTIFY("spotify", "Spotify"),
 }
 
 /**
@@ -42,10 +43,6 @@ class Settings(context: Context) {
             return Mode.entries.filter { it.key in keys }.toSet()
         }
         set(value) = prefs.edit().putStringSet("custom_modes", value.map { it.key }.toSet()).apply()
-
-    var musicTakesOver: Boolean
-        get() = prefs.getBoolean("music_takes_over", true)
-        set(value) = prefs.edit().putBoolean("music_takes_over", value).apply()
 
     var showClock: Boolean
         get() = prefs.getBoolean("show_clock", true)

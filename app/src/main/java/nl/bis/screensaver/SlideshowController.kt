@@ -131,7 +131,8 @@ class SlideshowController(
         job = scope.launch { run() }
         // De muziekmonitor draait altijd: ook om de jazz stil te zetten als Spotify speelt.
         music.start()
-        if (settings.musicTakesOver) musicJob = scope.launch { followMusic() }
+        // Alleen bij de kaart Spotify neemt de muziek het scherm over.
+        if ((forcedProgram ?: settings.program) == Program.SPOTIFY) musicJob = scope.launch { followMusic() }
         mixer.start()
         soundJob = scope.launch {
             launch { music.state.collect { mixer.setMuted(it?.playing == true) } }
@@ -253,11 +254,20 @@ class SlideshowController(
         delay(FADE_MS)
         image.setImageDrawable(drawable)
         imageBackground.setImageDrawable(drawable)
-        setCaption(slide, mode)
+        val hasCaption = setCaption(slide, mode)
         val duration = settings.slideSeconds * 1000L
         kenBurns(image, duration)
         fade(imageLayer, 1f)
-        fade(caption, 1f)
+        if (hasCaption) {
+            fade(caption, 1f)
+            // Na een tijdje verdwijnt de tekst, zodat je daarna het hele werk ziet.
+            if (duration > IMAGE_CAPTION_MS + FADE_MS) {
+                captionJob = scope.launch {
+                    delay(IMAGE_CAPTION_MS)
+                    fade(caption, 0f)
+                }
+            }
+        }
         waitOrSkip(duration)
         return true
     }
@@ -285,11 +295,14 @@ class SlideshowController(
                     override fun onRenderedFirstFrame() {
                         hideStatus()
                         fade(imageLayer, 0f)
-                        setCaption(slide, mode)
-                        fade(caption, 1f)
                         captionJob?.cancel()
-                        captionJob = scope.launch {
-                            delay(VIDEO_CAPTION_MS)
+                        if (setCaption(slide, mode)) {
+                            fade(caption, 1f)
+                            captionJob = scope.launch {
+                                delay(VIDEO_CAPTION_MS)
+                                fade(caption, 0f)
+                            }
+                        } else {
                             fade(caption, 0f)
                         }
                     }
@@ -331,7 +344,13 @@ class SlideshowController(
     }
 
 
-    private fun setCaption(slide: Slide, mode: Mode) {
+    /** Vult het onderschrift; geeft false als er bij dit beeld niets in beeld hoort. */
+    private fun setCaption(slide: Slide, mode: Mode): Boolean {
+        // Sfeerbeelden zonder tekst; alleen in het voorbeeld de knoppen om weg te stemmen.
+        val bare = mode == Mode.AMBIENT
+        if (bare && !isPreview) return false
+        captionEyebrow.visibility = if (bare) View.GONE else View.VISIBLE
+        captionTitle.visibility = if (bare) View.GONE else View.VISIBLE
         captionEyebrow.text = when (mode) {
             Mode.ART -> "KUNST · " + ((slide as? Slide.Image)?.source ?: "MUSEUM").uppercase()
             Mode.AERIALS -> "LUCHTOPNAME"
@@ -340,7 +359,7 @@ class SlideshowController(
         }
         captionTitle.text = slide.title
         captionSubtitle.text = slide.subtitle.orEmpty()
-        captionSubtitle.visibility = if (slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE
+        captionSubtitle.visibility = if (bare || slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE
         val body = if (isPreview && slide is Slide.Video && slide.clipId != null) {
             "▼  niet meer tonen      ▶  volgende"
         } else {
@@ -348,6 +367,7 @@ class SlideshowController(
         }
         captionBody.text = body.orEmpty()
         captionBody.visibility = if (body.isNullOrBlank()) View.GONE else View.VISIBLE
+        return true
     }
 
     // ---- Muziek ----
@@ -510,6 +530,7 @@ class SlideshowController(
 
     private companion object {
         const val VIDEO_CAPTION_MS = 10_000L
+        const val IMAGE_CAPTION_MS = 20_000L
         const val SOUND_CREDIT_MS = 8_000L
         const val MAX_VIDEO_MS = 10 * 60_000L
         const val FADE_MS = 1_200L

@@ -103,7 +103,6 @@ class MainActivity : ComponentActivity() {
         var slideSeconds by remember { mutableIntStateOf(settings.slideSeconds) }
         var showCaptions by remember { mutableStateOf(settings.showCaptions) }
         var showClock by remember { mutableStateOf(settings.showClock) }
-        var musicTakesOver by remember { mutableStateOf(settings.musicTakesOver) }
         var customModes by remember { mutableStateOf(settings.customModes) }
         var musicSource by remember { mutableStateOf(settings.musicSource) }
         var jazzLevel by remember { mutableIntStateOf(settings.jazzLevel) }
@@ -130,7 +129,7 @@ class MainActivity : ComponentActivity() {
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
             else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
-            Program.CUSTOM -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
+            Program.CUSTOM, Program.SPOTIFY -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
         }
 
         fun choose(p: Program) {
@@ -140,6 +139,11 @@ class MainActivity : ComponentActivity() {
             }
             if (p == Program.PHOTOS && media.isEmpty()) {
                 startActivity(Intent(this, PhotosActivity::class.java))
+                return
+            }
+            if (p == Program.SPOTIFY && !music.hasAccess) {
+                // Zonder muziektoegang ziet de app niet wat Spotify speelt.
+                if (!SystemSettings.openMusicAccess(this)) startActivity(Intent(this, SelfSetupActivity::class.java))
                 return
             }
             if (p == Program.AMBIENT && !hasAmbient) {
@@ -202,6 +206,7 @@ class MainActivity : ComponentActivity() {
                         }
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
                         Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
+                        Program.SPOTIFY -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawRecord(this) }
                     }
                 }
             }
@@ -277,7 +282,7 @@ class MainActivity : ComponentActivity() {
                         ProgramCard(
                             title = p.title,
                             active = p == program,
-                            status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient),
+                            status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess),
                             modifier = if (p == program) Modifier.focusRequester(firstFocus) else Modifier,
                             onFocus = {
                                 focused = p
@@ -307,6 +312,7 @@ class MainActivity : ComponentActivity() {
                                 }
                                 Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
                                 Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
+                                Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
                             }
                         }
                     }
@@ -359,22 +365,6 @@ class MainActivity : ComponentActivity() {
                                 settings.jazzLevel = jazzLevel
                             })
                         }
-                    }
-                    item {
-                        FocusPill(
-                            text = musicLabel(musicTakesOver, nowPlaying, music.hasAccess),
-                            accent = if (!music.hasAccess) Bis.Boter else null,
-                            onClick = {
-                                if (!music.hasAccess) {
-                                    if (!SystemSettings.openMusicAccess(this@MainActivity)) {
-                                        startActivity(Intent(this@MainActivity, SelfSetupActivity::class.java))
-                                    }
-                                } else {
-                                    musicTakesOver = !musicTakesOver
-                                    settings.musicTakesOver = musicTakesOver
-                                }
-                            },
-                        )
                     }
                 }
                 Spacer(Modifier.height(8.dp))
@@ -542,12 +532,26 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun cardStatus(p: Program, artCount: Int, photos: Int, videos: Int, custom: Set<Mode>, hasAmbient: Boolean) = when (p) {
+    private fun cardStatus(
+        p: Program,
+        artCount: Int,
+        photos: Int,
+        videos: Int,
+        custom: Set<Mode>,
+        hasAmbient: Boolean,
+        nowPlaying: NowPlaying?,
+        hasMusicAccess: Boolean,
+    ) = when (p) {
         Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee en meer" else "Nog niet gekoppeld"
         Program.ART -> "$artCount werken met Nederlandse uitleg"
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
+        Program.SPOTIFY -> when {
+            !hasMusicAccess -> "Nog geen toegang: kies OK"
+            nowPlaying != null -> "Nu: ${nowPlaying.title}"
+            else -> "Hoes en foto's van de artiest"
+        }
     }
 
     private fun levelLabel(level: Int) = when (level) {
@@ -558,13 +562,6 @@ class MainActivity : ComponentActivity() {
 
     private fun secondsLabel(seconds: Int) =
         if (seconds < 60) "$seconds s" else if (seconds % 60 == 0) "${seconds / 60} min" else "${seconds / 60} min ${seconds % 60} s"
-
-    private fun musicLabel(takesOver: Boolean, nowPlaying: NowPlaying?, hasAccess: Boolean) = when {
-        !hasAccess -> "♪ Muziek: toegang geven"
-        !takesOver -> "Muziekscherm: uit"
-        nowPlaying != null -> "♪ Nu: ${nowPlaying.title} – ${nowPlaying.artist}".take(48)
-        else -> "Muziekscherm: aan"
-    }
 
     private fun customLabel(modes: Set<Mode>) =
         Mode.entries.filter { it in modes }.joinToString(" + ") { shortLabel(it) }.ifEmpty { "leeg" }
@@ -603,6 +600,17 @@ private fun drawFire(scope: DrawScope) = with(scope) {
     }
     drawPath(flame, Color(0xFFFFE3A3).copy(alpha = 0.85f))
     drawRoundRect(Color(0xFF2A160C), topLeft = Offset(size.width * 0.2f, size.height * 0.86f), size = Size(size.width * 0.6f, size.height * 0.08f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(8f))
+}
+
+/** Een grammofoonplaat met een groen etiket, voor de Spotify-kaart. */
+private fun drawRecord(scope: DrawScope) = with(scope) {
+    drawRect(Brush.verticalGradient(listOf(Color(0xFF0F1A17), Color(0xFF16302A))))
+    val c = Offset(size.width * 0.5f, size.height * 0.55f)
+    val r = size.minDimension * 0.42f
+    drawCircle(Color(0xFF111111), radius = r, center = c)
+    for (i in 1..3) drawCircle(Color(0xFF2A2A2A), radius = r * (0.55f + i * 0.12f), center = c, style = androidx.compose.ui.graphics.drawscope.Stroke(1.5f))
+    drawCircle(Color(0xFF1DB954), radius = r * 0.36f, center = c)
+    drawCircle(Color(0xFF111111), radius = r * 0.06f, center = c)
 }
 
 /** Een afspeellijst: regels met een afspeelknop. */
