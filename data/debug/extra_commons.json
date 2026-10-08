@@ -1,0 +1,2657 @@
+{
+ "batchcomplete": "",
+ "continue": {
+  "gcmcontinue": "file|41204341505455524544204745524d414e20484f5749545a4552204154204d415254494e50554943482c2042455354414e444445454c4e52203135382d303936372e4a50470a41204341505455524544204745524d414e20484f5749545a4552204154204d415254494e50554943482c2042455354414e444445454c4e52203135382d303936372e4a5047|74440382",
+  "continue": "gcmcontinue||"
+ },
+ "query": {
+  "pages": {
+   "145785333": {
+    "pageid": 145785333,
+    "ns": 6,
+    "title": "File:A .Szaks, Bestanddeelnr 935-0611 (cropped).jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 309923,
+      "width": 1381,
+      "height": 1750,
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/A_.Szaks%2C_Bestanddeelnr_935-0611_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "thumbwidth": 1920,
+      "thumbheight": 2433,
+      "thumbattribs": {
+       "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/A_.Szaks%2C_Bestanddeelnr_935-0611_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 2433
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/A_.Szaks%2C_Bestanddeelnr_935-0611_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_.Szaks,_Bestanddeelnr_935-0611_(cropped).jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=145785333",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A .Szaks, Bestanddeelnr 935-0611 (cropped)",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Anefo / Londen<br>\n<p>Reportage / Serie : P [Portraits/Persons] / Anefo Londen serie<br>\nBeschrijving : A .Szaks<br>\nDatum : maart 1942<br>\nLocatie : Groot-Brittannië, Londen<br>\nTrefwoorden : ambtenaren, portretten, portretten, tweede wereldoorlog<br>\nPersoonsnaam : Szaks, A.<br>\nFotograaf : Onbekend / Publiek Domein<br>\nAuteursrechthebbende : Nationaal Archief <br>\nMateriaalsoort : Negatief (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.01.03<br>\n</p>\nBestanddeelnummer : 935-0611",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1942-03",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Anefo",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "66705903": {
+    "pageid": 66705903,
+    "ns": 6,
+    "title": "File:A .Szaks, Bestanddeelnr 935-0611.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 740046,
+      "width": 2511,
+      "height": 2536,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_.Szaks%2C_Bestanddeelnr_935-0611.jpg/1920px-A_.Szaks%2C_Bestanddeelnr_935-0611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1939,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/6/67/A_.Szaks%2C_Bestanddeelnr_935-0611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_.Szaks%2C_Bestanddeelnr_935-0611.jpg/1920px-A_.Szaks%2C_Bestanddeelnr_935-0611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1939,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/6/67/A_.Szaks%2C_Bestanddeelnr_935-0611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/A_.Szaks%2C_Bestanddeelnr_935-0611.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_.Szaks,_Bestanddeelnr_935-0611.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=66705903",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A .Szaks, Bestanddeelnr 935-0611",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Anefo / Londen<br>\n<p>Reportage / Serie : P [Portraits/Persons] / Anefo Londen serie<br>\nBeschrijving : A .Szaks<br>\nDatum : maart 1942<br>\nLocatie : Groot-Brittannië, Londen<br>\nTrefwoorden : ambtenaren, portretten, portretten, tweede wereldoorlog<br>\nPersoonsnaam : Szaks, A.<br>\nFotograaf : Onbekend / Publiek Domein<br>\nAuteursrechthebbende : Nationaal Archief <br>\nMateriaalsoort : Negatief (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.01.03<br>\n</p>\nBestanddeelnummer : 935-0611",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1942-03",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Anefo",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74516309": {
+    "pageid": 74516309,
+    "ns": 6,
+    "title": "File:A 6 howitzer in action, Bestanddeelnr 158-2399.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 483755,
+      "width": 2924,
+      "height": 1704,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg/1920px-A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1119,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/7/71/A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg/1920px-A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1119,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/7/71/A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/A_6_howitzer_in_action%2C_Bestanddeelnr_158-2399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_6_howitzer_in_action,_Bestanddeelnr_158-2399.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74516309",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A 6 howitzer in action, Bestanddeelnr 158-2399",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : With the Serbians on the Salonika front<br>\nBeschrijving : A 6\" howitzer in action<br>\nAnnotatie : Met de Serviërs aan het front te Saloniki. Een 6\" houwitser in actie<br>\nDatum : {1914-1918}<br>\nLocatie : Griekenland, Saloniki<br>\nTrefwoorden : eerste wereldoorlog, fronten, houwitsers, soldaten<br>\nFotograaf : [onbekend]<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2399",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "67312839": {
+    "pageid": 67312839,
+    "ns": 6,
+    "title": "File:A B Svenska Kullagerfabriken Research Centre te Jutphaas, Bestanddeelnr 925-5439.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1548800,
+      "width": 3691,
+      "height": 2450,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg/1920px-A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1274,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/d/df/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg/1920px-A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1274,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/d/df/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas,_Bestanddeelnr_925-5439.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=67312839",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A B Svenska Kullagerfabriken Research Centre te Jutphaas, Bestanddeelnr 925-5439",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Anefo<br>\n<p>Reportage / Serie : Opening van A. B. Svenska Kullagerfabriken Research Centre te Jutphaas door Prins Bernhard en prins Bert van Zweden<br>\nBeschrijving : A. B. Svenska Kullagerfabriken Research Centre te Jutphaas<br>\nDatum : 19 april 1972<br>\nLocatie : Jutphaas, Nieuwegein, Utrecht (pr.)<br>\nTrefwoorden : Openingen, gebouwen, industrie, onderzoeksinstituten<br>\nFotograaf : Fotograaf Onbekend / Anefo<br>\nAuteursrechthebbende : Nationaal Archief <br>\nMateriaalsoort : Negatief (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.01.05<br>\n</p>\nBestanddeelnummer : 925-5439",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1972-04-19",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Fotograaf Onbekend / Anefo",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "67312860": {
+    "pageid": 67312860,
+    "ns": 6,
+    "title": "File:A B Svenska Kullagerfabriken Research Centre te Jutphaas, Bestanddeelnr 925-5440.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1623454,
+      "width": 3691,
+      "height": 2450,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg/1920px-A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1274,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/4/41/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg/1920px-A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1274,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/4/41/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas%2C_Bestanddeelnr_925-5440.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_B_Svenska_Kullagerfabriken_Research_Centre_te_Jutphaas,_Bestanddeelnr_925-5440.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=67312860",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A B Svenska Kullagerfabriken Research Centre te Jutphaas, Bestanddeelnr 925-5440",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Anefo<br>\n<p>Reportage / Serie : Opening van A. B. Svenska Kullagerfabriken Research Centre te Jutphaas door Prins Bernhard en prins Bert van Zweden<br>\nBeschrijving : A. B. Svenska Kullagerfabriken Research Centre te Jutphaas<br>\nDatum : 19 april 1972<br>\nLocatie : Jutphaas, Nieuwegein, Utrecht (pr.)<br>\nTrefwoorden : Openingen, gebouwen, industrie, onderzoeksinstituten<br>\nFotograaf : Fotograaf Onbekend / Anefo<br>\nAuteursrechthebbende : Nationaal Archief <br>\nMateriaalsoort : Negatief (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.01.05<br>\n</p>\nBestanddeelnummer : 925-5440",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1972-04-19",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Fotograaf Onbekend / Anefo",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74446638": {
+    "pageid": 74446638,
+    "ns": 6,
+    "title": "File:A barrage commences at the break of dawn, Bestanddeelnr 158-1083.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 998169,
+      "width": 4228,
+      "height": 3144,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg/1920px-A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1428,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg/3840px-A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg/1920px-A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1428,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg/3840px-A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/A_barrage_commences_at_the_break_of_dawn%2C_Bestanddeelnr_158-1083.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_barrage_commences_at_the_break_of_dawn,_Bestanddeelnr_158-1083.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74446638",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A barrage commences at the break of dawn, Bestanddeelnr 158-1083",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France. The Cambrai advance<br>\nBeschrijving : A barrage commences at the break of dawn<br>\nAnnotatie : Het front in Frankrijk. De opmars bij Cambrai. Brits spervuur begint bij het aanbreken van de dag<br>\nDatum : 1918<br>\nLocatie : Cambrai, Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, soldaten, spervuren<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1083",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1918",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74443791": {
+    "pageid": 74443791,
+    "ns": 6,
+    "title": "File:A batch of Boche prisoners taken at Ginchy are watched by troops, Bestanddeelnr 158-1032.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 2562219,
+      "width": 4460,
+      "height": 3424,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg/1920px-A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1474,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg/3840px-A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg/1920px-A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1474,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg/3840px-A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops%2C_Bestanddeelnr_158-1032.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_batch_of_Boche_prisoners_taken_at_Ginchy_are_watched_by_troops,_Bestanddeelnr_158-1032.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74443791",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A batch of Boche prisoners taken at Ginchy are watched by troops, Bestanddeelnr 158-1032",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A batch of Boche prisoners taken at Ginchy are watched by troops<br>\nAnnotatie : Het front in Frankrijk. Een groep Duitse krijgsgevangenen te Ginchy wordt gadegeslagen door Engelse troepen<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk, Ginchy<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen, troepen<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1032",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74442752": {
+    "pageid": 74442752,
+    "ns": 6,
+    "title": "File:A batch of prisoners taken at Ginchy, Bestanddeelnr 158-1026.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 2350483,
+      "width": 4468,
+      "height": 3384,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg/1920px-A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1454,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg/3840px-A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg/1920px-A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1454,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg/3840px-A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/A_batch_of_prisoners_taken_at_Ginchy%2C_Bestanddeelnr_158-1026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_batch_of_prisoners_taken_at_Ginchy,_Bestanddeelnr_158-1026.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74442752",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A batch of prisoners taken at Ginchy, Bestanddeelnr 158-1026",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A batch of prisoners taken at Ginchy<br>\nAnnotatie : Het front in Frankrijk. Een groep Duitse krijgsgevangenen, gevangengenomen te Ginchy<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk, Ginchy<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1026",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74521964": {
+    "pageid": 74521964,
+    "ns": 6,
+    "title": "File:A bath parade party of British Infantry, coming back after their bath over a foo, Bestanddeelnr 158-2743.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 655874,
+      "width": 3661,
+      "height": 2773,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg/1920px-A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1454,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/5/50/A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg/1920px-A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1454,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/5/50/A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/A_bath_parade_party_of_British_Infantry%2C_coming_back_after_their_bath_over_a_foo%2C_Bestanddeelnr_158-2743.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_bath_parade_party_of_British_Infantry,_coming_back_after_their_bath_over_a_foo,_Bestanddeelnr_158-2743.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74521964",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A bath parade party of British Infantry, coming back after their bath over a foo, Bestanddeelnr 158-2743",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France<br>\nBeschrijving : A bath parade party of British Infantry, coming back after their bath over a foot bridge built over a flood of water. Some of them carry their towels on their shoulders<br>\nAnnotatie : Het Britse westelijke front in Frankrijk. Groep Britse infanteristen keert terug van het nemen van een bad via een voetbrug die aangelegd is over een ondergelopen stuk land. Sommigen dragen een handdoek over hun schouder<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, militairen, verzorging, voetbruggen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2743",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74444310": {
+    "pageid": 74444310,
+    "ns": 6,
+    "title": "File:A Battalion of the Royal Fuseliers resting in a cornfield near the front, Bestanddeelnr 158-1053.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1789744,
+      "width": 4428,
+      "height": 3432,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg/1920px-A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1488,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg/3840px-A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg/1920px-A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1488,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg/3840px-A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-1053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Battalion_of_the_Royal_Fuseliers_resting_in_a_cornfield_near_the_front,_Bestanddeelnr_158-1053.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74444310",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Battalion of the Royal Fuseliers resting in a cornfield near the front, Bestanddeelnr 158-1053",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A Battalion of the Royal Fuseliers resting in a cornfield near the front<br>\nAnnotatie : Het front in Frankrijk. Een bataljon Royal Fuseliers rust uit in een korenveld nabij het front<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, militairen, rustpauzes<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1053",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74402819": {
+    "pageid": 74402819,
+    "ns": 6,
+    "title": "File:A battalion of the Royal Fusiliers resting in a cornfield near the front, Bestanddeelnr 158-0078.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1476271,
+      "width": 4309,
+      "height": 2984,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg/1920px-A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1330,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg/3840px-A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg/1920px-A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1330,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg/3840px-A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front%2C_Bestanddeelnr_158-0078.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_battalion_of_the_Royal_Fusiliers_resting_in_a_cornfield_near_the_front,_Bestanddeelnr_158-0078.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74402819",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A battalion of the Royal Fusiliers resting in a cornfield near the front, Bestanddeelnr 158-0078",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front in France<br>\nBeschrijving : A battalion of the Royal Fusiliers resting in a cornfield near the front<br>\nAnnotatie : Het front in Frankrijk. Bataljon Koninklijke Fuseliers rust uit in een korenveld nabij het front<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, korenvelden, militairen, ontspannen<br>\nFotograaf : Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0078",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74470289": {
+    "pageid": 74470289,
+    "ns": 6,
+    "title": "File:A battery in action., Bestanddeelnr 158-1506.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1443582,
+      "width": 4160,
+      "height": 3108,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg/1920px-A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1434,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg/3840px-A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg/1920px-A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1434,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg/3840px-A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/A_battery_in_action.%2C_Bestanddeelnr_158-1506.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_battery_in_action.,_Bestanddeelnr_158-1506.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74470289",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A battery in action., Bestanddeelnr 158-1506",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : British official photographs from Italy<br>\nBeschrijving : A battery in action.<br>\nAnnotatie : Britse officiële foto's uit Italië. Britse soldaten bij een batterij in actie.<br>\nDatum : {1914-1918}<br>\nLocatie : Italië<br>\nTrefwoorden : eerste wereldoorlog, kanonnen, soldaten<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1506",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74488059": {
+    "pageid": 74488059,
+    "ns": 6,
+    "title": "File:A bell in a German trench at Grand Bois near Wytschaete., Bestanddeelnr 158-2057.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1169558,
+      "width": 3863,
+      "height": 2966,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg/1920px-A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1474,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg/3840px-A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg/1920px-A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1474,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg/3840px-A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.%2C_Bestanddeelnr_158-2057.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_bell_in_a_German_trench_at_Grand_Bois_near_Wytschaete.,_Bestanddeelnr_158-2057.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74488059",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A bell in a German trench at Grand Bois near Wytschaete., Bestanddeelnr 158-2057",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front<br>\nBeschrijving : A bell in a German trench at Grand Bois near Wytschaete.<br>\nAnnotatie : Het Westelijk front. Een torenklok in een Duitse loopgraaf bij Grand Bois bij Wijtschate.<br>\nDatum : {1914-1918}<br>\nLocatie : België, Wijtschate<br>\nTrefwoorden : eerste wereldoorlog, fronten, loopgraven, torenklokken<br>\nFotograaf : LNA<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2057",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74468089": {
+    "pageid": 74468089,
+    "ns": 6,
+    "title": "File:A big batch of prisoners being marched to railhead., Bestanddeelnr 158-1421.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1551977,
+      "width": 4348,
+      "height": 3376,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg/1920px-A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1491,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg/3840px-A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg/1920px-A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1491,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg/3840px-A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/A_big_batch_of_prisoners_being_marched_to_railhead.%2C_Bestanddeelnr_158-1421.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_batch_of_prisoners_being_marched_to_railhead.,_Bestanddeelnr_158-1421.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74468089",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big batch of prisoners being marched to railhead., Bestanddeelnr 158-1421",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front. Battle of Flanders<br>\nBeschrijving : A big batch of prisoners being marched to railhead.<br>\nAnnotatie : Het Britse Westelijk front. De slag om Vlaanderen. Grote groep Duitse krijgsgevangenen wordt afgevoerd naar een spoorweghoofd<br>\nDatum : {1914-1918}<br>\nLocatie : België<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen, spoorwegen<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1421",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74467990": {
+    "pageid": 74467990,
+    "ns": 6,
+    "title": "File:A big batch of prisoners captured in the new successes of the British. They are , Bestanddeelnr 158-1419.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1460764,
+      "width": 4332,
+      "height": 3376,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg/1920px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1496,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg/3840px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg/1920px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1496,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg/3840px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1419.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_,_Bestanddeelnr_158-1419.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74467990",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big batch of prisoners captured in the new successes of the British. They are , Bestanddeelnr 158-1419",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front. Battle of Flanders<br>\nBeschrijving : A big batch of prisoners captured in the new successes of the British. They are glad enough to be out of British shell-fire.<br>\nAnnotatie : Het Britse Westelijk front. De slag om Vlaanderen. Grote groep Duitse krijgsgevangenen, gevangen genomen bij de laatste Britse successen. Ze zijn blij om uit het Britse granaatvuur te zijn.<br>\nDatum : {1914-1918}<br>\nLocatie : België<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1419",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74468009": {
+    "pageid": 74468009,
+    "ns": 6,
+    "title": "File:A big batch of prisoners captured in the new successes of the British. They are , Bestanddeelnr 158-1420.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1500002,
+      "width": 4387,
+      "height": 3359,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg/1920px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1470,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg/3840px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg/1920px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1470,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg/3840px-A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_%2C_Bestanddeelnr_158-1420.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_batch_of_prisoners_captured_in_the_new_successes_of_the_British._They_are_,_Bestanddeelnr_158-1420.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74468009",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big batch of prisoners captured in the new successes of the British. They are , Bestanddeelnr 158-1420",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front. Battle of Flanders<br>\nBeschrijving : A big batch of prisoners captured in the new successes of the British. They are glad enough to be out of British shell-fire<br>\nAnnotatie : Het Britse Westelijk front. De slag om Vlaanderen. Grote groep Duitse krijgsgevangenen, gevangen genomen bij de laatste Britse successen. Ze zijn blij om uit het Britse granaatvuur te zijn<br>\nDatum : {1914-1918}<br>\nLocatie : België<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1420",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74483950": {
+    "pageid": 74483950,
+    "ns": 6,
+    "title": "File:A big British gun checking the German advance., Bestanddeelnr 158-1867.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 922035,
+      "width": 3864,
+      "height": 2972,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg/1920px-A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1477,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg/3840px-A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg/1920px-A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1477,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg/3840px-A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/A_big_British_gun_checking_the_German_advance.%2C_Bestanddeelnr_158-1867.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_British_gun_checking_the_German_advance.,_Bestanddeelnr_158-1867.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74483950",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big British gun checking the German advance., Bestanddeelnr 158-1867",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France. The German offensive<br>\nBeschrijving : A big British gun checking the German advance.<br>\nAnnotatie : Het Britse Westelijk front in Frankrijk. Het Duitse offensief. Een zwaar Brits kanon beteugelt de Duitse opmars.<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1867",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74442404": {
+    "pageid": 74442404,
+    "ns": 6,
+    "title": "File:A big gun going up in bad weather, Bestanddeelnr 158-1020.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 2072816,
+      "width": 4396,
+      "height": 3392,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg/1920px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1481,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg/3840px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg/1920px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1481,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg/3840px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-1020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_gun_going_up_in_bad_weather,_Bestanddeelnr_158-1020.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74442404",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big gun going up in bad weather, Bestanddeelnr 158-1020",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : Bad weather troubles on the Western Front<br>\nBeschrijving : A big gun going up in bad weather<br>\nAnnotatie : Slecht weer aan het westelijk front. Een zwaar kanon wordt vervoerd in slecht weer<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, modder<br>\nFotograaf : Central Press Ltd<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1020",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74706179": {
+    "pageid": 74706179,
+    "ns": 6,
+    "title": "File:A big gun going up in bad weather, Bestanddeelnr 158-2842.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 826718,
+      "width": 3880,
+      "height": 2976,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg/1920px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1473,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg/3840px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg/1920px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1473,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg/3840px-A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/A_big_gun_going_up_in_bad_weather%2C_Bestanddeelnr_158-2842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_gun_going_up_in_bad_weather,_Bestanddeelnr_158-2842.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74706179",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big gun going up in bad weather, Bestanddeelnr 158-2842",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : Bad weather troubles on the Western Front<br>\nBeschrijving : A big gun going up in bad weather<br>\nAnnotatie : Slecht weer problemen aan het westelijk front. Een zwaar kanon wordt vervoerd bij slecht weer in de modder<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, militairen, modder<br>\nFotograaf : Central Press Ltd<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2842",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74525520": {
+    "pageid": 74525520,
+    "ns": 6,
+    "title": "File:A big gun going up, Bestanddeelnr 158-2824.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1123306,
+      "width": 3868,
+      "height": 2960,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg/1920px-A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1469,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg/3840px-A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg/1920px-A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1469,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg/3840px-A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/69/A_big_gun_going_up%2C_Bestanddeelnr_158-2824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_gun_going_up,_Bestanddeelnr_158-2824.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74525520",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big gun going up, Bestanddeelnr 158-2824",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A big gun going up<br>\nAnnotatie : Het front in Frankrijk. Vervoer van een zwaar kanon<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, soldaten<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2824",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74399549": {
+    "pageid": 74399549,
+    "ns": 6,
+    "title": "File:A big gun whose tractor has got in slight difficulty, Bestanddeelnr 158-0120.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1439203,
+      "width": 4348,
+      "height": 3272,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg/1920px-A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1445,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg/3840px-A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg/1920px-A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1445,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg/3840px-A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/A_big_gun_whose_tractor_has_got_in_slight_difficulty%2C_Bestanddeelnr_158-0120.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_gun_whose_tractor_has_got_in_slight_difficulty,_Bestanddeelnr_158-0120.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74399549",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big gun whose tractor has got in slight difficulty, Bestanddeelnr 158-0120",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : British advance in the West<br>\nBeschrijving : A big gun whose tractor has got in slight difficulty<br>\nAnnotatie : De Britse opmars in het Westen. Kanon waarvan de tractor in lichte moeilijkheden is gekomen<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, militairen, verwoestingen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0120",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74518079": {
+    "pageid": 74518079,
+    "ns": 6,
+    "title": "File:A big heap of empty ammunition boxes used by the Serbians, Bestanddeelnr 158-2492.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1102834,
+      "width": 3683,
+      "height": 2765,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg/1920px-A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1441,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/8/82/A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg/1920px-A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1441,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/8/82/A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians%2C_Bestanddeelnr_158-2492.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_big_heap_of_empty_ammunition_boxes_used_by_the_Serbians,_Bestanddeelnr_158-2492.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74518079",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A big heap of empty ammunition boxes used by the Serbians, Bestanddeelnr 158-2492",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Salonica front<br>\nBeschrijving : A big heap of empty ammunition boxes used by the Serbians<br>\nAnnotatie : Het front bij Saloniki. Een grote berg lege munitiekisten die door de Serviërs zijn gebruikt<br>\nDatum : {1914-1918}<br>\nLocatie : Griekenland, Saloniki<br>\nTrefwoorden : eerste wereldoorlog, fronten, munitiekisten<br>\nFotograaf : Central News<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2492",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74467806": {
+    "pageid": 74467806,
+    "ns": 6,
+    "title": "File:A Boch light railway smashed by our guns., Bestanddeelnr 158-1411.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1281877,
+      "width": 4441,
+      "height": 3361,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg/1920px-A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1453,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg/3840px-A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg/1920px-A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1453,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg/3840px-A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/A_Boch_light_railway_smashed_by_our_guns.%2C_Bestanddeelnr_158-1411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Boch_light_railway_smashed_by_our_guns.,_Bestanddeelnr_158-1411.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74467806",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Boch light railway smashed by our guns., Bestanddeelnr 158-1411",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The great <a href=\"https://en.wikipedia.org/wiki/Battle_of_Messines_(1917)\" class=\"extiw\" title=\"w:Battle of Messines (1917)\">battle of Messines Ridge</a><br>\nBeschrijving : A <a href=\"https://en.wikipedia.org/wiki/List_of_terms_used_for_Germans#Boche_(pejorative)\" class=\"extiw\" title=\"en:List of terms used for Germans\">Boch</a> (sic] light railway smashed by our guns.<br>\nAnnotatie : De slag om de heuvelrug van Mesen. Een door Engelse kanonnen kapotgeschoten Duitse lichte spoorlijn.<br>\nDatum : september 1916<br>\nLocatie : België<br>\nTrefwoorden : eerste wereldoorlog, fronten, spoorwegen, verwoestingen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1411",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1916-09",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74704606": {
+    "pageid": 74704606,
+    "ns": 6,
+    "title": "File:A Boche Colonel, a Major and an Adjutant, captured near St. Pierre Divion, Bestanddeelnr 158-2827.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1287135,
+      "width": 3652,
+      "height": 2800,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg/1920px-A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1472,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/c/ce/A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg/1920px-A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1472,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/c/ce/A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/A_Boche_Colonel%2C_a_Major_and_an_Adjutant%2C_captured_near_St._Pierre_Divion%2C_Bestanddeelnr_158-2827.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Boche_Colonel,_a_Major_and_an_Adjutant,_captured_near_St._Pierre_Divion,_Bestanddeelnr_158-2827.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74704606",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Boche Colonel, a Major and an Adjutant, captured near St. Pierre Divion, Bestanddeelnr 158-2827",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A Boche Colonel, a Major and an Adjutant, captured near St. Pierre Divion<br>\nAnnotatie : Het front in Frankrijk. Een Duitse Kolonel, een Majoor en een Adjudant, gevangengenomen bij St. Pierre Divion<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk, Sint Pierre Divion<br>\nTrefwoorden : eerste wereldoorlog, fronten, krijgsgevangenen, officieren<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2827",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74441724": {
+    "pageid": 74441724,
+    "ns": 6,
+    "title": "File:A Boche prisoner running back to get out of our shell fire, Bestanddeelnr 158-1003.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1471479,
+      "width": 3432,
+      "height": 4420,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg/1920px-A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 2473,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg/1920px-A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 2473,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire%2C_Bestanddeelnr_158-1003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Boche_prisoner_running_back_to_get_out_of_our_shell_fire,_Bestanddeelnr_158-1003.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74441724",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Boche prisoner running back to get out of our shell fire, Bestanddeelnr 158-1003",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front<br>\nBeschrijving : A Boche prisoner running back to get out of our shell fire<br>\nAnnotatie : Het Westelijk front. Duitse krijgsgevangene rent terug om het Engelse granaatvuur te ontwijken<br>\nDatum : {1914-1918}<br>\nTrefwoorden : beschietingen, eerste wereldoorlog, fronten, krijgsgevangenen<br>\nFotograaf : Central News<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1003",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74491480": {
+    "pageid": 74491480,
+    "ns": 6,
+    "title": "File:A bombing officer lobbing a Mills grenade, Bestanddeelnr 158-2200.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1529761,
+      "width": 2673,
+      "height": 3619,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg/1920px-A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 2600,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/6/64/A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg/1920px-A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 2600,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/6/64/A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/A_bombing_officer_lobbing_a_Mills_grenade%2C_Bestanddeelnr_158-2200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_bombing_officer_lobbing_a_Mills_grenade,_Bestanddeelnr_158-2200.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74491480",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A bombing officer lobbing a Mills grenade, Bestanddeelnr 158-2200",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British forces at Salonika<br>\nBeschrijving : A bombing officer \"lobbing\" a Mills grenade<br>\nAnnotatie : De Britse stijdkrachten te Saloniki. Britse officier werpt een Mills handgranaat<br>\nDatum : {1914-1918}<br>\nLocatie : Griekenland, Saloniki<br>\nTrefwoorden : eerste wereldoorlog, fronten, handgranaten, officieren<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2200",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74523565": {
+    "pageid": 74523565,
+    "ns": 6,
+    "title": "File:A brigade dump for provisions, Bestanddeelnr 158-2788.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 548962,
+      "width": 3874,
+      "height": 2984,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg/1920px-A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1479,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg/3840px-A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg/1920px-A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1479,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg/3840px-A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/A_brigade_dump_for_provisions%2C_Bestanddeelnr_158-2788.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_brigade_dump_for_provisions,_Bestanddeelnr_158-2788.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74523565",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A brigade dump for provisions, Bestanddeelnr 158-2788",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The western front. How Tommy is fed<br>\nBeschrijving : A brigade dump for provisions<br>\nAnnotatie : Het westelijke front. De voedselvoorziening van de soldaten. Voorrraadopslag van een brigade<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, voedselvoorziening<br>\nFotograaf : LNA<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2788",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74479104": {
+    "pageid": 74479104,
+    "ns": 6,
+    "title": "File:A Brigade Signal Unit., Bestanddeelnr 158-1802.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 394821,
+      "width": 3052,
+      "height": 1256,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg/1920px-A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 790,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/2/2c/A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg/1920px-A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 790,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/2/2c/A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/A_Brigade_Signal_Unit.%2C_Bestanddeelnr_158-1802.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Brigade_Signal_Unit.,_Bestanddeelnr_158-1802.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74479104",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Brigade Signal Unit., Bestanddeelnr 158-1802",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front<br>\nBeschrijving : A Brigade Signal Unit.<br>\nAnnotatie : Het Westelijk front. Brigade Britse Verbindingstroepen.<br>\nDatum : {1914-1918}<br>\nTrefwoorden : brigades, eerste wereldoorlog, fronten, verbindingstroepen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1802",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74408461": {
+    "pageid": 74408461,
+    "ns": 6,
+    "title": "File:A Brigadier and one of his Staff Officers in a ruined village, Bestanddeelnr 158-0259.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1302567,
+      "width": 4436,
+      "height": 3360,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg/1920px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1454,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg/3840px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg/1920px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1454,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg/3840px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-0259.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village,_Bestanddeelnr_158-0259.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74408461",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Brigadier and one of his Staff Officers in a ruined village, Bestanddeelnr 158-0259",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front<br>\nBeschrijving : A Brigadier and one of his Staff Officers in a ruined village<br>\nAnnotatie : Het Britse Westelijk Front. Brigadegeneraal met een stafofficier in een verwoest dorp<br>\nDatum : {1914-1918}<br>\nTrefwoorden : dorpen, eerste wereldoorlog, fronten, kerken, officieren, verwoestingen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0259",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74495104": {
+    "pageid": 74495104,
+    "ns": 6,
+    "title": "File:A Brigadier and one of his Staff Officers in a ruined village, Bestanddeelnr 158-1685.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 859082,
+      "width": 3912,
+      "height": 2952,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg/1920px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1449,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg/3840px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg/1920px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1449,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg/3840px-A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village%2C_Bestanddeelnr_158-1685.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Brigadier_and_one_of_his_Staff_Officers_in_a_ruined_village,_Bestanddeelnr_158-1685.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74495104",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Brigadier and one of his Staff Officers in a ruined village, Bestanddeelnr 158-1685",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front<br>\nBeschrijving : A Brigadier and one of his Staff Officers in a ruined village<br>\nAnnotatie : Het Britse Westelijk front. Een brigadegeneraal en een van zijn stafofficieren in een verwoesd dorp<br>\nDatum : {1914-1918}<br>\nTrefwoorden : dorpen, eerste wereldoorlog, fronten, officieren, verwoestingen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1685",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74524508": {
+    "pageid": 74524508,
+    "ns": 6,
+    "title": "File:A Brigadier- General enquires from these men in his Brigade what they had for di, Bestanddeelnr 158-2796.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1064354,
+      "width": 3870,
+      "height": 2989,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg/1920px-A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1483,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg/3840px-A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg/1920px-A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1483,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg/3840px-A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di%2C_Bestanddeelnr_158-2796.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Brigadier-_General_enquires_from_these_men_in_his_Brigade_what_they_had_for_di,_Bestanddeelnr_158-2796.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74524508",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Brigadier- General enquires from these men in his Brigade what they had for di, Bestanddeelnr 158-2796",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A Brigadier- General enquires from these men in his Brigade what they had for dinner today<br>\nAnnotatie : Het front in Frankrijk. Een brigadegeneraal vraagt aan deze mannen van zijn brigade wat ze die dag te eten krijgen<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, officieren, soldaten, voedselvoorziening<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2796",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "98574909": {
+    "pageid": 98574909,
+    "ns": 6,
+    "title": "File:A British dirigible moving along the coast, Bestanddeelnr 158-1374 (cropped).jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 471931,
+      "width": 2814,
+      "height": 2252,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg/1920px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1537,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/d/da/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg/1920px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1537,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/d/da/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_dirigible_moving_along_the_coast,_Bestanddeelnr_158-1374_(cropped).jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=98574909",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British dirigible moving along the coast, Bestanddeelnr 158-1374 (cropped)",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France. The German offensive<br>\nBeschrijving : A British dirigible moving along the coast<br>\nAnnotatie : Het Britse westelijke front in Frankrijk. Het Duitse offensief. Een Brits bestuurbaar luchtschip beweegt langs de kust<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kusten, luchtschepen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1374",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74467014": {
+    "pageid": 74467014,
+    "ns": 6,
+    "title": "File:A British dirigible moving along the coast, Bestanddeelnr 158-1374.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1011627,
+      "width": 4172,
+      "height": 3192,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg/1920px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1469,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg/3840px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg/1920px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1469,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg/3840px-A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/A_British_dirigible_moving_along_the_coast%2C_Bestanddeelnr_158-1374.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_dirigible_moving_along_the_coast,_Bestanddeelnr_158-1374.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74467014",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British dirigible moving along the coast, Bestanddeelnr 158-1374",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France. The German offensive<br>\nBeschrijving : A British dirigible moving along the coast<br>\nAnnotatie : Het Britse westelijke front in Frankrijk. Het Duitse offensief. Een Brits bestuurbaar luchtschip beweegt langs de kust<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kusten, luchtschepen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1374",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74521880": {
+    "pageid": 74521880,
+    "ns": 6,
+    "title": "File:A British Military Tyre Press in France showing a Tyre being forced on a lorry w, Bestanddeelnr 158-2736.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 662296,
+      "width": 3448,
+      "height": 2243,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg/1920px-A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1249,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/c/c8/A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg/1920px-A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1249,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/c/c8/A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w%2C_Bestanddeelnr_158-2736.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_Military_Tyre_Press_in_France_showing_a_Tyre_being_forced_on_a_lorry_w,_Bestanddeelnr_158-2736.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74521880",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British Military Tyre Press in France showing a Tyre being forced on a lorry w, Bestanddeelnr 158-2736",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France<br>\nBeschrijving : A British Military Tyre Press in France showing a Tyre being forced on a lorry wheel by hydraulic pressure<br>\nAnnotatie : Het Britse westelijke front in Frankrijk. Een Britse militaire bandpers in Frankrijk toont een band die om het wlel van een vrachtwagen wordt gelegd<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : banden, eerste wereldoorlog, fronten, militairen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2736",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "98575647": {
+    "pageid": 98575647,
+    "ns": 6,
+    "title": "File:A British soldier with French children, Bestanddeelnr 158-2323 (cropped).jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 485239,
+      "width": 2363,
+      "height": 1889,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg/1920px-A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1535,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/f/ff/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg/1920px-A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1535,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/f/ff/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_soldier_with_French_children,_Bestanddeelnr_158-2323_(cropped).jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=98575647",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British soldier with French children, Bestanddeelnr 158-2323 (cropped)",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front<br>\nBeschrijving : A British soldier with French children<br>\nAnnotatie : Het Britse Westelijk front. Een Britse soldaat met Franse kinderen<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kinderen, soldaten<br>\nFotograaf : Alfieri<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2323",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74513638": {
+    "pageid": 74513638,
+    "ns": 6,
+    "title": "File:A British soldier with French children, Bestanddeelnr 158-2323.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 793150,
+      "width": 2986,
+      "height": 3927,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg/1920px-A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 2525,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/0/07/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg/1920px-A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 2525,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/0/07/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/A_British_soldier_with_French_children%2C_Bestanddeelnr_158-2323.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_soldier_with_French_children,_Bestanddeelnr_158-2323.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74513638",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British soldier with French children, Bestanddeelnr 158-2323",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front<br>\nBeschrijving : A British soldier with French children<br>\nAnnotatie : Het Britse Westelijk front. Een Britse soldaat met Franse kinderen<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, kinderen, soldaten<br>\nFotograaf : Alfieri<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2323",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74443916": {
+    "pageid": 74443916,
+    "ns": 6,
+    "title": "File:A British Tommy helping a German carry a German wounded man through the trenches, Bestanddeelnr 158-1039.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 2565183,
+      "width": 4420,
+      "height": 3424,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg/1920px-A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1487,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg/3840px-A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg/1920px-A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1487,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg/3840px-A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches%2C_Bestanddeelnr_158-1039.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_British_Tommy_helping_a_German_carry_a_German_wounded_man_through_the_trenches,_Bestanddeelnr_158-1039.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74443916",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A British Tommy helping a German carry a German wounded man through the trenches, Bestanddeelnr 158-1039",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A British Tommy helping a German carry a German wounded man through the trenches<br>\nAnnotatie : Het front in Frankrijk. Britse soldaat helpt een Duitser bij het dragen van een gewonde Duitse soldaat door de loopgraven<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, gewonden, loopgraven, soldaten<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1039",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74459521": {
+    "pageid": 74459521,
+    "ns": 6,
+    "title": "File:A burial service at the front. Funeral of Major E.L. Knight, Eaton Motor Machine, Bestanddeelnr 158-1133.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1601156,
+      "width": 4508,
+      "height": 3344,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg/1920px-A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1424,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg/3840px-A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg/1920px-A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1424,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg/3840px-A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight%2C_Eaton_Motor_Machine%2C_Bestanddeelnr_158-1133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_burial_service_at_the_front._Funeral_of_Major_E.L._Knight,_Eaton_Motor_Machine,_Bestanddeelnr_158-1133.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74459521",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A burial service at the front. Funeral of Major E.L. Knight, Eaton Motor Machine, Bestanddeelnr 158-1133",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : At the front<br>\nBeschrijving : A burial service at the front. Funeral of Major E.L. Knight, Eaton Motor Machine Gun Company<br>\nAnnotatie : Aan het front. Canadese militairen bij de begrafenis van majoor E.L. Knight van de Eaton gemotoriseerde Machinegeweer eenheid . Ernaast ligt begraven de Canadese militair J.W. Robinson<br>\nDatum : september 1916<br>\nTrefwoorden : eerste wereldoorlog, fronten, gesneuvelden, militairen, oorlogsgraven<br>\nPersoonsnaam : Knight, EL, Robinson, JW<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1133",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "1916-09",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74706303": {
+    "pageid": 74706303,
+    "ns": 6,
+    "title": "File:A busy little railway bringing up supplies for the troops, Bestanddeelnr 158-2856.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1435979,
+      "width": 3884,
+      "height": 2996,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg/1920px-A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1481,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg/3840px-A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg/1920px-A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1481,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg/3840px-A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/A_busy_little_railway_bringing_up_supplies_for_the_troops%2C_Bestanddeelnr_158-2856.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_busy_little_railway_bringing_up_supplies_for_the_troops,_Bestanddeelnr_158-2856.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74706303",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A busy little railway bringing up supplies for the troops, Bestanddeelnr 158-2856",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British front<br>\nBeschrijving : A busy little railway bringing up supplies for the troops<br>\nAnnotatie : Het Britse front. Met een smalspoortreintje worden voorraden voor de troepen aangevoerd<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : eerste wereldoorlog, fronten, spoorwegen, voorraden<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2856",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74440470": {
+    "pageid": 74440470,
+    "ns": 6,
+    "title": "File:A busy scene at a watering point for horses, Bestanddeelnr 158-0962.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1361451,
+      "width": 4380,
+      "height": 3400,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg/1920px-A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1490,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg/3840px-A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg/1920px-A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1490,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg/3840px-A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/A_busy_scene_at_a_watering_point_for_horses%2C_Bestanddeelnr_158-0962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_busy_scene_at_a_watering_point_for_horses,_Bestanddeelnr_158-0962.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74440470",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A busy scene at a watering point for horses, Bestanddeelnr 158-0962",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A busy scene at a watering point for horses<br>\nAnnotatie : Het front in Frankrijk. Drukte bij een drinkplaats voor paarden<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : drinkwatervoorziening, eerste wereldoorlog, fronten, paarden<br>\nFotograaf : Topical Press Agency<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0962",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74483872": {
+    "pageid": 74483872,
+    "ns": 6,
+    "title": "File:A busy scene on a road., Bestanddeelnr 158-1862.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 805298,
+      "width": 3660,
+      "height": 2760,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg/1920px-A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1448,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/8/8e/A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg/1920px-A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1448,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/8/8e/A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/A_busy_scene_on_a_road.%2C_Bestanddeelnr_158-1862.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_busy_scene_on_a_road.,_Bestanddeelnr_158-1862.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74483872",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A busy scene on a road., Bestanddeelnr 158-1862",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British Western front in France. The German offensive<br>\nBeschrijving : A busy scene on a road.<br>\nAnnotatie : Het Britse Westelijk front in Frankrijk. Het Duitse offensief. Bedrijvigheid op een weg.<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk<br>\nTrefwoorden : aanvallen, eerste wereldoorlog, fronten, militairen, wegen<br>\nFotograaf : Associated Illustration Agencies#<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1862",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74520640": {
+    "pageid": 74520640,
+    "ns": 6,
+    "title": "File:A busy scene on the fore-castle of a battleship. The men are wearing the summer , Bestanddeelnr 158-2674.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1014185,
+      "width": 3893,
+      "height": 3013,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg/1920px-A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1486,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg/3840px-A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg/1920px-A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1486,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg/3840px-A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_%2C_Bestanddeelnr_158-2674.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_busy_scene_on_the_fore-castle_of_a_battleship._The_men_are_wearing_the_summer_,_Bestanddeelnr_158-2674.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74520640",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A busy scene on the fore-castle of a battleship. The men are wearing the summer , Bestanddeelnr 158-2674",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : Official naval photographs<br>\nBeschrijving : A busy scene on the fore-castle of a battleship. The men are wearing the summer kit<br>\nAnnotatie : Officiële marine foto's. Drukte op de voorplecht van een slagschip. De manschappen dragen de zomeruitrusting<br>\nDatum : {1914-1918}<br>\nTrefwoorden : bemanningen, eerste wereldoorlog, oorlogsschepen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2674",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74516335": {
+    "pageid": 74516335,
+    "ns": 6,
+    "title": "File:A busy scene on the road, Bestanddeelnr 158-2402.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 987535,
+      "width": 3840,
+      "height": 3000,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg/1920px-A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1500,
+      "responsiveUrls": {
+       "2": "https://upload.wikimedia.org/wikipedia/commons/c/c2/A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg/1920px-A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1500,
+       "srcset": "https://upload.wikimedia.org/wikipedia/commons/c/c2/A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/A_busy_scene_on_the_road%2C_Bestanddeelnr_158-2402.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_busy_scene_on_the_road,_Bestanddeelnr_158-2402.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74516335",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A busy scene on the road, Bestanddeelnr 158-2402",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The British advance in the West<br>\nBeschrijving : A busy scene on the road<br>\nAnnotatie : De Britse opmars in het Westen. Drukte langs de weg<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kolonnes, soldaten, wegen<br>\nFotograaf : [onbekend]<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2402",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74410912": {
+    "pageid": 74410912,
+    "ns": 6,
+    "title": "File:A camp near the Somme, Bestanddeelnr 158-0414.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1593818,
+      "width": 4388,
+      "height": 3408,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg/1920px-A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1491,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg/3840px-A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg/1920px-A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1491,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg/3840px-A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/A_camp_near_the_Somme%2C_Bestanddeelnr_158-0414.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_camp_near_the_Somme,_Bestanddeelnr_158-0414.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74410912",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A camp near the Somme, Bestanddeelnr 158-0414",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The front in France<br>\nBeschrijving : A camp near the Somme<br>\nAnnotatie : Het front in Frankrijk. Een kampement bij de Somme<br>\nDatum : {1914-1918}<br>\nLocatie : Frankrijk, Somme<br>\nTrefwoorden : eerste wereldoorlog, fronten, kampement, militairen<br>\nFotograaf : Central Press Ltd<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0414",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74447324": {
+    "pageid": 74447324,
+    "ns": 6,
+    "title": "File:A Canadian heavy howitzer in acton during the great battle. Note the charge leav, Bestanddeelnr 158-1101.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1304574,
+      "width": 4428,
+      "height": 3440,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg/1920px-A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1492,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg/3840px-A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg/1920px-A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1492,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg/3840px-A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav%2C_Bestanddeelnr_158-1101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Canadian_heavy_howitzer_in_acton_during_the_great_battle._Note_the_charge_leav,_Bestanddeelnr_158-1101.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74447324",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Canadian heavy howitzer in acton during the great battle. Note the charge leav, Bestanddeelnr 158-1101",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : With the Canadians in the great battle<br>\nBeschrijving : A Canadian heavy howitzer in acton during the great battle. Note the charge leaving the muzzle<br>\nAnnotatie : Bij de Canadezen in de grote slag. Een Canadese houwitser gedurende de grote slag. Het moment dat de lading de vuurmond verlaat<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, veldslagen<br>\nFotograaf : Central Press Ltd<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-1101",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74487010": {
+    "pageid": 74487010,
+    "ns": 6,
+    "title": "File:A Canadian Scottie helps a motor machine gun man of a difficulty., Bestanddeelnr 158-2010.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 875695,
+      "width": 3864,
+      "height": 2998,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg/1920px-A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1490,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg/3840px-A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg/1920px-A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1490,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg/3840px-A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.%2C_Bestanddeelnr_158-2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Canadian_Scottie_helps_a_motor_machine_gun_man_of_a_difficulty.,_Bestanddeelnr_158-2010.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74487010",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A Canadian Scottie helps a motor machine gun man of a difficulty., Bestanddeelnr 158-2010",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : [ onbekend ]<br>\nBeschrijving : A Canadian Scottie helps a motor machine gun man of a difficulty.<br>\nAnnotatie : Een Canadese 'Scottie' helpt een soldaat op een motorfiets met aanduwen in de modder.<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, modder, motorfietsen, soldaten, vervoermiddelen<br>\nFotograaf : Alfieri<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2010",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74401353": {
+    "pageid": 74401353,
+    "ns": 6,
+    "title": "File:A CANTEEN AT THE WAR BOND FRONT. Wounded Tommies just returned from the fro…, Bestanddeelnr 158-0027.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1252011,
+      "width": 4348,
+      "height": 3328,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg/1920px-A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1470,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg/3840px-A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg/1920px-A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1470,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg/3840px-A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6%2C_Bestanddeelnr_158-0027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_CANTEEN_AT_THE_WAR_BOND_FRONT._Wounded_Tommies_just_returned_from_the_fro%E2%80%A6,_Bestanddeelnr_158-0027.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74401353",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A CANTEEN AT THE WAR BOND FRONT. Wounded Tommies just returned from the fro…, Bestanddeelnr 158-0027",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : [ onbekend ]<br>\nBeschrijving : A CANTEEN AT THE WAR BOND FRONT. Wounded \"Tommies\" just returned [from] the front line at Trafalgar Square refresh themselves at the Y.M.C.A. dug-out while they discuss the all round advantages of investing spare cash in War Bonds.<br>\nAnnotatie : Bij een koffietent aan het oorlogsobligaties front. Gewonde Engelse mlitairen [teruggekeerd van] het front op Trafalger Square, Londen bij de YMCA koffietent, sprekend over de voordelen van het beleggen van spaargeld in oorlogsobligaties. [Betreft hier voornamelijk ANZAC militairen...]<br>\nDatum : {1914-1918}<br>\nLocatie : Groot-Brittannië, Londen<br>\nTrefwoorden : eerste wereldoorlog, oorlogsobligaties, soldaten, thuisfronten<br>\nFotograaf : Daily Mirror<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0027",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74420245": {
+    "pageid": 74420245,
+    "ns": 6,
+    "title": "File:A captured German gun position under the ground, Bestanddeelnr 158-0749.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1596020,
+      "width": 4388,
+      "height": 3392,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg/1920px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1484,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg/3840px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg/1920px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1484,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg/3840px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-0749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_captured_German_gun_position_under_the_ground,_Bestanddeelnr_158-0749.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74420245",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A captured German gun position under the ground, Bestanddeelnr 158-0749",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front<br>\nBeschrijving : A captured German gun position under the ground<br>\nAnnotatie : Het Westelijk front. Een veroverde Duitse ondergrondse kanon opstelplaats<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, oorlogsbuit<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-0749",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74516361": {
+    "pageid": 74516361,
+    "ns": 6,
+    "title": "File:A captured German gun position under the ground, Bestanddeelnr 158-2405.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1021853,
+      "width": 3923,
+      "height": 3035,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg/1920px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1485,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg/3840px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg/1920px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1485,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg/3840px-A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/A_captured_German_gun_position_under_the_ground%2C_Bestanddeelnr_158-2405.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_captured_German_gun_position_under_the_ground,_Bestanddeelnr_158-2405.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74516361",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A captured German gun position under the ground, Bestanddeelnr 158-2405",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The Western front<br>\nBeschrijving : A captured German gun position under the ground<br>\nAnnotatie : Het Westelijk front. Een veroverde Duitse ondergrondse kanon opstelplaats<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonopstelplaatsen, soldaten, veroveringen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2405",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   },
+   "74512881": {
+    "pageid": 74512881,
+    "ns": 6,
+    "title": "File:A captured German gun. Half its shield has been destroyed owing to a direct hit , Bestanddeelnr 158-2317.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "size": 1083593,
+      "width": 3889,
+      "height": 3022,
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg/1920px-A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1920,
+      "thumbheight": 1492,
+      "responsiveUrls": {
+       "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg/3840px-A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg/1920px-A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+       "decoding": "async",
+       "loading": "lazy",
+       "width": 1920,
+       "height": 1492,
+       "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg/3840px-A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_%2C_Bestanddeelnr_158-2317.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_captured_German_gun._Half_its_shield_has_been_destroyed_owing_to_a_direct_hit_,_Bestanddeelnr_158-2317.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=74512881",
+      "extmetadata": {
+       "ObjectName": {
+        "value": "A captured German gun. Half its shield has been destroyed owing to a direct hit , Bestanddeelnr 158-2317",
+        "source": "mediawiki-metadata"
+       },
+       "ImageDescription": {
+        "value": "Collectie / Archief : Fotocollectie Eerste Wereldoorlog<br>\n<p>Reportage / Serie : The great British advance in the west<br>\nBeschrijving : A captured German gun. Half its shield has been destroyed owing to a direct hit by our artillery<br>\nAnnotatie : De grote Britse opmars in het Westen. Een veroverd Duits kanon. De helft van het schild is verwoest dankzij een directe treffer van onze artillerie<br>\nDatum : {1914-1918}<br>\nTrefwoorden : eerste wereldoorlog, fronten, kanonnen, oorlogsbuit, verwoestingen<br>\nFotograaf : The Press Bureau<br>\nAuteursrechthebbende : Public Domain logo<br>\nMateriaalsoort : Foto (zwart/wit)<br>\nNummer archiefinventaris : bekijk toegang 2.24.09<br>\n</p>\nBestanddeelnummer : 158-2317",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "tussen 1914 en 1918<div style=\"display: none;\">date QS:P,+1914-00-00T00:00:00Z/8,P1319,+1914-00-00T00:00:00Z/9,P1326,+1918-00-00T00:00:00Z/9</div>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "Nationaal Archief",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}
