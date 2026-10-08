@@ -44,6 +44,8 @@ class SlideshowController(
     root: View,
     private val scope: CoroutineScope,
     private val forcedProgram: Program? = null,
+    /** In het voorbeeld (niet de screensaver) mag je sfeerclips wegstemmen en doorspoelen. */
+    private val isPreview: Boolean = false,
 ) {
     private val context = root.context
     private val settings = Settings(context)
@@ -83,7 +85,9 @@ class SlideshowController(
         Mode.ART to ArtSource(context),
         Mode.AERIALS to AerialSource(context),
         Mode.PHOTOS to PhotoSource(context),
+        Mode.AMBIENT to AmbientSource(context),
     )
+    private var currentClipId: String? = null
 
     private val skip = Channel<Unit>(Channel.CONFLATED)
     private val musicVisible = MutableStateFlow(false)
@@ -155,6 +159,19 @@ class SlideshowController(
             if (up) skip.trySend(Unit)
             return true
         }
+        val clip = currentClipId
+        if (!inScreensaver && clip != null && event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+            if (up) {
+                settings.blockedClips = settings.blockedClips + clip
+                showStatus("Weggestemd: deze clip komt niet meer terug")
+                scope.launch {
+                    delay(2_500)
+                    hideStatus()
+                }
+                skip.trySend(Unit)
+            }
+            return true
+        }
         return false
     }
 
@@ -167,6 +184,7 @@ class SlideshowController(
                 forcedProgram ?: settings.program,
                 settings.customModes,
                 hasPhotos = library.items().isNotEmpty(),
+                hasAmbient = settings.hasAmbientKeys,
             )
             quiet = plan.quiet
             for ((mode, count) in plan.rotation) {
@@ -225,7 +243,7 @@ class SlideshowController(
     }
 
     private suspend fun playUntilEnd(slide: Slide.Video, mode: Mode, url: String): Boolean =
-        withTimeoutOrNull(MAX_VIDEO_MS) {
+        withTimeoutOrNull(slide.playForMs ?: MAX_VIDEO_MS) {
             suspendCancellableCoroutine { continuation ->
                 var skipJob: Job? = null
                 lateinit var listener: Player.Listener
@@ -268,11 +286,14 @@ class SlideshowController(
                     }
                 }
                 player.addListener(listener)
+                // Sfeerclips duren vaak maar 10 tot 30 seconden: in een lus tot de tijd om is.
+                player.repeatMode = if (slide.playForMs != null) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
+                currentClipId = slide.clipId
                 player.setMediaItem(MediaItem.fromUri(url))
                 player.prepare()
                 player.play()
             }
-        } ?: true // Te lange video: na de maximale tijd gewoon door naar de volgende.
+        }.also { currentClipId = null } ?: true // Tijd om: gewoon door naar de volgende.
 
     private suspend fun waitOrSkip(ms: Long) {
         withTimeoutOrNull(ms) { skip.receive() }
@@ -291,11 +312,16 @@ class SlideshowController(
             Mode.ART -> "KUNST · " + ((slide as? Slide.Image)?.source ?: "MUSEUM").uppercase()
             Mode.AERIALS -> "LUCHTOPNAME"
             Mode.PHOTOS -> if (slide is Slide.Video) "MIJN VIDEO'S" else "MIJN FOTO'S"
+            Mode.AMBIENT -> "SFEER"
         }
         captionTitle.text = slide.title
         captionSubtitle.text = slide.subtitle.orEmpty()
         captionSubtitle.visibility = if (slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE
-        val body = slide.body.takeIf { settings.showCaptions }
+        val body = if (isPreview && slide is Slide.Video && slide.clipId != null) {
+            "▼  niet meer tonen      ▶  volgende"
+        } else {
+            slide.body.takeIf { settings.showCaptions }
+        }
         captionBody.text = body.orEmpty()
         captionBody.visibility = if (body.isNullOrBlank()) View.GONE else View.VISIBLE
     }

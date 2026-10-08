@@ -13,14 +13,13 @@ import java.io.InputStream
  * met daarin entries.json; dat lezen we uit en bewaren we als reservekopie.
  */
 class AerialSource(context: Context) : SlideSource {
+    private val picker = FreshPicker(context, "aerials")
     private val cacheFile = File(context.cacheDir, "aerials-entries.json")
     private var all: List<Slide.Video>? = null
-    private val queue = ArrayDeque<Slide.Video>()
 
     override suspend fun next(): Slide? {
         val videos = all ?: load().also { all = it }
-        if (queue.isEmpty()) queue.addAll(videos.shuffled())
-        return queue.removeFirstOrNull()
+        return picker.pick(videos, { it.url })
     }
 
     private suspend fun load(): List<Slide.Video> = withContext(Dispatchers.IO) {

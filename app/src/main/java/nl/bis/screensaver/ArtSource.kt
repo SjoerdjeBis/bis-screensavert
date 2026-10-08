@@ -53,13 +53,12 @@ object ArtCollection {
     }
 }
 
-/** Toont elk werk één keer per ronde, in willekeurige volgorde. */
+/** Kiest steeds een werk dat je de laatste tijd niet zag, en niet twee keer dezelfde kunstenaar na elkaar. */
 class ArtSource(private val context: Context) : SlideSource {
-    private val queue = ArrayDeque<Artwork>()
+    private val picker = FreshPicker(context, "kunst")
 
     override suspend fun next(): Slide? {
-        if (queue.isEmpty()) queue.addAll(ArtCollection.load(context).shuffled())
-        val art = queue.removeFirstOrNull() ?: return null
+        val art = picker.pick(ArtCollection.load(context), { it.id }, { it.artist }) ?: return null
         return Slide.Image(
             url = art.imageUrl,
             fallbackUrl = art.fallbackUrl,

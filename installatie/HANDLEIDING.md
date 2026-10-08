@@ -42,7 +42,8 @@ deze computer** aan en kies **Toestaan**. Het script doet de rest:
 - de app installeren;
 - hem instellen als screensaver;
 - de app laten zien wat Spotify afspeelt (voor het muziekscherm);
-- als je wilt: Google Foto's koppelen. Dat kan ook later; zie **GOOGLE-FOTOS.md**.
+- als je wilt: Google Foto's koppelen. Dat kan ook later; zie **GOOGLE-FOTOS.md**;
+- als je wilt: sfeerbeelden van Pexels en Pixabay koppelen; zie **SFEER.md**.
 
 Aan het eind kun je de screensaver meteen testen.
 
@@ -56,6 +57,10 @@ Aan het eind kun je de screensaver meteen testen.
 - **Muziek:** speelt Spotify op de tv, dan toont de screensaver hoes, titel en foto's van de
   artiest. Met de afstandsbediening: **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
   Elke andere knop maakt de tv wakker.
+- **Sfeer:** haardvuur, regen, zee, sterren en meer. In het voorbeeld stem je een clip weg met **▼**.
+- **Sfeerlijst:** opent je YouTube-afspeellijst in SmartTube.
+- **Geen herhalingen:** wat je de laatste tijd zag, komt niet snel terug, ook niet na een
+  herstart, en kunst van dezelfde kunstenaar komt niet twee keer achter elkaar.
 - **Instellingen** staan onderaan het keuzescherm: tijd per beeld, uitleg bij kunst, klok,
   eigen mix en of muziek het scherm mag overnemen.
 

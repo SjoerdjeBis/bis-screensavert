@@ -7,6 +7,7 @@ enum class Mode(val key: String, val label: String) {
     ART("kunst", "Kunst"),
     AERIALS("aerials", "Luchtopnames"),
     PHOTOS("fotos", "Mijn foto's & video's"),
+    AMBIENT("sfeer", "Sfeer"),
 }
 
 /** De keuzes op het keuzescherm. */
@@ -14,6 +15,7 @@ enum class Program(val key: String, val title: String) {
     SMART("slim", "Slimme mix"),
     ART("kunst", "Kunst"),
     AERIALS("aerials", "Luchtopnames"),
+    AMBIENT("sfeer", "Sfeer"),
     PHOTOS("fotos", "Mijn foto's & video's"),
     CUSTOM("eigen", "Eigen mix"),
 }
@@ -61,7 +63,35 @@ class Settings(context: Context) {
         get() = prefs.getString("google_refresh_token", null)
         set(value) = prefs.edit().putString("google_refresh_token", value).apply()
 
+    var pexelsKey: String?
+        get() = prefs.getString("pexels_key", null)
+        set(value) = prefs.edit().putString("pexels_key", value).apply()
+
+    var pixabayKey: String?
+        get() = prefs.getString("pixabay_key", null)
+        set(value) = prefs.edit().putString("pixabay_key", value).apply()
+
+    val hasAmbientKeys get() = !pexelsKey.isNullOrBlank() || !pixabayKey.isNullOrBlank()
+
+    /** Thema's die aan staan; standaard alle. */
+    var ambientThemes: Set<AmbientTheme>
+        get() {
+            val keys = prefs.getStringSet("sfeer_themas", null) ?: return AmbientTheme.entries.toSet()
+            return AmbientTheme.entries.filter { it.key in keys }.toSet()
+        }
+        set(value) = prefs.edit().putStringSet("sfeer_themas", value.map { it.key }.toSet()).apply()
+
+    /** Clips die je hebt weggestemd ("bron:id"). */
+    var blockedClips: Set<String>
+        get() = prefs.getStringSet("weggestemd", null).orEmpty()
+        set(value) = prefs.edit().putStringSet("weggestemd", value).apply()
+
+    var smartTubePlaylist: String
+        get() = prefs.getString("smarttube_lijst", null) ?: DEFAULT_PLAYLIST
+        set(value) = prefs.edit().putString("smarttube_lijst", value).apply()
+
     companion object {
-        val SLIDE_SECONDS_OPTIONS = listOf(20, 45, 90, 180)
+        val SLIDE_SECONDS_OPTIONS = listOf(20, 30, 45, 60, 90, 120, 180, 300)
+        const val DEFAULT_PLAYLIST = "PLda8vj-D2CNsgAYRi18ZZ2u3fJyAdqqTG"
     }
 }

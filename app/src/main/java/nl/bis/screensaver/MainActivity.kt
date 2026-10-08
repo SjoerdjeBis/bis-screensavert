@@ -1,6 +1,9 @@
 package nl.bis.screensaver
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import android.os.Bundle
 import android.provider.Settings.Secure
 import androidx.activity.ComponentActivity
@@ -10,6 +13,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -101,19 +107,27 @@ class MainActivity : ComponentActivity() {
         val latestPhoto = media.filter { !it.isVideo }.maxByOrNull { it.createdAt }?.let { library.file(it) }
         val screensaverActive = remember(refreshKey) { isActiveScreensaver() }
         val hour = remember(refreshKey) { Calendar.getInstance().get(Calendar.HOUR_OF_DAY) }
+        val hasAmbient = remember(refreshKey) { settings.hasAmbientKeys }
+        var smartTubeFocused by remember { mutableStateOf(false) }
 
         fun summary(p: Program) = when (p) {
-            Program.SMART -> SmartMix.plan(p, customModes, media.isNotEmpty(), hour).summary
+            Program.SMART -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
             Program.ART -> "${art.size} kunstwerken uit ${art.map { it.museum }.distinct().size} musea, elk met een korte Nederlandse toelichting."
             Program.AERIALS -> "De luchtopnames van de Apple TV: steden, kusten en bergen van bovenaf."
             Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's toe te voegen."
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
-            Program.CUSTOM -> SmartMix.plan(p, customModes, media.isNotEmpty(), hour).summary
+            Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
+            else "Nog niet gekoppeld: draai het installatiescript en vul je gratis Pexels- en Pixabay-sleutels in."
+            Program.CUSTOM -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
         }
 
         fun choose(p: Program) {
             if (p == Program.PHOTOS && media.isEmpty()) {
                 startActivity(Intent(this, PhotosActivity::class.java))
+                return
+            }
+            if (p == Program.AMBIENT && !hasAmbient) {
+                startActivity(Intent(this, AmbientActivity::class.java))
                 return
             }
             program = p
@@ -146,6 +160,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
+                        Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
                         Program.SMART -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawSky(this, hour) }
                     }
                 }
@@ -173,7 +188,7 @@ class MainActivity : ComponentActivity() {
                 Text("Wat wil je zien?", style = Bis.heading(40.sp))
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    summary(focused),
+                    if (smartTubeFocused) "Opent je afspeellijst in SmartTube. Met Terug kom je hier weer uit." else summary(focused),
                     style = Bis.body(15.sp, color = Bis.Room.copy(alpha = 0.85f)),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
@@ -181,14 +196,21 @@ class MainActivity : ComponentActivity() {
                 )
 
                 Spacer(Modifier.height(18.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Program.entries.forEach { p ->
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(vertical = 12.dp, horizontal = 6.dp),
+                ) {
+                    items(Program.entries) { p ->
                         ProgramCard(
-                            program = p,
+                            title = p.title,
                             active = p == program,
-                            status = cardStatus(p, art.size, photoCount, videoCount, customModes),
+                            recommended = p == Program.SMART,
+                            status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient),
                             modifier = if (p == settings.program) Modifier.focusRequester(firstFocus) else Modifier,
-                            onFocus = { focused = p },
+                            onFocus = {
+                                focused = p
+                                smartTubeFocused = false
+                            },
                             onClick = { choose(p) },
                         ) {
                             when (p) {
@@ -212,8 +234,22 @@ class MainActivity : ComponentActivity() {
                                         Text("+", style = Bis.heading(44.sp, Bis.Boter))
                                     }
                                 }
+                                Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
                                 Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
                             }
+                        }
+                    }
+                    item {
+                        ProgramCard(
+                            title = "Sfeerlijst",
+                            active = false,
+                            recommended = false,
+                            status = "Je YouTube-afspeellijst, in SmartTube",
+                            modifier = Modifier,
+                            onFocus = { smartTubeFocused = true },
+                            onClick = { openSmartTube(settings.smartTubePlaylist) },
+                        ) {
+                            Canvas(Modifier.fillMaxSize()) { drawPlaylist(this) }
                         }
                     }
                 }
@@ -221,49 +257,95 @@ class MainActivity : ComponentActivity() {
                 Spacer(Modifier.weight(1f))
                 Text("INSTELLINGEN", style = Bis.eyebrow(Bis.RoomDim))
                 Spacer(Modifier.height(10.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    FocusPill(
-                        text = musicLabel(musicTakesOver, nowPlaying, music.hasAccess),
-                        accent = if (!music.hasAccess) Bis.Boter else null,
-                        onClick = {
-                            musicTakesOver = !musicTakesOver
-                            settings.musicTakesOver = musicTakesOver
-                        },
-                    )
-                    FocusPill("Tijd per beeld: $slideSeconds s", onClick = {
-                        val options = Settings.SLIDE_SECONDS_OPTIONS
-                        slideSeconds = options[(options.indexOf(slideSeconds) + 1) % options.size]
-                        settings.slideSeconds = slideSeconds
-                    })
-                    FocusPill("Uitleg bij kunst: ${if (showCaptions) "aan" else "uit"}", onClick = {
-                        showCaptions = !showCaptions
-                        settings.showCaptions = showCaptions
-                    })
-                    FocusPill("Klok: ${if (showClock) "aan" else "uit"}", onClick = {
-                        showClock = !showClock
-                        settings.showClock = showClock
-                    })
-                    FocusPill("Eigen mix: ${customLabel(customModes)}", onClick = {
-                        customModes = nextCustomMix(customModes)
-                        settings.customModes = customModes
-                    })
-                    FocusPill("Foto's beheren", onClick = {
-                        startActivity(Intent(this@MainActivity, PhotosActivity::class.java))
-                    })
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
+                ) {
+                    item {
+                        FocusPill(
+                            text = musicLabel(musicTakesOver, nowPlaying, music.hasAccess),
+                            accent = if (!music.hasAccess) Bis.Boter else null,
+                            onClick = {
+                                musicTakesOver = !musicTakesOver
+                                settings.musicTakesOver = musicTakesOver
+                            },
+                        )
+                    }
+                    item {
+                        FocusPill("Tijd per beeld: ${secondsLabel(slideSeconds)}", onClick = {
+                            val options = Settings.SLIDE_SECONDS_OPTIONS
+                            slideSeconds = options[(options.indexOf(slideSeconds) + 1) % options.size]
+                            settings.slideSeconds = slideSeconds
+                        })
+                    }
+                    item {
+                        FocusPill("Uitleg bij kunst: ${if (showCaptions) "aan" else "uit"}", onClick = {
+                            showCaptions = !showCaptions
+                            settings.showCaptions = showCaptions
+                        })
+                    }
+                    item {
+                        FocusPill("Klok: ${if (showClock) "aan" else "uit"}", onClick = {
+                            showClock = !showClock
+                            settings.showClock = showClock
+                        })
+                    }
+                    item {
+                        FocusPill("Eigen mix: ${customLabel(customModes)}", onClick = {
+                            customModes = nextCustomMix(customModes)
+                            settings.customModes = customModes
+                        })
+                    }
+                    item {
+                        FocusPill("Sfeerthema's", onClick = {
+                            startActivity(Intent(this@MainActivity, AmbientActivity::class.java))
+                        })
+                    }
+                    item {
+                        FocusPill("Foto's beheren", onClick = {
+                            startActivity(Intent(this@MainActivity, PhotosActivity::class.java))
+                        })
+                    }
                 }
                 Spacer(Modifier.height(14.dp))
                 Text(
-                    "OK op een kaart start hem meteen en maakt hem je screensaver. Speelt er muziek, dan bedien je die in de screensaver met ◀ OK ▶.",
+                    "OK op een kaart start hem meteen en maakt hem je screensaver. In het voorbeeld: ▶ volgende, ▼ sfeerclip wegstemmen. Muziek bedien je met ◀ OK ▶.",
                     style = Bis.body(11.sp, color = Bis.RoomDim),
                 )
             }
         }
     }
 
+    /** Opent de afspeellijst in SmartTube; valt terug op elke app die YouTube-links opent. */
+    private fun openSmartTube(playlist: String) {
+        val uri = Uri.parse("https://www.youtube.com/playlist?list=$playlist")
+        for (pkg in SMARTTUBE_PACKAGES) {
+            if (packageManager.getLaunchIntentForPackage(pkg) == null) continue
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(pkg).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                return
+            } catch (e: ActivityNotFoundException) {
+                // Deze versie opent geen links; dan de app gewoon starten.
+                packageManager.getLaunchIntentForPackage(pkg)?.let {
+                    startActivity(it)
+                    Toast.makeText(this, "SmartTube opent geen afspeellijsten via een link. Zoek de lijst in de bibliotheek.", Toast.LENGTH_LONG).show()
+                    return
+                }
+            }
+        }
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "SmartTube niet gevonden op deze tv.", Toast.LENGTH_LONG).show()
+        }
+    }
+
     @Composable
     private fun ProgramCard(
-        program: Program,
+        title: String,
         active: Boolean,
+        recommended: Boolean,
         status: String,
         modifier: Modifier,
         onFocus: () -> Unit,
@@ -276,12 +358,12 @@ class MainActivity : ComponentActivity() {
                     picture()
                     Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         if (active) Tag("ACTIEF")
-                        if (program == Program.SMART) Tag("AANBEVOLEN", color = Bis.Tomaat, textColor = Color.White)
+                        if (recommended) Tag("AANBEVOLEN", color = Bis.Tomaat, textColor = Color.White)
                     }
                 }
                 Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
                     Text(
-                        program.title,
+                        title,
                         style = Bis.body(15.sp, FontWeight.Bold, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.9f)),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
@@ -293,13 +375,17 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun cardStatus(p: Program, artCount: Int, photos: Int, videos: Int, custom: Set<Mode>) = when (p) {
+    private fun cardStatus(p: Program, artCount: Int, photos: Int, videos: Int, custom: Set<Mode>, hasAmbient: Boolean) = when (p) {
+        Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee en meer" else "Nog niet gekoppeld"
         Program.SMART -> "Kiest zelf, passend bij het moment van de dag"
         Program.ART -> "$artCount werken met Nederlandse uitleg"
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
     }
+
+    private fun secondsLabel(seconds: Int) =
+        if (seconds < 60) "$seconds s" else if (seconds % 60 == 0) "${seconds / 60} min" else "${seconds / 60} min ${seconds % 60} s"
 
     private fun musicLabel(takesOver: Boolean, nowPlaying: NowPlaying?, hasAccess: Boolean) = when {
         !hasAccess -> "♪ Muziek: nog geen toegang"
@@ -315,6 +401,7 @@ class MainActivity : ComponentActivity() {
         Mode.ART -> "kunst"
         Mode.AERIALS -> "luchtopnames"
         Mode.PHOTOS -> "foto's"
+        Mode.AMBIENT -> "sfeer"
     }
 
     /** Loopt alle combinaties van minstens twee onderdelen langs. */
@@ -324,12 +411,60 @@ class MainActivity : ComponentActivity() {
             setOf(Mode.ART, Mode.PHOTOS),
             setOf(Mode.AERIALS, Mode.PHOTOS),
             setOf(Mode.ART, Mode.AERIALS, Mode.PHOTOS),
+            setOf(Mode.ART, Mode.AMBIENT),
+            setOf(Mode.AERIALS, Mode.AMBIENT),
+            setOf(Mode.AMBIENT, Mode.PHOTOS),
+            setOf(Mode.ART, Mode.AERIALS, Mode.AMBIENT, Mode.PHOTOS),
         )
         return options[(options.indexOf(current) + 1) % options.size]
     }
 }
 
+private val SMARTTUBE_PACKAGES = listOf(
+    "com.liskovsoft.smarttubetv.beta",
+    "com.liskovsoft.smarttubetv",
+    "org.smartteam.smarttube.beta",
+    "org.smartteam.smarttube",
+)
+
 // ---- Getekende plaatjes voor de kaarten ----
+
+/** Vlammen in de haard, voor de sfeerkaart. */
+private fun drawFire(scope: DrawScope) = with(scope) {
+    drawRect(Brush.verticalGradient(listOf(Color(0xFF1A0904), Color(0xFF3A1206))))
+    drawCircle(
+        Brush.radialGradient(listOf(Color(0xFFFFD27A), Color(0xFFF07A2E), Color(0x007A2410)), center = Offset(size.width / 2, size.height * 0.95f), radius = size.minDimension * 0.75f),
+        radius = size.minDimension * 0.75f,
+        center = Offset(size.width / 2, size.height * 0.95f),
+    )
+    val flame = Path().apply {
+        moveTo(size.width * 0.38f, size.height * 0.9f)
+        cubicTo(size.width * 0.3f, size.height * 0.6f, size.width * 0.5f, size.height * 0.5f, size.width * 0.5f, size.height * 0.25f)
+        cubicTo(size.width * 0.62f, size.height * 0.5f, size.width * 0.72f, size.height * 0.62f, size.width * 0.62f, size.height * 0.9f)
+        close()
+    }
+    drawPath(flame, Color(0xFFFFE3A3).copy(alpha = 0.85f))
+    drawRoundRect(Color(0xFF2A160C), topLeft = Offset(size.width * 0.2f, size.height * 0.86f), size = Size(size.width * 0.6f, size.height * 0.08f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(8f))
+}
+
+/** Een afspeellijst: regels met een afspeelknop. */
+private fun drawPlaylist(scope: DrawScope) = with(scope) {
+    drawRect(Bis.Emaille3)
+    val h = size.height
+    for (i in 0..2) {
+        val y = h * (0.25f + i * 0.22f)
+        drawRoundRect(Bis.Room.copy(alpha = 0.85f), topLeft = Offset(size.width * 0.12f, y), size = Size(size.width * 0.42f, h * 0.08f), cornerRadius = androidx.compose.ui.geometry.CornerRadius(h * 0.04f))
+    }
+    val c = Offset(size.width * 0.74f, h * 0.5f)
+    drawCircle(Bis.Tomaat, radius = h * 0.22f, center = c)
+    val play = Path().apply {
+        moveTo(c.x - h * 0.07f, c.y - h * 0.1f)
+        lineTo(c.x + h * 0.11f, c.y)
+        lineTo(c.x - h * 0.07f, c.y + h * 0.1f)
+        close()
+    }
+    drawPath(play, Color.White)
+}
 
 /** Lucht in de kleur van het moment: ochtendgloed, dag, avondrood of nacht. */
 private fun drawSky(scope: DrawScope, hour: Int) = with(scope) {
@@ -394,6 +529,7 @@ private fun drawMixStripes(scope: DrawScope, modes: Set<Mode>) = with(scope) {
             Mode.ART -> Bis.Tomaat
             Mode.AERIALS -> Bis.IJsblauw
             Mode.PHOTOS -> Bis.Boter
+            Mode.AMBIENT -> Color(0xFFD9822B)
         }
     }
     val band = size.height / (colors.size + 1)

@@ -162,6 +162,39 @@ else
     echo "Overgeslagen. Je kunt dit later altijd nog doen door het script opnieuw te draaien."
 fi
 
+# 7. Sfeerbeelden (optioneel): gratis sleutels van Pexels en Pixabay.
+stap "Stap 7: sfeerbeelden (optioneel)"
+SFEER="$MAP/sfeer"
+if [ -f "$SFEER" ]; then
+    echo "Sfeersleutels van de vorige keer gevonden; die stuur ik opnieuw naar de tv."
+    SFEER_KOPPELEN="j"
+else
+    echo "Hiervoor heb je gratis sleutels van Pexels en/of Pixabay nodig. Zie SFEER.md."
+    read -r -p "Heb je ze en wil je de sfeerbeelden nu koppelen? (j/n): " SFEER_KOPPELEN
+    if [ "$SFEER_KOPPELEN" = "j" ] || [ "$SFEER_KOPPELEN" = "J" ]; then
+        read -r -p "Plak je Pexels-sleutel (of druk op Enter om over te slaan): " PEXELS
+        read -r -p "Plak je Pixabay-sleutel (of druk op Enter om over te slaan): " PIXABAY
+        PEXELS="$(echo "$PEXELS" | tr -d '[:space:]')"
+        PIXABAY="$(echo "$PIXABAY" | tr -d '[:space:]')"
+        if [ -n "$PEXELS$PIXABAY" ]; then
+            printf '%s\n%s\n' "$PEXELS" "$PIXABAY" > "$SFEER"
+            chmod 600 "$SFEER"
+        else
+            SFEER_KOPPELEN="n"
+        fi
+    fi
+fi
+if [ "$SFEER_KOPPELEN" = "j" ] || [ "$SFEER_KOPPELEN" = "J" ]; then
+    PEXELS="$(sed -n 1p "$SFEER")"
+    PIXABAY="$(sed -n 2p "$SFEER")"
+    "$ADB" -s "$TV" shell am start -n "$PAKKET/.SetupActivity" \
+        --es pexels_key "${PEXELS:- }" --es pixabay_key "${PIXABAY:- }" >/dev/null 2>&1 \
+        && echo "✔  Sfeersleutels doorgegeven aan de tv." \
+        || echo "!  Doorgeven lukte niet. Probeer het script nog eens."
+else
+    echo "Overgeslagen. Je kunt dit later altijd nog doen."
+fi
+
 echo
 read -r -p "Wil je de screensaver nu meteen op de tv zien? (j/n): " TEST
 if [ "$TEST" = "j" ] || [ "$TEST" = "J" ]; then

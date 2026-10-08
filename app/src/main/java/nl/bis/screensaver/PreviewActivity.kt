@@ -23,7 +23,7 @@ class PreviewActivity : Activity() {
     override fun onStart() {
         super.onStart()
         val program = Program.entries.firstOrNull { it.key == intent.getStringExtra(EXTRA_PROGRAM) }
-        controller = SlideshowController(findViewById(R.id.root), scope, program).also { it.start() }
+        controller = SlideshowController(findViewById(R.id.root), scope, program, isPreview = true).also { it.start() }
     }
 
     override fun onStop() {

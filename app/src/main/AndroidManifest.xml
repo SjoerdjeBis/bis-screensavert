@@ -4,6 +4,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <!-- Om SmartTube te kunnen vinden en openen vanaf de kaart "Sfeerlijst". -->
+    <queries>
+        <package android:name="com.liskovsoft.smarttubetv.beta" />
+        <package android:name="com.liskovsoft.smarttubetv" />
+        <package android:name="org.smartteam.smarttube.beta" />
+        <package android:name="org.smartteam.smarttube" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" android:host="www.youtube.com" />
+        </intent>
+    </queries>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
     <application
@@ -29,6 +41,11 @@
 
         <activity
             android:name=".PreviewActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".AmbientActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
 

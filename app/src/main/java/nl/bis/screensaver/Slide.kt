@@ -21,6 +21,10 @@ sealed interface Slide {
         override val title: String,
         override val subtitle: String?,
         override val body: String? = null,
+        /** Voor sfeerclips: id om weg te kunnen stemmen. */
+        val clipId: String? = null,
+        /** Korte clips in een lus laten lopen tot deze tijd om is. */
+        val playForMs: Long? = null,
     ) : Slide
 }
 

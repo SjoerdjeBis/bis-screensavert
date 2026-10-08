@@ -20,6 +20,12 @@ class SetupActivity : Activity() {
             settings.googleClientSecret = clientSecret
             Toast.makeText(this, "Google Foto's-koppeling opgeslagen", Toast.LENGTH_LONG).show()
         }
+        intent.getStringExtra("pexels_key")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.pexelsKey = it }
+        intent.getStringExtra("pixabay_key")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.pixabayKey = it }
+        intent.getStringExtra("smarttube_lijst")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.smartTubePlaylist = it }
+        if (intent.hasExtra("pexels_key") || intent.hasExtra("pixabay_key")) {
+            Toast.makeText(this, "Sfeersleutels opgeslagen", Toast.LENGTH_LONG).show()
+        }
         finish()
     }
 }

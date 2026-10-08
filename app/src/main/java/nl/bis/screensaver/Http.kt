@@ -27,8 +27,10 @@ object Http {
         body: String? = null,
         contentType: String = "application/json",
         bearer: String? = null,
+        headers: Map<String, String> = emptyMap(),
     ): Response = withContext(Dispatchers.IO) {
         val connection = connect(url, bearer)
+        headers.forEach { (k, v) -> connection.setRequestProperty(k, v) }
         try {
             connection.requestMethod = method
             if (body != null) {
