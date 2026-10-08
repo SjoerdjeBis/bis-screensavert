@@ -199,7 +199,10 @@ class MainActivity : ComponentActivity() {
                             text = updating ?: "Nieuwe versie ${u.versionName}: bijwerken",
                             accent = Bis.Boter,
                             onClick = {
-                                if (updating == null) {
+                                if (!SystemSettings.canInstallUpdates(this@MainActivity)) {
+                                    // Eerst toestemming; daarna nog een keer op de knop drukken.
+                                    SystemSettings.openInstallPermission(this@MainActivity)
+                                } else if (updating == null) {
                                     updating = "Downloaden…"
                                     scope.launch {
                                         updating = try {
@@ -218,8 +221,15 @@ class MainActivity : ComponentActivity() {
                     }
                     when (screensaverActive) {
                         true -> Text("✓  Ingesteld als screensaver", style = Bis.body(12.sp, FontWeight.Medium, Bis.RoomDim))
-                        false -> Text("Nog niet ingesteld als screensaver: draai het installatiescript", style = Bis.body(12.sp, FontWeight.Medium, Bis.Boter))
-                        null -> Unit
+                        false -> FocusPill(
+                            "Nog geen screensaver: instellen",
+                            accent = Bis.Boter,
+                            onClick = { SystemSettings.openScreensaver(this@MainActivity) },
+                        )
+                        null -> FocusPill(
+                            "Screensaver instellen",
+                            onClick = { SystemSettings.openScreensaver(this@MainActivity) },
+                        )
                     }
                 }
 
@@ -307,8 +317,12 @@ class MainActivity : ComponentActivity() {
                             text = musicLabel(musicTakesOver, nowPlaying, music.hasAccess),
                             accent = if (!music.hasAccess) Bis.Boter else null,
                             onClick = {
-                                musicTakesOver = !musicTakesOver
-                                settings.musicTakesOver = musicTakesOver
+                                if (!music.hasAccess) {
+                                    SystemSettings.openMusicAccess(this@MainActivity)
+                                } else {
+                                    musicTakesOver = !musicTakesOver
+                                    settings.musicTakesOver = musicTakesOver
+                                }
                             },
                         )
                     }
@@ -467,7 +481,7 @@ class MainActivity : ComponentActivity() {
         if (seconds < 60) "$seconds s" else if (seconds % 60 == 0) "${seconds / 60} min" else "${seconds / 60} min ${seconds % 60} s"
 
     private fun musicLabel(takesOver: Boolean, nowPlaying: NowPlaying?, hasAccess: Boolean) = when {
-        !hasAccess -> "♪ Muziek: nog geen toegang"
+        !hasAccess -> "♪ Muziek: toegang geven"
         !takesOver -> "♪ Muziek: niet tonen"
         nowPlaying != null -> "♪ Nu: ${nowPlaying.title} – ${nowPlaying.artist}".take(48)
         else -> "♪ Muziek neemt het over"
