@@ -42,6 +42,36 @@ object SelfSetup {
     /** Laatste melding, voor op de tv. */
     val status = MutableStateFlow<String?>(null)
 
+    /** Wat er met het formulier gebeurde, ook over herstarts heen. Helpt bij uitzoeken wat er misging. */
+    val log = MutableStateFlow<List<String>>(emptyList())
+
+    /** Waarom het formulier stopt, als de app dat zelf doet. */
+    @Volatile var stopReason: String? = null
+
+    private fun prefs(context: Context) = context.applicationContext.getSharedPreferences("bis_koppelen", Context.MODE_PRIVATE)
+
+    /** Hetzelfde adres na een herstart, zodat de pagina op je telefoon blijft werken. */
+    fun token(context: Context): String = prefs(context).getString("token", null)
+        ?: PhoneForm.newToken().also { prefs(context).edit().putString("token", it).apply() }
+
+    fun loadLog(context: Context) {
+        log.value = prefs(context).getString("log", "")!!.split("\n").filter { it.isNotBlank() }
+    }
+
+    fun note(context: Context, text: String) {
+        val time = java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault()).format(Date())
+        val lines = (prefs(context).getString("log", "")!!.split("\n").filter { it.isNotBlank() } + "$time  $text").takeLast(6)
+        prefs(context).edit().putString("log", lines.joinToString("\n")).commit()
+        log.value = lines
+    }
+
+    /** Stond het formulier nog aan bij de vorige keer? Dan heeft de tv de app tussendoor afgesloten. */
+    fun markRunning(context: Context, running: Boolean): Boolean {
+        val wasRunning = prefs(context).getBoolean("draait", false)
+        prefs(context).edit().putBoolean("draait", running).commit()
+        return wasRunning
+    }
+
     class Result(val ok: Boolean, val lines: List<String>)
 
     /** Koppelt (als er een code is), verbindt en stelt alles in. Draait op een achtergronddraad. */
@@ -49,7 +79,11 @@ object SelfSetup {
         val host = PhoneForm.localIp(context) ?: "127.0.0.1"
         val pkg = context.packageName
         val lines = mutableListOf<String>()
-        fun fail(message: String) = Result(false, lines + message).also { status.value = message }
+        fun fail(message: String) = Result(false, lines + message).also {
+            status.value = message
+            note(context, message)
+        }
+        note(context, "Koppelcode ontvangen van de telefoon.")
         return try {
             BisAdb(context).use { adb ->
                 if (code.isNotEmpty()) {
@@ -72,6 +106,7 @@ object SelfSetup {
                 lines += if (music) "Muziektoegang staat aan." else "Muziektoegang kon niet worden aangezet."
                 lines += "Bijwerken met één knop is toegestaan."
                 status.value = if (screensaver) "Klaar: Bis Screensavert is de screensaver." else "De screensaver kon niet worden ingesteld."
+                note(context, status.value!!)
                 Result(screensaver, lines)
             }
         } catch (e: Exception) {
@@ -121,7 +156,9 @@ private class BisAdb(context: Context) : AbsAdbConnectionManager() {
 }
 
 /** Het telefoonformulier voor de koppelcode. */
-private class PairForm(context: Context) : PhoneForm(context) {
+private class PairForm(context: Context, private val onActivity: () -> Unit) : PhoneForm(context, SelfSetup.token(context)) {
+    override fun onRequest() = onActivity()
+
     override fun render(form: Map<String, String>?): String {
         val result = form?.let {
             val code = it["code"].orEmpty().filter(Char::isDigit)
@@ -156,13 +193,24 @@ $notice
 
 /**
  * Houdt het telefoonformulier in leven terwijl je op de tv in Instellingen zit. Zonder
- * voorgronddienst zet Android de app dan stil. Stopt vanzelf na een kwartier.
+ * voorgronddienst zet Android de app dan stil. Stopt vanzelf na een uur zonder activiteit.
  */
 class SelfSetupService : Service() {
     private var form: PairForm? = null
     private val handler = Handler(Looper.getMainLooper())
 
+    private val timeout = Runnable {
+        SelfSetup.stopReason = "een uur niets gebeurd"
+        stopSelf()
+    }
+
     override fun onBind(intent: Intent?): IBinder? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        if (SelfSetup.markRunning(this, true)) SelfSetup.note(this, "De tv had de app tussendoor afgesloten.")
+        SelfSetup.stopReason = null
+    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val notification = notification()
@@ -173,13 +221,21 @@ class SelfSetupService : Service() {
         }
         if (form == null) {
             SelfSetup.status.value = null
-            form = PairForm(this).also { SelfSetup.address.value = it.start() }
-            handler.postDelayed({ stopSelf() }, 15 * 60_000L)
+            form = PairForm(this) { handler.post(::restartTimer) }.also { SelfSetup.address.value = it.start() }
+            SelfSetup.note(this, if (SelfSetup.address.value != null) "Formulier gestart." else "Formulier kon niet starten: geen wifi?")
+            restartTimer()
         }
         return START_NOT_STICKY
     }
 
+    private fun restartTimer() {
+        handler.removeCallbacks(timeout)
+        handler.postDelayed(timeout, 60 * 60_000L)
+    }
+
     override fun onDestroy() {
+        SelfSetup.markRunning(this, false)
+        SelfSetup.note(this, "Formulier gestopt: ${SelfSetup.stopReason ?: "door de tv"}.")
         handler.removeCallbacksAndMessages(null)
         form?.stop()
         form = null

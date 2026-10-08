@@ -15,13 +15,15 @@ import java.security.SecureRandom
  * zolang het nodig is. Je telefoon opent het via een QR-code. Een geheime code in het
  * adres houdt anderen buiten.
  */
-abstract class PhoneForm(protected val context: Context) {
-    private val token = ByteArray(9).also { SecureRandom().nextBytes(it) }
-        .joinToString("") { "%02x".format(it) }
+abstract class PhoneForm(protected val context: Context, fixedToken: String? = null) {
+    private val token = fixedToken ?: newToken()
     private var server: ServerSocket? = null
 
     /** De pagina: [form] is null bij openen, en bevat de ingevulde velden na versturen. */
     protected abstract fun render(form: Map<String, String>?): String
+
+    /** Elke keer dat de telefoon iets opvraagt. */
+    protected open fun onRequest() {}
 
     /** Start de server en geeft het adres voor de QR-code terug, of null als er geen netwerk is. */
     fun start(): String? {
@@ -57,6 +59,7 @@ abstract class PhoneForm(protected val context: Context) {
             respond(client, 404, "<p>Niet gevonden.</p>")
             return
         }
+        onRequest()
         if (method == "POST") {
             val body = CharArray(length.coerceAtMost(20_000)).let { buf ->
                 var read = 0
@@ -92,6 +95,8 @@ abstract class PhoneForm(protected val context: Context) {
 
     companion object {
         private val PORTS = listOf(8765, 8766, 8767, 0)
+
+        fun newToken() = ByteArray(9).also { SecureRandom().nextBytes(it) }.joinToString("") { "%02x".format(it) }
 
         fun localIp(context: Context): String? {
             val cm = context.getSystemService(ConnectivityManager::class.java) ?: return null

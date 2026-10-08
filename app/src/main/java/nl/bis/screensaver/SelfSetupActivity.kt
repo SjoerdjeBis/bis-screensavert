@@ -32,14 +32,21 @@ import androidx.compose.ui.unit.sp
 class SelfSetupActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startForegroundService(Intent(this, SelfSetupService::class.java))
+        SelfSetup.loadLog(this)
         setContent { SetupScreen() }
+    }
+
+    // Ook bij terugkomen uit Instellingen: draait het formulier niet meer, dan start het opnieuw op hetzelfde adres.
+    override fun onResume() {
+        super.onResume()
+        startForegroundService(Intent(this, SelfSetupService::class.java))
     }
 
     @Composable
     private fun SetupScreen() {
         val address by SelfSetup.address.collectAsState()
         val status by SelfSetup.status.collectAsState()
+        val log by SelfSetup.log.collectAsState()
         val focus = remember { FocusRequester() }
         LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
 
@@ -65,8 +72,12 @@ class SelfSetupActivity : ComponentActivity() {
                         address != null -> Text("Of typ in de browser: $address", style = Bis.body(12.sp, color = Bis.RoomDim))
                     }
                     status?.let { Text(it, style = Bis.body(15.sp, FontWeight.Medium, Bis.Boter)) }
+                    if (log.isNotEmpty()) {
+                        Text(log.joinToString("\n"), style = Bis.body(11.sp, color = Bis.RoomDim))
+                    }
                     Spacer(Modifier.height(10.dp))
                     FocusPill("Klaar", onClick = {
+                        SelfSetup.stopReason = "je drukte op Klaar"
                         stopService(Intent(this@SelfSetupActivity, SelfSetupService::class.java))
                         finish()
                     }, modifier = Modifier.focusRequester(focus))
