@@ -15,7 +15,11 @@ import java.security.SecureRandom
  * zolang het nodig is. Je telefoon opent het via een QR-code. Een geheime code in het
  * adres houdt anderen buiten.
  */
-abstract class PhoneForm(protected val context: Context, fixedToken: String? = null) {
+abstract class PhoneForm(
+    protected val context: Context,
+    fixedToken: String? = null,
+    private val ports: List<Int> = PORTS,
+) {
     private val token = fixedToken ?: newToken()
     private var server: ServerSocket? = null
 
@@ -25,10 +29,16 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
     /** Elke keer dat de telefoon iets opvraagt. */
     protected open fun onRequest() {}
 
+    /**
+     * Adressen onder de pagina, zoals `/<code>/lijst`. [sub] is het deel na de code.
+     * Geeft false als het adres niet bestaat.
+     */
+    protected open fun route(method: String, sub: String, query: Map<String, String>, body: String, client: Socket): Boolean = false
+
     /** Start de server en geeft het adres voor de QR-code terug, of null als er geen netwerk is. */
     fun start(): String? {
         val ip = localIp(context) ?: return null
-        val socket = (PORTS.firstNotNullOfOrNull { port -> runCatching { ServerSocket(port) }.getOrNull() }) ?: return null
+        val socket = (ports.firstNotNullOfOrNull { port -> runCatching { ServerSocket(port) }.getOrNull() }) ?: return null
         server = socket
         Thread {
             while (!socket.isClosed) {
@@ -55,13 +65,10 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
             if (line.isEmpty()) break
             if (line.startsWith("Content-Length:", ignoreCase = true)) length = line.substringAfter(":").trim().toIntOrNull() ?: 0
         }
-        if (path.substringBefore("?") != "/$token") {
-            respond(client, 404, "<p>Niet gevonden.</p>")
-            return
-        }
-        onRequest()
-        if (method == "POST") {
-            val body = CharArray(length.coerceAtMost(20_000)).let { buf ->
+        val pathOnly = path.substringBefore("?")
+        val query = path.substringAfter("?", "").let { if (it.isEmpty()) emptyMap() else parse(it) }
+        val body = if (method == "POST") {
+            CharArray(length.coerceAtMost(500_000)).let { buf ->
                 var read = 0
                 while (read < buf.size) {
                     val n = reader.read(buf, read, buf.size - read)
@@ -70,10 +77,20 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
                 }
                 String(buf, 0, read)
             }
-            respond(client, 200, render(parse(body)))
         } else {
-            val query = path.substringAfter("?", "")
-            respond(client, 200, render(if (query.isEmpty()) null else parse(query)))
+            ""
+        }
+        when {
+            pathOnly == "/$token" -> {
+                onRequest()
+                val form = if (method == "POST") parse(body) else query.ifEmpty { null }
+                respond(client, 200, render(form))
+            }
+            pathOnly.startsWith("/$token/") -> {
+                onRequest()
+                if (!route(method, pathOnly.removePrefix("/$token/"), query, body, client)) respond(client, 404, "<p>Niet gevonden.</p>")
+            }
+            else -> respond(client, 404, "<p>Niet gevonden.</p>")
         }
     }
 
@@ -82,11 +99,16 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
         if (parts.size != 2) null else URLDecoder.decode(parts[0], "UTF-8") to URLDecoder.decode(parts[1], "UTF-8").trim()
     }.toMap()
 
-    private fun respond(client: Socket, code: Int, html: String) {
-        val bytes = html.toByteArray(Charsets.UTF_8)
+    protected fun respond(client: Socket, code: Int, html: String) =
+        respondBytes(client, code, "text/html; charset=utf-8", html.toByteArray(Charsets.UTF_8))
+
+    protected fun respondJson(client: Socket, json: String) =
+        respondBytes(client, 200, "application/json; charset=utf-8", json.toByteArray(Charsets.UTF_8))
+
+    protected fun respondBytes(client: Socket, code: Int, contentType: String, bytes: ByteArray, cacheable: Boolean = false) {
         val head = "HTTP/1.1 $code ${if (code == 200) "OK" else "Not Found"}\r\n" +
-            "Content-Type: text/html; charset=utf-8\r\nContent-Length: ${bytes.size}\r\n" +
-            "Cache-Control: no-store\r\nConnection: close\r\n\r\n"
+            "Content-Type: $contentType\r\nContent-Length: ${bytes.size}\r\n" +
+            "Cache-Control: ${if (cacheable) "max-age=86400" else "no-store"}\r\nConnection: close\r\n\r\n"
         client.getOutputStream().apply {
             write(head.toByteArray())
             write(bytes)
@@ -95,7 +117,7 @@ abstract class PhoneForm(protected val context: Context, fixedToken: String? = n
     }
 
     companion object {
-        private val PORTS = listOf(8765, 8766, 8767, 0)
+        val PORTS = listOf(8765, 8766, 8767, 0)
 
         fun newToken() = ByteArray(9).also { SecureRandom().nextBytes(it) }.joinToString("") { "%02x".format(it) }
 

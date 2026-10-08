@@ -15,6 +15,7 @@ class PhotoSource(context: Context) : SlideSource {
         val item = picker.pick(library.items(), { it.id }) ?: return null
         val file = library.file(item)
         if (!file.exists()) return null
+        library.countPlay(item)
         val date = if (item.createdAt > 0) dateFormat.format(Date(item.createdAt)) else "Mijn foto's"
         val uri = "file://" + file.absolutePath
         return if (item.isVideo) {

@@ -22,9 +22,12 @@ class ScreenSaverDream : DreamService() {
     override fun onDreamingStarted() {
         super.onDreamingStarted()
         controller = SlideshowController(findViewById(R.id.root), scope).also { it.start() }
+        // Zolang de screensaver draait, kun je je foto's op je telefoon beheren.
+        PhoneLibraryHost.acquire(this)
     }
 
     override fun onDreamingStopped() {
+        PhoneLibraryHost.release()
         controller?.release()
         controller = null
         super.onDreamingStopped()

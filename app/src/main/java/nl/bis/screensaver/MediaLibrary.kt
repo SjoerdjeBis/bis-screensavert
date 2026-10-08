@@ -14,12 +14,20 @@ data class LocalMedia(
     val createdAt: Long,
     val width: Int,
     val height: Int,
+    /** Wanneer je het toevoegde; alles uit één keer kiezen heeft dezelfde tijd. */
+    val addedAt: Long = 0,
 )
 
 /** De eigen foto's en video's op de tv, met een eenvoudige index in JSON. */
 class MediaLibrary(context: Context) {
     val dir = File(context.filesDir, "media").apply { mkdirs() }
     private val indexFile = File(dir, "index.json")
+    private val plays = context.applicationContext.getSharedPreferences("bis_afgespeeld", Context.MODE_PRIVATE)
+
+    /** Hoe vaak dit item in de screensaver te zien was (geteld sinds versie 0.1.38). */
+    fun plays(item: LocalMedia): Int = plays.getInt(item.id, 0)
+
+    fun countPlay(item: LocalMedia) = plays.edit().putInt(item.id, plays(item) + 1).apply()
 
     @Synchronized
     fun items(): List<LocalMedia> {
@@ -34,8 +42,9 @@ class MediaLibrary(context: Context) {
                 createdAt = o.optLong("created"),
                 width = o.optInt("width"),
                 height = o.optInt("height"),
+                addedAt = o.optLong("added"),
             )
-        }.filter { file(it).exists() }
+        }.filter { file(it).exists() }.map { if (it.addedAt > 0) it else it.copy(addedAt = file(it).lastModified()) }
     }
 
     fun file(item: LocalMedia) = File(dir, item.fileName)
@@ -65,6 +74,7 @@ class MediaLibrary(context: Context) {
         var added = 0
         var message: String? = null
         val skippedVideos = picked.count { !it.ready }
+        val batch = System.currentTimeMillis()
         todo.forEachIndexed { index, item ->
             onProgress(index, todo.size)
             if (!item.ready) return@forEachIndexed
@@ -88,7 +98,7 @@ class MediaLibrary(context: Context) {
                         message = "Deze video is te groot voor de vrije ruimte op de tv (nog ${freeBytes() / 1_000_000} MB vrij)."
                         return Pair(added, message)
                     }
-                    add(LocalMedia(item.id, fileName, item.isVideo, parseTime(item.createTime), item.width, item.height))
+                    add(LocalMedia(item.id, fileName, item.isVideo, parseTime(item.createTime), item.width, item.height, batch))
                     added++
                 }
                 .onFailure { message = "Niet alles kon worden gedownload. Probeer het later nog eens." }
@@ -103,7 +113,10 @@ class MediaLibrary(context: Context) {
     @Synchronized
     fun delete(ids: Set<String>) {
         val (gone, keep) = items().partition { it.id in ids }
-        gone.forEach { file(it).delete() }
+        gone.forEach {
+            file(it).delete()
+            plays.edit().remove(it.id).apply()
+        }
         write(keep)
     }
 
@@ -120,7 +133,8 @@ class MediaLibrary(context: Context) {
                     .put("video", it.isVideo)
                     .put("created", it.createdAt)
                     .put("width", it.width)
-                    .put("height", it.height),
+                    .put("height", it.height)
+                    .put("added", it.addedAt),
             )
         }
         indexFile.writeText(array.toString())

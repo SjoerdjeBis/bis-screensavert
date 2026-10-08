@@ -76,11 +76,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
+        PhoneLibraryHost.acquire(this)
         music.start()
         refresh++ // Na terugkomst uit foto's of voorbeeld de tellers opnieuw lezen.
     }
 
     override fun onStop() {
+        PhoneLibraryHost.release()
         music.stop()
         super.onStop()
     }

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E2E2A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bis foto's">
+<title>Bis foto's</title>
+<style>
+:root{--emaille:#0E2E2A;--emaille2:#16403A;--emaille3:#1D5049;--room:#F6EFE0;--dim:#A9B8B0;--tomaat:#E2523C;--boter:#F0B23F;--rim:#08201D}
+*{box-sizing:border-box}
+body{margin:0;background:var(--emaille);color:var(--room);font:15px/1.45 system-ui,-apple-system,sans-serif;padding:16px 16px 96px}
+main{max-width:900px;margin:0 auto}
+h1{font:italic 600 28px/1.1 Georgia,serif;margin:6px 0 2px}
+.dim{color:var(--dim);font-size:13px}
+.balk{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px;align-items:center}
+button,select{font:inherit;font-size:14px;border-radius:999px;border:2px solid var(--rim);background:var(--emaille2);color:var(--room);padding:8px 14px}
+button.hoofd{background:var(--tomaat);color:#fff;font-weight:700}
+button:disabled{opacity:.5}
+.melding{background:var(--emaille2);border:2px solid var(--boter);border-radius:12px;padding:10px 12px;margin:10px 0;display:none}
+.groep{margin-top:22px}
+.groepkop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.groepkop h2{font:italic 600 19px Georgia,serif;margin:0}
+.groepkop button{padding:5px 12px;font-size:13px}
+.raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+.tegel{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--emaille3);border:2px solid transparent;cursor:pointer}
+.tegel img{width:100%;height:100%;object-fit:cover;display:block}
+.tegel.gekozen{border-color:var(--tomaat)}
+.tegel.gekozen::after{content:"✓";position:absolute;top:5px;right:5px;width:24px;height:24px;border-radius:50%;background:var(--tomaat);color:#fff;font-weight:700;display:grid;place-items:center}
+.label{position:absolute;left:4px;bottom:4px;background:rgba(14,46,42,.8);border-radius:6px;padding:1px 6px;font-size:11px}
+.video{position:absolute;left:5px;top:4px;font-size:13px;text-shadow:0 0 4px #000}
+.onder{position:fixed;left:0;right:0;bottom:0;background:var(--emaille2);border-top:2px solid var(--rim);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:none;justify-content:space-between;align-items:center;gap:10px}
+.onder.zichtbaar{display:flex}
+</style>
+</head>
+<body>
+<main>
+  <h1>Mijn foto's &amp; video's</h1>
+  <div class="dim" id="ruimte">Laden…</div>
+
+  <div class="balk">
+    <button class="hoofd" id="toevoegen">+ Toevoegen uit Google Foto's</button>
+  </div>
+  <div class="melding" id="melding"></div>
+
+  <div class="balk">
+    <select id="groeperen" aria-label="Groeperen">
+      <option value="maand">Per maand van opname</option>
+      <option value="toegevoegd">Per keer toegevoegd</option>
+      <option value="geen">Niet groeperen</option>
+    </select>
+    <select id="sorteren" aria-label="Sorteren">
+      <option value="nieuw">Nieuwste eerst</option>
+      <option value="oud">Oudste eerst</option>
+      <option value="getoond">Vaakst getoond eerst</option>
+      <option value="groot">Grootste eerst</option>
+    </select>
+  </div>
+  <div class="balk">
+    <button id="kiesVaak">Kies: 10× of vaker getoond</button>
+    <button id="kiesGroot">Kies: video's boven 100 MB</button>
+    <button id="kiesNiets">Selectie wissen</button>
+  </div>
+
+  <div id="lijst"></div>
+</main>
+
+<div class="onder" id="onder">
+  <span id="telling"></span>
+  <button class="hoofd" id="verwijder">Verwijderen</button>
+</div>
+
+<script>
+// Alle adressen hangen onder het geheime adres van deze pagina.
+var basis = location.pathname.replace(/\/$/, "") + "/";
+var items = [];
+var gekozen = {};
+var maanden = ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+
+function $(id) { return document.getElementById(id); }
+function mb(bytes) { return bytes >= 1e9 ? (bytes / 1e9).toFixed(1).replace(".", ",") + " GB" : Math.round(bytes / 1e6) + " MB"; }
+function datum(ms) { var d = new Date(ms); return d.getDate() + " " + maanden[d.getMonth()] + " " + d.getFullYear(); }
+function maand(ms) { if (!ms) return "Datum onbekend"; var d = new Date(ms); return maanden[d.getMonth()] + " " + d.getFullYear(); }
+
+function laad() {
+  fetch(basis + "lijst").then(function (r) { return r.json(); }).then(function (data) {
+    items = data.items;
+    var ids = {};
+    items.forEach(function (i) { ids[i.id] = true; });
+    Object.keys(gekozen).forEach(function (id) { if (!ids[id]) delete gekozen[id]; });
+    $("ruimte").textContent = items.filter(function (i) { return !i.video; }).length + " foto's · " +
+      items.filter(function (i) { return i.video; }).length + " video's · " + mb(data.gebruikt) +
+      " gebruikt · " + mb(data.vrij) + " vrij op de tv";
+    teken();
+  }).catch(function () {
+    $("ruimte").textContent = "De tv is niet bereikbaar. Staat hij aan, met de app of de screensaver open, en zit je telefoon op dezelfde wifi?";
+  });
+}
+
+function sorteer(lijst) {
+  var s = $("sorteren").value;
+  return lijst.slice().sort(function (a, b) {
+    if (s === "oud") return a.opname - b.opname;
+    if (s === "getoond") return b.getoond - a.getoond;
+    if (s === "groot") return b.grootte - a.grootte;
+    return b.opname - a.opname;
+  });
+}
+
+function groepen(lijst) {
+  var g = $("groeperen").value;
+  if (g === "geen") return [{ naam: "Alles", items: lijst }];
+  var uit = [], per = {};
+  lijst.forEach(function (i) {
+    var naam = g === "maand" ? maand(i.opname) : "Toegevoegd op " + datum(i.toegevoegd);
+    if (!per[naam]) { per[naam] = { naam: naam, items: [] }; uit.push(per[naam]); }
+    per[naam].items.push(i);
+  });
+  return uit;
+}
+
+function teken() {
+  var doel = $("lijst");
+  doel.innerHTML = "";
+  if (!items.length) { doel.innerHTML = '<p class="dim">Nog niets op de tv. Tik op Toevoegen.</p>'; }
+  groepen(sorteer(items)).forEach(function (groep) {
+    var blok = document.createElement("section");
+    blok.className = "groep";
+    var kop = document.createElement("div");
+    kop.className = "groepkop";
+    var grootte = groep.items.reduce(function (s, i) { return s + i.grootte; }, 0);
+    kop.innerHTML = "<div><h2></h2><span class='dim'></span></div>";
+    kop.querySelector("h2").textContent = groep.naam;
+    kop.querySelector(".dim").textContent = groep.items.length + " · " + mb(grootte);
+    var knop = document.createElement("button");
+    var allemaal = groep.items.every(function (i) { return gekozen[i.id]; });
+    knop.textContent = allemaal ? "Groep niet kiezen" : "Kies groep";
+    knop.onclick = function () {
+      groep.items.forEach(function (i) { if (allemaal) delete gekozen[i.id]; else gekozen[i.id] = true; });
+      teken();
+    };
+    kop.appendChild(knop);
+    blok.appendChild(kop);
+    var raster = document.createElement("div");
+    raster.className = "raster";
+    groep.items.forEach(function (i) {
+      var t = document.createElement("div");
+      t.className = "tegel" + (gekozen[i.id] ? " gekozen" : "");
+      var img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = basis + i.beeld;
+      img.alt = "";
+      t.appendChild(img);
+      if (i.video) { var v = document.createElement("span"); v.className = "video"; v.textContent = "▶"; t.appendChild(v); }
+      var l = document.createElement("span");
+      l.className = "label";
+      l.textContent = (i.getoond ? i.getoond + "× · " : "") + (i.video ? mb(i.grootte) : (i.opname ? datum(i.opname) : ""));
+      t.appendChild(l);
+      t.onclick = function () {
+        if (gekozen[i.id]) delete gekozen[i.id]; else gekozen[i.id] = true;
+        t.classList.toggle("gekozen");
+        onderbalk();
+      };
+      raster.appendChild(t);
+    });
+    blok.appendChild(raster);
+    doel.appendChild(blok);
+  });
+  onderbalk();
+}
+
+function onderbalk() {
+  var ids = Object.keys(gekozen);
+  var grootte = items.filter(function (i) { return gekozen[i.id]; }).reduce(function (s, i) { return s + i.grootte; }, 0);
+  $("telling").textContent = ids.length + " gekozen · " + mb(grootte);
+  $("onder").classList.toggle("zichtbaar", ids.length > 0);
+}
+
+function kies(test) { items.forEach(function (i) { if (test(i)) gekozen[i.id] = true; }); teken(); }
+$("kiesVaak").onclick = function () { kies(function (i) { return i.getoond >= 10; }); };
+$("kiesGroot").onclick = function () { kies(function (i) { return i.video && i.grootte > 100e6; }); };
+$("kiesNiets").onclick = function () { gekozen = {}; teken(); };
+$("groeperen").onchange = teken;
+$("sorteren").onchange = teken;
+
+$("verwijder").onclick = function () {
+  var ids = Object.keys(gekozen);
+  if (!ids.length || !confirm(ids.length + " item(s) van de tv verwijderen? In Google Foto's blijven ze gewoon staan.")) return;
+  $("verwijder").disabled = true;
+  fetch(basis + "verwijder", { method: "POST", body: JSON.stringify(ids) }).then(function () {
+    gekozen = {};
+    $("verwijder").disabled = false;
+    laad();
+  });
+};
+
+function melding(tekst) { var m = $("melding"); m.textContent = tekst || ""; m.style.display = tekst ? "block" : "none"; }
+
+var volg = null;
+function volgStatus() {
+  if (volg) return;
+  volg = setInterval(function () {
+    fetch(basis + "status").then(function (r) { return r.json(); }).then(function (s) {
+      melding(s.tekst);
+      if (!s.bezig) { clearInterval(volg); volg = null; $("toevoegen").disabled = false; laad(); }
+    });
+  }, 3000);
+}
+
+$("toevoegen").onclick = function () {
+  // Het venster meteen openen, anders blokkeert de telefoon het als pop-up.
+  var venster = window.open("", "_blank");
+  $("toevoegen").disabled = true;
+  fetch(basis + "toevoegen", { method: "POST" }).then(function (r) { return r.json(); }).then(function (s) {
+    if (s.fout) {
+      if (venster) venster.close();
+      melding(s.fout);
+      $("toevoegen").disabled = false;
+      return;
+    }
+    melding(s.tekst);
+    if (s.kiezer) { if (venster) venster.location = s.kiezer; else location.href = s.kiezer; }
+    volgStatus();
+  }).catch(function () { if (venster) venster.close(); $("toevoegen").disabled = false; melding("De tv is niet bereikbaar."); });
+};
+
+laad();
+fetch(basis + "status").then(function (r) { return r.json(); }).then(function (s) {
+  if (s.bezig) { $("toevoegen").disabled = true; melding(s.tekst); volgStatus(); }
+});
+</script>
+</body>
+</html>

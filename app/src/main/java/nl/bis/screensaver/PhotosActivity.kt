@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -63,6 +64,16 @@ class PhotosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { PhotosScreen() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        PhoneLibraryHost.acquire(this)
+    }
+
+    override fun onStop() {
+        PhoneLibraryHost.release()
+        super.onStop()
     }
 
     @Composable
@@ -140,6 +151,7 @@ class PhotosActivity : ComponentActivity() {
                     selected = selected,
                     library = library,
                     onToggle = { id -> selected = if (id in selected) selected - id else selected + id },
+                    onToggleGroup = { ids -> selected = if (ids.all { it in selected }) selected - ids.toSet() else selected + ids },
                     onAdd = { startAdding() },
                     onDelete = {
                         library.delete(selected)
@@ -205,6 +217,7 @@ class PhotosActivity : ComponentActivity() {
         selected: Set<String>,
         library: MediaLibrary,
         onToggle: (String) -> Unit,
+        onToggleGroup: (List<String>) -> Unit,
         onAdd: () -> Unit,
         onDelete: () -> Unit,
         onDone: () -> Unit,
@@ -218,8 +231,8 @@ class PhotosActivity : ComponentActivity() {
             Column(Modifier.width(300.dp).fillMaxHeight()) {
                 Text("MIJN FOTO'S & VIDEO'S", style = Bis.eyebrow())
                 Spacer(Modifier.height(8.dp))
-                Text("Uit Google Foto's", style = Bis.heading(34.sp))
-                Spacer(Modifier.height(10.dp))
+                Text("Uit Google Foto's", style = Bis.heading(28.sp))
+                Spacer(Modifier.height(8.dp))
                 Text("$photos foto's · $videos video's", style = Bis.body(15.sp, FontWeight.Medium))
                 Text(
                     "${Formatter.formatShortFileSize(this@PhotosActivity, library.usedBytes())} van " +
@@ -227,7 +240,7 @@ class PhotosActivity : ComponentActivity() {
                         "${Formatter.formatShortFileSize(this@PhotosActivity, library.freeBytes())} vrij op de tv",
                     style = Bis.body(12.sp, color = Bis.RoomDim),
                 )
-                Spacer(Modifier.height(24.dp))
+                Spacer(Modifier.height(16.dp))
                 if (configured) {
                     FocusCard(onClick = onAdd, modifier = Modifier.focusRequester(firstFocus), background = Bis.Tomaat, shape = RoundedCornerShape(16.dp)) {
                         Text(
@@ -255,10 +268,21 @@ class PhotosActivity : ComponentActivity() {
                 }
                 FocusPill("Klaar", onClick = onDone, modifier = if (configured) Modifier else Modifier.focusRequester(firstFocus))
                 Spacer(Modifier.weight(1f))
-                Text(
-                    "Kies OK op een foto om hem te selecteren; daarna kun je de selectie verwijderen.",
-                    style = Bis.body(11.sp, color = Bis.RoomDim),
-                )
+                // Vast adres: zet het als bladwijzer of op het beginscherm van je telefoon.
+                PhoneLibraryHost.address?.let { address ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        QrCode(address, 96.dp)
+                        Spacer(Modifier.width(12.dp))
+                        Column {
+                            Text("Beheren op je telefoon", style = Bis.body(12.sp, FontWeight.Bold, Bis.Room))
+                            Text(
+                                "Scan één keer en zet de pagina op je beginscherm. Werkt als de app of screensaver aan staat.",
+                                style = Bis.body(10.sp, color = Bis.RoomDim),
+                            )
+                        }
+                    }
+                    Text(address, style = Bis.body(9.sp, color = Bis.RoomDim), modifier = Modifier.padding(top = 4.dp))
+                }
             }
             Spacer(Modifier.width(36.dp))
             if (items.isEmpty()) {
@@ -270,13 +294,29 @@ class PhotosActivity : ComponentActivity() {
                 }
             } else {
                 val dateFormat = remember { SimpleDateFormat("d MMM yyyy", Locale("nl", "NL")) }
+                val monthFormat = remember { SimpleDateFormat("MMMM yyyy", Locale("nl", "NL")) }
+                val groups = remember(items) {
+                    items.groupBy { if (it.createdAt > 0) monthFormat.format(Date(it.createdAt)) else "Datum onbekend" }.toList()
+                }
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(4),
                     horizontalArrangement = Arrangement.spacedBy(14.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp),
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(8.dp),
                 ) {
-                    items(items, key = { it.id }) { item ->
+                    groups.forEach { (month, groupItems) ->
+                    item(key = "kop:$month", span = { GridItemSpan(maxLineSpan) }) {
+                        val all = groupItems.all { it.id in selected }
+                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 6.dp)) {
+                            Text(
+                                "${month.replaceFirstChar { it.uppercase() }} · ${groupItems.size}",
+                                style = Bis.heading(18.sp),
+                            )
+                            Spacer(Modifier.width(12.dp))
+                            FocusPill(if (all) "Maand niet kiezen" else "Kies hele maand", onClick = { onToggleGroup(groupItems.map { it.id }) })
+                        }
+                    }
+                    items(groupItems, key = { it.id }) { item ->
                         val isSelected = item.id in selected
                         FocusCard(
                             onClick = { onToggle(item.id) },
@@ -309,6 +349,7 @@ class PhotosActivity : ComponentActivity() {
                                 Tag("✓ GEKOZEN", color = Bis.Tomaat, textColor = Color.White, modifier = Modifier.align(Alignment.TopEnd).padding(6.dp))
                             }
                         }
+                    }
                     }
                 }
             }
