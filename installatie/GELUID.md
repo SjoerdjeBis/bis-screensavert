@@ -3,8 +3,8 @@
 Op het keuzescherm kies je onder **Muziek** wat de screensaver begeleidt:
 
 - **Spotify**: de app speelt zelf niets. Zet Spotify op je telefoon aan en kies je
-  Chromecast via het luidsprekericoon. De screensaver toont dan het nummer en foto's van de
-  artiest, als **Muziekscherm** aan staat.
+  Chromecast via het luidsprekericoon. Wil je daarbij de hoes en foto's van de artiest zien,
+  kies dan bovenaan de kaart **Spotify**.
 - **Jazz**: rustige, instrumentale jazz van Jamendo. Met **Volume** wissel je tussen zacht,
   middel en luid. Gaat Spotify toch spelen, dan zwijgt de jazz vanzelf.
 

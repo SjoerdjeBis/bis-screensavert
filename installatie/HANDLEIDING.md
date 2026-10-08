@@ -67,16 +67,17 @@ Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing a
 ## Zo werkt de app
 
 - **Keuzescherm:** open *Bis Screensavert* tussen je apps. Kies met OK wat je wilt zien:
-  Kunst, Luchtopnames, Sfeer, Mijn foto's & video's of Eigen mix. Je keuze start meteen
+  Kunst, Luchtopnames, Sfeer, Mijn foto's & video's, Eigen mix of Spotify. Je keuze start meteen
   en wordt ook je screensaver. Met Terug ga je terug; met ▶ spring je naar het volgende beeld.
 - **Eigen mix:** kies OK op de kaart en vink aan wat je wilt zien: kunst, luchtopnames, sfeer
   en/of je eigen foto's en video's. De screensaver wisselt ze af.
 - **SmartTube:** opent je YouTube-afspeellijst in SmartTube.
-- **Muziek** (rij onder de kaarten): kies **Spotify** of **Jazz**. Bij Spotify toont de
-  screensaver hoes, titel en foto's van de artiest zodra Spotify op de tv speelt; met
-  **Muziekscherm** zet je dat aan of uit. Bij Jazz speelt rustige jazz, met **Volume** zacht,
-  middel of luid; gaat Spotify toch spelen, dan zwijgt de jazz. Zie GELUID.md.
-  Met de afstandsbediening tijdens muziek: **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
+- **Spotify** (kaart): speelt Spotify op de tv, dan toont de screensaver hoes, titel en foto's
+  van de artiest. Speelt er niets, dan zie je je eigen mix. Met de afstandsbediening:
+  **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
+- **Muziek** (rij onder de kaarten): kies **Spotify** (de app speelt zelf niets) of **Jazz**
+  (rustige jazz, met **Volume** zacht, middel of luid; gaat Spotify toch spelen, dan zwijgt de
+  jazz). Zie GELUID.md.
 - **Sfeer:** haardvuur, regen, zee, sterren en meer, als beeld. In het voorbeeld stem je een clip weg met **▼**.
 - **Geen herhalingen:** wat je de laatste tijd zag, komt niet snel terug, ook niet na een
   herstart, en kunst van dezelfde kunstenaar komt niet twee keer achter elkaar.
