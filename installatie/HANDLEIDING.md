@@ -47,6 +47,21 @@ deze computer** aan en kies **Toestaan**. Het script doet de rest:
 
 Aan het eind kun je de screensaver meteen testen.
 
+## Lukt koppelen met de Mac niet? Zo kan het zonder Mac
+
+Op nieuwere Google TV's werkt koppelen via de Mac soms niet. Zo installeer je de app helemaal op de tv zelf:
+
+1. Open **Downloader** op de tv en typ dit adres:
+   `https://github.com/SjoerdjeBis/bis-screensavert/releases/download/laatste/BisScreensavert.apk`
+2. Vraagt de tv om toestemming? Kies **Instellingen** en zet **Downloader** aan bij *Onbekende apps installeren*. Ga terug en kies **Installeren**.
+3. Open **Bis Screensavert**. Bovenaan staan knoppen voor wat nog niet geregeld is:
+   - **Nog geen screensaver: instellen** opent het screensaver-scherm van de tv. Kies daar *Bis Screensavert*.
+   - **♪ Muziek: toegang geven** opent het scherm voor meldingstoegang. Zet *Bis Screensavert* aan. Dit is nodig om te zien wat Spotify speelt.
+   - **Bijwerken** vraagt de eerste keer om toestemming om updates te installeren. Zet die aan.
+4. Sleutels vul je in via je telefoon (zie *Sleutels invullen via je telefoon*).
+
+Let op: Google TV verbergt sommige van deze schermen. Opent een knop niets, of zie je de app er niet tussen staan? Dan kan dat onderdeel alleen nog met adb. De app werkt verder gewoon; je mist dan alleen dat ene onderdeel.
+
 ## Zo werkt de app
 
 - **Keuzescherm:** open *Bis Screensavert* tussen je apps. Kies met OK wat je wilt zien:
