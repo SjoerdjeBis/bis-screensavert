@@ -18,7 +18,9 @@ import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
 import java.math.BigInteger
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
@@ -151,8 +153,29 @@ private class BisAdb(context: Context) : AbsAdbConnectionManager() {
     override fun getCertificate(): Certificate = cert
     override fun getDeviceName(): String = "Bis Screensavert"
 
-    fun shell(command: String): String =
-        openStream("shell:$command").use { it.openInputStream().bufferedReader().readText().trim() }
+    /**
+     * Voert een opdracht uit en geeft de uitvoer terug. Als de tv de verbinding sluit terwijl we
+     * nog wachten, meldt de bibliotheek "Stream closed" in plaats van een net einde; dat is
+     * gewoon het einde van de uitvoer.
+     */
+    fun shell(command: String): String {
+        val stream = openStream("shell:$command")
+        val out = ByteArrayOutputStream()
+        val buffer = ByteArray(4096)
+        try {
+            val input = stream.openInputStream()
+            while (true) {
+                val n = input.read(buffer)
+                if (n < 0) break
+                out.write(buffer, 0, n)
+            }
+        } catch (e: IOException) {
+            // Einde van de uitvoer.
+        } finally {
+            runCatching { stream.close() }
+        }
+        return out.toString("UTF-8").trim()
+    }
 }
 
 /** Het telefoonformulier voor de koppelcode. */
