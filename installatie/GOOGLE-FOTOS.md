@@ -28,27 +28,43 @@ Kom je er niet uit, maak dan een schermafbeelding en vraag het mij.
 5. Ga naar **Doelgroep** (Audience) › **Testgebruikers** › **Gebruikers toevoegen**,
    vul je eigen Gmail-adres in en klik **Opslaan**.
 
-## 4. De sleutels maken
+## 4. Doorgeefpagina aanzetten (GitHub, eenmalig)
 
-1. Ga naar **Clients** › **Client maken**.
-2. Applicatietype: **Tv's en apparaten met beperkte invoer**. Naam: `Chromecast`. **Maken**.
-3. Je krijgt een **Client-ID** en een **Clientgeheim**. Laat dit venster open, of klik op
-   "JSON downloaden" zodat je ze later terugvindt.
+Na het inloggen stuurt Google je telefoon naar een kleine pagina van de app op GitHub.
+Die geeft de inlog door aan de tv. Zet die pagina zo aan:
 
-## 5. Doorgeven aan de tv
+1. Ga naar **https://github.com/SjoerdjeBis/bis-screensavert/settings/pages**.
+2. Bij **Source**: **Deploy from a branch**. Bij **Branch**: `claude/elegant-brown-wn493w`
+   en map `/docs`. Klik **Save**.
+3. Na een paar minuten werkt
+   **https://sjoerdjebis.github.io/bis-screensavert/google.html**. Er staat dan
+   "Deze pagina hoort bij Bis Screensavert".
 
-Draai het installatiescript opnieuw (zie HANDLEIDING.md, stap 4). Bij **Stap 6: Google
-Foto's** kies je `j` en plak je eerst de Client-ID en daarna het Clientgeheim.
-Het script onthoudt ze; de volgende keer hoeft dit niet meer.
+## 5. De sleutels maken
 
-## 6. Foto's en video's kiezen
+1. Ga in Google Cloud naar **Clients** › **Client maken**.
+2. Applicatietype: **Webapplicatie**. Naam: `Chromecast`.
+3. Bij **Geautoriseerde omleidings-URI's** › **URI toevoegen**, precies dit:
+   `https://sjoerdjebis.github.io/bis-screensavert/google.html`
+4. **Maken**. Je krijgt een **Client-ID** en een **Clientgeheim**.
+
+Had je eerder een client van het type *Tv's en apparaten met beperkte invoer*? Die werkt
+niet voor de fotokiezer; je mag hem verwijderen.
+
+## 6. Doorgeven aan de tv
+
+Open op de tv **Bis Screensavert** › **Sleutels invullen**, scan de QR-code en plak bij
+*Google Foto's* de Client-ID en het Clientgeheim. Tik op **Opslaan op de tv**.
+
+## 7. Foto's en video's kiezen
 
 1. Open op de tv **Bis Screensavert** › **Foto's beheren** › **Foto's en video's toevoegen**.
-2. **Inloggen:** scan de QR-code met je telefoon (of ga naar google.com/device) en vul de
-   code van het tv-scherm in. Google waarschuwt dat de app "niet geverifieerd" is: dat klopt,
-   het is je eigen app. Kies **Doorgaan** en geef toestemming.
-3. **Kiezen:** scan de tweede QR-code. Google Foto's opent op je telefoon. Vink foto's en
-   video's aan en tik op **Klaar**. De tv haalt ze daarna op.
+2. **Inloggen:** scan de QR-code met je telefoon (op dezelfde wifi als de tv). Kies je
+   Google-account. Google waarschuwt dat de app "niet geverifieerd" is: dat klopt, het is
+   je eigen app. Kies **Doorgaan** en geef toestemming. Je telefoon stuurt de inlog
+   vanzelf door naar de tv en meldt "Gelukt".
+3. **Kiezen:** op de tv verschijnt een tweede QR-code. Scan die; Google Foto's opent op je
+   telefoon. Vink foto's en video's aan en tik op **Klaar**. De tv haalt ze daarna op.
 
 ## Goed om te weten
 
@@ -56,16 +72,18 @@ Het script onthoudt ze; de volgende keer hoeft dit niet meer.
   verloopt. Nieuwe foto's in een album komen er niet vanzelf bij; die voeg je zelf toe.
 - Zolang je project in de **testmodus** staat (dat is prima), vraagt Google na 7 dagen
   opnieuw om in te loggen. Dat merk je alleen als je iets toevoegt: de tv toont dan weer
-  een code.
+  een QR-code om in te loggen.
 - De Chromecast heeft weinig opslag (een paar GB vrij). Kies liever korte video's.
   In **Foto's beheren** zie je hoeveel ruimte er nog is.
 
 ## Als het niet lukt
 
-- **"Google staat de fotokiezer niet toe voor dit soort sleutel"**: dan accepteert Google
-  de fotokiezer niet via een tv-code. Laat het me weten; dan bouw ik een variant waarbij je
-  inlogt via een pagina op je telefoon.
-- **"De Google-sleutels kloppen niet"**: plak ze opnieuw. Verwijder eerst het bestand
-  `~/.bis-screensaver/google` op je Mac, dan vraagt het script er weer om.
+- **"Het doorstuuradres in Google Cloud klopt niet"** of `redirect_uri_mismatch`: de
+  omleidings-URI uit stap 5.3 moet letterlijk overeenkomen, zonder extra / aan het eind.
+- **Je telefoon blijft hangen op "Even geduld"**: tik op **Naar de tv**. Werkt dat ook
+  niet, controleer dan of je telefoon op dezelfde wifi zit als de tv.
+- **Pagina niet gevonden (404) na inloggen**: de doorgeefpagina staat nog niet aan
+  (stap 4), of GitHub is nog bezig. Wacht een paar minuten.
+- **"De Google-sleutels kloppen niet"**: plak ze opnieuw via **Sleutels invullen**.
 - **"Toegang geweigerd"** of **"access_denied"**: controleer of je eigen Gmail-adres
   als testgebruiker is toegevoegd (stap 3.5).
