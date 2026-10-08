@@ -19,7 +19,7 @@ bijvoorbeeld `192.168.1.23`. Schrijf het op of laat dit scherm open staan.
 
 ## 3. Downloaden
 
-1. Open de downloadpagina: **https://github.com/SjoerdjeBis/Claude-rest/releases/tag/laatste**
+1. Open de downloadpagina: **https://github.com/SjoerdjeBis/bis-screensavert/releases/tag/laatste**
    (je moet ingelogd zijn op GitHub).
 2. Klik op **BisScreenSaver.zip**. Safari pakt hem automatisch uit in je map Downloads;
    je krijgt een map **BisScreenSaver**.

@@ -20,7 +20,7 @@ data class AvailableUpdate(val versionCode: Long, val versionName: String, val a
  * downloadt die en vraagt Android om hem te installeren. Jij drukt alleen nog op "Bijwerken".
  */
 object Updater {
-    private const val RELEASE = "https://api.github.com/repos/SjoerdjeBis/Claude-rest/releases/tags/laatste"
+    private const val RELEASE = "https://api.github.com/repos/SjoerdjeBis/bis-screensavert/releases/tags/laatste"
     private const val APK_NAME = "BisScreensavert.apk"
     private const val VERSION_NAME = "versie.json"
 
