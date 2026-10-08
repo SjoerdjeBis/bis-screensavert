@@ -9,6 +9,7 @@ import android.provider.Settings.Secure
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.Crossfade
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -59,8 +60,8 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 
 /**
- * Het keuzescherm: kies wat je wilt zien. De achtergrond en de uitleg volgen de kaart
- * waar je op staat, en de slimme mix vertelt wat hij op dit moment van de dag kiest.
+ * Het keuzescherm: kies wat je wilt zien en welke muziek erbij hoort. De achtergrond en de
+ * uitleg volgen de kaart waar je op staat.
  */
 class MainActivity : ComponentActivity() {
     private lateinit var music: MusicMonitor
@@ -104,8 +105,9 @@ class MainActivity : ComponentActivity() {
         var showClock by remember { mutableStateOf(settings.showClock) }
         var musicTakesOver by remember { mutableStateOf(settings.musicTakesOver) }
         var customModes by remember { mutableStateOf(settings.customModes) }
-        var soundLevels by remember { mutableStateOf(SoundLayer.entries.associateWith { settings.soundLevel(it) }) }
-        var soundMatches by remember { mutableStateOf(settings.soundMatchesImage) }
+        var musicSource by remember { mutableStateOf(settings.musicSource) }
+        var jazzLevel by remember { mutableIntStateOf(settings.jazzLevel) }
+        var editingMix by remember { mutableStateOf(false) }
         val hasJamendo = remember(refreshKey) { !settings.jamendoClientId.isNullOrBlank() }
 
         val media = remember(refreshKey) { library.items() }
@@ -122,17 +124,20 @@ class MainActivity : ComponentActivity() {
         LaunchedEffect(refreshKey) { update = Updater.check(this@MainActivity) }
 
         fun summary(p: Program) = when (p) {
-            Program.SMART -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
             Program.ART -> "${art.size} kunstwerken uit ${art.map { it.museum }.distinct().size} musea, elk met een korte Nederlandse toelichting."
             Program.AERIALS -> "De luchtopnames van de Apple TV: steden, kusten en bergen van bovenaf."
             Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's toe te voegen."
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
             else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
-            Program.CUSTOM -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
+            Program.CUSTOM -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
         }
 
         fun choose(p: Program) {
+            if (p == Program.CUSTOM) {
+                editingMix = true
+                return
+            }
             if (p == Program.PHOTOS && media.isEmpty()) {
                 startActivity(Intent(this, PhotosActivity::class.java))
                 return
@@ -148,9 +153,28 @@ class MainActivity : ComponentActivity() {
 
         val firstFocus = remember { FocusRequester() }
         val cardsState = rememberLazyListState()
+
+        if (editingMix) {
+            MixEditor(
+                initial = customModes,
+                hasPhotos = media.isNotEmpty(),
+                hasAmbient = hasAmbient,
+                onClose = { editingMix = false },
+                onSave = { modes, preview ->
+                    customModes = modes
+                    settings.customModes = modes
+                    program = Program.CUSTOM
+                    settings.program = Program.CUSTOM
+                    editingMix = false
+                    if (preview) PreviewActivity.start(this, Program.CUSTOM)
+                },
+            )
+            return
+        }
+
         LaunchedEffect(Unit) {
             // Een kaart buiten beeld bestaat nog niet; eerst erheen scrollen, dan de focus geven.
-            cardsState.scrollToItem(Program.entries.indexOf(settings.program).coerceAtLeast(0))
+            cardsState.scrollToItem(Program.entries.indexOf(program).coerceAtLeast(0))
             withFrameNanos { }
             runCatching { firstFocus.requestFocus() }
         }
@@ -178,7 +202,6 @@ class MainActivity : ComponentActivity() {
                         }
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
                         Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
-                        Program.SMART -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawSky(this, hour) }
                     }
                 }
             }
@@ -254,9 +277,8 @@ class MainActivity : ComponentActivity() {
                         ProgramCard(
                             title = p.title,
                             active = p == program,
-                            recommended = p == Program.SMART,
                             status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient),
-                            modifier = if (p == settings.program) Modifier.focusRequester(firstFocus) else Modifier,
+                            modifier = if (p == program) Modifier.focusRequester(firstFocus) else Modifier,
                             onFocus = {
                                 focused = p
                                 smartTubeFocused = false
@@ -264,7 +286,6 @@ class MainActivity : ComponentActivity() {
                             onClick = { choose(p) },
                         ) {
                             when (p) {
-                                Program.SMART -> Canvas(Modifier.fillMaxSize()) { drawSky(this, hour) }
                                 Program.ART -> AsyncImage(
                                     model = heroArt?.thumbnailUrl,
                                     contentDescription = null,
@@ -291,9 +312,8 @@ class MainActivity : ComponentActivity() {
                     }
                     item {
                         ProgramCard(
-                            title = "Sfeerlijst",
+                            title = "SmartTube",
                             active = false,
-                            recommended = false,
                             status = "Je YouTube-afspeellijst, in SmartTube",
                             modifier = Modifier,
                             onFocus = { smartTubeFocused = true },
@@ -305,13 +325,41 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Spacer(Modifier.weight(1f))
-                Text("INSTELLINGEN", style = Bis.eyebrow(Bis.RoomDim))
-                Spacer(Modifier.height(10.dp))
+                Text("MUZIEK", style = Bis.eyebrow(Bis.RoomDim))
+                Spacer(Modifier.height(4.dp))
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
                 ) {
+                    items(MusicSource.entries) { source ->
+                        val missingKey = source == MusicSource.JAZZ && !hasJamendo
+                        val chosen = source == musicSource
+                        FocusPill(
+                            text = when {
+                                missingKey -> "Jazz: nog geen sleutel"
+                                chosen -> "✓  ${source.label}"
+                                else -> source.label
+                            },
+                            accent = if (missingKey) Bis.Boter else if (chosen) Bis.Room else null,
+                            onClick = {
+                                if (missingKey) {
+                                    startActivity(Intent(this@MainActivity, KeysActivity::class.java))
+                                } else {
+                                    musicSource = source
+                                    settings.musicSource = source
+                                }
+                            },
+                        )
+                    }
+                    if (musicSource == MusicSource.JAZZ && hasJamendo) {
+                        item {
+                            FocusPill("Volume: ${levelLabel(jazzLevel)}", onClick = {
+                                jazzLevel = jazzLevel % 3 + 1
+                                settings.jazzLevel = jazzLevel
+                            })
+                        }
+                    }
                     item {
                         FocusPill(
                             text = musicLabel(musicTakesOver, nowPlaying, music.hasAccess),
@@ -328,6 +376,15 @@ class MainActivity : ComponentActivity() {
                             },
                         )
                     }
+                }
+                Spacer(Modifier.height(8.dp))
+                Text("INSTELLINGEN", style = Bis.eyebrow(Bis.RoomDim))
+                Spacer(Modifier.height(4.dp))
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
+                ) {
                     item {
                         FocusPill("Tijd per beeld: ${secondsLabel(slideSeconds)}", onClick = {
                             val options = Settings.SLIDE_SECONDS_OPTIONS
@@ -348,12 +405,6 @@ class MainActivity : ComponentActivity() {
                         })
                     }
                     item {
-                        FocusPill("Eigen mix: ${customLabel(customModes)}", onClick = {
-                            customModes = nextCustomMix(customModes)
-                            settings.customModes = customModes
-                        })
-                    }
-                    item {
                         FocusPill("Sfeerthema's", onClick = {
                             startActivity(Intent(this@MainActivity, AmbientActivity::class.java))
                         })
@@ -369,37 +420,59 @@ class MainActivity : ComponentActivity() {
                         })
                     }
                 }
+            }
+        }
+    }
+
+    /** Eigen mix samenstellen: vink aan wat je wilt zien. Minstens één onderdeel blijft aan. */
+    @Composable
+    private fun MixEditor(
+        initial: Set<Mode>,
+        hasPhotos: Boolean,
+        hasAmbient: Boolean,
+        onClose: () -> Unit,
+        onSave: (Set<Mode>, Boolean) -> Unit,
+    ) {
+        var modes by remember { mutableStateOf(initial.ifEmpty { setOf(Mode.ART) }) }
+        val focus = remember { FocusRequester() }
+        LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
+        BackHandler(onBack = onClose)
+        Box(Modifier.fillMaxSize().background(Bis.Emaille).padding(horizontal = 48.dp, vertical = 36.dp)) {
+            Column(Modifier.align(Alignment.CenterStart).width(720.dp)) {
+                Text("EIGEN MIX", style = Bis.eyebrow())
                 Spacer(Modifier.height(8.dp))
-                Text("GELUID", style = Bis.eyebrow(Bis.RoomDim))
-                Spacer(Modifier.height(4.dp))
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
-                ) {
-                    items(SoundLayer.entries) { layer ->
-                        val level = soundLevels.getValue(layer)
-                        val missingKey = layer == SoundLayer.JAZZ && !hasJamendo
+                Text("Wat wil je zien?", style = Bis.heading(36.sp))
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    "Vink aan wat er in je mix komt. De screensaver wisselt ze af.",
+                    style = Bis.body(15.sp, color = Bis.Room.copy(alpha = 0.85f)),
+                )
+                Spacer(Modifier.height(20.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Mode.entries.forEachIndexed { i, mode ->
+                        val on = mode in modes
                         FocusPill(
-                            text = if (missingKey) "Jazz: nog geen sleutel" else "${layer.label}: ${levelLabel(level)}",
-                            accent = if (missingKey) Bis.Boter else if (level > 0) Bis.Room else null,
+                            text = (if (on) "✓  " else "○  ") + mode.label,
+                            accent = if (on) Bis.Room else null,
+                            modifier = if (i == 0) Modifier.focusRequester(focus) else Modifier,
                             onClick = {
-                                if (missingKey) {
-                                    startActivity(Intent(this@MainActivity, KeysActivity::class.java))
-                                } else {
-                                    val next = (level + 1) % 4
-                                    settings.setSoundLevel(layer, next)
-                                    soundLevels = soundLevels + (layer to next)
-                                }
+                                val next = if (on) modes - mode else modes + mode
+                                if (next.isNotEmpty()) modes = next
                             },
                         )
                     }
-                    item {
-                        FocusPill("Geluid bij beeld: ${if (soundMatches) "aan" else "uit"}", onClick = {
-                            soundMatches = !soundMatches
-                            settings.soundMatchesImage = soundMatches
-                        })
-                    }
+                }
+                Spacer(Modifier.height(12.dp))
+                val notes = listOfNotNull(
+                    "Je hebt nog geen eigen foto's of video's; die komen erbij zodra je ze toevoegt.".takeIf { Mode.PHOTOS in modes && !hasPhotos },
+                    "Sfeer werkt pas als je een Pixabay- of Pexels-sleutel hebt ingevuld.".takeIf { Mode.AMBIENT in modes && !hasAmbient },
+                )
+                notes.forEach { Text(it, style = Bis.body(13.sp, color = Bis.Boter)) }
+                Spacer(Modifier.height(24.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    FocusPill("Opslaan en bekijken", accent = Bis.Boter, onClick = { onSave(modes, true) })
+                    FocusPill("Opslaan", onClick = { onSave(modes, false) })
+                    FocusPill("Annuleren", onClick = onClose)
                 }
             }
         }
@@ -441,7 +514,6 @@ class MainActivity : ComponentActivity() {
     private fun ProgramCard(
         title: String,
         active: Boolean,
-        recommended: Boolean,
         status: String,
         modifier: Modifier,
         onFocus: () -> Unit,
@@ -454,7 +526,6 @@ class MainActivity : ComponentActivity() {
                     picture()
                     Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         if (active) Tag("ACTIEF")
-                        if (recommended) Tag("AANBEVOLEN", color = Bis.Tomaat, textColor = Color.White)
                     }
                 }
                 Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
@@ -473,7 +544,6 @@ class MainActivity : ComponentActivity() {
 
     private fun cardStatus(p: Program, artCount: Int, photos: Int, videos: Int, custom: Set<Mode>, hasAmbient: Boolean) = when (p) {
         Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee en meer" else "Nog niet gekoppeld"
-        Program.SMART -> "Kiest zelf, passend bij het moment van de dag"
         Program.ART -> "$artCount werken met Nederlandse uitleg"
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
@@ -482,9 +552,8 @@ class MainActivity : ComponentActivity() {
 
     private fun levelLabel(level: Int) = when (level) {
         1 -> "zacht"
-        2 -> "middel"
         3 -> "luid"
-        else -> "uit"
+        else -> "middel"
     }
 
     private fun secondsLabel(seconds: Int) =
@@ -492,9 +561,9 @@ class MainActivity : ComponentActivity() {
 
     private fun musicLabel(takesOver: Boolean, nowPlaying: NowPlaying?, hasAccess: Boolean) = when {
         !hasAccess -> "♪ Muziek: toegang geven"
-        !takesOver -> "♪ Muziek: niet tonen"
+        !takesOver -> "Muziekscherm: uit"
         nowPlaying != null -> "♪ Nu: ${nowPlaying.title} – ${nowPlaying.artist}".take(48)
-        else -> "♪ Muziek neemt het over"
+        else -> "Muziekscherm: aan"
     }
 
     private fun customLabel(modes: Set<Mode>) =
@@ -505,21 +574,6 @@ class MainActivity : ComponentActivity() {
         Mode.AERIALS -> "luchtopnames"
         Mode.PHOTOS -> "foto's"
         Mode.AMBIENT -> "sfeer"
-    }
-
-    /** Loopt alle combinaties van minstens twee onderdelen langs. */
-    private fun nextCustomMix(current: Set<Mode>): Set<Mode> {
-        val options = listOf(
-            setOf(Mode.ART, Mode.AERIALS),
-            setOf(Mode.ART, Mode.PHOTOS),
-            setOf(Mode.AERIALS, Mode.PHOTOS),
-            setOf(Mode.ART, Mode.AERIALS, Mode.PHOTOS),
-            setOf(Mode.ART, Mode.AMBIENT),
-            setOf(Mode.AERIALS, Mode.AMBIENT),
-            setOf(Mode.AMBIENT, Mode.PHOTOS),
-            setOf(Mode.ART, Mode.AERIALS, Mode.AMBIENT, Mode.PHOTOS),
-        )
-        return options[(options.indexOf(current) + 1) % options.size]
     }
 }
 
@@ -568,23 +622,6 @@ private fun drawPlaylist(scope: DrawScope) = with(scope) {
         close()
     }
     drawPath(play, Color.White)
-}
-
-/** Lucht in de kleur van het moment: ochtendgloed, dag, avondrood of nacht. */
-private fun drawSky(scope: DrawScope, hour: Int) = with(scope) {
-    val (top, bottom, sun) = when (hour) {
-        in 6..10 -> Triple(Color(0xFF7FA7C9), Color(0xFFF4C59A), Color(0xFFFFE3A3))
-        in 11..17 -> Triple(Color(0xFF3F7CB0), Color(0xFFA9CFE6), Color(0xFFFFF4D6))
-        in 18..22 -> Triple(Color(0xFF2B2A5C), Color(0xFFE2724F), Color(0xFFF0B23F))
-        else -> Triple(Color(0xFF07131F), Color(0xFF1D3550), Color(0xFFE8E4D8))
-    }
-    drawRect(Brush.verticalGradient(listOf(top, bottom)))
-    val night = hour !in 6..22
-    val center = Offset(size.width * 0.68f, size.height * if (night) 0.32f else 0.5f)
-    drawCircle(sun.copy(alpha = 0.25f), radius = size.minDimension * 0.32f, center = center)
-    drawCircle(sun, radius = size.minDimension * 0.17f, center = center)
-    if (night) drawCircle(top, radius = size.minDimension * 0.15f, center = center + Offset(size.minDimension * 0.08f, -size.minDimension * 0.04f))
-    drawHills(this, Bis.Emaille3, Bis.Emaille)
 }
 
 /** Een landschap van bovenaf gezien, voor de luchtopnames. */

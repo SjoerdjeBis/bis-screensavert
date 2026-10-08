@@ -29,7 +29,7 @@ class KeyServer(context: Context, private val onSaved: (List<String>) -> Unit) :
             val id = Regex("[?&]list=([A-Za-z0-9_-]+)").find(input)?.groupValues?.get(1) ?: input.takeIf { it.matches(Regex("[A-Za-z0-9_-]{10,}")) }
             if (id != null) {
                 settings.smartTubePlaylist = id
-                saved += "Sfeerlijst"
+                saved += "SmartTube-afspeellijst"
             }
         }
         return saved
@@ -62,7 +62,7 @@ ${field("jamendo", "Jamendo Client ID", !settings.jamendoClientId.isNullOrBlank(
 ${field("google_id", "Client-ID", !settings.googleClientId.isNullOrBlank(), "Uit je Google Cloud-project, type \"Tv's en apparaten met beperkte invoer\".", "…apps.googleusercontent.com")}
 ${field("google_secret", "Clientgeheim", !settings.googleClientSecret.isNullOrBlank(), "Hoort bij de Client-ID hierboven; vul ze altijd samen in.")}
 </fieldset>
-<fieldset><legend>Sfeerlijst (SmartTube)</legend>
+<fieldset><legend>SmartTube</legend>
 ${field("lijst", "YouTube-afspeellijst", true, "Plak de link van de afspeellijst; nu ingesteld: ${settings.smartTubePlaylist}", "https://youtube.com/playlist?list=…")}
 </fieldset>
 <button type=submit>Opslaan op de tv</button>

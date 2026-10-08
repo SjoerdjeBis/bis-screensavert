@@ -12,7 +12,6 @@ enum class Mode(val key: String, val label: String) {
 
 /** De keuzes op het keuzescherm. */
 enum class Program(val key: String, val title: String) {
-    SMART("slim", "Slimme mix"),
     ART("kunst", "Kunst"),
     AERIALS("aerials", "Luchtopnames"),
     AMBIENT("sfeer", "Sfeer"),
@@ -20,12 +19,21 @@ enum class Program(val key: String, val title: String) {
     CUSTOM("eigen", "Eigen mix"),
 }
 
+/**
+ * Spotify: de app speelt zelf niets en toont wat Spotify op de tv speelt.
+ * Jazz: rustige jazz van Jamendo; gaat Spotify spelen, dan zwijgt de jazz.
+ */
+enum class MusicSource(val key: String, val label: String) {
+    SPOTIFY("spotify", "Spotify"),
+    JAZZ("jazz", "Jazz"),
+}
+
 /** Alle instellingen van de app, bewaard op de tv zelf. */
 class Settings(context: Context) {
     private val prefs = context.applicationContext.getSharedPreferences("bis", Context.MODE_PRIVATE)
 
     var program: Program
-        get() = Program.entries.firstOrNull { it.key == prefs.getString("program", null) } ?: Program.SMART
+        get() = Program.entries.firstOrNull { it.key == prefs.getString("program", null) } ?: Program.CUSTOM
         set(value) = prefs.edit().putString("program", value.key).apply()
 
     var customModes: Set<Mode>
@@ -94,16 +102,15 @@ class Settings(context: Context) {
         get() = prefs.getString("jamendo_id", null)
         set(value) = prefs.edit().putString("jamendo_id", value).apply()
 
-    /** Volume per geluidslaag: 0 = uit, 1 = zacht, 2 = middel, 3 = luid. */
-    fun soundLevel(layer: SoundLayer): Int = prefs.getInt("geluid_${layer.key}", 0)
+    /** Welke muziek de screensaver begeleidt. */
+    var musicSource: MusicSource
+        get() = MusicSource.entries.firstOrNull { it.key == prefs.getString("muziekbron", null) } ?: MusicSource.SPOTIFY
+        set(value) = prefs.edit().putString("muziekbron", value.key).apply()
 
-    fun setSoundLevel(layer: SoundLayer, level: Int) =
-        prefs.edit().putInt("geluid_${layer.key}", level.coerceIn(0, 3)).apply()
-
-    /** Geluid laten passen bij het beeld (haardvuur bij een haardvuurclip enzovoort). */
-    var soundMatchesImage: Boolean
-        get() = prefs.getBoolean("geluid_bij_beeld", true)
-        set(value) = prefs.edit().putBoolean("geluid_bij_beeld", value).apply()
+    /** Volume van de jazz: 1 = zacht, 2 = middel, 3 = luid. */
+    var jazzLevel: Int
+        get() = prefs.getInt("jazz_volume", 2).coerceIn(1, 3)
+        set(value) = prefs.edit().putInt("jazz_volume", value.coerceIn(1, 3)).apply()
 
     /** Jazznummers die je hebt weggestemd ("jamendo:id"). */
     var blockedTracks: Set<String>

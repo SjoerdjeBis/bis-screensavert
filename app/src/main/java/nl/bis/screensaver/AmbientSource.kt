@@ -62,12 +62,6 @@ class AmbientSource(private val context: Context) : SlideSource {
             subtitle = listOfNotNull(clip.maker?.let { "Beeld: $it" }, clip.source).joinToString(" · "),
             clipId = clip.id,
             playForMs = settings.slideSeconds * 1000L,
-            sound = when (theme) {
-                AmbientTheme.FIRE, AmbientTheme.CANDLE -> SoundLayer.FIRE
-                AmbientTheme.RAIN -> SoundLayer.RAIN
-                AmbientTheme.SEA, AmbientTheme.UNDERWATER -> SoundLayer.SEA
-                else -> null
-            },
         )
     }
 

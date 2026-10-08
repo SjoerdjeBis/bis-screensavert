@@ -52,7 +52,7 @@ class SlideshowController(
     private val settings = Settings(context)
     private val library = MediaLibrary(context)
     private val music = MusicMonitor(context)
-    private val mixer = SoundMixer(context, scope)
+    private val mixer = JazzPlayer(context, scope)
 
     private val video = root.findViewById<SurfaceView>(R.id.video)
     private val imageLayer = root.findViewById<View>(R.id.image_layer)
@@ -101,7 +101,6 @@ class SlideshowController(
 
     private val skip = Channel<Unit>(Channel.CONFLATED)
     private val musicVisible = MutableStateFlow(false)
-    private var quiet = false
 
     private var job: Job? = null
     private var musicJob: Job? = null
@@ -130,7 +129,7 @@ class SlideshowController(
         if (job != null) return
         clock.visibility = if (settings.showClock) View.VISIBLE else View.GONE
         job = scope.launch { run() }
-        // De muziekmonitor draait altijd: ook om jazz en sfeergeluid stil te zetten als Spotify speelt.
+        // De muziekmonitor draait altijd: ook om de jazz stil te zetten als Spotify speelt.
         music.start()
         if (settings.musicTakesOver) musicJob = scope.launch { followMusic() }
         mixer.start()
@@ -207,13 +206,12 @@ class SlideshowController(
     private suspend fun run() {
         var failedInARow = 0
         while (scope.isActive) {
-            val plan = SmartMix.plan(
+            val plan = MixPlan.plan(
                 forcedProgram ?: settings.program,
                 settings.customModes,
                 hasPhotos = library.items().isNotEmpty(),
                 hasAmbient = settings.hasAmbientKeys,
             )
-            quiet = plan.quiet
             for ((mode, count) in plan.rotation) {
                 repeat(count) {
                     musicVisible.first { !it }
@@ -237,7 +235,6 @@ class SlideshowController(
     }
 
     private suspend fun show(slide: Slide, mode: Mode): Boolean {
-        mixer.setMatchedLayer((slide as? Slide.Video)?.sound)
         return showSlide(slide, mode)
     }
 
@@ -260,7 +257,7 @@ class SlideshowController(
         val duration = settings.slideSeconds * 1000L
         kenBurns(image, duration)
         fade(imageLayer, 1f)
-        if (showsCaption()) fade(caption, 1f)
+        fade(caption, 1f)
         waitOrSkip(duration)
         return true
     }
@@ -289,14 +286,10 @@ class SlideshowController(
                         hideStatus()
                         fade(imageLayer, 0f)
                         setCaption(slide, mode)
-                        if (showsCaption()) {
-                            fade(caption, 1f)
-                            captionJob?.cancel()
-                            captionJob = scope.launch {
-                                delay(VIDEO_CAPTION_MS)
-                                fade(caption, 0f)
-                            }
-                        } else {
+                        fade(caption, 1f)
+                        captionJob?.cancel()
+                        captionJob = scope.launch {
+                            delay(VIDEO_CAPTION_MS)
                             fade(caption, 0f)
                         }
                     }
@@ -337,7 +330,6 @@ class SlideshowController(
         return (context.imageLoader.execute(request) as? SuccessResult)?.drawable
     }
 
-    private fun showsCaption() = !quiet
 
     private fun setCaption(slide: Slide, mode: Mode) {
         captionEyebrow.text = when (mode) {

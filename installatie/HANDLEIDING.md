@@ -67,19 +67,21 @@ Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing a
 ## Zo werkt de app
 
 - **Keuzescherm:** open *Bis Screensavert* tussen je apps. Kies met OK wat je wilt zien:
-  Slimme mix, Kunst, Luchtopnames, Mijn foto's & video's of Eigen mix. Je keuze start meteen
+  Kunst, Luchtopnames, Sfeer, Mijn foto's & video's of Eigen mix. Je keuze start meteen
   en wordt ook je screensaver. Met Terug ga je terug; met ▶ spring je naar het volgende beeld.
-- **Slimme mix:** past zich aan het tijdstip aan: 's ochtends kunst, 's avonds rustiger met
-  je eigen foto's, 's nachts alleen luchtopnames zonder tekst.
-- **Muziek:** speelt Spotify op de tv, dan toont de screensaver hoes, titel en foto's van de
-  artiest. Met de afstandsbediening: **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
-  Elke andere knop maakt de tv wakker.
-- **Sfeer:** haardvuur, regen, zee, sterren en meer. In het voorbeeld stem je een clip weg met **▼**.
-- **Sfeerlijst:** opent je YouTube-afspeellijst in SmartTube.
+- **Eigen mix:** kies OK op de kaart en vink aan wat je wilt zien: kunst, luchtopnames, sfeer
+  en/of je eigen foto's en video's. De screensaver wisselt ze af.
+- **SmartTube:** opent je YouTube-afspeellijst in SmartTube.
+- **Muziek** (rij onder de kaarten): kies **Spotify** of **Jazz**. Bij Spotify toont de
+  screensaver hoes, titel en foto's van de artiest zodra Spotify op de tv speelt; met
+  **Muziekscherm** zet je dat aan of uit. Bij Jazz speelt rustige jazz, met **Volume** zacht,
+  middel of luid; gaat Spotify toch spelen, dan zwijgt de jazz. Zie GELUID.md.
+  Met de afstandsbediening tijdens muziek: **OK** = pauze/verder, **◀ ▶** = vorige/volgende.
+- **Sfeer:** haardvuur, regen, zee, sterren en meer, als beeld. In het voorbeeld stem je een clip weg met **▼**.
 - **Geen herhalingen:** wat je de laatste tijd zag, komt niet snel terug, ook niet na een
   herstart, en kunst van dezelfde kunstenaar komt niet twee keer achter elkaar.
-- **Instellingen** staan onderaan het keuzescherm: tijd per beeld, uitleg bij kunst, klok,
-  eigen mix en of muziek het scherm mag overnemen.
+- **Instellingen** (onderste rij): tijd per beeld, uitleg bij kunst, klok, sfeerthema's,
+  foto's beheren en sleutels invullen.
 
 ## Goed om te weten
 

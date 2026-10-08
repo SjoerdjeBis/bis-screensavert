@@ -11,7 +11,7 @@
 
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
-    <!-- Om SmartTube te kunnen vinden en openen vanaf de kaart "Sfeerlijst". -->
+    <!-- Om SmartTube te kunnen vinden en openen vanaf de kaart "SmartTube". -->
     <queries>
         <package android:name="com.teamsmart.videomanager.tv" />
         <package android:name="com.liskovsoft.smarttubetv.beta" />

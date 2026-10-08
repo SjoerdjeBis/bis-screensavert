@@ -25,7 +25,7 @@ kies je `j` en plak je de sleutels. Heb je er maar één, druk dan bij de andere
 
 ## In de app
 
-- Kies op het keuzescherm de kaart **Sfeer**, of laat de **Slimme mix** ze 's avonds en 's nachts tonen.
+- Kies op het keuzescherm de kaart **Sfeer**, of vink Sfeer aan in je **Eigen mix**.
 - Onder **Sfeerthema's** zet je thema's aan of uit.
 - Zie je in het voorbeeld een clip die je niet mooi vindt: druk op **▼**. Die komt nooit meer terug.
   Wil je alles terug, dan kan dat ook onder Sfeerthema's.
