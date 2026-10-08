@@ -69,7 +69,7 @@ class MediaLibrary(context: Context) {
             onProgress(index, todo.size)
             if (!item.ready) return@forEachIndexed
             if (freeBytes() < Storage.MIN_FREE_BYTES) {
-                message = "De tv is bijna vol. Niet alles is opgeslagen; verwijder eerst iets."
+                message = "De tv is bijna vol (nog ${freeBytes() / 1_000_000} MB vrij). Niet alles is opgeslagen."
                 return Pair(added, message)
             }
             if (usedBytes() >= Storage.MAX_MEDIA_BYTES) {
@@ -78,9 +78,16 @@ class MediaLibrary(context: Context) {
             }
             val extension = if (item.isVideo) "mp4" else "jpg"
             val fileName = "${item.id.hashCode().toUInt()}.$extension"
-            val url = if (item.isVideo) "${item.baseUrl}=dv" else "${item.baseUrl}=w3840-h2160"
-            runCatching { Http.download(url, File(dir, fileName), token()) }
+            val url = if (item.isVideo) "${item.baseUrl}=dv" else "${item.baseUrl}=w1920-h1080"
+            val target = File(dir, fileName)
+            runCatching { Http.download(url, target, token()) }
                 .onSuccess {
+                    // Een grote video kan de tv alsnog te vol maken; dan die niet bewaren.
+                    if (freeBytes() < Storage.MIN_FREE_BYTES / 2) {
+                        target.delete()
+                        message = "Deze video is te groot voor de vrije ruimte op de tv (nog ${freeBytes() / 1_000_000} MB vrij)."
+                        return Pair(added, message)
+                    }
                     add(LocalMedia(item.id, fileName, item.isVideo, parseTime(item.createTime), item.width, item.height))
                     added++
                 }

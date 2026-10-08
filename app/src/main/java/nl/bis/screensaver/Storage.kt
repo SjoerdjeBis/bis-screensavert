@@ -8,11 +8,14 @@ object Storage {
     /** Eigen foto's en video's samen. */
     const val MAX_MEDIA_BYTES = 2_000_000_000L
 
-    /** Altijd minstens zoveel vrij laten voor de tv zelf en andere apps. */
-    const val MIN_FREE_BYTES = 1_000_000_000L
+    /**
+     * Altijd minstens zoveel vrij laten voor de tv zelf en andere apps. Een Chromecast heeft
+     * vaak maar een paar honderd MB vrij; meer reserveren betekent dat er niets bij kan.
+     */
+    const val MIN_FREE_BYTES = 200_000_000L
 
     /** Tijdelijk bewaarde kunstwerken en artiestfoto's. */
-    const val IMAGE_CACHE_BYTES = 150L * 1024 * 1024
+    const val IMAGE_CACHE_BYTES = 100L * 1024 * 1024
 
     fun cacheBytes(context: Context): Long = size(context.cacheDir)
 
