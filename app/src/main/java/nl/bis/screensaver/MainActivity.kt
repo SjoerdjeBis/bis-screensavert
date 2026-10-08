@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +26,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -156,7 +157,6 @@ class MainActivity : ComponentActivity() {
         }
 
         val firstFocus = remember { FocusRequester() }
-        val cardsState = rememberLazyListState()
 
         if (editingMix) {
             MixEditor(
@@ -177,8 +177,6 @@ class MainActivity : ComponentActivity() {
         }
 
         LaunchedEffect(Unit) {
-            // Een kaart buiten beeld bestaat nog niet; eerst erheen scrollen, dan de focus geven.
-            cardsState.scrollToItem(Program.entries.indexOf(program).coerceAtLeast(0))
             withFrameNanos { }
             runCatching { firstFocus.requestFocus() }
         }
@@ -216,7 +214,7 @@ class MainActivity : ComponentActivity() {
                 ),
             )
 
-            Column(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 22.dp)) {
+            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 48.dp, vertical = 16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(Modifier.size(10.dp).background(Bis.Boter, androidx.compose.foundation.shape.CircleShape))
                     Spacer(Modifier.width(10.dp))
@@ -261,76 +259,82 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                Spacer(Modifier.height(18.dp))
-                Text("Wat wil je zien?", style = Bis.heading(36.sp))
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(10.dp))
+                Text("Wat wil je zien?", style = Bis.heading(28.sp))
+                Spacer(Modifier.height(4.dp))
                 Text(
                     if (smartTubeFocused) "Opent je afspeellijst in SmartTube. Met Terug kom je hier weer uit." else summary(focused),
-                    style = Bis.body(15.sp, color = Bis.Room.copy(alpha = 0.85f)),
-                    maxLines = 2,
+                    style = Bis.body(13.sp, color = Bis.Room.copy(alpha = 0.85f)),
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.width(680.dp).height(40.dp),
+                    modifier = Modifier.width(820.dp),
                 )
 
-                Spacer(Modifier.height(8.dp))
-                LazyRow(
-                    state = cardsState,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(vertical = 10.dp, horizontal = 6.dp),
-                ) {
-                    items(Program.entries) { p ->
-                        ProgramCard(
-                            title = p.title,
-                            active = p == program,
-                            status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess),
-                            modifier = if (p == program) Modifier.focusRequester(firstFocus) else Modifier,
-                            onFocus = {
-                                focused = p
-                                smartTubeFocused = false
-                            },
-                            onClick = { choose(p) },
-                        ) {
-                            when (p) {
-                                Program.ART -> AsyncImage(
-                                    model = heroArt?.thumbnailUrl,
-                                    contentDescription = null,
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier.fillMaxSize(),
-                                )
-                                Program.AERIALS -> Canvas(Modifier.fillMaxSize()) { drawLandscape(this, hour) }
-                                Program.PHOTOS -> if (latestPhoto != null) {
-                                    AsyncImage(
-                                        model = latestPhoto,
+                Spacer(Modifier.height(4.dp))
+                // Rij 1: wat je los kunt kiezen. Rij 2: combinaties en andere apps.
+                val rows = listOf(
+                    listOf(Program.ART, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
+                    listOf(Program.CUSTOM, Program.SPOTIFY),
+                )
+                rows.forEachIndexed { index, row ->
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        modifier = Modifier.padding(vertical = 6.dp, horizontal = 4.dp),
+                    ) {
+                        row.forEach { p ->
+                            ProgramCard(
+                                title = p.title,
+                                active = p == program,
+                                status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess),
+                                modifier = if (p == program) Modifier.focusRequester(firstFocus) else Modifier,
+                                onFocus = {
+                                    focused = p
+                                    smartTubeFocused = false
+                                },
+                                onClick = { choose(p) },
+                            ) {
+                                when (p) {
+                                    Program.ART -> AsyncImage(
+                                        model = heroArt?.thumbnailUrl,
                                         contentDescription = null,
                                         contentScale = ContentScale.Crop,
                                         modifier = Modifier.fillMaxSize(),
                                     )
-                                } else {
-                                    Box(Modifier.fillMaxSize().background(Bis.Emaille3), contentAlignment = Alignment.Center) {
-                                        Text("+", style = Bis.heading(44.sp, Bis.Boter))
+                                    Program.AERIALS -> Canvas(Modifier.fillMaxSize()) { drawLandscape(this, hour) }
+                                    Program.PHOTOS -> if (latestPhoto != null) {
+                                        AsyncImage(
+                                            model = latestPhoto,
+                                            contentDescription = null,
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier.fillMaxSize(),
+                                        )
+                                    } else {
+                                        Box(Modifier.fillMaxSize().background(Bis.Emaille3), contentAlignment = Alignment.Center) {
+                                            Text("+", style = Bis.heading(30.sp, Bis.Boter))
+                                        }
                                     }
+                                    Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
+                                    Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
+                                    Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
                                 }
-                                Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
-                                Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
-                                Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
                             }
                         }
-                    }
-                    item {
-                        ProgramCard(
-                            title = "SmartTube",
-                            active = false,
-                            status = "Je YouTube-afspeellijst, in SmartTube",
-                            modifier = Modifier,
-                            onFocus = { smartTubeFocused = true },
-                            onClick = { openSmartTube(settings.smartTubePlaylist) },
-                        ) {
-                            Canvas(Modifier.fillMaxSize()) { drawPlaylist(this) }
+                        if (index == rows.lastIndex) {
+                            ProgramCard(
+                                title = "SmartTube",
+                                active = false,
+                                status = "Je YouTube-afspeellijst",
+                                modifier = Modifier,
+                                onFocus = { smartTubeFocused = true },
+                                onClick = { openSmartTube(settings.smartTubePlaylist) },
+                            ) {
+                                Canvas(Modifier.fillMaxSize()) { drawPlaylist(this) }
+                            }
                         }
                     }
                 }
 
-                Spacer(Modifier.weight(1f))
+                Spacer(Modifier.height(6.dp))
                 Text("MUZIEK", style = Bis.eyebrow(Bis.RoomDim))
                 Spacer(Modifier.height(4.dp))
                 LazyRow(
@@ -510,23 +514,23 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(160.dp).height(188.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(150.dp).height(108.dp)) { focused ->
             Column {
-                Box(Modifier.fillMaxWidth().height(100.dp)) {
+                Box(Modifier.fillMaxWidth().height(58.dp)) {
                     picture()
                     Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         if (active) Tag("ACTIEF")
                     }
                 }
-                Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
+                Column(Modifier.padding(horizontal = 10.dp, vertical = 6.dp)) {
                     Text(
                         title,
-                        style = Bis.body(15.sp, FontWeight.Bold, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.9f)),
+                        style = Bis.body(13.sp, FontWeight.Bold, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.9f)),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
-                    Spacer(Modifier.height(3.dp))
-                    Text(status, style = Bis.body(11.sp, color = Bis.RoomDim), maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    Spacer(Modifier.height(1.dp))
+                    Text(status, style = Bis.body(10.sp, color = Bis.RoomDim), maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
             }
         }
