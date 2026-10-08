@@ -42,6 +42,13 @@ class MediaLibrary(context: Context) {
 
     fun usedBytes(): Long = dir.listFiles()?.sumOf { it.length() } ?: 0
 
+    /** Bestanden die niet (meer) in de index staan, bijvoorbeeld na een afgebroken download. */
+    @Synchronized
+    fun removeOrphans() {
+        val known = items().map { it.fileName }.toSet() + indexFile.name
+        dir.listFiles()?.filter { it.name !in known }?.forEach { it.delete() }
+    }
+
     fun freeBytes(): Long = dir.usableSpace
 
     /**
@@ -61,8 +68,12 @@ class MediaLibrary(context: Context) {
         todo.forEachIndexed { index, item ->
             onProgress(index, todo.size)
             if (!item.ready) return@forEachIndexed
-            if (freeBytes() < MIN_FREE_BYTES) {
+            if (freeBytes() < Storage.MIN_FREE_BYTES) {
                 message = "De tv is bijna vol. Niet alles is opgeslagen; verwijder eerst iets."
+                return Pair(added, message)
+            }
+            if (usedBytes() >= Storage.MAX_MEDIA_BYTES) {
+                message = "De grens van ${Storage.MAX_MEDIA_BYTES / 1_000_000_000} GB voor eigen foto's en video's is bereikt. Verwijder eerst iets."
                 return Pair(added, message)
             }
             val extension = if (item.isVideo) "mp4" else "jpg"
@@ -111,7 +122,5 @@ class MediaLibrary(context: Context) {
     private fun parseTime(value: String?): Long =
         value?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() } ?: 0L
 
-    private companion object {
-        const val MIN_FREE_BYTES = 600L * 1024 * 1024
-    }
+
 }

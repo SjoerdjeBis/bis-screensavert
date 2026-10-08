@@ -35,6 +35,9 @@ jobs:
           cp installatie/installeer.command installatie/HANDLEIDING.md installatie/GOOGLE-FOTOS.md installatie/SFEER.md BisScreenSaver/
           chmod +x BisScreenSaver/installeer.command
           zip -r BisScreenSaver.zip BisScreenSaver
+          # Voor het bijwerken vanaf de tv: de app los, met het versienummer erbij.
+          cp app/build/outputs/apk/release/app-release.apk BisScreensavert.apk
+          echo "{\"versionCode\": ${{ github.run_number }}, \"versionName\": \"0.1.${{ github.run_number }}\"}" > versie.json
 
       - uses: actions/upload-artifact@v4
         with:
@@ -46,7 +49,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete laatste --yes --cleanup-tag || true
-          gh release create laatste BisScreenSaver.zip \
+          gh release create laatste BisScreenSaver.zip BisScreensavert.apk versie.json \
             --target "${{ github.sha }}" \
             --title "Bis Screensavert – laatste versie" \
             --notes "Versie 0.1.${{ github.run_number }} (branch ${{ github.ref_name }}). Download BisScreenSaver.zip en volg HANDLEIDING.md." \

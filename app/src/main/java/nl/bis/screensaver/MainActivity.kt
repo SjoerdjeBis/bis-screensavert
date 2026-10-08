@@ -33,6 +33,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,6 +53,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 /**
@@ -109,6 +111,10 @@ class MainActivity : ComponentActivity() {
         val hour = remember(refreshKey) { Calendar.getInstance().get(Calendar.HOUR_OF_DAY) }
         val hasAmbient = remember(refreshKey) { settings.hasAmbientKeys }
         var smartTubeFocused by remember { mutableStateOf(false) }
+        var update by remember { mutableStateOf<AvailableUpdate?>(null) }
+        var updating by remember { mutableStateOf<String?>(null) }
+        val scope = rememberCoroutineScope()
+        LaunchedEffect(refreshKey) { update = Updater.check(this@MainActivity) }
 
         fun summary(p: Program) = when (p) {
             Program.SMART -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
@@ -177,6 +183,28 @@ class MainActivity : ComponentActivity() {
                     Spacer(Modifier.width(10.dp))
                     Text("Bis Screensavert", style = Bis.heading(18.sp))
                     Spacer(Modifier.weight(1f))
+                    update?.let { u ->
+                        FocusPill(
+                            text = updating ?: "Nieuwe versie ${u.versionName}: bijwerken",
+                            accent = Bis.Boter,
+                            onClick = {
+                                if (updating == null) {
+                                    updating = "Downloaden…"
+                                    scope.launch {
+                                        updating = try {
+                                            Updater.install(this@MainActivity, u)
+                                            "Bevestig op het scherm"
+                                        } catch (e: Exception) {
+                                            null.also {
+                                                Toast.makeText(this@MainActivity, "Downloaden lukte niet. Probeer het later opnieuw.", Toast.LENGTH_LONG).show()
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                        )
+                        Spacer(Modifier.width(16.dp))
+                    }
                     when (screensaverActive) {
                         true -> Text("✓  Ingesteld als screensaver", style = Bis.body(12.sp, FontWeight.Medium, Bis.RoomDim))
                         false -> Text("Nog niet ingesteld als screensaver: draai het installatiescript", style = Bis.body(12.sp, FontWeight.Medium, Bis.Boter))

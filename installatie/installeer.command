@@ -118,6 +118,9 @@ INGESTELD="$("$ADB" -s "$TV" shell settings get secure screensaver_components | 
 [ "$INGESTELD" = "$SCREENSAVER" ] || klaar_met_fout "De tv nam de screensaver-instelling niet over (staat nu op: $INGESTELD)."
 echo "✔  Bis Screensavert is nu je screensaver."
 
+# Bijwerken vanaf de tv toestaan (de app mag zijn eigen nieuwe versie installeren).
+"$ADB" -s "$TV" shell appops set "$PAKKET" REQUEST_INSTALL_PACKAGES allow >/dev/null 2>&1
+
 # 5. Muziek: de app laten zien wat Spotify afspeelt.
 stap "Stap 5: muziek (Spotify) zichtbaar maken"
 "$ADB" -s "$TV" shell cmd notification allow_listener "$MUZIEK" >/dev/null 2>&1

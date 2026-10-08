@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import coil.imageLoader
 import coil.request.ImageRequest
@@ -76,7 +77,14 @@ class SlideshowController(
     private val musicProgress = root.findViewById<ProgressBar>(R.id.music_progress)
     private val musicHint = root.findViewById<TextView>(R.id.music_hint)
 
-    private val player = ExoPlayer.Builder(context).build().apply {
+    // Kleinere buffer dan standaard: genoeg voor soepel afspelen, zonder veel werkgeheugen.
+    private val player = ExoPlayer.Builder(context)
+        .setLoadControl(
+            DefaultLoadControl.Builder()
+                .setBufferDurationsMs(10_000, 25_000, 1_500, 3_000)
+                .build(),
+        )
+        .build().apply {
         volume = 0f
         setVideoSurfaceView(video)
     }

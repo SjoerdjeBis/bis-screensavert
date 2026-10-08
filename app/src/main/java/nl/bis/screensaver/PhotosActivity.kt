@@ -216,7 +216,8 @@ class PhotosActivity : ComponentActivity() {
                 Spacer(Modifier.height(10.dp))
                 Text("$photos foto's · $videos video's", style = Bis.body(15.sp, FontWeight.Medium))
                 Text(
-                    "${Formatter.formatShortFileSize(this@PhotosActivity, library.usedBytes())} gebruikt · " +
+                    "${Formatter.formatShortFileSize(this@PhotosActivity, library.usedBytes())} van " +
+                        "${Formatter.formatShortFileSize(this@PhotosActivity, Storage.MAX_MEDIA_BYTES)} gebruikt · " +
                         "${Formatter.formatShortFileSize(this@PhotosActivity, library.freeBytes())} vrij op de tv",
                     style = Bis.body(12.sp, color = Bis.RoomDim),
                 )
