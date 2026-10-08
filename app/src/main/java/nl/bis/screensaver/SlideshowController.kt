@@ -117,8 +117,14 @@ class SlideshowController(
         Mode.AERIALS to AerialSource(context),
         Mode.PHOTOS to PhotoSource(context),
         Mode.AMBIENT to AmbientSource(context),
+        Mode.SPACE to CuratedSource(context, "ruimte"),
+        Mode.NATURE to CuratedSource(context, "natuur"),
+        Mode.HISTORY to CuratedSource(context, "toen", onThisDay = true),
     )
     private var currentClipId: String? = null
+
+    /** Het kunstwerk of beeld dat nu in beeld is, om in het voorbeeld weg te kunnen stemmen. */
+    private var currentImageVote: String? = null
 
     private val skip = Channel<Unit>(Channel.CONFLATED)
     private val musicVisible = MutableStateFlow(false)
@@ -208,10 +214,12 @@ class SlideshowController(
             return true
         }
         val clip = currentClipId
-        if (!inScreensaver && clip != null && event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+        val image = currentImageVote
+        if (!inScreensaver && (clip != null || image != null) && event.keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
             if (up) {
-                settings.blockedClips = settings.blockedClips + clip
-                showStatus("Weggestemd: deze clip komt niet meer terug")
+                if (clip != null) settings.blockedClips = settings.blockedClips + clip
+                if (image != null) settings.blockedImages = settings.blockedImages + image
+                showStatus("Weggestemd: dit beeld komt niet meer terug")
                 scope.launch {
                     delay(2_500)
                     hideStatus()
@@ -233,6 +241,9 @@ class SlideshowController(
                 settings.customModes,
                 hasPhotos = library.items().isNotEmpty(),
                 hasAmbient = settings.hasAmbientKeys,
+                emptyModes = Mode.entries.filter { mode ->
+                    CuratedCollection.assetFor(mode)?.let { CuratedCollection.load(context, it).isEmpty() } == true
+                }.toSet(),
             )
             for ((mode, count) in plan.rotation) {
                 repeat(count) {
@@ -275,6 +286,7 @@ class SlideshowController(
         delay(FADE_MS)
         image.setImageDrawable(drawable)
         imageBackground.setImageDrawable(drawable)
+        currentImageVote = slide.voteId
         val hasCaption = setCaption(slide, mode)
         val duration = settings.slideSeconds * 1000L
         kenBurns(image, duration)
@@ -349,6 +361,7 @@ class SlideshowController(
                 // Sfeerclips duren vaak maar 10 tot 30 seconden: in een lus tot de tijd om is.
                 player.repeatMode = if (slide.playForMs != null) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
                 currentClipId = slide.clipId
+                currentImageVote = null
                 player.setMediaItem(MediaItem.fromUri(url))
                 player.prepare()
                 player.play()
@@ -387,7 +400,10 @@ class SlideshowController(
             Mode.AERIALS -> "LUCHTOPNAME"
             Mode.PHOTOS -> if (slide is Slide.Video) "MIJN VIDEO'S" else "MIJN FOTO'S"
             Mode.AMBIENT -> "SFEER"
-        }
+            Mode.SPACE -> "RUIMTE · NASA"
+            Mode.NATURE -> "NATUUR IN NEDERLAND"
+            Mode.HISTORY -> (slide as? Slide.Image)?.source ?: "NEDERLAND VAN TOEN"
+        } + if (isPreview && slide is Slide.Image && slide.voteId != null) "      ▼ niet meer tonen   ▶ volgende" else ""
         captionTitle.text = slide.title
         captionSubtitle.text = slide.subtitle.orEmpty()
         captionSubtitle.visibility = if (bare || slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE

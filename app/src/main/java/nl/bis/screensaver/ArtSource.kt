@@ -56,9 +56,11 @@ object ArtCollection {
 /** Kiest steeds een werk dat je de laatste tijd niet zag, en niet twee keer dezelfde kunstenaar na elkaar. */
 class ArtSource(private val context: Context) : SlideSource {
     private val picker = FreshPicker(context, "kunst")
+    private val settings = Settings(context)
 
     override suspend fun next(): Slide? {
-        val art = picker.pick(ArtCollection.load(context), { it.id }, { it.artist }) ?: return null
+        val blocked = settings.blockedImages
+        val art = picker.pick(ArtCollection.load(context).filter { "beeld:${it.id}" !in blocked }, { it.id }, { it.artist }) ?: return null
         return Slide.Image(
             url = art.imageUrl,
             fallbackUrl = art.fallbackUrl,
@@ -66,6 +68,7 @@ class ArtSource(private val context: Context) : SlideSource {
             subtitle = listOfNotNull(art.artist, art.date).joinToString(" · ").ifEmpty { null },
             body = art.explanation,
             source = art.museum,
+            voteId = "beeld:${art.id}",
         )
     }
 }

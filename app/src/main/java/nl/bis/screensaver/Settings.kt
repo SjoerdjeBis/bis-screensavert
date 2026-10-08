@@ -8,6 +8,9 @@ enum class Mode(val key: String, val label: String) {
     AERIALS("aerials", "Luchtopnames"),
     PHOTOS("fotos", "Mijn foto's & video's"),
     AMBIENT("sfeer", "Sfeer"),
+    SPACE("ruimte", "Ruimte"),
+    NATURE("natuur", "Natuur"),
+    HISTORY("toen", "Nederland van toen"),
 }
 
 /** De keuzes op het keuzescherm. */
@@ -16,6 +19,9 @@ enum class Program(val key: String, val title: String) {
     AERIALS("aerials", "Luchtopnames"),
     AMBIENT("sfeer", "Sfeer"),
     PHOTOS("fotos", "Mijn foto's & video's"),
+    SPACE("ruimte", "Ruimte"),
+    NATURE("natuur", "Natuur"),
+    HISTORY("toen", "Toen"),
     CUSTOM("eigen", "Eigen mix"),
     SPOTIFY("spotify", "Spotify"),
 }
@@ -85,6 +91,11 @@ class Settings(context: Context) {
             return AmbientTheme.entries.filter { it.key in keys }.toSet()
         }
         set(value) = prefs.edit().putStringSet("sfeer_themas", value.map { it.key }.toSet()).apply()
+
+    /** Beelden die je in het voorbeeld hebt weggestemd ("beeld:bron:id"). */
+    var blockedImages: Set<String>
+        get() = prefs.getStringSet("weggestemde_beelden", null).orEmpty()
+        set(value) = prefs.edit().putStringSet("weggestemde_beelden", value).apply()
 
     /** Clips die je hebt weggestemd ("bron:id"). */
     var blockedClips: Set<String>

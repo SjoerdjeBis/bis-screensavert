@@ -99,6 +99,13 @@ class MainActivity : ComponentActivity() {
         val library = remember { MediaLibrary(this) }
         val art = remember { ArtCollection.load(this) }
         val heroArt = remember { art.randomOrNull() }
+        // Een voorbeeldbeeld per nieuwe categorie, voor de kaart en de achtergrond.
+        val heroes = remember {
+            listOf(Mode.SPACE, Mode.NATURE, Mode.HISTORY).associateWith { mode ->
+                CuratedCollection.assetFor(mode)?.let { CuratedCollection.load(this, it).randomOrNull() }
+            }
+        }
+        fun curatedCount(mode: Mode) = CuratedCollection.assetFor(mode)?.let { CuratedCollection.load(this, it).size } ?: 0
         val nowPlaying by music.state.collectAsState()
 
         var program by remember { mutableStateOf(settings.program) }
@@ -132,6 +139,11 @@ class MainActivity : ComponentActivity() {
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
             else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
+            Program.SPACE, Program.NATURE, Program.HISTORY -> if (curatedCount(p.mode()!!) == 0) {
+                "Wordt nog aangevuld; binnenkort te zien na een update."
+            } else {
+                MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
+            }
             Program.CUSTOM, Program.SPOTIFY -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
         }
 
@@ -207,6 +219,14 @@ class MainActivity : ComponentActivity() {
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
                         Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
                         Program.SPOTIFY -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawRecord(this) }
+                        Program.SPACE, Program.NATURE, Program.HISTORY -> heroes[p.mode()]?.let {
+                            AsyncImage(
+                                model = it.thumbnailUrl,
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.fillMaxSize().blur(6.dp).alpha(0.5f),
+                            )
+                        }
                     }
                 }
             }
@@ -275,7 +295,7 @@ class MainActivity : ComponentActivity() {
                 Spacer(Modifier.height(4.dp))
                 // Rij 1: wat je los kunt kiezen. Rij 2: combinaties en andere apps.
                 val rows = listOf(
-                    listOf(Program.ART, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
+                    listOf(Program.ART, Program.SPACE, Program.NATURE, Program.HISTORY, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
                     listOf(Program.CUSTOM, Program.SPOTIFY),
                 )
                 rows.forEachIndexed { index, row ->
@@ -287,7 +307,12 @@ class MainActivity : ComponentActivity() {
                             ProgramCard(
                                 title = p.title,
                                 active = p == program,
-                                status = cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess),
+                                status = when (p) {
+                                    Program.SPACE -> "${curatedCount(Mode.SPACE)} beelden van NASA"
+                                    Program.NATURE -> "${curatedCount(Mode.NATURE)} soorten uit Nederland"
+                                    Program.HISTORY -> "Nederland, op deze dag"
+                                    else -> cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess)
+                                },
                                 modifier = if (p == program) Modifier.focusRequester(firstFocus) else Modifier,
                                 onFocus = {
                                     focused = p
@@ -318,6 +343,19 @@ class MainActivity : ComponentActivity() {
                                     Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
                                     Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
                                     Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
+                                Program.SPACE, Program.NATURE, Program.HISTORY -> {
+                                    val hero = heroes[p.mode()]
+                                    if (hero != null) {
+                                        AsyncImage(
+                                            model = hero.thumbnailUrl,
+                                            contentDescription = null,
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier.fillMaxSize(),
+                                        )
+                                    } else {
+                                        Box(Modifier.fillMaxSize().background(Bis.Emaille3))
+                                    }
+                                }
                                 }
                             }
                         }
@@ -444,18 +482,20 @@ class MainActivity : ComponentActivity() {
                     style = Bis.body(15.sp, color = Bis.Room.copy(alpha = 0.85f)),
                 )
                 Spacer(Modifier.height(20.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Mode.entries.forEachIndexed { i, mode ->
-                        val on = mode in modes
-                        FocusPill(
-                            text = (if (on) "✓  " else "○  ") + mode.label,
-                            accent = if (on) Bis.Room else null,
-                            modifier = if (i == 0) Modifier.focusRequester(focus) else Modifier,
-                            onClick = {
-                                val next = if (on) modes - mode else modes + mode
-                                if (next.isNotEmpty()) modes = next
-                            },
-                        )
+                Mode.entries.chunked(4).forEachIndexed { rowIndex, rowModes ->
+                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(bottom = 10.dp)) {
+                        rowModes.forEachIndexed { indexInRow, mode ->
+                            val on = mode in modes
+                            FocusPill(
+                                text = (if (on) "✓  " else "○  ") + mode.label,
+                                accent = if (on) Bis.Room else null,
+                                modifier = if (rowIndex == 0 && indexInRow == 0) Modifier.focusRequester(focus) else Modifier,
+                                onClick = {
+                                    val next = if (on) modes - mode else modes + mode
+                                    if (next.isNotEmpty()) modes = next
+                                },
+                            )
+                        }
                     }
                 }
                 Spacer(Modifier.height(12.dp))
@@ -516,7 +556,7 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(150.dp).height(108.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(112.dp).height(104.dp)) { focused ->
             Column {
                 Box(Modifier.fillMaxWidth().height(58.dp)) {
                     picture()
@@ -553,6 +593,7 @@ class MainActivity : ComponentActivity() {
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
+        Program.SPACE, Program.NATURE, Program.HISTORY -> ""
         Program.SPOTIFY -> when {
             !hasMusicAccess -> "Nog geen toegang: kies OK"
             nowPlaying != null -> "Nu: ${nowPlaying.title}"
@@ -577,7 +618,22 @@ class MainActivity : ComponentActivity() {
         Mode.AERIALS -> "luchtopnames"
         Mode.PHOTOS -> "foto's"
         Mode.AMBIENT -> "sfeer"
+        Mode.SPACE -> "ruimte"
+        Mode.NATURE -> "natuur"
+        Mode.HISTORY -> "toen"
     }
+}
+
+/** De categorie die bij een kaart hoort, voor kaarten met één categorie. */
+private fun Program.mode(): Mode? = when (this) {
+    Program.ART -> Mode.ART
+    Program.AERIALS -> Mode.AERIALS
+    Program.AMBIENT -> Mode.AMBIENT
+    Program.PHOTOS -> Mode.PHOTOS
+    Program.SPACE -> Mode.SPACE
+    Program.NATURE -> Mode.NATURE
+    Program.HISTORY -> Mode.HISTORY
+    Program.CUSTOM, Program.SPOTIFY -> null
 }
 
 private val SMARTTUBE_PACKAGES = listOf(
@@ -685,6 +741,9 @@ private fun drawMixStripes(scope: DrawScope, modes: Set<Mode>) = with(scope) {
             Mode.AERIALS -> Bis.IJsblauw
             Mode.PHOTOS -> Bis.Boter
             Mode.AMBIENT -> Color(0xFFD9822B)
+            Mode.SPACE -> Color(0xFF5B4B9A)
+            Mode.NATURE -> Color(0xFF5E8C4A)
+            Mode.HISTORY -> Color(0xFFB8A88A)
         }
     }
     val band = size.height / (colors.size + 1)
