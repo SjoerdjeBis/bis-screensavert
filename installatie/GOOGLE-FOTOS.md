@@ -66,6 +66,20 @@ Open op de tv **Bis Screensavert** › **Sleutels invullen**, scan de QR-code en
 3. **Kiezen:** op de tv verschijnt een tweede QR-code. Scan die; Google Foto's opent op je
    telefoon. Vink foto's en video's aan en tik op **Klaar**. De tv haalt ze daarna op.
 
+## Beheren op je telefoon
+
+In **Foto's beheren** staat linksonder een QR-code. Scan die één keer en zet de pagina op
+het beginscherm van je telefoon (Delen › Zet op beginscherm). Het adres blijft hetzelfde.
+
+- Groeperen per maand van opname of per keer toegevoegd; sorteren op datum, op hoe vaak iets
+  te zien was of op grootte.
+- Snelknoppen: alles kiezen wat 10× of vaker te zien was, of video's boven 100 MB.
+- **Toevoegen uit Google Foto's** kan hier ook: de fotokiezer opent op je telefoon en de tv
+  haalt de rest op.
+- De pagina werkt als de tv aan staat met de app of de screensaver open. Krijgt de tv van je
+  router een ander IP-adres, scan de QR-code dan opnieuw. Wil je dat voorkomen, geef de
+  Chromecast in je router een vast IP-adres.
+
 ## Goed om te weten
 
 - De foto's en video's worden **op de tv opgeslagen**. Ze blijven dus ook als de koppeling

@@ -78,6 +78,7 @@ Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing a
 - **Muziek** (rij onder de kaarten): kies **Spotify** (de app speelt zelf niets) of **Jazz**
   (rustige jazz, met **Volume** zacht, middel of luid; gaat Spotify toch spelen, dan zwijgt de
   jazz). Zie GELUID.md.
+- **Foto's beheren op je telefoon:** in Foto's beheren staat een QR-code naar een vaste beheerpagina; zie GOOGLE-FOTOS.md.
 - **Sfeer:** haardvuur, regen, zee, sterren en meer, als beeld. In het voorbeeld stem je een clip weg met **▼**.
 - **Geen herhalingen:** wat je de laatste tijd zag, komt niet snel terug, ook niet na een
   herstart, en kunst van dezelfde kunstenaar komt niet twee keer achter elkaar.
