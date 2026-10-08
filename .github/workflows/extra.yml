@@ -1,0 +1,37 @@
+name: Ruimte, Toen en Natuur ophalen
+
+on:
+  workflow_dispatch:
+    inputs:
+      bronnen:
+        description: "Welke bronnen (ruimte natuur toen); leeg = alleen opnieuw bouwen"
+        required: false
+        default: "ruimte natuur toen"
+  push:
+    paths: ["tools/build_extra.py", "data/vertalingen/ruimte.json"]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow numpy
+      - name: Beelden ophalen en keuren
+        if: github.event_name == 'workflow_dispatch' && inputs.bronnen != ''
+        env:
+          NASA_KEY: ${{ secrets.NASA_KEY }}
+        run: python3 tools/fetch_extra.py ${{ inputs.bronnen }}
+      - name: App-bestanden bouwen
+        run: python3 tools/build_extra.py
+      - name: Resultaat vastleggen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ app/src/main/assets/
+          git diff --cached --quiet || git commit -m "Beelden voor Ruimte, Toen en Natuur bijwerken"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
