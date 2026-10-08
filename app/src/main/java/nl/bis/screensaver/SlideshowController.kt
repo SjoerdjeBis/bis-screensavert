@@ -313,6 +313,7 @@ class SlideshowController(
 
                     override fun onPlayerError(error: PlaybackException) = finish(false)
                 }
+                clearSkips()
                 skipJob = scope.launch {
                     skip.receive()
                     finish(true)
@@ -334,7 +335,16 @@ class SlideshowController(
         }.also { currentClipId = null } ?: true // Tijd om: gewoon door naar de volgende.
 
     private suspend fun waitOrSkip(ms: Long) {
+        clearSkips()
         withTimeoutOrNull(ms) { skip.receive() }
+    }
+
+    /**
+     * Vergeet ▶-drukken van tijdens de overgang. Anders telt een tweede druk, omdat het
+     * volgende beeld nog aan het laden was, als skip voor dat volgende beeld: twee verder.
+     */
+    private fun clearSkips() {
+        while (skip.tryReceive().isSuccess) Unit
     }
 
     private suspend fun loadImage(url: String): Drawable? {
