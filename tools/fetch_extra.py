@@ -109,7 +109,7 @@ def keur(source, items, limits, drop_share=0.15):
             measured.append(item)
         if i % 50 == 0:
             print(f"  {source}: {i}/{len(items)} gekeurd", flush=True)
-        time.sleep(0.05)
+        time.sleep(0.4 if source == "toen" else 0.05)
     # Het minst scherpe deel valt altijd af, ook als het boven de grens zat.
     measured.sort(key=lambda it: it["scores"]["scherp"])
     cut = int(len(measured) * drop_share)
@@ -150,46 +150,70 @@ def plain(text):
 
 
 # ---------- Ruimte: NASA Astronomy Picture of the Day (alleen publiek domein) ----------
+# Via de gewone webpagina's van APOD: de API vraagt een sleutel en de gratis proefsleutel is
+# op GitHub-servers meestal al op.
 
-def fetch_ruimte():
-    key = os.environ.get("NASA_KEY") or "DEMO_KEY"
-    entries = []
-    today = datetime.date.today()
-    for years_back in range(0, 3):
-        end = today - datetime.timedelta(days=365 * years_back)
-        start = end - datetime.timedelta(days=364)
-        url = f"https://api.nasa.gov/planetary/apod?api_key={key}&start_date={start}&end_date={end}"
-        try:
-            entries += get_json(url)
-        except Exception as e:
-            print("APOD mislukt:", e, file=sys.stderr)
-        time.sleep(2)
-    debug("apod", entries[:5])
+def size_and_bytes(url):
+    """(breedte, hoogte, totale bestandsgrootte) uit het begin van het bestand."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Range": "bytes=0-131071"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = r.read()
+            total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
+            total = int(total) if total.isdigit() else int(r.headers.get("Content-Length") or 0)
+        w, h = Image.open(io.BytesIO(data)).size
+        return w, h, total
+    except Exception:
+        return None
+
+
+def fetch_ruimte(days=900):
+    base = "https://apod.nasa.gov/apod/"
     candidates = []
-    for e in entries:
-        if e.get("media_type") != "image":
+    today = datetime.date.today()
+    first = True
+    for n in range(days):
+        day = today - datetime.timedelta(days=n)
+        try:
+            page = get(base + day.strftime("ap%y%m%d.html"), timeout=30).decode("utf-8", "replace")
+        except Exception:
+            rejected["ruimte"]["pagina niet te laden"] += 1
+            continue
+        if first:
+            debug("apod", {"pagina": page[:4000]})
+            first = False
+        big = re.search(r'<a\s+href="(image/[^"]+\.(?:jpe?g|png))"', page, re.I)
+        small = re.search(r'<img\s+src="(image/[^"]+\.(?:jpe?g|png))"', page, re.I)
+        if not big or "<iframe" in page.lower():
             rejected["ruimte"]["geen foto"] += 1
             continue
-        if e.get("copyright"):
-            # Met copyright = van een fotograaf, niet vrij te gebruiken.
+        credit = re.search(r"(?is)credit(.*?)explanation", page)
+        if credit and re.search(r"(?i)copyright|&copy;|\u00a9", credit.group(1)):
             rejected["ruimte"]["copyright"] += 1
             continue
-        if len(e.get("explanation", "")) < 80:
+        title = re.search(r"(?is)<center>\s*<b>(.*?)</b>", page)
+        explanation = re.search(r"(?is)explanation:\s*</b>(.*?)(?:<p>\s*<center>|tomorrow's picture)", page)
+        if not title or not explanation or len(plain(explanation.group(1))) < 80:
             rejected["ruimte"]["geen uitleg"] += 1
             continue
-        small, large = e.get("url"), e.get("hdurl") or e.get("url")
-        size = header_size(large)
-        if not size or not landscape_ok("ruimte", *size):
+        info = size_and_bytes(base + big.group(1))
+        if not info or not landscape_ok("ruimte", info[0], info[1]):
+            continue
+        if info[2] > 8_000_000:
+            rejected["ruimte"]["bestand te zwaar"] += 1
             continue
         candidates.append({
-            "id": f"apod:{e['date']}",
-            "titel_en": e.get("title", ""),
-            "uitleg_en": e.get("explanation", ""),
-            "datum": e["date"],
-            "afbeelding": large,
-            "breedte": size[0],
-            "controle": small,
+            "id": f"apod:{day.isoformat()}",
+            "titel_en": plain(title.group(1)),
+            "uitleg_en": plain(explanation.group(1)),
+            "datum": day.isoformat(),
+            "afbeelding": base + big.group(1),
+            "breedte": info[0],
+            "controle": base + (small or big).group(1),
         })
+        time.sleep(0.1)
+        if n % 100 == 0:
+            print(f"ruimte: {n} dagen bekeken, {len(candidates)} kandidaten", flush=True)
     return keur("ruimte", candidates, {"helder": (4, 235), "contrast": 12, "scherp": 15})
 
 
@@ -234,7 +258,7 @@ def fetch_toen(per_letter=700, per_day=3):
                 if len(desc) < 20:
                     rejected["toen"]["geen beschrijving"] += 1
                     continue
-                if re.search(r"(?i)pasfoto|portret van|document|krant|affiche|handtekening|brief", desc + title):
+                if re.search(r"(?i)pasfoto|portret|document|krant|affiche|handtekening|brief", desc + title):
                     rejected["toen"]["document of portret"] += 1
                     continue
                 if not landscape_ok("toen", info.get("width"), info.get("height")):
@@ -249,7 +273,8 @@ def fetch_toen(per_letter=700, per_day=3):
                     "uitleg": desc,
                     "datum": f"{m.group(1)}-{m.group(2)}-{m.group(3)}",
                     "afbeelding": thumb,
-                    "controle": re.sub(r"/\d+px-", "/640px-", thumb),
+                    # Wikimedia levert alleen nog vaste maten (o.a. 500, 960, 1920).
+                    "controle": re.sub(r"(\d+)px-", "500px-", thumb, count=1) if "px-" in thumb else thumb,
                     "pagina": info.get("descriptionurl"),
                 })
             if "continue" not in data:
@@ -278,7 +303,7 @@ def fetch_natuur(per_group=120):
     groups = ["Aves", "Insecta", "Plantae", "Mammalia", "Fungi", "Amphibia", "Reptilia", "Arachnida"]
     candidates, per_taxon = [], Counter()
     for group in groups:
-        for page in range(1, 3):
+        for page in range(1, 5):
             params = {
                 "place_id": 7506,  # Nederland
                 "quality_grade": "research",

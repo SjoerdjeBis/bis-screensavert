@@ -57,12 +57,32 @@ save("ruimte", [
     for r in load("data/extra/ruimte.json", []) if r["id"] in vertalingen
 ])
 
+LABELS = r"(?:Collectie / Archief|Reportage / Serie|Beschrijving|Datum|Locatie|Trefwoorden|Persoonsnaam|Fotograaf|Auteursrechthebbende|Materiaalsoort|Nummer \w+|Inventarisnummer|Bestanddeelnummer|Annotatie)"
+
+
+def field(text, label):
+    m = re.search(label + r"\s*:\s*(.*?)\s*(?=" + LABELS + r"\s*:|$)", text)
+    return m.group(1).strip() if m else None
+
+
 toen = []
 for t in load("data/extra/toen.json", []):
-    title = re.split(r"\s*(?:Bestanddeelnr|Bestanddeelnummer|;|\.|,)\s*", t["titel"])[0].strip()
+    desc = t["uitleg"]
+    if re.search(r"(?i)portret", field(desc, "Trefwoorden") or ""):
+        continue
+    beschrijving = field(desc, "Beschrijving") or ""
+    locatie = field(desc, "Locatie")
+    fallback = re.split(r"\s*(?:Bestanddeelnr|Bestanddeelnummer|,)\s*", t["titel"])[0].strip()
+    # De eerste zin (ingekort) wordt de titel; is er meer, dan wordt het geheel de uitleg.
+    first = re.split(r"(?<=[.!?])\s+", beschrijving)[0] if beschrijving else ""
+    if len(first) > 90:
+        first = first[:90].rsplit(" ", 1)[0] + "…"
+    title = first or fallback or "Nederland"
+    uitleg = shorten(beschrijving) if len(beschrijving) > len(first) + 10 else None
     toen.append({
-        "id": t["id"], "titel": title[:90] or "Nederland", "onder": nl_date(t["datum"]),
-        "uitleg": shorten(t["uitleg"]), "bron": "Nationaal Archief / Anefo (CC0)", "datum": t["datum"],
+        "id": t["id"], "titel": title.rstrip("."),
+        "onder": " · ".join(x for x in [nl_date(t["datum"]), locatie and locatie.split(",")[0]] if x),
+        "uitleg": uitleg, "bron": "Nationaal Archief (CC0)", "datum": t["datum"],
         "afbeelding": t["afbeelding"], "klein": t["klein"],
     })
 save("toen", toen)
