@@ -102,13 +102,22 @@ echo "✔  Verbonden met je tv."
 # 3. App installeren.
 stap "Stap 3: Bis Screensavert installeren"
 RESULTAAT="$("$ADB" -s "$TV" install -r "$APK" 2>&1)"
-if echo "$RESULTAAT" | grep -qE "INSTALL_FAILED_UPDATE_INCOMPATIBLE|INSTALL_FAILED_VERSION_DOWNGRADE"; then
-    echo "Oude versie gevonden die niet past; die haal ik eerst weg."
+if echo "$RESULTAAT" | grep -q "INSTALL_FAILED_VERSION_DOWNGRADE"; then
+    # De app heeft zichzelf al bijgewerkt naar een nieuwere versie: niets weghalen, gewoon verder.
+    echo "✔  Er staat al een nieuwere versie op de tv; die laat ik staan."
+elif echo "$RESULTAAT" | grep -q "INSTALL_FAILED_UPDATE_INCOMPATIBLE"; then
+    echo "De versie op de tv is anders ondertekend en moet eerst weg."
+    echo "Let op: dan verdwijnen ook je instellingen en opgeslagen foto's op de tv."
+    read -r -p "Doorgaan? (j/n): " WEG
+    [ "$WEG" = "j" ] || [ "$WEG" = "J" ] || klaar_met_fout "Gestopt; er is niets veranderd."
     "$ADB" -s "$TV" uninstall "$PAKKET" >/dev/null 2>&1
     RESULTAAT="$("$ADB" -s "$TV" install "$APK" 2>&1)"
+    echo "$RESULTAAT" | grep -q "Success" || klaar_met_fout "Installeren mislukt: $RESULTAAT"
+    echo "✔  App geïnstalleerd."
+else
+    echo "$RESULTAAT" | grep -q "Success" || klaar_met_fout "Installeren mislukt: $RESULTAAT"
+    echo "✔  App geïnstalleerd."
 fi
-echo "$RESULTAAT" | grep -q "Success" || klaar_met_fout "Installeren mislukt: $RESULTAAT"
-echo "✔  App geïnstalleerd."
 
 # 4. Instellen als screensaver.
 stap "Stap 4: instellen als screensaver"

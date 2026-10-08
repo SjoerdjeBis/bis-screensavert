@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,6 +36,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -142,7 +144,13 @@ class MainActivity : ComponentActivity() {
         }
 
         val firstFocus = remember { FocusRequester() }
-        LaunchedEffect(Unit) { runCatching { firstFocus.requestFocus() } }
+        val cardsState = rememberLazyListState()
+        LaunchedEffect(Unit) {
+            // Een kaart buiten beeld bestaat nog niet; eerst erheen scrollen, dan de focus geven.
+            cardsState.scrollToItem(Program.entries.indexOf(settings.program).coerceAtLeast(0))
+            withFrameNanos { }
+            runCatching { firstFocus.requestFocus() }
+        }
 
         Box(Modifier.fillMaxSize().background(Bis.Emaille)) {
             // Achtergrond die meekleurt met de kaart waarop je staat.
@@ -225,6 +233,7 @@ class MainActivity : ComponentActivity() {
 
                 Spacer(Modifier.height(18.dp))
                 LazyRow(
+                    state = cardsState,
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     contentPadding = PaddingValues(vertical = 12.dp, horizontal = 6.dp),
                 ) {
