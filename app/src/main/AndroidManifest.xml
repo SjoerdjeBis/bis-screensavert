@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Om zichzelf te kunnen bijwerken vanaf de downloadpagina. -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Om het koppelformulier open te houden terwijl je in de instellingen van de tv zit. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
@@ -61,6 +64,20 @@
             android:name=".PhotosActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".SelfSetupActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name=".SelfSetupService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Formulier voor de koppelcode bij het eenmalig instellen via draadloze foutopsporing" />
+        </service>
 
         <!-- Ontvangt de Google-sleutels vanaf de Mac via het installatiescript. -->
         <activity

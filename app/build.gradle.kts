@@ -17,6 +17,8 @@ android {
         targetSdk = 35
         versionCode = buildNumber
         versionName = "0.1.$buildNumber"
+        // Alleen de processortypes van tv-sticks; scheelt opslag.
+        ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
     }
 
     // Vaste sleutel, zodat updates zonder eerst te verwijderen geïnstalleerd kunnen worden.
@@ -51,6 +53,11 @@ android {
     buildFeatures {
         compose = true
     }
+
+    packaging {
+        // BouncyCastle-bestanden die in meerdere bibliotheken zitten.
+        resources.excludes += "/META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+    }
 }
 
 dependencies {
@@ -67,4 +74,8 @@ dependencies {
     implementation("io.coil-kt:coil:2.7.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    // Zelf instellen als screensaver via Draadloze foutopsporing, zonder computer.
+    implementation("com.github.MuntashirAkon:libadb-android:3.1.1")
+    implementation("org.conscrypt:conscrypt-android:2.5.3")
+    implementation("org.bouncycastle:bcpkix-jdk15to18:1.81")
 }

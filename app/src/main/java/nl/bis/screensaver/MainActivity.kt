@@ -224,11 +224,11 @@ class MainActivity : ComponentActivity() {
                         false -> FocusPill(
                             "Nog geen screensaver: instellen",
                             accent = Bis.Boter,
-                            onClick = { SystemSettings.openScreensaver(this@MainActivity) },
+                            onClick = { startActivity(Intent(this@MainActivity, SelfSetupActivity::class.java)) },
                         )
                         null -> FocusPill(
                             "Screensaver instellen",
-                            onClick = { SystemSettings.openScreensaver(this@MainActivity) },
+                            onClick = { startActivity(Intent(this@MainActivity, SelfSetupActivity::class.java)) },
                         )
                     }
                 }
@@ -318,7 +318,9 @@ class MainActivity : ComponentActivity() {
                             accent = if (!music.hasAccess) Bis.Boter else null,
                             onClick = {
                                 if (!music.hasAccess) {
-                                    SystemSettings.openMusicAccess(this@MainActivity)
+                                    if (!SystemSettings.openMusicAccess(this@MainActivity)) {
+                                        startActivity(Intent(this@MainActivity, SelfSetupActivity::class.java))
+                                    }
                                 } else {
                                     musicTakesOver = !musicTakesOver
                                     settings.musicTakesOver = musicTakesOver

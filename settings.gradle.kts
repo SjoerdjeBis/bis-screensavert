@@ -11,6 +11,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Voor libadb-android: zelf koppelen via Draadloze foutopsporing.
+        maven("https://jitpack.io")
     }
 }
 

@@ -10,19 +10,11 @@ import android.provider.Settings
 import android.widget.Toast
 
 /**
- * Opent instelschermen van Google TV zonder Mac of adb. Sommige zijn op Google TV verborgen;
- * we proberen de bekende ingangen na elkaar en melden het als geen enkele bestaat.
+ * Opent instelschermen van Google TV. Sommige zijn op Google TV verborgen; we proberen de
+ * bekende ingangen na elkaar en melden het als geen enkele bestaat. De screensaver kiezen kan
+ * op Google TV helemaal niet via een scherm; dat doet [SelfSetup].
  */
 object SystemSettings {
-    /** Het (verborgen) scherm om de screensaver te kiezen. */
-    fun openScreensaver(context: Context) = open(
-        context,
-        "Google TV laat de screensaver-keuze op deze tv niet zien. Dan kan het alleen via een computer (adb).",
-        Intent(Settings.ACTION_DREAM_SETTINGS),
-        Intent().setComponent(ComponentName("com.android.tv.settings", "com.android.tv.settings.device.display.daydream.DaydreamActivity")),
-        Intent().setComponent(ComponentName("com.google.android.tv.settings", "com.android.tv.settings.device.display.daydream.DaydreamActivity")),
-    )
-
     /** Het scherm "Meldingstoegang", nodig voor het muziekscherm bij Spotify. */
     fun openMusicAccess(context: Context): Boolean {
         val component = ComponentName(context, MediaListener::class.java)
@@ -34,7 +26,7 @@ object SystemSettings {
         }
         return open(
             context,
-            "Google TV laat de meldingstoegang op deze tv niet zien. Het muziekscherm werkt dan alleen na een computerstap (adb).",
+            "Google TV laat de meldingstoegang niet zien. Dat regelt de app nu zelf via koppelen.",
             *listOfNotNull(detail, Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")).toTypedArray(),
         )
     }
