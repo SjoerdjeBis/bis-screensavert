@@ -74,3 +74,38 @@ Aan het eind kun je de screensaver meteen testen.
   en de Google-sleutels hoeven niet nog eens; het script onthoudt ze.
 - **Weer terug naar de screensaver van Google?** Verwijder de app via
   Instellingen › Apps › Bis Screensavert › Verwijderen.
+
+## Sleutels invullen via je telefoon
+
+Kies op het keuzescherm **Sleutels invullen**. Scan de QR-code met je telefoon (zelfde wifi als
+de tv), plak de sleutels voor Pexels, Pixabay, Jamendo en/of Google Foto's en tik **Opslaan op de
+tv**. Lege velden laat de tv zoals ze zijn.
+
+## Met de hand: de adb-commando's
+
+Het installatiescript voert alleen deze commando's uit. Werkt het script niet, typ ze dan zelf in
+Terminal. Vervang `192.168.1.23` door het IP-adres van je tv.
+
+```bash
+ADB=~/.bis-screensaver/platform-tools/adb          # door het script gedownload
+$ADB connect 192.168.1.23:5555                     # daarna op de tv "Toestaan"
+$ADB devices                                       # moet "device" tonen
+$ADB install -r ~/Downloads/BisScreenSaver/BisScreenSaver.apk
+$ADB shell settings put secure screensaver_enabled 1
+$ADB shell settings put secure screensaver_components nl.bis.screensaver/.ScreenSaverDream
+$ADB shell cmd notification allow_listener nl.bis.screensaver/nl.bis.screensaver.MediaListener
+$ADB shell appops set nl.bis.screensaver REQUEST_INSTALL_PACKAGES allow
+$ADB shell am start -n com.android.systemui/.Somnambulator      # screensaver nu testen
+$ADB disconnect 192.168.1.23:5555
+```
+
+Nog geen adb? Download het eenmalig:
+
+```bash
+mkdir -p ~/.bis-screensaver && cd ~/.bis-screensaver
+curl -fLO https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
+unzip -o platform-tools-latest-darwin.zip
+```
+
+Terug naar de screensaver van Google: `$ADB uninstall nl.bis.screensaver` (dit wist ook je
+instellingen en opgeslagen foto's op de tv).

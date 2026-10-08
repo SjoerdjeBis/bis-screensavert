@@ -128,7 +128,7 @@ class MainActivity : ComponentActivity() {
             Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's toe te voegen."
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
-            else "Nog niet gekoppeld: draai het installatiescript en vul je gratis Pexels- en Pixabay-sleutels in."
+            else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
             Program.CUSTOM -> SmartMix.plan(p, customModes, media.isNotEmpty(), hasAmbient, hour).summary
         }
 
@@ -138,7 +138,7 @@ class MainActivity : ComponentActivity() {
                 return
             }
             if (p == Program.AMBIENT && !hasAmbient) {
-                startActivity(Intent(this, AmbientActivity::class.java))
+                startActivity(Intent(this, KeysActivity::class.java))
                 return
             }
             program = p
@@ -347,6 +347,11 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, PhotosActivity::class.java))
                         })
                     }
+                    item {
+                        FocusPill("Sleutels invullen", onClick = {
+                            startActivity(Intent(this@MainActivity, KeysActivity::class.java))
+                        })
+                    }
                 }
                 Spacer(Modifier.height(8.dp))
                 Text("GELUID", style = Bis.eyebrow(Bis.RoomDim))
@@ -363,7 +368,9 @@ class MainActivity : ComponentActivity() {
                             text = if (missingKey) "Jazz: nog geen sleutel" else "${layer.label}: ${levelLabel(level)}",
                             accent = if (missingKey) Bis.Boter else if (level > 0) Bis.Room else null,
                             onClick = {
-                                if (!missingKey) {
+                                if (missingKey) {
+                                    startActivity(Intent(this@MainActivity, KeysActivity::class.java))
+                                } else {
                                     val next = (level + 1) % 4
                                     settings.setSoundLevel(layer, next)
                                     soundLevels = soundLevels + (layer to next)

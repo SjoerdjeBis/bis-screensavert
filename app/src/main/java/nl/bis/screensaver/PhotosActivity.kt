@@ -236,8 +236,8 @@ class PhotosActivity : ComponentActivity() {
                             .border(2.dp, Bis.Rim, RoundedCornerShape(16.dp)).padding(16.dp),
                     ) {
                         Text(
-                            "Google Foto's is nog niet gekoppeld. Draai op je Mac het installatiescript opnieuw en kies " +
-                                "'Google Foto's koppelen'. De uitleg staat in GOOGLE-FOTOS.md.",
+                            "Google Foto's is nog niet gekoppeld. Kies in het keuzescherm 'Sleutels invullen' en plak je " +
+                                "Client-ID en Clientgeheim via je telefoon. Hoe je die maakt, staat in GOOGLE-FOTOS.md.",
                             style = Bis.body(13.sp, color = Bis.Room),
                         )
                     }

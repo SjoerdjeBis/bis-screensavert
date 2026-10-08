@@ -109,7 +109,7 @@ class AmbientActivity : ComponentActivity() {
                     Spacer(Modifier.height(6.dp))
                 }
                 Text(
-                    if (keys.isEmpty()) "Nog niet gekoppeld. Draai het installatiescript op je Mac en vul de gratis sleutels in (zie SFEER.md)."
+                    if (keys.isEmpty()) "Nog niet gekoppeld. Kies in het keuzescherm 'Sleutels invullen' en plak je gratis sleutels via je telefoon (zie SFEER.md)."
                     else "Gekoppeld: ${keys.joinToString(" en ")}. Clips van ${keys.joinToString(" en ")}, maximaal 1080p.",
                     style = Bis.body(12.sp, FontWeight.Medium, if (keys.isEmpty()) Bis.Boter else Bis.RoomDim),
                 )

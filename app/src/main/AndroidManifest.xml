@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Om zichzelf te kunnen bijwerken vanaf de downloadpagina. -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
@@ -43,6 +44,11 @@
 
         <activity
             android:name=".PreviewActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".KeysActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
 
