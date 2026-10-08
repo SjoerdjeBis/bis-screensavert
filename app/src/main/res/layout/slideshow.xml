@@ -233,6 +233,19 @@
         android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/sound_credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="36dp"
+        android:alpha="0"
+        android:fontFamily="@font/rubik_medium"
+        android:shadowColor="#000000"
+        android:shadowRadius="8"
+        android:textColor="#E6F6EFE0"
+        android:textSize="13sp" />
+
+    <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

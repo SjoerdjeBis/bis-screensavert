@@ -25,6 +25,8 @@ sealed interface Slide {
         val clipId: String? = null,
         /** Korte clips in een lus laten lopen tot deze tijd om is. */
         val playForMs: Long? = null,
+        /** Geluid dat bij dit beeld past, als "geluid bij beeld" aan staat. */
+        val sound: SoundLayer? = null,
     ) : Slide
 }
 

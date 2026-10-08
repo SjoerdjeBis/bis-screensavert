@@ -52,6 +52,7 @@ class SlideshowController(
     private val settings = Settings(context)
     private val library = MediaLibrary(context)
     private val music = MusicMonitor(context)
+    private val mixer = SoundMixer(context, scope)
 
     private val video = root.findViewById<SurfaceView>(R.id.video)
     private val imageLayer = root.findViewById<View>(R.id.image_layer)
@@ -64,6 +65,7 @@ class SlideshowController(
     private val captionBody = root.findViewById<TextView>(R.id.caption_body)
     private val clock = root.findViewById<View>(R.id.clock)
     private val status = root.findViewById<TextView>(R.id.status)
+    private val soundCredit = root.findViewById<TextView>(R.id.sound_credit)
 
     private val musicLayer = root.findViewById<View>(R.id.music_layer)
     private val musicBackdrops = listOf(
@@ -107,6 +109,7 @@ class SlideshowController(
     private var hideMusicJob: Job? = null
     private var backdropJob: Job? = null
     private var progressJob: Job? = null
+    private var soundJob: Job? = null
     private var currentArtist: String? = null
     private var currentCoverKey: String? = null
     private var frontBackdrop = 0
@@ -127,14 +130,19 @@ class SlideshowController(
         if (job != null) return
         clock.visibility = if (settings.showClock) View.VISIBLE else View.GONE
         job = scope.launch { run() }
-        if (settings.musicTakesOver) {
-            music.start()
-            musicJob = scope.launch { followMusic() }
+        // De muziekmonitor draait altijd: ook om jazz en sfeergeluid stil te zetten als Spotify speelt.
+        music.start()
+        if (settings.musicTakesOver) musicJob = scope.launch { followMusic() }
+        mixer.start()
+        soundJob = scope.launch {
+            launch { music.state.collect { mixer.setMuted(it?.playing == true) } }
+            mixer.nowPlaying.collect { track -> if (track != null) showSoundCredit(track) }
         }
     }
 
     fun release() {
-        listOf(job, musicJob, captionJob, hideMusicJob, backdropJob, progressJob).forEach { it?.cancel() }
+        listOf(job, musicJob, captionJob, hideMusicJob, backdropJob, progressJob, soundJob).forEach { it?.cancel() }
+        mixer.release()
         music.stop()
         player.release()
     }
@@ -165,6 +173,17 @@ class SlideshowController(
         }
         if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
             if (up) skip.trySend(Unit)
+            return true
+        }
+        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_UP && mixer.nowPlaying.value != null) {
+            if (up) {
+                mixer.blockCurrentTrack()
+                showStatus("Nummer weggestemd")
+                scope.launch {
+                    delay(2_000)
+                    hideStatus()
+                }
+            }
             return true
         }
         val clip = currentClipId
@@ -217,7 +236,12 @@ class SlideshowController(
         }
     }
 
-    private suspend fun show(slide: Slide, mode: Mode): Boolean = when (slide) {
+    private suspend fun show(slide: Slide, mode: Mode): Boolean {
+        mixer.setMatchedLayer((slide as? Slide.Video)?.sound)
+        return showSlide(slide, mode)
+    }
+
+    private suspend fun showSlide(slide: Slide, mode: Mode): Boolean = when (slide) {
         is Slide.Image -> showImage(slide, mode)
         is Slide.Video -> playVideo(slide, mode)
     }
@@ -456,6 +480,19 @@ class SlideshowController(
         if (player.mediaItemCount > 0) player.play()
     }
 
+    // ---- Geluid ----
+
+    /** Klein, rechtsonder: welk jazznummer er speelt en van wie (naamsvermelding voor Jamendo). */
+    private fun showSoundCredit(track: JazzTrack) {
+        val hint = if (isPreview) "      ▲ nummer weg" else ""
+        soundCredit.text = "♪  ${track.title} · ${track.artist} (Jamendo)$hint"
+        soundCredit.animate().cancel()
+        soundCredit.alpha = 0f
+        soundCredit.animate().alpha(1f).setStartDelay(0).setDuration(FADE_MS).withEndAction {
+            soundCredit.animate().alpha(0f).setStartDelay(SOUND_CREDIT_MS).setDuration(FADE_MS).start()
+        }.start()
+    }
+
     // ---- Hulpjes ----
 
     private fun showStatus(text: String) {
@@ -481,6 +518,7 @@ class SlideshowController(
 
     private companion object {
         const val VIDEO_CAPTION_MS = 10_000L
+        const val SOUND_CREDIT_MS = 8_000L
         const val MAX_VIDEO_MS = 10 * 60_000L
         const val FADE_MS = 1_200L
         const val BACKDROP_MS = 25_000L

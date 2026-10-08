@@ -104,6 +104,9 @@ class MainActivity : ComponentActivity() {
         var showClock by remember { mutableStateOf(settings.showClock) }
         var musicTakesOver by remember { mutableStateOf(settings.musicTakesOver) }
         var customModes by remember { mutableStateOf(settings.customModes) }
+        var soundLevels by remember { mutableStateOf(SoundLayer.entries.associateWith { settings.soundLevel(it) }) }
+        var soundMatches by remember { mutableStateOf(settings.soundMatchesImage) }
+        val hasJamendo = remember(refreshKey) { !settings.jamendoClientId.isNullOrBlank() }
 
         val media = remember(refreshKey) { library.items() }
         val photoCount = media.count { !it.isVideo }
@@ -185,7 +188,7 @@ class MainActivity : ComponentActivity() {
                 ),
             )
 
-            Column(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 32.dp)) {
+            Column(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 22.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(Modifier.size(10.dp).background(Bis.Boter, androidx.compose.foundation.shape.CircleShape))
                     Spacer(Modifier.width(10.dp))
@@ -220,22 +223,22 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                Spacer(Modifier.height(28.dp))
-                Text("Wat wil je zien?", style = Bis.heading(40.sp))
+                Spacer(Modifier.height(18.dp))
+                Text("Wat wil je zien?", style = Bis.heading(36.sp))
                 Spacer(Modifier.height(6.dp))
                 Text(
                     if (smartTubeFocused) "Opent je afspeellijst in SmartTube. Met Terug kom je hier weer uit." else summary(focused),
                     style = Bis.body(15.sp, color = Bis.Room.copy(alpha = 0.85f)),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.width(620.dp).height(44.dp),
+                    modifier = Modifier.width(680.dp).height(40.dp),
                 )
 
-                Spacer(Modifier.height(18.dp))
+                Spacer(Modifier.height(8.dp))
                 LazyRow(
                     state = cardsState,
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(vertical = 12.dp, horizontal = 6.dp),
+                    contentPadding = PaddingValues(vertical = 10.dp, horizontal = 6.dp),
                 ) {
                     items(Program.entries) { p ->
                         ProgramCard(
@@ -345,11 +348,36 @@ class MainActivity : ComponentActivity() {
                         })
                     }
                 }
-                Spacer(Modifier.height(14.dp))
-                Text(
-                    "OK op een kaart start hem meteen en maakt hem je screensaver. In het voorbeeld: ▶ volgende, ▼ sfeerclip wegstemmen. Muziek bedien je met ◀ OK ▶.",
-                    style = Bis.body(11.sp, color = Bis.RoomDim),
-                )
+                Spacer(Modifier.height(8.dp))
+                Text("GELUID", style = Bis.eyebrow(Bis.RoomDim))
+                Spacer(Modifier.height(4.dp))
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
+                ) {
+                    items(SoundLayer.entries) { layer ->
+                        val level = soundLevels.getValue(layer)
+                        val missingKey = layer == SoundLayer.JAZZ && !hasJamendo
+                        FocusPill(
+                            text = if (missingKey) "Jazz: nog geen sleutel" else "${layer.label}: ${levelLabel(level)}",
+                            accent = if (missingKey) Bis.Boter else if (level > 0) Bis.Room else null,
+                            onClick = {
+                                if (!missingKey) {
+                                    val next = (level + 1) % 4
+                                    settings.setSoundLevel(layer, next)
+                                    soundLevels = soundLevels + (layer to next)
+                                }
+                            },
+                        )
+                    }
+                    item {
+                        FocusPill("Geluid bij beeld: ${if (soundMatches) "aan" else "uit"}", onClick = {
+                            soundMatches = !soundMatches
+                            settings.soundMatchesImage = soundMatches
+                        })
+                    }
+                }
             }
         }
     }
@@ -389,9 +417,9 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(160.dp).height(214.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(160.dp).height(188.dp)) { focused ->
             Column {
-                Box(Modifier.fillMaxWidth().height(118.dp)) {
+                Box(Modifier.fillMaxWidth().height(100.dp)) {
                     picture()
                     Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         if (active) Tag("ACTIEF")
@@ -406,7 +434,7 @@ class MainActivity : ComponentActivity() {
                         overflow = TextOverflow.Ellipsis,
                     )
                     Spacer(Modifier.height(3.dp))
-                    Text(status, style = Bis.body(11.sp, color = Bis.RoomDim), maxLines = 3, overflow = TextOverflow.Ellipsis)
+                    Text(status, style = Bis.body(11.sp, color = Bis.RoomDim), maxLines = 2, overflow = TextOverflow.Ellipsis)
                 }
             }
         }
@@ -419,6 +447,13 @@ class MainActivity : ComponentActivity() {
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
+    }
+
+    private fun levelLabel(level: Int) = when (level) {
+        1 -> "zacht"
+        2 -> "middel"
+        3 -> "luid"
+        else -> "uit"
     }
 
     private fun secondsLabel(seconds: Int) =

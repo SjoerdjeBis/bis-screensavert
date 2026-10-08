@@ -94,6 +94,20 @@ class AmbientActivity : ComponentActivity() {
                     "Pexels".takeIf { !settings.pexelsKey.isNullOrBlank() },
                     "Pixabay".takeIf { !settings.pixabayKey.isNullOrBlank() },
                 )
+                // Naamsvermelding van de meegeleverde geluiden (Creative Commons).
+                val credits = remember {
+                    runCatching {
+                        val json = org.json.JSONObject(assets.open("geluiden.json").bufferedReader().readText())
+                        json.keys().asSequence().joinToString("   ·   ") { key ->
+                            val c = json.getJSONObject(key)
+                            "${key.replaceFirstChar { it.uppercase() }}: ${c.optString("maker")} (${c.optString("licentie")}, Wikimedia Commons)"
+                        }
+                    }.getOrDefault("")
+                }
+                if (credits.isNotEmpty()) {
+                    Text("Geluiden: $credits", style = Bis.body(10.sp, color = Bis.RoomDim), maxLines = 2)
+                    Spacer(Modifier.height(6.dp))
+                }
                 Text(
                     if (keys.isEmpty()) "Nog niet gekoppeld. Draai het installatiescript op je Mac en vul de gratis sleutels in (zie SFEER.md)."
                     else "Gekoppeld: ${keys.joinToString(" en ")}. Clips van ${keys.joinToString(" en ")}, maximaal 1080p.",

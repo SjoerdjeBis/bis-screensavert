@@ -207,6 +207,34 @@ else
     echo "Overgeslagen. Je kunt dit later altijd nog doen."
 fi
 
+# 8. Jazz (optioneel): een gratis Client ID van Jamendo.
+stap "Stap 8: jazz (optioneel)"
+JAZZ="$MAP/jamendo"
+if [ -f "$JAZZ" ]; then
+    echo "Jamendo-sleutel van de vorige keer gevonden; die stuur ik opnieuw naar de tv."
+    JAZZ_KOPPELEN="j"
+else
+    echo "Hiervoor heb je een gratis Client ID van Jamendo nodig. Zie GELUID.md."
+    read -r -p "Heb je die en wil je de jazz nu koppelen? (j/n): " JAZZ_KOPPELEN
+    if [ "$JAZZ_KOPPELEN" = "j" ] || [ "$JAZZ_KOPPELEN" = "J" ]; then
+        read -r -p "Plak je Jamendo Client ID: " JAMENDO
+        JAMENDO="$(echo "$JAMENDO" | tr -d '[:space:]')"
+        if [ -n "$JAMENDO" ]; then
+            echo "$JAMENDO" > "$JAZZ"
+            chmod 600 "$JAZZ"
+        else
+            JAZZ_KOPPELEN="n"
+        fi
+    fi
+fi
+if [ "$JAZZ_KOPPELEN" = "j" ] || [ "$JAZZ_KOPPELEN" = "J" ]; then
+    "$ADB" -s "$TV" shell am start -n "$PAKKET/.SetupActivity" --es jamendo_id "$(cat "$JAZZ")" >/dev/null 2>&1 \
+        && echo "✔  Jamendo-sleutel doorgegeven aan de tv." \
+        || echo "!  Doorgeven lukte niet. Probeer het script nog eens."
+else
+    echo "Overgeslagen. Je kunt dit later altijd nog doen."
+fi
+
 echo
 read -r -p "Wil je de screensaver nu meteen op de tv zien? (j/n): " TEST
 if [ "$TEST" = "j" ] || [ "$TEST" = "J" ]; then

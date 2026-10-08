@@ -10,6 +10,8 @@ import os
 import re
 import subprocess
 import tempfile
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -42,7 +44,7 @@ def candidates(query):
         "iiprop": "url|size|mime|extmetadata",
     })
     pages = sorted(data.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99))
-    for page in pages:
+    for page in pages[:6]:
         info = (page.get("imageinfo") or [{}])[0]
         meta = info.get("extmetadata", {})
         license_name = meta.get("LicenseShortName", {}).get("value", "")
@@ -70,9 +72,21 @@ def duration(path):
 
 
 def download(url, path):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=120) as r, open(path, "wb") as f:
-        f.write(r.read())
+    """Rustig downloaden: Wikimedia weigert te veel verzoeken achter elkaar (HTTP 429)."""
+    for attempt in range(4):
+        time.sleep(4 + attempt * 10)
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r, open(path, "wb") as f:
+                f.write(r.read())
+            return
+        except urllib.error.HTTPError as e:
+            if e.code != 429:
+                raise
+            wait = int(e.headers.get("Retry-After") or 30)
+            print(f"  429, even wachten ({wait} s)")
+            time.sleep(min(wait, 120))
+    raise RuntimeError("Wikimedia blijft 'te veel verzoeken' geven")
 
 
 def make_loop(src, dst, length):
@@ -102,6 +116,7 @@ def make_oneshot(src, dst):
 
 
 def main():
+    os.makedirs("app/src/main/res/raw", exist_ok=True)
     credits = {}
     tmp = tempfile.mkdtemp()
     for name, (queries, kind, min_len) in SOUNDS.items():

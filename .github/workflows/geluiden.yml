@@ -19,7 +19,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app/src/main/res/raw app/src/main/assets/geluiden.json
+          git add -A app/src/main/res app/src/main/assets
           git diff --cached --quiet || git commit -m "Geluiden van Wikimedia Commons bijwerken"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push

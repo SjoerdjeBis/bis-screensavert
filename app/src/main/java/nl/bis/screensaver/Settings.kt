@@ -90,6 +90,26 @@ class Settings(context: Context) {
         get() = prefs.getString("smarttube_lijst", null) ?: DEFAULT_PLAYLIST
         set(value) = prefs.edit().putString("smarttube_lijst", value).apply()
 
+    var jamendoClientId: String?
+        get() = prefs.getString("jamendo_id", null)
+        set(value) = prefs.edit().putString("jamendo_id", value).apply()
+
+    /** Volume per geluidslaag: 0 = uit, 1 = zacht, 2 = middel, 3 = luid. */
+    fun soundLevel(layer: SoundLayer): Int = prefs.getInt("geluid_${layer.key}", 0)
+
+    fun setSoundLevel(layer: SoundLayer, level: Int) =
+        prefs.edit().putInt("geluid_${layer.key}", level.coerceIn(0, 3)).apply()
+
+    /** Geluid laten passen bij het beeld (haardvuur bij een haardvuurclip enzovoort). */
+    var soundMatchesImage: Boolean
+        get() = prefs.getBoolean("geluid_bij_beeld", true)
+        set(value) = prefs.edit().putBoolean("geluid_bij_beeld", value).apply()
+
+    /** Jazznummers die je hebt weggestemd ("jamendo:id"). */
+    var blockedTracks: Set<String>
+        get() = prefs.getStringSet("weggestemde_nummers", null).orEmpty()
+        set(value) = prefs.edit().putStringSet("weggestemde_nummers", value).apply()
+
     companion object {
         val SLIDE_SECONDS_OPTIONS = listOf(20, 30, 45, 60, 90, 120, 180, 300)
         const val DEFAULT_PLAYLIST = "PLda8vj-D2CNsgAYRi18ZZ2u3fJyAdqqTG"

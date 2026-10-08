@@ -22,6 +22,10 @@ class SetupActivity : Activity() {
         }
         intent.getStringExtra("pexels_key")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.pexelsKey = it }
         intent.getStringExtra("pixabay_key")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.pixabayKey = it }
+        intent.getStringExtra("jamendo_id")?.trim()?.takeIf { it.isNotEmpty() }?.let {
+            settings.jamendoClientId = it
+            Toast.makeText(this, "Jamendo-sleutel opgeslagen", Toast.LENGTH_LONG).show()
+        }
         intent.getStringExtra("smarttube_lijst")?.trim()?.takeIf { it.isNotEmpty() }?.let { settings.smartTubePlaylist = it }
         if (intent.hasExtra("pexels_key") || intent.hasExtra("pixabay_key")) {
             Toast.makeText(this, "Sfeersleutels opgeslagen", Toast.LENGTH_LONG).show()
