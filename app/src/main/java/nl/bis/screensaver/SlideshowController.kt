@@ -60,9 +60,16 @@ class SlideshowController(
     private val mixer = JazzPlayer(context, scope)
 
     private val video = root.findViewById<SurfaceView>(R.id.video)
-    private val imageLayer = root.findViewById<View>(R.id.image_layer)
-    private val imageBackground = root.findViewById<ImageView>(R.id.image_background)
-    private val image = root.findViewById<ImageView>(R.id.image)
+    /** Twee fotolagen (b ligt boven a), om de ene foto in de andere over te laten gaan. */
+    private class ImageLayer(val layer: View, val background: ImageView, val image: ImageView)
+    private val imageLayers = listOf(
+        ImageLayer(root.findViewById(R.id.image_layer), root.findViewById(R.id.image_background), root.findViewById(R.id.image)),
+        ImageLayer(root.findViewById(R.id.image_layer_b), root.findViewById(R.id.image_background_b), root.findViewById(R.id.image_b)),
+    )
+    private var frontImage = 0
+
+    /** Of er nu een foto in beeld is (en geen video). */
+    private var imageShowing = false
     private val caption = root.findViewById<View>(R.id.caption)
     private val captionEyebrow = root.findViewById<TextView>(R.id.caption_eyebrow)
     private val captionTitle = root.findViewById<TextView>(R.id.caption_title)
@@ -143,7 +150,7 @@ class SlideshowController(
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            imageBackground.setRenderEffect(RenderEffect.createBlurEffect(60f, 60f, Shader.TileMode.CLAMP))
+            imageLayers.forEach { it.background.setRenderEffect(RenderEffect.createBlurEffect(60f, 60f, Shader.TileMode.CLAMP)) }
         }
         musicCover.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
@@ -293,16 +300,11 @@ class SlideshowController(
         captionJob?.cancel()
         hideStatus()
         fade(caption, 0f)
-        fade(imageLayer, 0f)
-        delay(FADE_MS)
-        image.setImageDrawable(drawable)
-        imageBackground.setImageDrawable(drawable)
-        currentImageVote = slide.voteId
-        val hasCaption = setCaption(slide, mode)
         val duration = settings.slideSeconds * 1000L
-        kenBurns(image, duration)
-        fade(imageLayer, 1f)
-        if (hasCaption) {
+        crossfadeTo(drawable, duration)
+        currentImageVote = slide.voteId
+        delay(FADE_MS)
+        if (setCaption(slide, mode)) {
             fade(caption, 1f)
             // Na een tijdje verdwijnt de tekst, zodat je daarna het hele werk ziet.
             if (duration > IMAGE_CAPTION_MS + FADE_MS) {
@@ -338,7 +340,8 @@ class SlideshowController(
                 listener = object : Player.Listener {
                     override fun onRenderedFirstFrame() {
                         hideStatus()
-                        fade(imageLayer, 0f)
+                        imageShowing = false
+                        imageLayers.forEach { fade(it.layer, 0f) }
                         captionJob?.cancel()
                         if (setCaption(slide, mode)) {
                             fade(caption, 1f)
@@ -390,6 +393,43 @@ class SlideshowController(
      */
     private fun clearSkips() {
         while (skip.tryReceive().isSuccess) Unit
+    }
+
+    /**
+     * Zet de nieuwe foto op de achterste laag en laat die over de huidige heen komen. Nooit
+     * beide lagen tegelijk doorzichtig: anders schijnt het laatste beeld van een eerdere video
+     * erdoorheen. Na een video komt de foto gewoon over het stilstaande videobeeld heen.
+     */
+    private fun crossfadeTo(drawable: Drawable, durationMs: Long) {
+        val current = imageLayers[frontImage]
+        val nextIndex = 1 - frontImage
+        val next = imageLayers[nextIndex]
+        next.image.setImageDrawable(drawable)
+        next.background.setImageDrawable(drawable)
+        kenBurns(next.image, durationMs + FADE_MS)
+        current.layer.animate().cancel()
+        next.layer.animate().cancel()
+        when {
+            !imageShowing -> {
+                current.layer.alpha = 0f
+                next.layer.alpha = 0f
+                fade(next.layer, 1f)
+            }
+            // De nieuwe laag ligt boven: die komt eroverheen, daarna mag de oude weg.
+            nextIndex == 1 -> {
+                next.layer.alpha = 0f
+                next.layer.animate().alpha(1f).setStartDelay(0).setDuration(FADE_MS).withEndAction {
+                    current.layer.alpha = 0f
+                }.start()
+            }
+            // De nieuwe laag ligt onder: die staat al klaar, de oude gaat weg.
+            else -> {
+                next.layer.alpha = 1f
+                fade(current.layer, 0f)
+            }
+        }
+        frontImage = nextIndex
+        imageShowing = true
     }
 
     private suspend fun loadImage(url: String): Drawable? {

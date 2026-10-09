@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
-    <!-- Video ligt onderop; afbeeldingen worden eroverheen ingefaded. -->
+    <!-- Video ligt onderop; afbeeldingen worden eroverheen ingefaded. Twee fotolagen, zodat
+         foto X in foto Y overgaat zonder dat de video eronder doorschijnt. -->
     <SurfaceView
         android:id="@+id/video"
         android:layout_width="match_parent"
@@ -28,6 +29,30 @@
 
         <ImageView
             android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:padding="20dp"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/image_layer_b"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@android:color/black">
+
+        <ImageView
+            android:id="@+id/image_background_b"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.45"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/image_b"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
