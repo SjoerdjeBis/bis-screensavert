@@ -67,7 +67,7 @@ object Bis {
         TextStyle(fontFamily = Rubik, fontWeight = weight, fontSize = size, color = color, lineHeight = size * 1.35f)
 
     fun eyebrow(color: Color = Boter) =
-        TextStyle(fontFamily = Rubik, fontWeight = FontWeight.Medium, fontSize = 10.sp, letterSpacing = 1.6.sp, color = color)
+        TextStyle(fontFamily = Rubik, fontWeight = FontWeight.Medium, fontSize = 12.sp, letterSpacing = 1.6.sp, color = color)
 }
 
 /**
@@ -112,8 +112,8 @@ fun FocusPill(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, 
     FocusCard(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(50), background = Bis.Emaille2) { focused ->
         Text(
             text,
-            style = Bis.body(13.sp, FontWeight.Medium, if (focused) Bis.Room else accent ?: Bis.RoomDim),
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 9.dp),
+            style = Bis.body(15.sp, FontWeight.Medium, if (focused) Bis.Room else accent ?: Bis.RoomDim),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         )
     }
 }

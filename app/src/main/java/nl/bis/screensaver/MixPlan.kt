@@ -19,7 +19,6 @@ object MixPlan {
             Program.AERIALS -> Plan(listOf(Mode.AERIALS to 1), "Alleen luchtopnames.")
             Program.PHOTOS -> Plan(listOf(Mode.PHOTOS to 1), "Alleen je eigen foto's en video's.")
             Program.AMBIENT -> Plan(listOf(Mode.AMBIENT to 1), "Sfeerbeelden: telkens een paar clips van hetzelfde thema na elkaar.")
-            Program.SPACE -> Plan(listOf(Mode.SPACE to 1), "Nevels, sterrenstelsels en de aarde van bovenaf, met Nederlandse uitleg (NASA).")
             Program.NATURE -> Plan(listOf(Mode.NATURE to 1), "De mooiste natuurfoto's van vogels, insecten en planten in Nederland, met de Nederlandse naam.")
             Program.HISTORY -> Plan(listOf(Mode.HISTORY to 1), "Zwart-witfoto's uit het Nationaal Archief, bij voorkeur van deze dag in een ander jaar.")
             Program.CUSTOM, Program.SPOTIFY -> {

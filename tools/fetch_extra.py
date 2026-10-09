@@ -1,4 +1,4 @@
-"""Haalt beelden op voor de categorieën Ruimte, Nederland van toen en Natuur, en keurt ze.
+"""Haalt beelden op voor de categorieën Nederland van toen en Natuur, en keurt ze.
 
 Draait in GitHub Actions (vanuit de ontwikkelomgeving zijn de bronnen niet bereikbaar).
 
@@ -10,7 +10,7 @@ Keuring, zodat er geen slechte beelden doorkomen:
   4. geen (bijna) dubbelingen, via een beeld-vingerafdruk.
 
 Resultaat:
-  data/extra/ruimte.json, toen.json, natuur.json – goedgekeurde beelden met scores
+  data/extra/toen.json, natuur.json – goedgekeurde beelden met scores
   data/extra/afgekeurd.json                        – telling per reden, om de grenzen te kunnen bijstellen
   data/debug/extra_*.json                          – een paar ruwe antwoorden
 """
@@ -147,95 +147,6 @@ def landscape_ok(source, w, h, min_long=1600):
 def plain(text):
     text = re.sub(r"<[^>]+>", " ", text or "")
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
-
-
-# ---------- Ruimte: NASA-beeldbank (images.nasa.gov, publiek domein, geen sleutel) ----------
-
-def size_and_bytes(url):
-    """(breedte, hoogte, totale bestandsgrootte) uit het begin van het bestand."""
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA, "Range": "bytes=0-131071"})
-        with urllib.request.urlopen(req, timeout=30) as r:
-            data = r.read()
-            total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
-            total = int(total) if total.isdigit() else int(r.headers.get("Content-Length") or 0)
-        w, h = Image.open(io.BytesIO(data)).size
-        return w, h, total
-    except Exception:
-        return None
-
-
-RUIMTE_ZOEK = [
-    "nebula", "galaxy", "spiral galaxy", "star cluster", "supernova remnant", "Webb galaxy", "Hubble nebula",
-    "Chandra composite", "earth observation from space station", "aurora space station", "earth at night",
-    "moon surface", "Jupiter", "Saturn", "Mars surface",
-]
-RUIMTE_WEG = re.compile(
-    r"(?i)artist|illustration|concept|infographic|diagram|chart|graph\b|spectrum|engineer|technician|team|"
-    r"crew|launch|rocket|\btest|mockup|mirror|clean ?room|briefing|press|award|portrait|ceremony|"
-    r"meeting|visit|hardware|model|simulation|animation|logo|patch|poster|astronaut|spacesuit|training"
-)
-
-
-def fetch_ruimte(per_query=150):
-    candidates, seen = [], set()
-    first = True
-    for q in RUIMTE_ZOEK:
-        found = 0
-        for page in range(1, 4):
-            params = {"q": q, "media_type": "image", "page": page, "year_start": "2000"}
-            try:
-                data = get_json("https://images-api.nasa.gov/search?" + urllib.parse.urlencode(params))
-            except Exception as e:
-                print("NASA mislukt:", e, file=sys.stderr)
-                break
-            items = (data.get("collection") or {}).get("items", [])
-            if first:
-                debug("nasa", items[:3])
-                first = False
-            for it in items:
-                if found >= per_query:
-                    break
-                d = (it.get("data") or [{}])[0]
-                nasa_id = d.get("nasa_id")
-                if not nasa_id or nasa_id in seen:
-                    continue
-                seen.add(nasa_id)
-                text = " ".join([d.get("title", ""), d.get("description", ""), " ".join(d.get("keywords") or [])])
-                if RUIMTE_WEG.search(text):
-                    rejected["ruimte"]["geen natuurbeeld (mensen, techniek, tekening)"] += 1
-                    continue
-                desc = plain(d.get("description"))
-                if len(desc) < 80:
-                    rejected["ruimte"]["geen uitleg"] += 1
-                    continue
-                base = "https://images-assets.nasa.gov/image/" + urllib.parse.quote(nasa_id) + "/" + urllib.parse.quote(nasa_id)
-                chosen = None
-                for suffix in ("~large.jpg", "~orig.jpg"):
-                    info = size_and_bytes(base + suffix)
-                    if info and max(info[0], info[1]) >= 1600 and info[2] <= 8_000_000:
-                        chosen = (base + suffix, info)
-                        break
-                if not chosen:
-                    rejected["ruimte"]["te klein of te zwaar"] += 1
-                    continue
-                if not landscape_ok("ruimte", chosen[1][0], chosen[1][1]):
-                    continue
-                found += 1
-                candidates.append({
-                    "id": f"nasa:{nasa_id}",
-                    "titel_en": plain(d.get("title")),
-                    "uitleg_en": desc[:1500],
-                    "datum": (d.get("date_created") or "")[:10],
-                    "afbeelding": chosen[0],
-                    "breedte": chosen[1][0],
-                    "controle": base + "~medium.jpg",
-                })
-            if len(items) < 100:
-                break
-            time.sleep(0.5)
-        print(f"ruimte: '{q}' klaar, {len(candidates)} kandidaten", flush=True)
-    return keur("ruimte", candidates, {"helder": (4, 235), "contrast": 12, "scherp": 15})
 
 
 # ---------- Nederland van toen: Nationaal Archief / Anefo via Wikimedia Commons ----------
@@ -392,10 +303,10 @@ def save(name, items):
 
 
 if __name__ == "__main__":
-    which = sys.argv[1:] or ["ruimte", "natuur", "toen"]
+    which = sys.argv[1:] or ["natuur", "toen"]
     for name in which:
         try:
-            save(name, {"ruimte": fetch_ruimte, "toen": fetch_toen, "natuur": fetch_natuur}[name]())
+            save(name, {"toen": fetch_toen, "natuur": fetch_natuur}[name]())
         except Exception as e:
             print(f"{name} mislukt: {e}", file=sys.stderr)
     with open("data/extra/afgekeurd.json", "w") as f:

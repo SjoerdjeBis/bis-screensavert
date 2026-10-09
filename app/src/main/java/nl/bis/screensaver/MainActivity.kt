@@ -101,7 +101,7 @@ class MainActivity : ComponentActivity() {
         val heroArt = remember { art.randomOrNull() }
         // Een voorbeeldbeeld per nieuwe categorie, voor de kaart en de achtergrond.
         val heroes = remember {
-            listOf(Mode.SPACE, Mode.NATURE, Mode.HISTORY).associateWith { mode ->
+            listOf(Mode.NATURE, Mode.HISTORY).associateWith { mode ->
                 CuratedCollection.assetFor(mode)?.let { CuratedCollection.load(this, it).randomOrNull() }
             }
         }
@@ -139,7 +139,7 @@ class MainActivity : ComponentActivity() {
             else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
             else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
-            Program.SPACE, Program.NATURE, Program.HISTORY -> if (curatedCount(p.mode()!!) == 0) {
+            Program.NATURE, Program.HISTORY -> if (curatedCount(p.mode()!!) == 0) {
                 "Wordt nog aangevuld; binnenkort te zien na een update."
             } else {
                 MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
@@ -219,7 +219,7 @@ class MainActivity : ComponentActivity() {
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
                         Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
                         Program.SPOTIFY -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawRecord(this) }
-                        Program.SPACE, Program.NATURE, Program.HISTORY -> heroes[p.mode()]?.let {
+                        Program.NATURE, Program.HISTORY -> heroes[p.mode()]?.let {
                             AsyncImage(
                                 model = it.thumbnailUrl,
                                 contentDescription = null,
@@ -282,11 +282,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Spacer(Modifier.height(10.dp))
-                Text("Wat wil je zien?", style = Bis.heading(28.sp))
+                Text("Wat wil je zien?", style = Bis.heading(32.sp))
                 Spacer(Modifier.height(4.dp))
                 Text(
                     if (smartTubeFocused) "Opent je afspeellijst in SmartTube. Met Terug kom je hier weer uit." else summary(focused),
-                    style = Bis.body(13.sp, color = Bis.Room.copy(alpha = 0.85f)),
+                    style = Bis.body(16.sp, color = Bis.Room.copy(alpha = 0.85f)),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.width(820.dp),
@@ -295,7 +295,7 @@ class MainActivity : ComponentActivity() {
                 Spacer(Modifier.height(4.dp))
                 // Rij 1: wat je los kunt kiezen. Rij 2: combinaties en andere apps.
                 val rows = listOf(
-                    listOf(Program.ART, Program.SPACE, Program.NATURE, Program.HISTORY, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
+                    listOf(Program.ART, Program.NATURE, Program.HISTORY, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
                     listOf(Program.CUSTOM, Program.SPOTIFY),
                 )
                 rows.forEachIndexed { index, row ->
@@ -308,7 +308,6 @@ class MainActivity : ComponentActivity() {
                                 title = p.title,
                                 active = p == program,
                                 status = when (p) {
-                                    Program.SPACE -> "${curatedCount(Mode.SPACE)} beelden van NASA"
                                     Program.NATURE -> "${curatedCount(Mode.NATURE)} soorten uit Nederland"
                                     Program.HISTORY -> "Nederland, op deze dag"
                                     else -> cardStatus(p, art.size, photoCount, videoCount, customModes, hasAmbient, nowPlaying, music.hasAccess)
@@ -343,7 +342,7 @@ class MainActivity : ComponentActivity() {
                                     Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
                                     Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
                                     Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
-                                Program.SPACE, Program.NATURE, Program.HISTORY -> {
+                                Program.NATURE, Program.HISTORY -> {
                                     val hero = heroes[p.mode()]
                                     if (hero != null) {
                                         AsyncImage(
@@ -556,9 +555,9 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(112.dp).height(104.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, modifier = modifier.width(132.dp).height(118.dp)) { focused ->
             Column {
-                Box(Modifier.fillMaxWidth().height(58.dp)) {
+                Box(Modifier.fillMaxWidth().height(64.dp)) {
                     picture()
                     Row(Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         if (active) Tag("ACTIEF")
@@ -567,12 +566,12 @@ class MainActivity : ComponentActivity() {
                 Column(Modifier.padding(horizontal = 10.dp, vertical = 6.dp)) {
                     Text(
                         title,
-                        style = Bis.body(13.sp, FontWeight.Bold, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.9f)),
+                        style = Bis.body(15.sp, FontWeight.Bold, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.9f)),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                     Spacer(Modifier.height(1.dp))
-                    Text(status, style = Bis.body(10.sp, color = Bis.RoomDim), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(status, style = Bis.body(12.sp, color = Bis.RoomDim), maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
             }
         }
@@ -593,7 +592,7 @@ class MainActivity : ComponentActivity() {
         Program.AERIALS -> "Apple TV-luchtopnames, via internet"
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
-        Program.SPACE, Program.NATURE, Program.HISTORY -> ""
+        Program.NATURE, Program.HISTORY -> ""
         Program.SPOTIFY -> when {
             !hasMusicAccess -> "Nog geen toegang: kies OK"
             nowPlaying != null -> "Nu: ${nowPlaying.title}"
@@ -618,7 +617,6 @@ class MainActivity : ComponentActivity() {
         Mode.AERIALS -> "luchtopnames"
         Mode.PHOTOS -> "foto's"
         Mode.AMBIENT -> "sfeer"
-        Mode.SPACE -> "ruimte"
         Mode.NATURE -> "natuur"
         Mode.HISTORY -> "toen"
     }
@@ -630,7 +628,6 @@ private fun Program.mode(): Mode? = when (this) {
     Program.AERIALS -> Mode.AERIALS
     Program.AMBIENT -> Mode.AMBIENT
     Program.PHOTOS -> Mode.PHOTOS
-    Program.SPACE -> Mode.SPACE
     Program.NATURE -> Mode.NATURE
     Program.HISTORY -> Mode.HISTORY
     Program.CUSTOM, Program.SPOTIFY -> null
@@ -741,7 +738,6 @@ private fun drawMixStripes(scope: DrawScope, modes: Set<Mode>) = with(scope) {
             Mode.AERIALS -> Bis.IJsblauw
             Mode.PHOTOS -> Bis.Boter
             Mode.AMBIENT -> Color(0xFFD9822B)
-            Mode.SPACE -> Color(0xFF5B4B9A)
             Mode.NATURE -> Color(0xFF5E8C4A)
             Mode.HISTORY -> Color(0xFFB8A88A)
         }

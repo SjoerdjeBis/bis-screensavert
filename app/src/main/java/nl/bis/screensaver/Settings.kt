@@ -8,7 +8,6 @@ enum class Mode(val key: String, val label: String) {
     AERIALS("aerials", "Luchtopnames"),
     PHOTOS("fotos", "Mijn foto's & video's"),
     AMBIENT("sfeer", "Sfeer"),
-    SPACE("ruimte", "Ruimte"),
     NATURE("natuur", "Natuur"),
     HISTORY("toen", "Nederland van toen"),
 }
@@ -19,7 +18,6 @@ enum class Program(val key: String, val title: String) {
     AERIALS("aerials", "Luchtopnames"),
     AMBIENT("sfeer", "Sfeer"),
     PHOTOS("fotos", "Mijn foto's & video's"),
-    SPACE("ruimte", "Ruimte"),
     NATURE("natuur", "Natuur"),
     HISTORY("toen", "Toen"),
     CUSTOM("eigen", "Eigen mix"),

@@ -57,7 +57,7 @@
             android:shadowColor="#000000"
             android:shadowRadius="6"
             android:textColor="@color/boter"
-            android:textSize="9sp" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/caption_title"
@@ -65,11 +65,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:fontFamily="@font/fraunces_italic_semibold"
-            android:maxWidth="560dp"
+            android:maxWidth="640dp"
             android:shadowColor="#000000"
             android:shadowRadius="8"
             android:textColor="@color/room"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/caption_subtitle"
@@ -77,11 +77,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/rubik_medium"
-            android:maxWidth="560dp"
+            android:maxWidth="640dp"
             android:shadowColor="#000000"
             android:shadowRadius="6"
             android:textColor="#E6F6EFE0"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/caption_body"
@@ -92,11 +92,11 @@
             android:fontFamily="@font/rubik_regular"
             android:lineSpacingMultiplier="1.2"
             android:maxLines="4"
-            android:maxWidth="620dp"
+            android:maxWidth="700dp"
             android:shadowColor="#000000"
             android:shadowRadius="6"
             android:textColor="#DDF6EFE0"
-            android:textSize="11sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <!-- Muziek: neemt het scherm over zolang er iets speelt. -->
@@ -230,7 +230,7 @@
         android:shadowColor="#000000"
         android:shadowRadius="6"
         android:textColor="#80F6EFE0"
-        android:textSize="16sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:id="@+id/sound_credit"
@@ -243,7 +243,7 @@
         android:shadowColor="#000000"
         android:shadowRadius="8"
         android:textColor="#E6F6EFE0"
-        android:textSize="13sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/status"

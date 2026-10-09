@@ -1,7 +1,5 @@
-"""Bouwt de app-bestanden voor Ruimte, Nederland van toen en Natuur uit data/extra/.
+"""Bouwt de app-bestanden voor Nederland van toen en Natuur uit data/extra/.
 
-  app/src/main/assets/ruimte.json – alleen beelden met een Nederlandse vertaling in
-                                    data/vertalingen/ruimte.json ({"<id>": ["titel", "uitleg"]})
   app/src/main/assets/toen.json   – Nederlandse beschrijvingen van het Nationaal Archief
   app/src/main/assets/natuur.json – Nederlandse soortnamen van iNaturalist
 
@@ -46,16 +44,6 @@ def save(name, items):
         json.dump(items, f, ensure_ascii=False, indent=1)
     print(f"{name}: {len(items)} beelden")
 
-
-vertalingen = load("data/vertalingen/ruimte.json", {})
-save("ruimte", [
-    {
-        "id": r["id"], "titel": vertalingen[r["id"]][0], "onder": nl_date(r["datum"]),
-        "uitleg": vertalingen[r["id"]][1], "bron": "NASA", "datum": r["datum"],
-        "afbeelding": r["afbeelding"], "klein": r["klein"],
-    }
-    for r in load("data/extra/ruimte.json", []) if r["id"] in vertalingen
-])
 
 LABELS = r"(?:Collectie / Archief|Reportage / Serie|Beschrijving|Datum|Locatie|Trefwoorden|Persoonsnaam|Fotograaf|Auteursrechthebbende|Materiaalsoort|Nummer \w+|Inventarisnummer|Bestanddeelnummer|Annotatie)"
 

@@ -119,7 +119,6 @@ class SlideshowController(
         Mode.AERIALS to AerialSource(context),
         Mode.PHOTOS to PhotoSource(context),
         Mode.AMBIENT to AmbientSource(context),
-        Mode.SPACE to CuratedSource(context, "ruimte"),
         Mode.NATURE to CuratedSource(context, "natuur"),
         Mode.HISTORY to CuratedSource(context, "toen", onThisDay = true),
     )
@@ -412,7 +411,6 @@ class SlideshowController(
             Mode.AERIALS -> "LUCHTOPNAME"
             Mode.PHOTOS -> if (slide is Slide.Video) "MIJN VIDEO'S" else "MIJN FOTO'S"
             Mode.AMBIENT -> "SFEER"
-            Mode.SPACE -> "RUIMTE · NASA"
             Mode.NATURE -> "NATUUR IN NEDERLAND"
             Mode.HISTORY -> (slide as? Slide.Image)?.source ?: "NEDERLAND VAN TOEN"
         } + if (isPreview && slide is Slide.Image && slide.voteId != null) "      ▼ niet meer tonen   ▶ volgende" else ""
