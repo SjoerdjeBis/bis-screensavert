@@ -1,1 +1,1272 @@
-[]
+[
+ {
+  "id": "nasa:iss065e214198",
+  "titel": "Zuiderlicht boven de Indische Oceaan",
+  "onder": "2 augustus 2021",
+  "uitleg": "Het zuiderlicht golft door de atmosfeer, gezien vanuit het ruimtestation ISS op ruim 430 kilometer hoogte, ergens tussen Azië en Antarctica.",
+  "bron": "NASA",
+  "datum": "2021-08-02",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss065e214198/iss065e214198~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss065e214198/iss065e214198~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21773",
+  "titel": "De Grote Rode Vlek van Jupiter",
+  "onder": "12 juli 2017",
+  "uitleg": "De reusachtige storm op Jupiter, groter dan de aarde, gefotografeerd door ruimtesonde Juno van zo'n 14.000 kilometer boven de wolken. De kleuren zijn versterkt door een amateurastronoom.",
+  "bron": "NASA",
+  "datum": "2017-07-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21773/PIA21773~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21773/PIA21773~medium.jpg"
+ },
+ {
+  "id": "nasa:iss066e023323",
+  "titel": "Noorderlicht bij zonsopkomst",
+  "onder": "30 oktober 2021",
+  "uitleg": "Een fel noorderlicht kroont de horizon onder een sterrenhemel, terwijl het ruimtestation boven het noorden van Montana een zonsopkomst tegemoet vliegt.",
+  "bron": "NASA",
+  "datum": "2021-10-30",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss066e023323/iss066e023323~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss066e023323/iss066e023323~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA17256",
+  "titel": "Het Beeldhouwerstelsel",
+  "onder": "23 augustus 2013",
+  "uitleg": "De wervelende armen en de balk in het midden van het Beeldhouwerstelsel, een spiraalstelsel, gezien in infrarood licht door de Spitzer-ruimtetelescoop.",
+  "bron": "NASA",
+  "datum": "2013-08-23",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA17256/PIA17256~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA17256/PIA17256~medium.jpg"
+ },
+ {
+  "id": "nasa:iss062e113596",
+  "titel": "Steden onder het noorderlicht",
+  "onder": "22 maart 2020",
+  "uitleg": "De lichtjes van Noordoost-Europa fonkelen onder het noorderlicht en een sterrenhemel, gefotografeerd vanuit het ruimtestation boven Hongarije.",
+  "bron": "NASA",
+  "datum": "2020-03-22",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss062e113596/iss062e113596~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss062e113596/iss062e113596~medium.jpg"
+ },
+ {
+  "id": "nasa:iss059e013118",
+  "titel": "Zuiderlicht ten zuiden van Australië",
+  "onder": "4 april 2019",
+  "uitleg": "Het zuiderlicht kolkt boven de Indische Oceaan. Bovenin is nog net een stukje van het Europese laboratorium Columbus van het ruimtestation te zien.",
+  "bron": "NASA",
+  "datum": "2019-04-04",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss059e013118/iss059e013118~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss059e013118/iss059e013118~medium.jpg"
+ },
+ {
+  "id": "nasa:iss071e564695",
+  "titel": "Sterren boven groen en rood poollicht",
+  "onder": "11 augustus 2024",
+  "uitleg": "Een lange belichting vanuit het ruimtestation boven de Indische Oceaan: sterren fonkelen boven groene en rode poollichten die door de atmosfeer wervelen.",
+  "bron": "NASA",
+  "datum": "2024-08-11",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss071e564695/iss071e564695~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss071e564695/iss071e564695~medium.jpg"
+ },
+ {
+  "id": "nasa:GSFC_20171208_Archive_e000215",
+  "titel": "Een lensvormig sterrenstelsel",
+  "onder": "8 december 2017",
+  "uitleg": "Hubble legde dit eenzame stelsel vast tegen een achtergrond van verre sterren en kleurrijke stelsels. Het is een lensvormig stelsel, een tussenvorm tussen elliptische en spiraalstelsels.",
+  "bron": "NASA",
+  "datum": "2017-12-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000215/GSFC_20171208_Archive_e000215~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000215/GSFC_20171208_Archive_e000215~medium.jpg"
+ },
+ {
+  "id": "nasa:iss053e023965",
+  "titel": "Noorderlicht boven Canada",
+  "onder": "15 september 2017",
+  "uitleg": "Het noorderlicht boven Canada, gezien vanuit het ruimtestation op het hoogste punt van zijn baan. Links op de voorgrond de zonnepanelen van het station.",
+  "bron": "NASA",
+  "datum": "2017-09-15",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss053e023965/iss053e023965~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss053e023965/iss053e023965~medium.jpg"
+ },
+ {
+  "id": "nasa:iss066e008713",
+  "titel": "Poollicht en luchtgloed",
+  "onder": "19 oktober 2021",
+  "uitleg": "Een ijl poollicht kruist de zachte gloed van de aardatmosfeer, gezien vanuit het ruimtestation tussen Australië en Antarctica.",
+  "bron": "NASA",
+  "datum": "2021-10-19",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss066e008713/iss066e008713~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss066e008713/iss066e008713~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA25013",
+  "titel": "Jupiter als sikkel",
+  "onder": "22 februari 2022",
+  "uitleg": "Zo zie je Jupiter alleen als je ernaast vliegt: als smalle sikkel. Vanaf de aarde is dat onmogelijk, want wij kijken altijd tegen de verlichte kant aan. Gefotografeerd door ruimtesonde Juno.",
+  "bron": "NASA",
+  "datum": "2022-02-22",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA25013/PIA25013~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA25013/PIA25013~medium.jpg"
+ },
+ {
+  "id": "nasa:JPL-PIA22950",
+  "titel": "Storm aan de horizon",
+  "onder": "20 juli 2019",
+  "uitleg": "Het kleurrijke zuidelijke band van Jupiter tegen de witte tropische zone, met aan de horizon de Grote Rode Vlek. Gemaakt met beelden van ruimtesonde Juno.",
+  "bron": "NASA",
+  "datum": "2019-07-20",
+  "afbeelding": "https://images-assets.nasa.gov/image/JPL-PIA22950/JPL-PIA22950~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/JPL-PIA22950/JPL-PIA22950~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA17218",
+  "titel": "Afscheid van Saturnus",
+  "onder": "21 november 2017",
+  "uitleg": "Twee dagen voordat ruimtesonde Cassini na ruim 13 jaar in Saturnus verdween, maakte hij deze laatste complete opname van de planeet en zijn ringen, uit 80 losse foto's.",
+  "bron": "NASA",
+  "datum": "2017-11-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA17218/PIA17218~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA17218/PIA17218~medium.jpg"
+ },
+ {
+  "id": "nasa:iss063e025120",
+  "titel": "Zuiderlicht in de luchtgloed",
+  "onder": "7 juni 2020",
+  "uitleg": "Een ijl zuiderlicht lijkt de gloed van de atmosfeer te kruisen, halverwege tussen Australië en Antarctica, gezien vanuit het ruimtestation.",
+  "bron": "NASA",
+  "datum": "2020-06-07",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss063e025120/iss063e025120~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss063e025120/iss063e025120~medium.jpg"
+ },
+ {
+  "id": "nasa:iss071e560367",
+  "titel": "Groen en rood licht boven Nieuw-Zeeland",
+  "onder": "11 augustus 2024",
+  "uitleg": "Een levendig groen en rood poollicht danst door de nacht, terwijl het ruimtestation op 430 kilometer hoogte boven Nieuw-Zeeland vliegt.",
+  "bron": "NASA",
+  "datum": "2024-08-11",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss071e560367/iss071e560367~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss071e560367/iss071e560367~medium.jpg"
+ },
+ {
+  "id": "nasa:NHQ202012130001",
+  "titel": "Saturnus en Jupiter",
+  "onder": "13 december 2020",
+  "uitleg": "Saturnus (boven) en Jupiter (onder) na zonsondergang boven Shenandoah National Park, enkele dagen voor hun 'grote samenstand' in december 2020.",
+  "bron": "NASA",
+  "datum": "2020-12-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/NHQ202012130001/NHQ202012130001~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/NHQ202012130001/NHQ202012130001~medium.jpg"
+ },
+ {
+  "id": "nasa:iss064e035870",
+  "titel": "Poollicht bij zonsondergang",
+  "onder": "21 februari 2021",
+  "uitleg": "Een poollicht gloeit boven de horizon terwijl het ruimtestation boven de Tasmanzee, voor de kust van Nieuw-Zeeland, de nacht in vliegt.",
+  "bron": "NASA",
+  "datum": "2021-02-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss064e035870/iss064e035870~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss064e035870/iss064e035870~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA26077",
+  "titel": "De banden van Jupiter",
+  "onder": "9 november 2023",
+  "uitleg": "De kleurrijke zones en banden in de atmosfeer van Jupiter, vastgelegd door ruimtesonde Juno bij zijn 54e scheervlucht in 2023.",
+  "bron": "NASA",
+  "datum": "2023-11-09",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA26077/PIA26077~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA26077/PIA26077~medium.jpg"
+ },
+ {
+  "id": "nasa:iss074e0436787",
+  "titel": "Zuiderlicht door het raam van de Dragon",
+  "onder": "3 april 2026",
+  "uitleg": "Het zuiderlicht boven de Indische Oceaan, gezien door een raam van het ruimteschip Dragon dat aan het ruimtestation vastzat, in april 2026.",
+  "bron": "NASA",
+  "datum": "2026-04-03",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss074e0436787/iss074e0436787~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss074e0436787/iss074e0436787~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA22945",
+  "titel": "Een bruine 'aak' op Jupiter",
+  "onder": "7 maart 2019",
+  "uitleg": "Aan de rand van Jupiters noordpoolgebied ligt een lange bruine wolk, een 'brown barge', in een straalstroom. Gefotografeerd door ruimtesonde Juno.",
+  "bron": "NASA",
+  "datum": "2019-03-07",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA22945/PIA22945~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA22945/PIA22945~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA09579",
+  "titel": "Sterrenstelsel M81 in roze",
+  "onder": "1 juni 2007",
+  "uitleg": "Het fraaie spiraalstelsel Messier 81, samengesteld uit beelden van de telescopen Spitzer, Hubble en GALEX.",
+  "bron": "NASA",
+  "datum": "2007-06-01",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA09579/PIA09579~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA09579/PIA09579~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA07343",
+  "titel": "Een bloem in de Ringnevel",
+  "onder": "11 februari 2005",
+  "uitleg": "De Spitzer-telescoop zag in infrarood een tere bloem in de Ringnevel: de buitenste schil lijkt verrassend veel op de blaadjes van een camelia.",
+  "bron": "NASA",
+  "datum": "2005-02-11",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA07343/PIA07343~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA07343/PIA07343~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA10955",
+  "titel": "De Pioenroosnevel",
+  "onder": "15 juli 2008",
+  "uitleg": "De ster in de Pioenroosnevel straalt evenveel licht uit als 3,2 miljoen zonnen. Gezien in infrarood door de Spitzer-telescoop.",
+  "bron": "NASA",
+  "datum": "2008-07-15",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA10955/PIA10955~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA10955/PIA10955~medium.jpg"
+ },
+ {
+  "id": "nasa:iss062e140329",
+  "titel": "Zuiderlicht op het zuidelijkste punt",
+  "onder": "8 april 2020",
+  "uitleg": "Het zuiderlicht, gefotografeerd vlak bij het zuidelijkste punt van de baan van het ruimtestation, boven de Indische Oceaan.",
+  "bron": "NASA",
+  "datum": "2020-04-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss062e140329/iss062e140329~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss062e140329/iss062e140329~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14106",
+  "titel": "Sterren worden geboren in Orion",
+  "onder": "30 juni 2011",
+  "uitleg": "Met zijn infraroodzicht kijkt Spitzer diep in deze stoffige nevel in Orion en toont jonge sterren die in gewoon licht achter donkere wolken verborgen zitten.",
+  "bron": "NASA",
+  "datum": "2011-06-30",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14106/PIA14106~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14106/PIA14106~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA26595",
+  "titel": "Onrust in de atmosfeer van Jupiter",
+  "onder": "29 april 2025",
+  "uitleg": "De banden van Jupiter op hoge noordelijke breedte, met wervelingen langs de randen waar winden in tegengestelde richting waaien. Door Juno, januari 2025.",
+  "bron": "NASA",
+  "datum": "2025-04-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA26595/PIA26595~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA26595/PIA26595~medium.jpg"
+ },
+ {
+  "id": "nasa:iss059e001224",
+  "titel": "Steden en poollicht",
+  "onder": "19 maart 2019",
+  "uitleg": "Stadslichten en poollicht tijdens een nachtelijke passage van het ruimtestation boven Rusland en Kazachstan.",
+  "bron": "NASA",
+  "datum": "2019-03-19",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss059e001224/iss059e001224~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss059e001224/iss059e001224~medium.jpg"
+ },
+ {
+  "id": "nasa:iss064e053179",
+  "titel": "Poollicht ten zuidwesten van Australië",
+  "onder": "2 april 2021",
+  "uitleg": "Het poollicht stroomt boven de aarde en lijkt de luchtgloed te kruisen, gezien vanuit het ruimtestation boven de Indische Oceaan.",
+  "bron": "NASA",
+  "datum": "2021-04-02",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss064e053179/iss064e053179~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss064e053179/iss064e053179~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA18461",
+  "titel": "Galactisch vuurwerk",
+  "onder": "2 juli 2014",
+  "uitleg": "Vreemde extra armen in sterrenstelsel NGC 4258, zichtbaar gemaakt door röntgen-, radio- en infraroodbeelden te combineren met Hubble.",
+  "bron": "NASA",
+  "datum": "2014-07-02",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA18461/PIA18461~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA18461/PIA18461~medium.jpg"
+ },
+ {
+  "id": "nasa:iss060e002090",
+  "titel": "De Melkweg boven de rand van de aarde",
+  "onder": "29 juni 2019",
+  "uitleg": "De dunne blauwe atmosfeer licht op tussen nacht en dag, met maanlicht en de Melkweg op de achtergrond. Boven de Stille Oceaan tussen Hawaï en Mexico.",
+  "bron": "NASA",
+  "datum": "2019-06-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss060e002090/iss060e002090~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss060e002090/iss060e002090~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA23438",
+  "titel": "Kleuren op de wind",
+  "onder": "11 september 2019",
+  "uitleg": "Wervelende wolken in Jupiters noordelijke straalstroom. Jupiter draait in tien uur om zijn as; dat zorgt voor krachtige straalstromen en de donkere en lichte banden.",
+  "bron": "NASA",
+  "datum": "2019-09-11",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA23438/PIA23438~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA23438/PIA23438~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA10182",
+  "titel": "Jonge sterren in hun dekentje",
+  "onder": "11 februari 2008",
+  "uitleg": "Pasgeboren sterren gluren onder hun deken van stof vandaan in de donkere wolk Rho Ophiuchi, zo'n 400 lichtjaar van ons vandaan. Door Spitzer.",
+  "bron": "NASA",
+  "datum": "2008-02-11",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA10182/PIA10182~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA10182/PIA10182~medium.jpg"
+ },
+ {
+  "id": "nasa:iss043e059141",
+  "titel": "Zonsopkomst, poollicht en steden",
+  "onder": "26 maart 2015",
+  "uitleg": "Een contrastrijke opname vanuit het ruimtestation: de zon komt op, het noorderlicht gloeit en de steden van Noord-Europa fonkelen.",
+  "bron": "NASA",
+  "datum": "2015-03-26",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss043e059141/iss043e059141~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss043e059141/iss043e059141~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA25692",
+  "titel": "Cyclonen op de noordpool van Jupiter",
+  "onder": "14 december 2022",
+  "uitleg": "Rond Jupiters noordpool draaien acht cyclonen; vier zijn hier te zien rond de noordelijkste. Gefotografeerd door Juno in september 2022.",
+  "bron": "NASA",
+  "datum": "2022-12-14",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA25692/PIA25692~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA25692/PIA25692~medium.jpg"
+ },
+ {
+  "id": "nasa:iss061e138170",
+  "titel": "Poollicht boven de Atlantische Oceaan",
+  "onder": "22 januari 2020",
+  "uitleg": "Een poollicht als een deken over de aarde onder een sterrenhemel, gezien vanuit het ruimtestation voor de kust van Noord-Amerika.",
+  "bron": "NASA",
+  "datum": "2020-01-22",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss061e138170/iss061e138170~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss061e138170/iss061e138170~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA08097",
+  "titel": "Ogen in de ruimte",
+  "onder": "26 april 2006",
+  "uitleg": "Twee botsende sterrenstelsels, NGC 2207 en IC 2163, vormen samen een reusachtig masker. De ijsblauwe 'ogen' zijn hun kernen. Door Hubble en Spitzer.",
+  "bron": "NASA",
+  "datum": "2006-04-26",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA08097/PIA08097~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA08097/PIA08097~medium.jpg"
+ },
+ {
+  "id": "nasa:iss072e188141",
+  "titel": "Fel groen noorderlicht",
+  "onder": "15 november 2024",
+  "uitleg": "Een fel groen noorderlicht boven een bewolkte noordelijke Stille Oceaan, ten zuiden van de Aleoeten bij Alaska.",
+  "bron": "NASA",
+  "datum": "2024-11-15",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss072e188141/iss072e188141~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss072e188141/iss072e188141~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14402",
+  "titel": "Een spinnenweb in IC 342",
+  "onder": "20 juli 2011",
+  "uitleg": "Als een spinnenweb dat in een spiraal is gedraaid: het stofpatroon van sterrenstelsel IC 342 in infrarood licht, met een fel gloeiend centrum.",
+  "bron": "NASA",
+  "datum": "2011-07-20",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14402/PIA14402~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14402/PIA14402~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA22939",
+  "titel": "Een bruine aak op Jupiter",
+  "onder": "12 december 2018",
+  "uitleg": "Een lange bruine ovaal in een van de noordelijke banden van Jupiter, met versterkte kleuren, door ruimtesonde Juno in 2018.",
+  "bron": "NASA",
+  "datum": "2018-12-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA22939/PIA22939~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA22939/PIA22939~medium.jpg"
+ },
+ {
+  "id": "nasa:iss065e061117",
+  "titel": "Sterrennacht boven de aarde",
+  "onder": "21 mei 2021",
+  "uitleg": "Een sterrenhemel en de gloed van de atmosfeer tijdens de nacht in een baan om de aarde, boven de Indische Oceaan.",
+  "bron": "NASA",
+  "datum": "2021-05-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss065e061117/iss065e061117~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss065e061117/iss065e061117~medium.jpg"
+ },
+ {
+  "id": "nasa:iss059e119533",
+  "titel": "Zuiderlicht rond een bewolkte aarde",
+  "onder": "21 juni 2019",
+  "uitleg": "Luchtgloed en een ijl zuiderlicht omlijsten een bewolkte aarde, ten oosten van de Franse Zuidelijke Gebieden.",
+  "bron": "NASA",
+  "datum": "2019-06-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss059e119533/iss059e119533~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss059e119533/iss059e119533~medium.jpg"
+ },
+ {
+  "id": "nasa:hubble-eyes-galactic-refurbishment_17322896925_o",
+  "titel": "Een stelsel vol nieuwe sterren",
+  "onder": "30 april 2015",
+  "uitleg": "Het wazige stelsel UGC 5797 vormt volop nieuwe, felblauwe sterren en wordt zo steeds 'vernieuwd'. Gezien door Hubble.",
+  "bron": "NASA",
+  "datum": "2015-04-30",
+  "afbeelding": "https://images-assets.nasa.gov/image/hubble-eyes-galactic-refurbishment_17322896925_o/hubble-eyes-galactic-refurbishment_17322896925_o~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/hubble-eyes-galactic-refurbishment_17322896925_o/hubble-eyes-galactic-refurbishment_17322896925_o~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21778",
+  "titel": "Jupiter vanuit een nieuwe hoek",
+  "onder": "10 juli 2017",
+  "uitleg": "De Grote Rode Vlek verdwijnt uit beeld terwijl de onstuimige banden van Jupiters zuidelijk halfrond scherp worden. Gemaakt met beelden van Juno.",
+  "bron": "NASA",
+  "datum": "2017-07-10",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21778/PIA21778~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21778/PIA21778~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13121",
+  "titel": "De Zeven Zusters",
+  "onder": "16 juli 2010",
+  "uitleg": "De beroemde sterrenhoop de Pleiaden, gezien in infrarood door de WISE-telescoop. Deze sterren horen losjes bij elkaar en gaan op den duur elk hun eigen weg.",
+  "bron": "NASA",
+  "datum": "2010-07-16",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13121/PIA13121~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13121/PIA13121~medium.jpg"
+ },
+ {
+  "id": "nasa:iss066e146457",
+  "titel": "Zuiderlicht boven de oceaan",
+  "onder": "18 februari 2022",
+  "uitleg": "Het zuiderlicht stroomt boven de Indische Oceaan, gefotografeerd vanuit het ruimtestation op zo'n 430 kilometer hoogte.",
+  "bron": "NASA",
+  "datum": "2022-02-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss066e146457/iss066e146457~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss066e146457/iss066e146457~medium.jpg"
+ },
+ {
+  "id": "nasa:iss060e002044",
+  "titel": "Luchtgloed boven Tasmanië",
+  "onder": "29 juni 2019",
+  "uitleg": "De gloed van de atmosfeer ligt als een deken over de aarde onder een sterrenhemel, ten zuiden van Tasmanië.",
+  "bron": "NASA",
+  "datum": "2019-06-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss060e002044/iss060e002044~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss060e002044/iss060e002044~medium.jpg"
+ },
+ {
+  "id": "nasa:iss050e034428",
+  "titel": "Poollicht, steden en sterren",
+  "onder": "18 januari 2017",
+  "uitleg": "Een lange belichting vanuit het ruimtestation: poollicht, fonkelende stadslichten en daarachter een ruimte vol sterren.",
+  "bron": "NASA",
+  "datum": "2017-01-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss050e034428/iss050e034428~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss050e034428/iss050e034428~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13123",
+  "titel": "Een verborgen sterrenhoop",
+  "onder": "3 augustus 2010",
+  "uitleg": "Een hoop pasgeboren sterren in een cocon van stof en gas in het sterrenbeeld Giraffe, zichtbaar gemaakt door de WISE-telescoop.",
+  "bron": "NASA",
+  "datum": "2010-08-03",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13123/PIA13123~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13123/PIA13123~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA09267",
+  "titel": "Elke roos heeft een doorn",
+  "onder": "18 april 2007",
+  "uitleg": "De Rozetnevel, een kraamkamer van sterren op meer dan 5000 lichtjaar afstand in het sterrenbeeld Eenhoorn, in infrarood door Spitzer.",
+  "bron": "NASA",
+  "datum": "2007-04-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA09267/PIA09267~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA09267/PIA09267~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA26276",
+  "titel": "Het infrarode gezicht van Andromeda",
+  "onder": "9 mei 2024",
+  "uitleg": "Sterren en stofwolken in het Andromedastelsel, onze grote buur. Aan de hemel is het zo breed als acht volle manen naast elkaar. Door Spitzer.",
+  "bron": "NASA",
+  "datum": "2024-05-09",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA26276/PIA26276~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA26276/PIA26276~medium.jpg"
+ },
+ {
+  "id": "nasa:NHQ202012210001",
+  "titel": "De grote samenstand",
+  "onder": "21 december 2020",
+  "uitleg": "Jupiter (links) en Saturnus (rechts) na zonsondergang boven Jordan Lake op 21 december 2020, toen ze aan de hemel maar een tiende graad van elkaar stonden.",
+  "bron": "NASA",
+  "datum": "2020-12-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/NHQ202012210001/NHQ202012210001~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/NHQ202012210001/NHQ202012210001~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA16613",
+  "titel": "Een reusachtig balkspiraalstelsel",
+  "onder": "10 januari 2013",
+  "uitleg": "Het balkspiraalstelsel NGC 6872 is 522.000 lichtjaar breed, ongeveer vijf keer zo groot als onze Melkweg.",
+  "bron": "NASA",
+  "datum": "2013-01-10",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA16613/PIA16613~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA16613/PIA16613~medium.jpg"
+ },
+ {
+  "id": "nasa:iss073e0982823",
+  "titel": "De Melkweg boven de luchtgloed",
+  "onder": "26 oktober 2025",
+  "uitleg": "De maan schijnt in de camera terwijl een heldere luchtgloed de horizon bedekt en de Melkweg de nacht verlicht, boven de Atlantische Oceaan voor Afrika.",
+  "bron": "NASA",
+  "datum": "2025-10-26",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss073e0982823/iss073e0982823~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss073e0982823/iss073e0982823~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13441",
+  "titel": "De Cocon-nevel",
+  "onder": "20 oktober 2010",
+  "uitleg": "De toepasselijk genoemde Cocon-nevel in het sterrenbeeld Zwaan, gewikkeld in een donkere stofwolk. Door de WISE-telescoop.",
+  "bron": "NASA",
+  "datum": "2010-10-20",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13441/PIA13441~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13441/PIA13441~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13118",
+  "titel": "De Tarantulanevel",
+  "onder": "6 juli 2010",
+  "uitleg": "Niets voor mensen met spinnenangst: de Tarantulanevel is het grootste stervormingsgebied in onze hele Lokale Groep van sterrenstelsels.",
+  "bron": "NASA",
+  "datum": "2010-07-06",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13118/PIA13118~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13118/PIA13118~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA22425",
+  "titel": "Jupiter bij het wegvliegen",
+  "onder": "29 juni 2018",
+  "uitleg": "Het zuidelijk halfrond van Jupiter, vastgelegd door Juno terwijl hij na een scheervlucht weer van de planeet wegvloog, op ruim 70.000 kilometer.",
+  "bron": "NASA",
+  "datum": "2018-06-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA22425/PIA22425~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA22425/PIA22425~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14096",
+  "titel": "Sterrenhoop NGC 2259",
+  "onder": "23 mei 2011",
+  "uitleg": "Sterrenhopen zoals de Pleiaden horen bij de mooiste dingen aan de hemel. Deze, NGC 2259, gezien in infrarood door WISE.",
+  "bron": "NASA",
+  "datum": "2011-05-23",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14096/PIA14096~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14096/PIA14096~medium.jpg"
+ },
+ {
+  "id": "nasa:iss064e022752",
+  "titel": "Sterren en poollicht boven Rusland",
+  "onder": "12 januari 2021",
+  "uitleg": "Een sterrenhemel en een poollicht boven Rusland, tussen Oekraïne en Kazachstan, gezien vanuit het ruimtestation.",
+  "bron": "NASA",
+  "datum": "2021-01-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss064e022752/iss064e022752~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss064e022752/iss064e022752~medium.jpg"
+ },
+ {
+  "id": "nasa:iss065e376897",
+  "titel": "Zonsopkomst met poollicht boven Canada",
+  "onder": "13 september 2021",
+  "uitleg": "Het ruimtestation kijkt over de stadslichten van het noordwesten van Amerika naar een zonsopkomst, versierd met een poollicht.",
+  "bron": "NASA",
+  "datum": "2021-09-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss065e376897/iss065e376897~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss065e376897/iss065e376897~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21395",
+  "titel": "De Grote Rode Vlek van dichtbij",
+  "onder": "12 juli 2017",
+  "uitleg": "De Grote Rode Vlek van Jupiter, met versterkte kleuren, gefotografeerd door Juno van nog geen 10.000 kilometer boven de wolken.",
+  "bron": "NASA",
+  "datum": "2017-07-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21395/PIA21395~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21395/PIA21395~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13459",
+  "titel": "Nevel rond een superreus",
+  "onder": "19 februari 2011",
+  "uitleg": "De nevel BFS 29 rond de superreus CE Camelopardalis, in de band van de Melkweg aan de nachthemel. Door de WISE-telescoop.",
+  "bron": "NASA",
+  "datum": "2011-02-19",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13459/PIA13459~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13459/PIA13459~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA15232",
+  "titel": "Een straalstroom op Jupiter",
+  "onder": "13 maart 2012",
+  "uitleg": "Langs een van Jupiters straalstromen trekt een rij V-vormige wolken van west naar oost, net boven de Grote Rode Vlek. Door ruimtesonde Cassini.",
+  "bron": "NASA",
+  "datum": "2012-03-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA15232/PIA15232~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA15232/PIA15232~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA23867",
+  "titel": "De Blauwe Ringnevel",
+  "onder": "18 november 2020",
+  "uitleg": "Deze nevel ontstond waarschijnlijk toen twee sterren samensmolten. We zien het puin een paar duizend jaar na de botsing. Ontdekt door de telescoop GALEX.",
+  "bron": "NASA",
+  "datum": "2020-11-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA23867/PIA23867~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA23867/PIA23867~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA18931",
+  "titel": "Duinen en windstrepen op Mars",
+  "onder": "3 december 2014",
+  "uitleg": "Arabia Terra is een van de stoffigste streken op Mars: rood stof bedekt alles, met alleen kleine verschillen in kleur en tint.",
+  "bron": "NASA",
+  "datum": "2014-12-03",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA18931/PIA18931~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA18931/PIA18931~medium.jpg"
+ },
+ {
+  "id": "nasa:iss070e104474",
+  "titel": "Denver en een poollicht",
+  "onder": "29 februari 2024",
+  "uitleg": "De stadslichten van Denver (rechtsonder) gezien vanuit het ruimtestation, met linksboven een poollicht boven Canada.",
+  "bron": "NASA",
+  "datum": "2024-02-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss070e104474/iss070e104474~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss070e104474/iss070e104474~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA17996",
+  "titel": "Een panorama van de Melkweg",
+  "onder": "20 maart 2014",
+  "uitleg": "Dit mozaïek beslaat maar drie procent van de hemel, maar bevat meer dan de helft van de sterren van onze Melkweg en het meeste van de stervorming.",
+  "bron": "NASA",
+  "datum": "2014-03-20",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA17996/PIA17996~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA17996/PIA17996~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14092",
+  "titel": "Drie nevels in Perseus",
+  "onder": "5 mei 2011",
+  "uitleg": "Drie verschillende nevels in het sterrenbeeld Perseus: NGC 1491 rechts, SH 2-209 links en BFS 34 daartussen. Door WISE.",
+  "bron": "NASA",
+  "datum": "2011-05-05",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14092/PIA14092~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14092/PIA14092~medium.jpg"
+ },
+ {
+  "id": "nasa:iss048e056981",
+  "titel": "Magenta en groen poollicht",
+  "onder": "13 augustus 2016",
+  "uitleg": "Poollicht in magenta en groen kleurt de hemel terwijl het ruimtestation in 90 minuten rond de aarde draait. Het vrachtschip Dragon zit aan het station vast.",
+  "bron": "NASA",
+  "datum": "2016-08-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss048e056981/iss048e056981~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss048e056981/iss048e056981~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA25032",
+  "titel": "Jupiter met Io en Callisto",
+  "onder": "17 december 2021",
+  "uitleg": "Jupiter samen met zijn maan Io, en veel zwakker de maan Callisto, vlak voor Juno's dichtste nadering in november 2021.",
+  "bron": "NASA",
+  "datum": "2021-12-17",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA25032/PIA25032~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA25032/PIA25032~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA15413",
+  "titel": "Een publieksfavoriet",
+  "onder": "8 maart 2012",
+  "uitleg": "Deze nevel in het sterrenbeeld Schild heeft geen naam, omdat hij achter stofwolken verborgen zit. Alleen een infraroodtelescoop als Spitzer kijkt erdoorheen.",
+  "bron": "NASA",
+  "datum": "2012-03-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA15413/PIA15413~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA15413/PIA15413~medium.jpg"
+ },
+ {
+  "id": "nasa:30dor",
+  "titel": "Een boeket van sterren",
+  "onder": "6 april 2024",
+  "uitleg": "Het diepste röntgenbeeld ooit van het stervormingsgebied 30 Doradus, gecombineerd met beelden van Hubble en radiotelescoop ALMA.",
+  "bron": "NASA",
+  "datum": "2024-04-06",
+  "afbeelding": "https://images-assets.nasa.gov/image/30dor/30dor~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/30dor/30dor~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA04630",
+  "titel": "Sterrenstelsel M101",
+  "onder": "25 juli 2003",
+  "uitleg": "Het spiraalstelsel M101 in ultraviolet en zichtbaar licht. De kleuren laten zien waar in het stelsel nu sterren worden geboren.",
+  "bron": "NASA",
+  "datum": "2003-07-25",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA04630/PIA04630~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA04630/PIA04630~medium.jpg"
+ },
+ {
+  "id": "nasa:iss075e0103425",
+  "titel": "Sterrensporen boven Centraal-Azië",
+  "onder": "9 september 2026",
+  "uitleg": "Een lange belichting vanuit het ruimtestation: sporen van sterren, een boog van poollicht en daaronder de stadslichten van Centraal-Azië. September 2026.",
+  "bron": "NASA",
+  "datum": "2026-09-09",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss075e0103425/iss075e0103425~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss075e0103425/iss075e0103425~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13112",
+  "titel": "Hart en Ziel",
+  "onder": "24 mei 2010",
+  "uitleg": "Een enorm mozaïek van twee borrelende wolken in de ruimte, de Hart- en de Zielnevel. Door de WISE-telescoop.",
+  "bron": "NASA",
+  "datum": "2010-05-24",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13112/PIA13112~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13112/PIA13112~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21972",
+  "titel": "Blauwe wolken op Jupiter",
+  "onder": "24 oktober 2017",
+  "uitleg": "Wolken in opvallende tinten blauw op het noordelijk halfrond van Jupiter, gezien door Juno van zo'n 19.000 kilometer: ongeveer de afstand van New York naar Perth.",
+  "bron": "NASA",
+  "datum": "2017-10-24",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21972/PIA21972~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21972/PIA21972~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA15480",
+  "titel": "Echo's van een sterrendood",
+  "onder": "14 maart 2012",
+  "uitleg": "Cassiopeia A, het restant van een supernova en een van de helderste radiobronnen die we kennen. WISE zag de flits nog als infrarode echo naar buiten rimpelen.",
+  "bron": "NASA",
+  "datum": "2012-03-14",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA15480/PIA15480~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA15480/PIA15480~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21981",
+  "titel": "Roze Jupiter",
+  "onder": "15 maart 2018",
+  "uitleg": "Een storm met heldere wolkentoppen op het noordelijk halfrond van Jupiter, van dichtbij gefotografeerd door Juno.",
+  "bron": "NASA",
+  "datum": "2018-03-15",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21981/PIA21981~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21981/PIA21981~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA03519",
+  "titel": "Cassiopeia A",
+  "onder": "10 juni 2005",
+  "uitleg": "Een ster die stierf in een vurige supernova. Dit restant ligt op 10.000 lichtjaar in het sterrenbeeld Cassiopeia, samengesteld uit drie grote NASA-telescopen.",
+  "bron": "NASA",
+  "datum": "2005-06-10",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA03519/PIA03519~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA03519/PIA03519~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13111",
+  "titel": "De Meeuwnevel",
+  "onder": "20 mei 2010",
+  "uitleg": "De Meeuwnevel dankt zijn naam aan de vorm van een vliegende meeuw. Infraroodmozaïek van de WISE-telescoop.",
+  "bron": "NASA",
+  "datum": "2010-05-20",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13111/PIA13111~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13111/PIA13111~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA23121",
+  "titel": "Een vlinder in de ruimte",
+  "onder": "27 maart 2019",
+  "uitleg": "Wat op een rode vlinder lijkt, is een kraamkamer voor honderden jonge sterren: nevel W40. De 'vleugels' zijn bellen heet gas, geblazen door de zwaarste sterren.",
+  "bron": "NASA",
+  "datum": "2019-03-27",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA23121/PIA23121~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA23121/PIA23121~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA09178",
+  "titel": "De Helixnevel",
+  "onder": "12 februari 2007",
+  "uitleg": "De Helixnevel lijkt op een reusachtig oog en is geliefd bij amateurastronomen om zijn felle kleuren. Hier in infrarood door Spitzer.",
+  "bron": "NASA",
+  "datum": "2007-02-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA09178/PIA09178~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA09178/PIA09178~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA19048",
+  "titel": "Het oppervlak van Europa",
+  "onder": "21 november 2014",
+  "uitleg": "Het raadselachtige ijsoppervlak van Jupiters maan Europa, opnieuw bewerkt uit beelden van ruimtesonde Galileo uit de late jaren negentig.",
+  "bron": "NASA",
+  "datum": "2014-11-21",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA19048/PIA19048~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA19048/PIA19048~medium.jpg"
+ },
+ {
+  "id": "nasa:iss064e046345",
+  "titel": "Moskou bij nacht",
+  "onder": "23 maart 2021",
+  "uitleg": "De lichten van Moskou, met een zonsondergang en een poollicht, gezien vanuit het ruimtestation boven de grens van Oekraïne en Rusland.",
+  "bron": "NASA",
+  "datum": "2021-03-23",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss064e046345/iss064e046345~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss064e046345/iss064e046345~medium.jpg"
+ },
+ {
+  "id": "nasa:iss060e022358",
+  "titel": "De Melkweg boven de Koraalzee",
+  "onder": "4 augustus 2019",
+  "uitleg": "De Melkweg verlicht een nachtelijke passage boven de Koraalzee tussen Australië en Papoea-Nieuw-Guinea; de luchtgloed tekent de rand van de aarde.",
+  "bron": "NASA",
+  "datum": "2019-08-04",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss060e022358/iss060e022358~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss060e022358/iss060e022358~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA07902",
+  "titel": "De Helixnevel in ultraviolet",
+  "onder": "5 mei 2005",
+  "uitleg": "De Helixnevel laat zien wat er gebeurt met een ster als onze zon aan het eind van haar leven: ze stoot gas af en wordt een kleine, hete witte dwerg.",
+  "bron": "NASA",
+  "datum": "2005-05-05",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA07902/PIA07902~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA07902/PIA07902~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13904",
+  "titel": "Een vinger van stervorming",
+  "onder": "4 maart 2011",
+  "uitleg": "Een stervormende wolk van stof en gas in het sterrenbeeld Eenhoorn, helemaal aan het eind van een buitenste spiraalarm van onze Melkweg.",
+  "bron": "NASA",
+  "datum": "2011-03-04",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13904/PIA13904~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13904/PIA13904~medium.jpg"
+ },
+ {
+  "id": "nasa:iss072e000922",
+  "titel": "Lichtjes rond de Middellandse Zee",
+  "onder": "23 september 2024",
+  "uitleg": "De kuststeden van Spanje tot Italië en van Algerije tot Libië, met onderin Mallorca en Menorca. Gezien vanuit het ruimtestation boven Barcelona.",
+  "bron": "NASA",
+  "datum": "2024-09-23",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss072e000922/iss072e000922~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss072e000922/iss072e000922~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13125",
+  "titel": "Omega Centauri",
+  "onder": "16 augustus 2010",
+  "uitleg": "Een geliefd doel van amateurastronomen: de bolvormige sterrenhoop Omega Centauri in het sterrenbeeld Centaur. Door WISE.",
+  "bron": "NASA",
+  "datum": "2010-08-16",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13125/PIA13125~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13125/PIA13125~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA23167",
+  "titel": "Een maantje in de ringen van Saturnus",
+  "onder": "13 juni 2019",
+  "uitleg": "Het maantje Daphnis in een opening in de ringen van Saturnus maakt drie golven in de rand van die opening.",
+  "bron": "NASA",
+  "datum": "2019-06-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA23167/PIA23167~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA23167/PIA23167~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21772",
+  "titel": "Close-up van de Grote Rode Vlek",
+  "onder": "12 juli 2017",
+  "uitleg": "De Grote Rode Vlek van Jupiter, met versterkte kleuren, op zo'n 14.000 kilometer boven de wolken gefotografeerd door Juno.",
+  "bron": "NASA",
+  "datum": "2017-07-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21772/PIA21772~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21772/PIA21772~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA03096",
+  "titel": "Bergen van de Schepping",
+  "onder": "9 november 2005",
+  "uitleg": "Torenhoge zuilen van koud gas en stof, aan de toppen verlicht door jonge sterren. Ze doen denken aan Hubbles beroemde opname van de Arendnevel.",
+  "bron": "NASA",
+  "datum": "2005-11-09",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA03096/PIA03096~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA03096/PIA03096~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21606",
+  "titel": "Kleurrijk gesteente op Mars",
+  "onder": "3 mei 2017",
+  "uitleg": "De bodem van een kloof in Valles Marineris op Mars, met verschillende mineralen in prachtige kleurcontrasten.",
+  "bron": "NASA",
+  "datum": "2017-05-03",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21606/PIA21606~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21606/PIA21606~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA17873",
+  "titel": "Duinen op de rand van Hellas",
+  "onder": "15 januari 2014",
+  "uitleg": "Zandduinen op Mars, aan de rand van het Hellas-inslagbekken. Ze kruipen door de wind langzaam over het oppervlak.",
+  "bron": "NASA",
+  "datum": "2014-01-15",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA17873/PIA17873~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA17873/PIA17873~medium.jpg"
+ },
+ {
+  "id": "nasa:iss045e176195",
+  "titel": "Stadslichten onder het poollicht",
+  "onder": "5 december 2015",
+  "uitleg": "Fonkelende stadslichten, omlijst door poollicht langs de horizon en een stukje van het ruimtestation, dat met 28.000 km per uur rond de aarde vliegt.",
+  "bron": "NASA",
+  "datum": "2015-12-05",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss045e176195/iss045e176195~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss045e176195/iss045e176195~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA21984",
+  "titel": "De wolken van Jupiter",
+  "onder": "6 april 2018",
+  "uitleg": "Ingewikkelde wolkenpatronen op het noordelijk halfrond van Jupiter, gezien door Juno van zo'n 12.000 kilometer boven de wolken.",
+  "bron": "NASA",
+  "datum": "2018-04-06",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA21984/PIA21984~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA21984/PIA21984~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14103",
+  "titel": "Wapperend in de sterrenwind",
+  "onder": "13 juni 2011",
+  "uitleg": "De Olifantsslurfnevel: wolken van stof en gas worden door een zware ster weggeduwd en uitgesleten. De heldere 'slurf' is een extra dichte wolk.",
+  "bron": "NASA",
+  "datum": "2011-06-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14103/PIA14103~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14103/PIA14103~medium.jpg"
+ },
+ {
+  "id": "nasa:iss072e083078",
+  "titel": "Zuiderlicht ten zuiden van Nieuw-Zeeland",
+  "onder": "8 oktober 2024",
+  "uitleg": "Het zuiderlicht stroomt over de aarde terwijl het ruimtestation boven de Stille Oceaan ten zuiden van Nieuw-Zeeland vliegt.",
+  "bron": "NASA",
+  "datum": "2024-10-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss072e083078/iss072e083078~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss072e083078/iss072e083078~medium.jpg"
+ },
+ {
+  "id": "nasa:iss043e218074",
+  "titel": "Sterren boven stadslichten",
+  "onder": "18 mei 2015",
+  "uitleg": "Een nacht vanuit het ruimtestation: schitterende stadslichten onder duizenden sterren, met langs de rand de groene gloed van poollicht.",
+  "bron": "NASA",
+  "datum": "2015-05-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss043e218074/iss043e218074~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss043e218074/iss043e218074~medium.jpg"
+ },
+ {
+  "id": "nasa:iss049e007067",
+  "titel": "Dubai en Abu Dhabi bij nacht",
+  "onder": "19 september 2016",
+  "uitleg": "De zuidelijke Perzische Golf bij nacht, met Dubai en Abu Dhabi in het midden. Het oosten is boven, met de kust van Iran linksboven.",
+  "bron": "NASA",
+  "datum": "2016-09-19",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss049e007067/iss049e007067~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss049e007067/iss049e007067~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14728",
+  "titel": "Diep in de Lagunenevel",
+  "onder": "16 september 2011",
+  "uitleg": "Kolkende stofwolken en heldere, pasgeboren sterren in de Lagunenevel, in de richting van het centrum van onze Melkweg.",
+  "bron": "NASA",
+  "datum": "2011-09-16",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14728/PIA14728~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14728/PIA14728~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13014",
+  "titel": "De Zielnevel",
+  "onder": "5 april 2010",
+  "uitleg": "Een open sterrenhoop in een wolk van stof en gas, zo'n 6500 lichtjaar weg in het sterrenbeeld Cassiopeia, naast de Hartnevel.",
+  "bron": "NASA",
+  "datum": "2010-04-05",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13014/PIA13014~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13014/PIA13014~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14415",
+  "titel": "De Tarantulanevel in drie kleuren",
+  "onder": "17 april 2012",
+  "uitleg": "De Tarantulanevel in de Grote Magelhaense Wolk, met röntgenlicht van Chandra in blauw, Hubble in groen en Spitzer in rood.",
+  "bron": "NASA",
+  "datum": "2012-04-17",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14415/PIA14415~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14415/PIA14415~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA23650",
+  "titel": "De Californianevel",
+  "onder": "17 april 2020",
+  "uitleg": "Een deel van de Californianevel op 1000 lichtjaar afstand: het allerlaatste mozaïek dat de Spitzer-telescoop maakte voordat hij in januari 2020 werd uitgezet.",
+  "bron": "NASA",
+  "datum": "2020-04-17",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA23650/PIA23650~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA23650/PIA23650~medium.jpg"
+ },
+ {
+  "id": "nasa:iss058e005282",
+  "titel": "Poollicht langs de rand van de aarde",
+  "onder": "18 januari 2019",
+  "uitleg": "De zonnepanelen van het ruimtestation boven een nachtelijke rand van de aarde met poollicht, boven Oekraïne en Rusland.",
+  "bron": "NASA",
+  "datum": "2019-01-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss058e005282/iss058e005282~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss058e005282/iss058e005282~medium.jpg"
+ },
+ {
+  "id": "nasa:iss064e023203",
+  "titel": "Russische steden onder het poollicht",
+  "onder": "13 januari 2021",
+  "uitleg": "Vanuit het ruimtestation boven Kazachstan kijk je naar het noorden, naar de verlichte steden van Rusland onder een deken van poollicht.",
+  "bron": "NASA",
+  "datum": "2021-01-13",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss064e023203/iss064e023203~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss064e023203/iss064e023203~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA15416",
+  "titel": "Andromeda in ultraviolet",
+  "onder": "16 mei 2012",
+  "uitleg": "Hete sterren branden fel in deze ultravioletopname van het Andromedastelsel, op 2,5 miljoen lichtjaar onze grootste buur.",
+  "bron": "NASA",
+  "datum": "2012-05-16",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA15416/PIA15416~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA15416/PIA15416~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA04935",
+  "titel": "De Olifantsslurf in Cepheus",
+  "onder": "18 december 2003",
+  "uitleg": "Een langgerekte donkere wolk in de nevel IC 1396 in het sterrenbeeld Cepheus, waarin nieuwe sterren ontstaan.",
+  "bron": "NASA",
+  "datum": "2003-12-18",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA04935/PIA04935~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA04935/PIA04935~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA08362",
+  "titel": "Verblindend Saturnus",
+  "onder": "1 maart 2007",
+  "uitleg": "Een van de mooiste gezichten in ons zonnestelsel: Saturnus, gehuld in de volle pracht van zijn ringen.",
+  "bron": "NASA",
+  "datum": "2007-03-01",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA08362/PIA08362~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA08362/PIA08362~medium.jpg"
+ },
+ {
+  "id": "nasa:iss073e0039722",
+  "titel": "Maanlicht op de zonnepanelen",
+  "onder": "23 april 2025",
+  "uitleg": "Maanlicht geeft de zonnepanelen van het ruimtestation een zilveren glans, met daarachter de luchtgloed en een ijl poollicht boven de Indische Oceaan.",
+  "bron": "NASA",
+  "datum": "2025-04-23",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss073e0039722/iss073e0039722~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss073e0039722/iss073e0039722~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA15116",
+  "titel": "Een slingerende stofhoos op Mars",
+  "onder": "7 maart 2012",
+  "uitleg": "Een torenhoge stofhoos werpt een slingerende schaduw over het oppervlak van Mars, op een late lentemiddag in Amazonis Planitia.",
+  "bron": "NASA",
+  "datum": "2012-03-07",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA15116/PIA15116~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA15116/PIA15116~medium.jpg"
+ },
+ {
+  "id": "nasa:GSFC_20171208_Archive_e000159",
+  "titel": "Een zachte zwerm sterren",
+  "onder": "8 december 2017",
+  "uitleg": "Het onregelmatige dwergstelsel NGC 4789A: de sterren liggen er rommelig over de hemel verspreid, abstracter dan bij de glitterende spiraalstelsels.",
+  "bron": "NASA",
+  "datum": "2017-12-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000159/GSFC_20171208_Archive_e000159~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000159/GSFC_20171208_Archive_e000159~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14885",
+  "titel": "De Drakenvis",
+  "onder": "12 december 2011",
+  "uitleg": "De nevel met de bijnaam Drakenvis, propvol sterren en thuis van enkele van de helderste zware sterren in onze Melkweg. Door Spitzer.",
+  "bron": "NASA",
+  "datum": "2011-12-12",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14885/PIA14885~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14885/PIA14885~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14731",
+  "titel": "De Pacmannevel",
+  "onder": "28 september 2011",
+  "uitleg": "Sterrenhoop en nevel NGC 281 heet de Pacmannevel vanwege zijn vorm. Röntgenlicht in paars, infrarood in rood, groen en blauw.",
+  "bron": "NASA",
+  "datum": "2011-09-28",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14731/PIA14731~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14731/PIA14731~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA03515",
+  "titel": "Alle zuilen wijzen naar Eta",
+  "onder": "30 mei 2005",
+  "uitleg": "De zuilen in het zuidelijke deel van de Carinanevel, een groot stervormingsgebied, in valse kleuren door Spitzer.",
+  "bron": "NASA",
+  "datum": "2005-05-30",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA03515/PIA03515~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA03515/PIA03515~medium.jpg"
+ },
+ {
+  "id": "nasa:iss070e027906",
+  "titel": "Mexico-Stad bij nacht",
+  "onder": "19 november 2023",
+  "uitleg": "De lichten van Mexico-Stad, met links het verlichte vliegveld Felipe Ángeles en bovenin het donkere natuurpark bij het Texcocomeer.",
+  "bron": "NASA",
+  "datum": "2023-11-19",
+  "afbeelding": "https://images-assets.nasa.gov/image/iss070e027906/iss070e027906~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/iss070e027906/iss070e027906~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA03654",
+  "titel": "Een ketel vol sterren",
+  "onder": "10 januari 2006",
+  "uitleg": "Honderdduizenden sterren, dicht opeengepakt in het wervelende hart van onze eigen Melkweg, gezien in infrarood door Spitzer.",
+  "bron": "NASA",
+  "datum": "2006-01-10",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA03654/PIA03654~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA03654/PIA03654~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA16699",
+  "titel": "Sterrenstelsel NGC 1365",
+  "onder": "27 februari 2013",
+  "uitleg": "De prachtige spiraalarmen van het stelsel NGC 1365, in ultraviolet licht gezien door de Europese XMM-Newton-telescoop.",
+  "bron": "NASA",
+  "datum": "2013-02-27",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA16699/PIA16699~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA16699/PIA16699~medium.jpg"
+ },
+ {
+  "id": "nasa:GSFC_20171208_Archive_e000226",
+  "titel": "Hubble kijkt in de storm",
+  "onder": "8 december 2017",
+  "uitleg": "Een maalstroom van gloeiend gas en donker stof in de Grote Magelhaense Wolk: de sterrenkraamkamer N159, meer dan 150 lichtjaar breed.",
+  "bron": "NASA",
+  "datum": "2017-12-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000226/GSFC_20171208_Archive_e000226~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000226/GSFC_20171208_Archive_e000226~medium.jpg"
+ },
+ {
+  "id": "nasa:art002e020686",
+  "titel": "Het Orientale-bekken in strijklicht",
+  "onder": "6 april 2026",
+  "uitleg": "Een deel van de achterkant van de maan langs de grens van dag en nacht, waar laag zonlicht lange schaduwen werpt. Gefotografeerd tijdens Artemis II, april 2026.",
+  "bron": "NASA",
+  "datum": "2026-04-06",
+  "afbeelding": "https://images-assets.nasa.gov/image/art002e020686/art002e020686~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/art002e020686/art002e020686~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA20357",
+  "titel": "De Spinnevel",
+  "onder": "14 april 2016",
+  "uitleg": "De 'spin' van de Spin- en Vliegnevel, IC 417, bruist van stervorming. Infraroodbeeld van Spitzer en 2MASS.",
+  "bron": "NASA",
+  "datum": "2016-04-14",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA20357/PIA20357~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA20357/PIA20357~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA14417",
+  "titel": "De Halternevel",
+  "onder": "10 augustus 2011",
+  "uitleg": "De Halternevel, Messier 27: de resten van een ster die ooit veel op onze zon leek. In infrarood door Spitzer.",
+  "bron": "NASA",
+  "datum": "2011-08-10",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA14417/PIA14417~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA14417/PIA14417~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13240",
+  "titel": "Het hol van de draak",
+  "onder": "7 juli 2010",
+  "uitleg": "De heldere nevel M17 en daarnaast een bel van gloeiend heet gas, gezien door Spitzer.",
+  "bron": "NASA",
+  "datum": "2010-07-07",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13240/PIA13240~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13240/PIA13240~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA12071",
+  "titel": "Een zee van sterren",
+  "onder": "8 december 2008",
+  "uitleg": "De woelige stervormingswolk M17, ook wel de Omeganevel of Zwaannevel, in een nieuwe infraroodopname van Spitzer.",
+  "bron": "NASA",
+  "datum": "2008-12-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA12071/PIA12071~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA12071/PIA12071~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA19638",
+  "titel": "De kleuren van Tethys",
+  "onder": "29 juli 2015",
+  "uitleg": "De ijsmaan Tethys van Saturnus, met versterkte kleuren. Tethys keert Saturnus altijd dezelfde kant toe.",
+  "bron": "NASA",
+  "datum": "2015-07-29",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA19638/PIA19638~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA19638/PIA19638~medium.jpg"
+ },
+ {
+  "id": "nasa:GSFC_20171208_Archive_e001894",
+  "titel": "Een laboratorium voor stervorming",
+  "onder": "8 december 2017",
+  "uitleg": "Het dwergstelsel NGC 4214, op zo'n 10 miljoen lichtjaar, staat in vuur en vlam van jonge sterren en gloeiende gaswolken.",
+  "bron": "NASA",
+  "datum": "2017-12-08",
+  "afbeelding": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001894/GSFC_20171208_Archive_e001894~orig.jpg",
+  "klein": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001894/GSFC_20171208_Archive_e001894~medium.jpg"
+ },
+ {
+  "id": "nasa:0400391",
+  "titel": "Dwergstelsel NGC 1569",
+  "onder": "1 januari 2004",
+  "uitleg": "Een broeinest van stervorming: supernova-explosies blazen enorme bellen in dit nabije dwergstelsel. Gefotografeerd door Hubble.",
+  "bron": "NASA",
+  "datum": "2004-01-01",
+  "afbeelding": "https://images-assets.nasa.gov/image/0400391/0400391~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/0400391/0400391~medium.jpg"
+ },
+ {
+  "id": "nasa:PIA13421",
+  "titel": "Donker en stormachtig Saturnus",
+  "onder": "6 oktober 2010",
+  "uitleg": "Donkere en lichte wolken bij onweer op Saturnus, in valse kleuren uit infraroodmetingen van ruimtesonde Cassini.",
+  "bron": "NASA",
+  "datum": "2010-10-06",
+  "afbeelding": "https://images-assets.nasa.gov/image/PIA13421/PIA13421~large.jpg",
+  "klein": "https://images-assets.nasa.gov/image/PIA13421/PIA13421~medium.jpg"
+ }
+]
