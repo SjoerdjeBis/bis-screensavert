@@ -1,6 +1,15 @@
 {
  "ruimte": {
-  "geen foto": 900,
-  "minst scherpe deel": 0
+  "geen natuurbeeld (mensen, techniek, tekening)": 1751,
+  "staand of vierkant": 347,
+  "te klein of te zwaar": 521,
+  "geen uitleg": 189,
+  "te smal panorama": 21,
+  "grauw": 5,
+  "niet te laden": 57,
+  "onscherp": 2,
+  "te donker of te licht": 4,
+  "minst scherpe deel": 47,
+  "dubbeling": 12
  }
 }
