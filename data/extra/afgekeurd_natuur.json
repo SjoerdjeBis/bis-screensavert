@@ -1,13 +1,14 @@
 {
  "natuur": {
-  "te klein": 100,
-  "geen Nederlandse naam": 32,
-  "staand of vierkant": 53,
-  "soort al vaak": 9,
-  "weinig favorieten": 6059,
-  "grauw": 15,
-  "onscherp": 1,
-  "te donker of te licht": 2,
-  "minst scherpe deel": 19
+  "te klein": 320,
+  "geen Nederlandse naam": 115,
+  "staand of vierkant": 497,
+  "soort al vaak": 249,
+  "weinig favorieten": 3460,
+  "grauw": 52,
+  "onscherp": 10,
+  "te donker of te licht": 5,
+  "minst scherpe deel": 86,
+  "dubbeling": 7
  }
 }
