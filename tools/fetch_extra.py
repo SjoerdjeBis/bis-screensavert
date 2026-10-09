@@ -324,7 +324,7 @@ def fetch_natuur(per_group=120):
     groups = ["Aves", "Insecta", "Plantae", "Mammalia", "Fungi", "Amphibia", "Reptilia", "Arachnida"]
     candidates, per_taxon = [], Counter()
     for group in groups:
-        for page in range(1, 5):
+        for page in range(1, 6):
             params = {
                 "place_id": 7506,  # Nederland
                 "quality_grade": "research",
@@ -348,7 +348,7 @@ def fetch_natuur(per_group=120):
             for obs in results:
                 if len([c for c in candidates if c["groep"] == group]) >= per_group:
                     break
-                if (obs.get("faves_count") or 0) < 2:
+                if (obs.get("faves_count") or 0) < 1:
                     rejected["natuur"]["weinig favorieten"] += 1
                     continue
                 taxon = obs.get("taxon") or {}
