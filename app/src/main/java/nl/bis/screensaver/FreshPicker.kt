@@ -21,8 +21,7 @@ class FreshPicker(context: Context, private val key: String) {
     ): T? {
         if (pool.isEmpty()) return null
         val history = load()
-        val window = (pool.size * FRESH_SHARE).toInt().coerceIn(1, MAX_HISTORY)
-        val recent = history.takeLast(window).toSet()
+        val recent = history.takeLast(window(pool.size)).toSet()
         val last = history.lastOrNull()
         var candidates = pool.filter { id(it) !in recent }
         if (candidates.isEmpty()) candidates = pool.filter { id(it) != last }
@@ -35,6 +34,11 @@ class FreshPicker(context: Context, private val key: String) {
         remember(id(choice), group?.invoke(choice))
         return choice
     }
+
+    /** De items die bij een verzameling van [poolSize] stuks nog te recent getoond zijn om terug te komen. */
+    fun recent(poolSize: Int): Set<String> = load().takeLast(window(poolSize)).toSet()
+
+    private fun window(poolSize: Int) = (poolSize * FRESH_SHARE).toInt().coerceIn(1, MAX_HISTORY)
 
     private fun load(): List<String> {
         val json = prefs.getString(key, null) ?: return emptyList()

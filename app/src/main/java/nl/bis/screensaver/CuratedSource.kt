@@ -52,7 +52,7 @@ object CuratedCollection {
 
 /**
  * Kiest steeds een beeld dat je de laatste tijd niet zag en dat je niet hebt weggestemd.
- * Bij Nederland van toen bij voorkeur een foto van deze dag, in een ander jaar.
+ * Bij Nederland van toen bij voorkeur een foto van deze dag, in een ander jaar, zolang je die niet recent zag.
  */
 class CuratedSource(private val context: Context, private val asset: String, private val onThisDay: Boolean = false) : SlideSource {
     private val settings = Settings(context)
@@ -62,7 +62,13 @@ class CuratedSource(private val context: Context, private val asset: String, pri
         val blocked = settings.blockedImages
         val all = CuratedCollection.load(context, asset).filter { "beeld:${it.id}" !in blocked }
         val today = Calendar.getInstance()
-        val nearToday = if (onThisDay) all.filter { daysFromToday(it.date, today) <= 1 } else emptyList()
+        // Rond deze dag zijn er maar een paar foto's; die gaan alleen voor zolang je ze niet recent zag.
+        val nearToday = if (onThisDay) {
+            val recent = picker.recent(all.size)
+            all.filter { daysFromToday(it.date, today) <= 1 && it.id !in recent }
+        } else {
+            emptyList()
+        }
         val item = picker.pick(nearToday.ifEmpty { all }, { it.id }) ?: return null
         val sameDay = onThisDay && daysFromToday(item.date, today) == 0
         val ago = if (onThisDay) yearsAgo(item.date, today, sameDay) else null
