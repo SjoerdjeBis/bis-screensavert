@@ -32,6 +32,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -163,6 +165,16 @@ class SlideshowController(
         mixer.start()
         soundJob = scope.launch {
             launch { music.state.collect { mixer.setMuted(it?.playing == true) } }
+            // Bij elk nieuw nummer van Spotify (of een andere muziekapp) kort in beeld wat het is,
+            // ongeacht wat er te zien is. Niet als het grote muziekscherm al openstaat.
+            launch {
+                music.state
+                    .map { it?.takeIf { now -> now.playing }?.let { now -> now.title to now.artist } }
+                    .distinctUntilChanged()
+                    .collect { track ->
+                        if (track != null && !musicVisible.value) showCredit("♪  ${track.first} · ${track.second}", TRACK_CREDIT_MS)
+                    }
+            }
             mixer.nowPlaying.collect { track -> if (track != null) showSoundCredit(track) }
         }
     }
@@ -544,11 +556,16 @@ class SlideshowController(
     /** Klein, rechtsonder: welk jazznummer er speelt en van wie (naamsvermelding voor Jamendo). */
     private fun showSoundCredit(track: JazzTrack) {
         val hint = if (isPreview) "      ▲ nummer weg" else ""
-        soundCredit.text = "♪  ${track.title} · ${track.artist} (Jamendo)$hint"
+        showCredit("♪  ${track.title} · ${track.artist} (Jamendo)$hint", SOUND_CREDIT_MS)
+    }
+
+    /** Linksboven even een regel tekst, die daarna vanzelf wegfadet. */
+    private fun showCredit(text: String, visibleMs: Long) {
+        soundCredit.text = text
         soundCredit.animate().cancel()
         soundCredit.alpha = 0f
         soundCredit.animate().alpha(1f).setStartDelay(0).setDuration(FADE_MS).withEndAction {
-            soundCredit.animate().alpha(0f).setStartDelay(SOUND_CREDIT_MS).setDuration(FADE_MS).start()
+            soundCredit.animate().alpha(0f).setStartDelay(visibleMs).setDuration(FADE_MS).start()
         }.start()
     }
 
@@ -579,6 +596,7 @@ class SlideshowController(
         const val VIDEO_CAPTION_MS = 10_000L
         const val IMAGE_CAPTION_MS = 20_000L
         const val SOUND_CREDIT_MS = 8_000L
+        const val TRACK_CREDIT_MS = 5_000L
         const val MAX_VIDEO_MS = 10 * 60_000L
         const val FADE_MS = 1_200L
         const val BACKDROP_MS = 25_000L
