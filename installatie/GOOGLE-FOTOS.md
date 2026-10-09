@@ -8,7 +8,7 @@ Kom je er niet uit, maak dan een schermafbeelding en vraag het mij.
 
 ## 1. Project aanmaken
 
-1. Ga op je Mac naar **https://console.cloud.google.com** en log in met het Google-account
+1. Ga op je computer naar **https://console.cloud.google.com** en log in met het Google-account
    van je foto's. Accepteer de voorwaarden als daarom gevraagd wordt.
 2. Klik bovenaan op de projectkiezer (naast "Google Cloud") › **Nieuw project**.
 3. Naam: `Bis Screensavert` › **Maken**. Kies daarna bovenaan dit nieuwe project.

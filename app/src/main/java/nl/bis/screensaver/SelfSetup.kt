@@ -33,9 +33,9 @@ import java.util.concurrent.TimeUnit
 
 /**
  * De app stelt zichzelf in als screensaver, zonder computer. Hij koppelt via Draadloze
- * foutopsporing met de tv waar hij zelf op draait en geeft daarna dezelfde opdrachten als
- * het installatiescript. De koppelcode vul je in op je telefoon, omdat het koppelvenster
- * op de tv open moet blijven.
+ * foutopsporing met de tv waar hij zelf op draait en zet daarna de screensaver, de
+ * meldingstoegang en de toestemming om zichzelf bij te werken. De koppelcode vul je in op je
+ * telefoon, omdat het koppelvenster op de tv open moet blijven.
  */
 object SelfSetup {
     /** Adres van het telefoonformulier, of null als het niet draait. */

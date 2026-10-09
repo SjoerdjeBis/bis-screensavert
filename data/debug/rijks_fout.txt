@@ -1,9 +1,0 @@
-https://id.rijksmuseum.nl/200108317
-Traceback (most recent call last):
-  File "/home/runner/work/Claude-rest/Claude-rest/tools/fetch_sources.py", line 243, in fetch_rijks
-    obj, item = rijks_object(u)
-                ^^^^^^^^^^^^^^^
-  File "/home/runner/work/Claude-rest/Claude-rest/tools/fetch_sources.py", line 204, in rijks_object
-    date = next((n.get("content") for n in timespan.get("identified_by", [])), None)
-                                           ^^^^^^^^^^^^
-AttributeError: 'list' object has no attribute 'get'

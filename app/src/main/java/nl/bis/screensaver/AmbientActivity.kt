@@ -95,7 +95,7 @@ class AmbientActivity : ComponentActivity() {
                     "Pixabay".takeIf { !settings.pixabayKey.isNullOrBlank() },
                 )
                 Text(
-                    if (keys.isEmpty()) "Nog niet gekoppeld. Kies in het keuzescherm 'Sleutels invullen' en plak je gratis sleutels via je telefoon (zie SFEER.md)."
+                    if (keys.isEmpty()) "Nog niet gekoppeld. Kies in het keuzescherm 'Sleutels invullen' en plak je gratis sleutels via je telefoon (zie HANDLEIDING.md)."
                     else "Gekoppeld: ${keys.joinToString(" en ")}. Clips van ${keys.joinToString(" en ")}, maximaal 1080p.",
                     style = Bis.body(12.sp, FontWeight.Medium, if (keys.isEmpty()) Bis.Boter else Bis.RoomDim),
                 )

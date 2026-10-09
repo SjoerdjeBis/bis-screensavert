@@ -34,7 +34,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mv data/extra/afgekeurd.json data/extra/afgekeurd_${{ matrix.bron }}.json
-          git add data/extra/ data/debug/
+          git add data/extra/
           git diff --cached --quiet || git commit -m "Beelden voor ${{ matrix.bron }} ophalen"
           for i in 1 2 3 4; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break; sleep 5; done
 

@@ -80,11 +80,6 @@
                 android:value="Formulier voor de koppelcode bij het eenmalig instellen via draadloze foutopsporing" />
         </service>
 
-        <!-- Ontvangt de Google-sleutels vanaf de Mac via het installatiescript. -->
-        <activity
-            android:name=".SetupActivity"
-            android:exported="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Geeft de app inzage in wat er speelt (Spotify), na toestemming via het script. -->
         <service
