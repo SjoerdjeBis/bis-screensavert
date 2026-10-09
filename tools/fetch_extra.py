@@ -149,9 +149,7 @@ def plain(text):
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
 
 
-# ---------- Ruimte: NASA Astronomy Picture of the Day (alleen publiek domein) ----------
-# Via de gewone webpagina's van APOD: de API vraagt een sleutel en de gratis proefsleutel is
-# op GitHub-servers meestal al op.
+# ---------- Ruimte: NASA-beeldbank (images.nasa.gov, publiek domein, geen sleutel) ----------
 
 def size_and_bytes(url):
     """(breedte, hoogte, totale bestandsgrootte) uit het begin van het bestand."""
@@ -167,53 +165,76 @@ def size_and_bytes(url):
         return None
 
 
-def fetch_ruimte(days=900):
-    base = "https://apod.nasa.gov/apod/"
-    candidates = []
-    today = datetime.date.today()
+RUIMTE_ZOEK = [
+    "nebula", "galaxy", "spiral galaxy", "star cluster", "supernova remnant", "Webb galaxy", "Hubble nebula",
+    "Chandra composite", "earth observation from space station", "aurora space station", "earth at night",
+    "moon surface", "Jupiter", "Saturn", "Mars surface",
+]
+RUIMTE_WEG = re.compile(
+    r"(?i)artist|illustration|concept|infographic|diagram|chart|graph\b|spectrum|engineer|technician|team|"
+    r"crew|launch|rocket|\btest|mockup|mirror|clean ?room|briefing|press|award|portrait|ceremony|"
+    r"meeting|visit|hardware|model|simulation|animation|logo|patch|poster|astronaut|spacesuit|training"
+)
+
+
+def fetch_ruimte(per_query=150):
+    candidates, seen = [], set()
     first = True
-    for n in range(days):
-        day = today - datetime.timedelta(days=n)
-        try:
-            page = get(base + day.strftime("ap%y%m%d.html"), timeout=30).decode("utf-8", "replace")
-        except Exception:
-            rejected["ruimte"]["pagina niet te laden"] += 1
-            continue
-        if first:
-            debug("apod", {"pagina": page[:4000]})
-            first = False
-        big = re.search(r'<a\s+href="(image/[^"]+\.(?:jpe?g|png))"', page, re.I)
-        small = re.search(r'<img\s+src="(image/[^"]+\.(?:jpe?g|png))"', page, re.I)
-        if not big or "<iframe" in page.lower():
-            rejected["ruimte"]["geen foto"] += 1
-            continue
-        credit = re.search(r"(?is)credit(.*?)explanation", page)
-        if credit and re.search(r"(?i)copyright|&copy;|\u00a9", credit.group(1)):
-            rejected["ruimte"]["copyright"] += 1
-            continue
-        title = re.search(r"(?is)<center>\s*<b>(.*?)</b>", page)
-        explanation = re.search(r"(?is)explanation:\s*</b>(.*?)(?:<p>\s*<center>|tomorrow's picture)", page)
-        if not title or not explanation or len(plain(explanation.group(1))) < 80:
-            rejected["ruimte"]["geen uitleg"] += 1
-            continue
-        info = size_and_bytes(base + big.group(1))
-        if not info or not landscape_ok("ruimte", info[0], info[1]):
-            continue
-        if info[2] > 8_000_000:
-            rejected["ruimte"]["bestand te zwaar"] += 1
-            continue
-        candidates.append({
-            "id": f"apod:{day.isoformat()}",
-            "titel_en": plain(title.group(1)),
-            "uitleg_en": plain(explanation.group(1)),
-            "datum": day.isoformat(),
-            "afbeelding": base + big.group(1),
-            "breedte": info[0],
-            "controle": base + (small or big).group(1),
-        })
-        time.sleep(0.1)
-        if n % 100 == 0:
-            print(f"ruimte: {n} dagen bekeken, {len(candidates)} kandidaten", flush=True)
+    for q in RUIMTE_ZOEK:
+        found = 0
+        for page in range(1, 4):
+            params = {"q": q, "media_type": "image", "page": page, "year_start": "2000"}
+            try:
+                data = get_json("https://images-api.nasa.gov/search?" + urllib.parse.urlencode(params))
+            except Exception as e:
+                print("NASA mislukt:", e, file=sys.stderr)
+                break
+            items = (data.get("collection") or {}).get("items", [])
+            if first:
+                debug("nasa", items[:3])
+                first = False
+            for it in items:
+                if found >= per_query:
+                    break
+                d = (it.get("data") or [{}])[0]
+                nasa_id = d.get("nasa_id")
+                if not nasa_id or nasa_id in seen:
+                    continue
+                seen.add(nasa_id)
+                text = " ".join([d.get("title", ""), d.get("description", ""), " ".join(d.get("keywords") or [])])
+                if RUIMTE_WEG.search(text):
+                    rejected["ruimte"]["geen natuurbeeld (mensen, techniek, tekening)"] += 1
+                    continue
+                desc = plain(d.get("description"))
+                if len(desc) < 80:
+                    rejected["ruimte"]["geen uitleg"] += 1
+                    continue
+                base = "https://images-assets.nasa.gov/image/" + urllib.parse.quote(nasa_id) + "/" + urllib.parse.quote(nasa_id)
+                chosen = None
+                for suffix in ("~large.jpg", "~orig.jpg"):
+                    info = size_and_bytes(base + suffix)
+                    if info and max(info[0], info[1]) >= 1600 and info[2] <= 8_000_000:
+                        chosen = (base + suffix, info)
+                        break
+                if not chosen:
+                    rejected["ruimte"]["te klein of te zwaar"] += 1
+                    continue
+                if not landscape_ok("ruimte", chosen[1][0], chosen[1][1]):
+                    continue
+                found += 1
+                candidates.append({
+                    "id": f"nasa:{nasa_id}",
+                    "titel_en": plain(d.get("title")),
+                    "uitleg_en": desc[:1500],
+                    "datum": (d.get("date_created") or "")[:10],
+                    "afbeelding": chosen[0],
+                    "breedte": chosen[1][0],
+                    "controle": base + "~medium.jpg",
+                })
+            if len(items) < 100:
+                break
+            time.sleep(0.5)
+        print(f"ruimte: '{q}' klaar, {len(candidates)} kandidaten", flush=True)
     return keur("ruimte", candidates, {"helder": (4, 235), "contrast": 12, "scherp": 15})
 
 
