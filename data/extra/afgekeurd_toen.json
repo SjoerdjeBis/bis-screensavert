@@ -1,12 +1,13 @@
 {
  "toen": {
-  "geen datum": 2225,
-  "staand of vierkant": 3370,
-  "te klein": 306,
-  "document of portret": 65,
+  "geen datum": 2177,
+  "staand of vierkant": 3135,
+  "document of portret": 416,
+  "te klein": 298,
   "geen beschrijving": 28,
-  "niet te laden": 2040,
-  "grauw": 1,
-  "minst scherpe deel": 5
+  "grauw": 11,
+  "onscherp": 1,
+  "minst scherpe deel": 306,
+  "dubbeling": 1
  }
 }
