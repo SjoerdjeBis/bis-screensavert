@@ -95,7 +95,11 @@ save("toen", toen)
 save("natuur", [
     {
         "id": n["id"], "titel": n["naam"],
-        "onder": " · ".join(x for x in [n.get("wetenschappelijk"), n.get("plaats"), nl_date(n.get("datum"))] if x),
+        "onder": " · ".join(x for x in [
+            n.get("wetenschappelijk"),
+            re.sub(r",\s*(Nederland|Netherlands|NL)$", "", (n.get("plaats") or "").strip()) or None,
+            nl_date(n.get("datum")),
+        ] if x),
         "uitleg": None,
         "bron": "Foto: " + re.sub(r"^\(c\)\s*", "", n.get("maker") or "iNaturalist").split(",")[0]
                 + f" ({LICENTIES.get(n.get('licentie'), n.get('licentie') or '')}) · iNaturalist",
