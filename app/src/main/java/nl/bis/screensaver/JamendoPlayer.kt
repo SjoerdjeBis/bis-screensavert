@@ -19,31 +19,32 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-/** Een jazznummer van Jamendo (Creative Commons). */
-data class JazzTrack(val id: String, val title: String, val artist: String, val url: String)
+/** Een nummer van Jamendo (Creative Commons). */
+data class JamendoTrack(val id: String, val title: String, val artist: String, val url: String)
 
 /**
- * Speelt jazz onder de screensaver als je bij Muziek "Jazz" hebt gekozen. Vraagt nooit de
- * "audiofocus", zodat Spotify nooit door de app wordt gepauzeerd; speelt er muziek, dan
- * zwijgt de jazz zelf.
+ * Speelt muziek van Jamendo onder de screensaver als je bij Muziek Piano, Gitaar of Country hebt
+ * gekozen. Vraagt nooit de "audiofocus", zodat Spotify nooit door de app wordt gepauzeerd;
+ * speelt er muziek, dan zwijgt deze speler zelf.
  */
-class JazzPlayer(private val context: Context, private val scope: CoroutineScope) {
+class JamendoPlayer(private val context: Context, private val scope: CoroutineScope) {
     private val settings = Settings(context)
-    private val trackPicker = FreshPicker(context, "jazz")
-    private var jazz: ExoPlayer? = null
-    private var jazzJob: Job? = null
-    private var tracks: List<JazzTrack>? = null
+    private val source = settings.musicSource
+    private val trackPicker = FreshPicker(context, "muziek_${source.key}")
+    private var player: ExoPlayer? = null
+    private var loadJob: Job? = null
+    private var tracks: List<JamendoTrack>? = null
     private var muted = false
 
-    private val _nowPlaying = MutableStateFlow<JazzTrack?>(null)
-    val nowPlaying: StateFlow<JazzTrack?> = _nowPlaying.asStateFlow()
+    private val _nowPlaying = MutableStateFlow<JamendoTrack?>(null)
+    val nowPlaying: StateFlow<JamendoTrack?> = _nowPlaying.asStateFlow()
 
     fun start() = apply()
 
     fun release() {
-        jazzJob?.cancel()
-        jazz?.release()
-        jazz = null
+        loadJob?.cancel()
+        player?.release()
+        player = null
         _nowPlaying.value = null
     }
 
@@ -54,7 +55,7 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
         apply()
     }
 
-    /** Het huidige jazznummer wegstemmen en doorgaan met het volgende. */
+    /** Het huidige nummer wegstemmen en doorgaan met het volgende. */
     fun blockCurrentTrack() {
         val track = _nowPlaying.value ?: return
         settings.blockedTracks = settings.blockedTracks + track.id
@@ -62,8 +63,8 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
     }
 
     private fun volume(): Float {
-        if (muted || settings.musicSource != MusicSource.JAZZ) return 0f
-        return when (settings.jazzLevel) {
+        if (muted || source.query == null) return 0f
+        return when (settings.musicLevel) {
             1 -> 0.18f
             3 -> 0.75f
             else -> 0.4f
@@ -73,15 +74,15 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
     private fun apply() {
         val volume = volume()
         if (volume > 0f) {
-            val player = jazz
-            if (player == null) {
-                if (jazzJob?.isActive != true) jazzJob = scope.launch { startJazz() }
+            val current = player
+            if (current == null) {
+                if (loadJob?.isActive != true) loadJob = scope.launch { startPlaying() }
             } else {
-                player.volume = volume
-                player.play()
+                current.volume = volume
+                current.play()
             }
         } else {
-            jazz?.pause()
+            player?.pause()
         }
     }
 
@@ -93,11 +94,11 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
         )
     }
 
-    private suspend fun startJazz() {
+    private suspend fun startPlaying() {
         val list = tracks ?: loadTracks().also { tracks = it }
         if (list.isEmpty()) return
-        if (jazz == null) {
-            jazz = newPlayer().apply {
+        if (player == null) {
+            player = newPlayer().apply {
                 addListener(object : Player.Listener {
                     override fun onPlaybackStateChanged(state: Int) {
                         if (state == Player.STATE_ENDED) playNextTrack()
@@ -111,20 +112,25 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
     }
 
     private fun playNextTrack() {
-        val player = jazz ?: return
+        val current = player ?: return
         val blocked = settings.blockedTracks
         val track = trackPicker.pick(tracks.orEmpty().filter { it.id !in blocked }, { it.id }) ?: return
         _nowPlaying.value = track
-        player.setMediaItem(MediaItem.fromUri(track.url))
-        player.prepare()
-        player.volume = volume()
-        if (player.volume > 0f) player.play()
+        current.setMediaItem(MediaItem.fromUri(track.url))
+        current.prepare()
+        current.volume = volume()
+        if (current.volume > 0f) current.play()
     }
 
-    /** Rustige, instrumentale jazz, de populairste eerst; een dag bewaard. */
-    private suspend fun loadTracks(): List<JazzTrack> = withContext(Dispatchers.IO) {
+    /**
+     * Rustige, instrumentale nummers in de gekozen stijl, de populairste eerst; een dag bewaard.
+     * Nummers met een tag uit [EXCLUDED_TAGS] vallen af.
+     */
+    private suspend fun loadTracks(): List<JamendoTrack> = withContext(Dispatchers.IO) {
+        val query = source.query ?: return@withContext emptyList()
         val clientId = settings.jamendoClientId?.takeIf { it.isNotBlank() } ?: return@withContext emptyList()
-        val cache = File(context.cacheDir, "jazz.json")
+        File(context.cacheDir, "jazz.json").delete() // Van de vroegere jazz.
+        val cache = File(context.cacheDir, "muziek_${source.key}.json")
         val fresh = cache.exists() && System.currentTimeMillis() - cache.lastModified() < 24 * 60 * 60 * 1000L
         val json = if (fresh) {
             cache.readText()
@@ -132,8 +138,8 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
             runCatching {
                 Http.getString(
                     "https://api.jamendo.com/v3.0/tracks/?format=json&limit=200&audioformat=mp32" +
-                        "&order=popularity_total&vocalinstrumental=instrumental&speed=low+medium" +
-                        "&fuzzytags=jazz+lounge+smoothjazz+easylistening&client_id=" + Http.encode(clientId),
+                        "&order=popularity_total&vocalinstrumental=instrumental&include=musicinfo" +
+                        query + "&client_id=" + Http.encode(clientId),
                 ).also { cache.writeText(it) }
             }.getOrElse { if (cache.exists()) cache.readText() else return@withContext emptyList() }
         }
@@ -141,7 +147,22 @@ class JazzPlayer(private val context: Context, private val scope: CoroutineScope
         (0 until results.length()).mapNotNull { i ->
             val t = results.getJSONObject(i)
             val audio = t.optStringOrNull("audio") ?: return@mapNotNull null
-            JazzTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio)
+            if (tagsOf(t).any { it in EXCLUDED_TAGS }) return@mapNotNull null
+            JamendoTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio)
         }
+    }
+
+    /** Genres, instrumenten en overige tags van een nummer, in kleine letters. */
+    private fun tagsOf(track: JSONObject): List<String> {
+        val tags = track.optJSONObject("musicinfo")?.optJSONObject("tags") ?: return emptyList()
+        return listOf("genres", "instruments", "vartags").flatMap { key ->
+            val list = tags.optJSONArray(key) ?: JSONArray()
+            (0 until list.length()).map { list.optString(it).lowercase() }
+        }
+    }
+
+    private companion object {
+        /** Past niet onder een rustige screensaver. */
+        val EXCLUDED_TAGS = setOf("filmscore", "energetic", "rnb", "hiphop", "rock", "electronic")
     }
 }

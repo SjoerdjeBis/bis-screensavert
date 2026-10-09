@@ -57,7 +57,7 @@ class SlideshowController(
     private val settings = Settings(context)
     private val library = MediaLibrary(context)
     private val music = MusicMonitor(context)
-    private val mixer = JazzPlayer(context, scope)
+    private val mixer = JamendoPlayer(context, scope)
 
     private val video = root.findViewById<SurfaceView>(R.id.video)
     /** Twee fotolagen (b ligt boven a), om de ene foto in de andere over te laten gaan. */
@@ -164,7 +164,7 @@ class SlideshowController(
         if (job != null) return
         clock.visibility = if (settings.showClock) View.VISIBLE else View.GONE
         job = scope.launch { run() }
-        // De muziekmonitor draait altijd: ook om de jazz stil te zetten als Spotify speelt.
+        // De muziekmonitor draait altijd: ook om de Jamendo-muziek stil te zetten als Spotify speelt.
         music.start()
         // Alleen bij de kaart Spotify neemt de muziek het scherm over.
         if ((forcedProgram ?: settings.program) == Program.SPOTIFY) musicJob = scope.launch { followMusic() }
@@ -591,8 +591,8 @@ class SlideshowController(
 
     // ---- Geluid ----
 
-    /** Klein, rechtsonder: welk jazznummer er speelt en van wie (naamsvermelding voor Jamendo). */
-    private fun showSoundCredit(track: JazzTrack) {
+    /** Klein, linksboven: welk nummer er speelt en van wie (naamsvermelding voor Jamendo). */
+    private fun showSoundCredit(track: JamendoTrack) {
         val hint = if (isPreview) "      ▲ nummer weg" else ""
         showCredit("♪  ${track.title} · ${track.artist} (Jamendo)$hint", SOUND_CREDIT_MS)
     }

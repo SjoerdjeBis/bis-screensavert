@@ -115,7 +115,7 @@ class MainActivity : ComponentActivity() {
         var showClock by remember { mutableStateOf(settings.showClock) }
         var customModes by remember { mutableStateOf(settings.customModes) }
         var musicSource by remember { mutableStateOf(settings.musicSource) }
-        var jazzLevel by remember { mutableIntStateOf(settings.jazzLevel) }
+        var musicLevel by remember { mutableIntStateOf(settings.musicLevel) }
         var editingMix by remember { mutableStateOf(false) }
         val hasJamendo = remember(refreshKey) { !settings.jamendoClientId.isNullOrBlank() }
 
@@ -382,11 +382,11 @@ class MainActivity : ComponentActivity() {
                     contentPadding = PaddingValues(vertical = 6.dp, horizontal = 4.dp),
                 ) {
                     items(MusicSource.entries) { source ->
-                        val missingKey = source == MusicSource.JAZZ && !hasJamendo
+                        val missingKey = source.query != null && !hasJamendo
                         val chosen = source == musicSource
                         FocusPill(
                             text = when {
-                                missingKey -> "Jazz: nog geen sleutel"
+                                missingKey -> "${source.label}: nog geen sleutel"
                                 chosen -> "✓  ${source.label}"
                                 else -> source.label
                             },
@@ -401,11 +401,11 @@ class MainActivity : ComponentActivity() {
                             },
                         )
                     }
-                    if (musicSource == MusicSource.JAZZ && hasJamendo) {
+                    if (musicSource.query != null && hasJamendo) {
                         item {
-                            FocusPill("Volume: ${levelLabel(jazzLevel)}", onClick = {
-                                jazzLevel = jazzLevel % 3 + 1
-                                settings.jazzLevel = jazzLevel
+                            FocusPill("Volume: ${levelLabel(musicLevel)}", onClick = {
+                                musicLevel = musicLevel % 3 + 1
+                                settings.musicLevel = musicLevel
                             })
                         }
                     }

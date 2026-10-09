@@ -37,7 +37,7 @@ scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
   - Pixabay: maak een account op pixabay.com en ga naar **https://pixabay.com/api/docs/**.
     Ingelogd staat je sleutel bij "Parameters" › "key".
   - Pexels: account op pexels.com, dan **https://www.pexels.com/api/new/** (persoonlijk gebruik).
-- **Jazz** (Jamendo): account op **https://devportal.jamendo.com**, dan *My Applications* ›
+- **Muziek** (Jamendo): account op **https://devportal.jamendo.com**, dan *My Applications* ›
   *Create a new application* (naam `Bis Screensavert`, niet-commercieel). Kopieer de Client ID.
 - **Google Foto's**: zie **GOOGLE-FOTOS.md**.
 
@@ -58,15 +58,16 @@ scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
   (OK = pauze, ◀ ▶ = vorige/volgende). Speelt er niets, dan je eigen mix.
 - **SmartTube:** opent je YouTube-afspeellijst in SmartTube.
 
-**Muziek:** kies **Spotify** (de app speelt zelf niets) of **Jazz** (met *Volume*). Gaat Spotify
-spelen terwijl er jazz klinkt, dan zwijgt de jazz. Bij elk nieuw nummer staat linksboven
+**Muziek:** kies **Spotify** (de app speelt zelf niets) of rustige, instrumentale muziek van
+Jamendo: **Piano**, **Gitaar** (Spaans) of **Country** (met *Volume*). Gaat Spotify spelen, dan
+zwijgt die muziek. Bij elk nieuw nummer staat linksboven
 5 seconden wat er speelt.
 
 **Instellingen:** tijd per beeld, uitleg bij kunst, klok, sfeerthema's, foto's beheren en
 sleutels invullen.
 
 **In het voorbeeld** (een kaart gekozen, nog niet als screensaver):
-**▶** volgend beeld, **▼** dit beeld nooit meer tonen (werkt ook in je mix), **▲** dit jazznummer
+**▶** volgend beeld, **▼** dit beeld nooit meer tonen (werkt ook in je mix), **▲** dit nummer
 nooit meer spelen. In de echte screensaver maakt elke knop de tv wakker.
 
 ## Goed om te weten

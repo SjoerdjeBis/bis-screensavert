@@ -55,7 +55,7 @@ $notice
 ${field("pexels", "Pexels API-sleutel", !settings.pexelsKey.isNullOrBlank(), "Maak er een op <a href=https://www.pexels.com/api/new/>pexels.com/api/new</a>.")}
 ${field("pixabay", "Pixabay API-sleutel", !settings.pixabayKey.isNullOrBlank(), "Ingelogd te vinden op <a href=https://pixabay.com/api/docs/>pixabay.com/api/docs</a>, bij \"key\".")}
 </fieldset>
-<fieldset><legend>Jazz</legend>
+<fieldset><legend>Muziek</legend>
 ${field("jamendo", "Jamendo Client ID", !settings.jamendoClientId.isNullOrBlank(), "Maak een app aan op <a href=https://devportal.jamendo.com>devportal.jamendo.com</a>.")}
 </fieldset>
 <fieldset><legend>Google Foto's</legend>

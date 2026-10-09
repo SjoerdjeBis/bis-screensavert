@@ -26,11 +26,15 @@ enum class Program(val key: String, val title: String) {
 
 /**
  * Spotify: de app speelt zelf niets en toont wat Spotify op de tv speelt.
- * Jazz: rustige jazz van Jamendo; gaat Spotify spelen, dan zwijgt de jazz.
+ * De andere: rustige, instrumentale muziek van Jamendo; gaat Spotify spelen, dan zwijgt die.
+ *
+ * @param query de Jamendo-zoekopdracht: [tags] moeten er allemaal op staan, van [fuzzyTags] een of meer.
  */
-enum class MusicSource(val key: String, val label: String) {
+enum class MusicSource(val key: String, val label: String, val query: String? = null) {
     SPOTIFY("spotify", "Spotify"),
-    JAZZ("jazz", "Jazz"),
+    PIANO("piano", "Piano", "&tags=piano&fuzzytags=easylistening+relaxation+calm+romantic+lounge&speed=verylow+low+medium"),
+    GUITAR("gitaar", "Gitaar", "&tags=guitar&fuzzytags=spanish+flamenco+spanishguitar+latin+acoustic&speed=low+medium"),
+    COUNTRY("country", "Country", "&fuzzytags=country+americana+bluegrass+folk+slide&speed=low+medium"),
 }
 
 /** Alle instellingen van de app, bewaard op de tv zelf. */
@@ -110,15 +114,18 @@ class Settings(context: Context) {
 
     /** Welke muziek de screensaver begeleidt. */
     var musicSource: MusicSource
-        get() = MusicSource.entries.firstOrNull { it.key == prefs.getString("muziekbron", null) } ?: MusicSource.SPOTIFY
+        get() = when (val key = prefs.getString("muziekbron", null)) {
+            "jazz" -> MusicSource.PIANO // De jazz is vervangen; wie jazz had, krijgt piano.
+            else -> MusicSource.entries.firstOrNull { it.key == key } ?: MusicSource.SPOTIFY
+        }
         set(value) = prefs.edit().putString("muziekbron", value.key).apply()
 
-    /** Volume van de jazz: 1 = zacht, 2 = middel, 3 = luid. */
-    var jazzLevel: Int
+    /** Volume van de Jamendo-muziek: 1 = zacht, 2 = middel, 3 = luid. */
+    var musicLevel: Int
         get() = prefs.getInt("jazz_volume", 2).coerceIn(1, 3)
         set(value) = prefs.edit().putInt("jazz_volume", value.coerceIn(1, 3)).apply()
 
-    /** Jazznummers die je hebt weggestemd ("jamendo:id"). */
+    /** Nummers die je hebt weggestemd ("jamendo:id"). */
     var blockedTracks: Set<String>
         get() = prefs.getStringSet("weggestemde_nummers", null).orEmpty()
         set(value) = prefs.edit().putStringSet("weggestemde_nummers", value).apply()

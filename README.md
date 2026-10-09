@@ -27,5 +27,5 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
     in `data/vertalingen/`; `tools/build_kunst_nl.py` maakt `app/src/main/assets/kunst_nl.json`.
   - Natuur en Toen: workflow *Toen en Natuur ophalen* (`tools/fetch_extra.py`, keurt op formaat,
     scherpte, contrast en dubbelingen) en `tools/build_extra.py` maken `natuur.json` en `toen.json`.
-  - Sfeer (Pexels/Pixabay), jazz (Jamendo) en artiestfoto's (TheAudioDB, Deezer) komen live.
+  - Sfeer (Pexels/Pixabay), muziek (Jamendo, `JamendoPlayer`) en artiestfoto's (TheAudioDB, Deezer) komen live.
 - **Iconen:** `design/icoon/`.
