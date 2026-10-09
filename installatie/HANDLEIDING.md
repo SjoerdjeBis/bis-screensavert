@@ -67,7 +67,7 @@ Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing a
 ## Zo werkt de app
 
 - **Keuzescherm:** open *Bis Screensavert* tussen je apps. Kies met OK wat je wilt zien:
-  Kunst, Luchtopnames, Sfeer, Mijn foto's & video's, Eigen mix of Spotify. Je keuze start meteen
+  Kunst, Ruimte, Natuur, Toen, Luchtopnames, Sfeer, Mijn foto's & video's, Eigen mix of Spotify. Je keuze start meteen
   en wordt ook je screensaver. Met Terug ga je terug; met ▶ spring je naar het volgende beeld.
 - **Eigen mix:** kies OK op de kaart en vink aan wat je wilt zien: kunst, luchtopnames, sfeer
   en/of je eigen foto's en video's. De screensaver wisselt ze af.
@@ -79,6 +79,10 @@ Springt de screensaver na een Google-update terug? Zet Draadloze foutopsporing a
   (rustige jazz, met **Volume** zacht, middel of luid; gaat Spotify toch spelen, dan zwijgt de
   jazz). Zie GELUID.md.
 - **Foto's beheren op je telefoon:** in Foto's beheren staat een QR-code naar een vaste beheerpagina; zie GOOGLE-FOTOS.md.
+- **Ruimte:** nevels, sterrenstelsels, planeten en de aarde vanuit het ruimtestation (NASA), met Nederlandse uitleg.
+- **Natuur:** de mooiste natuurfoto's uit Nederland (iNaturalist), met de Nederlandse soortnaam.
+- **Toen:** zwart-witfoto's uit het Nationaal Archief, bij voorkeur van deze dag in een ander jaar.
+- **Wegstemmen:** zie je in het voorbeeld een beeld dat je niet mooi vindt, druk dan op **▼**. Het komt nooit meer terug, ook niet in je eigen mix.
 - **Sfeer:** haardvuur, regen, zee, sterren en meer, als beeld. In het voorbeeld stem je een clip weg met **▼**.
 - **Geen herhalingen:** wat je de laatste tijd zag, komt niet snel terug, ook niet na een
   herstart, en kunst van dezelfde kunstenaar komt niet twee keer achter elkaar.
