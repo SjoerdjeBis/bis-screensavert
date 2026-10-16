@@ -12,7 +12,7 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pip install pillow
       - name: Art Institute of Chicago (alleen als er nog niets is)
         run: test -f data/aic_raw.json || python3 tools/fetch_art.py
