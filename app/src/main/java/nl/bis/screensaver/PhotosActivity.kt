@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,7 +51,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-/** Foto's en video's uit Google Foto's toevoegen en beheren. */
+/** Foto's en video's uit Google Foto's of een Drive-map toevoegen en beheren. */
 class PhotosActivity : ComponentActivity() {
 
     private sealed interface Step {
@@ -58,6 +59,8 @@ class PhotosActivity : ComponentActivity() {
         data class SignIn(val url: String) : Step
         data class Picking(val uri: String) : Step
         data class Downloading(val done: Int, val total: Int) : Step
+        data class Loading(val text: String) : Step
+        data class ChooseFolder(val folders: List<DriveFolder>) : Step
         data class Message(val text: String) : Step
     }
 
@@ -69,6 +72,7 @@ class PhotosActivity : ComponentActivity() {
     override fun onStart() {
         super.onStart()
         PhoneLibraryHost.acquire(this)
+        DriveSync.syncIfDue(this)
     }
 
     override fun onStop() {
@@ -88,21 +92,75 @@ class PhotosActivity : ComponentActivity() {
         var items by remember { mutableStateOf(library.items().sortedByDescending { it.createdAt }) }
         var selected by remember { mutableStateOf(setOf<String>()) }
         var job by remember { mutableStateOf<Job?>(null) }
+        val drive by DriveSync.state.collectAsState()
+        var folderName by remember { mutableStateOf(settings.driveFolderName.takeIf { settings.driveFolderId != null }) }
+
+        // Na het bijwerken van de Drive-map de lijst opnieuw lezen.
+        LaunchedEffect(drive.running) {
+            if (!drive.running) items = library.items().sortedByDescending { it.createdAt }
+        }
+
+        /** Inloggen via de QR-code op de tv; daarna mag de app bij de fotokiezer en bij Drive. */
+        suspend fun signIn() {
+            val form = GoogleLoginForm(this@PhotosActivity, auth)
+            val address = form.start() ?: throw AuthException("De tv heeft geen wifi-verbinding. Controleer de wifi en probeer het opnieuw.")
+            try {
+                step = Step.SignIn(auth.authUrl(address))
+                form.result.await()
+            } finally {
+                form.stop()
+            }
+        }
+
+        fun chooseDriveFolder(attempt: Int = 0) {
+            job?.cancel()
+            job = scope.launch {
+                try {
+                    if (!auth.hasDrive) signIn()
+                    if (!auth.hasDrive) throw AuthException("Google gaf geen toegang tot Drive. Probeer opnieuw en vink Drive aan bij het inloggen.")
+                    step = Step.Loading("Je mappen in Google Drive ophalen…")
+                    val folders = DriveClient(auth).folders()
+                    step = if (folders.isEmpty()) {
+                        Step.Message("Geen mappen gevonden in je Google Drive. Maak er een, zet je foto's erin en probeer het opnieuw.")
+                    } else {
+                        Step.ChooseFolder(folders)
+                    }
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: NeedsLoginException) {
+                    if (attempt == 0) chooseDriveFolder(attempt + 1) else step = Step.Message("Inloggen bij Google lukte niet. Probeer het later opnieuw.")
+                } catch (e: AuthException) {
+                    step = Step.Message(e.message ?: "Inloggen bij Google lukte niet.")
+                } catch (e: Exception) {
+                    step = Step.Message("Er ging iets mis: ${e.message ?: e.javaClass.simpleName}")
+                }
+            }
+        }
+
+        fun syncDrive() {
+            if (auth.hasDrive) {
+                DriveSync.start(this@PhotosActivity)
+                return
+            }
+            job?.cancel()
+            job = scope.launch {
+                try {
+                    signIn()
+                    step = Step.Overview
+                    DriveSync.start(this@PhotosActivity)
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    step = Step.Message(e.message ?: "Inloggen bij Google lukte niet.")
+                }
+            }
+        }
 
         fun startAdding(attempt: Int = 0) {
             job?.cancel()
             job = scope.launch {
                 try {
-                    if (!auth.isSignedIn) {
-                        val form = GoogleLoginForm(this@PhotosActivity, auth)
-                        val address = form.start() ?: throw AuthException("De tv heeft geen wifi-verbinding. Controleer de wifi en probeer het opnieuw.")
-                        try {
-                            step = Step.SignIn(auth.authUrl(address))
-                            form.result.await()
-                        } finally {
-                            form.stop()
-                        }
-                    }
+                    if (!auth.isSignedIn) signIn()
                     val session = picker.createSession()
                     step = Step.Picking(session.pickerUri)
                     if (!picker.waitForSelection(session)) {
@@ -150,6 +208,10 @@ class PhotosActivity : ComponentActivity() {
                     items = items,
                     selected = selected,
                     library = library,
+                    driveFolder = folderName,
+                    drive = drive,
+                    onDrive = { chooseDriveFolder() },
+                    onSyncDrive = { syncDrive() },
                     onToggle = { id -> selected = if (id in selected) selected - id else selected + id },
                     onToggleGroup = { ids -> selected = if (ids.all { it in selected }) selected - ids.toSet() else selected + ids },
                     onAdd = { startAdding() },
@@ -185,6 +247,30 @@ class PhotosActivity : ComponentActivity() {
                     footnote = "Tip: kies liever korte video's. De Chromecast heeft weinig opslag.",
                     onCancel = { job?.cancel(); step = Step.Overview },
                 )
+                is Step.Loading -> Column(Modifier.align(Alignment.CenterStart)) {
+                    Text("GOOGLE DRIVE", style = Bis.eyebrow())
+                    Spacer(Modifier.height(8.dp))
+                    Text(s.text, style = Bis.heading(30.sp))
+                }
+                is Step.ChooseFolder -> FolderList(
+                    folders = s.folders,
+                    current = settings.driveFolderId,
+                    onPick = { folder ->
+                        settings.driveFolderId = folder.id
+                        settings.driveFolderName = folder.name
+                        settings.driveLastSync = 0
+                        folderName = folder.name
+                        step = Step.Overview
+                        DriveSync.start(this@PhotosActivity, restart = true)
+                    },
+                    onUnlink = {
+                        settings.driveFolderId = null
+                        settings.driveFolderName = null
+                        folderName = null
+                        step = Step.Message("De Drive-map wordt niet meer bijgehouden. Wat al op de tv stond, blijft staan; verwijder het hier als je wilt.")
+                    }.takeIf { settings.driveFolderId != null },
+                    onCancel = { step = Step.Overview },
+                )
                 is Step.Downloading -> Column(Modifier.align(Alignment.CenterStart)) {
                     Text("OPHALEN", style = Bis.eyebrow())
                     Spacer(Modifier.height(8.dp))
@@ -216,6 +302,10 @@ class PhotosActivity : ComponentActivity() {
         items: List<LocalMedia>,
         selected: Set<String>,
         library: MediaLibrary,
+        driveFolder: String?,
+        drive: DriveSync.State,
+        onDrive: () -> Unit,
+        onSyncDrive: () -> Unit,
         onToggle: (String) -> Unit,
         onToggleGroup: (List<String>) -> Unit,
         onAdd: () -> Unit,
@@ -231,7 +321,7 @@ class PhotosActivity : ComponentActivity() {
             Column(Modifier.width(300.dp).fillMaxHeight()) {
                 Text("MIJN FOTO'S & VIDEO'S", style = Bis.eyebrow())
                 Spacer(Modifier.height(8.dp))
-                Text("Uit Google Foto's", style = Bis.heading(28.sp))
+                Text("Uit Google Foto's en Drive", style = Bis.heading(28.sp))
                 Spacer(Modifier.height(8.dp))
                 Text("$photos foto's · $videos video's", style = Bis.body(15.sp, FontWeight.Medium))
                 Text(
@@ -260,6 +350,10 @@ class PhotosActivity : ComponentActivity() {
                             style = Bis.body(13.sp, color = Bis.Room),
                         )
                     }
+                }
+                if (configured) {
+                    Spacer(Modifier.height(12.dp))
+                    DrivePanel(driveFolder, drive, onDrive, onSyncDrive)
                 }
                 Spacer(Modifier.height(12.dp))
                 if (selected.isNotEmpty()) {
@@ -350,6 +444,95 @@ class PhotosActivity : ComponentActivity() {
                             }
                         }
                     }
+                    }
+                }
+            }
+        }
+    }
+
+    /** De gekoppelde Drive-map, met wat er de laatste keer gebeurde. */
+    @Composable
+    private fun DrivePanel(
+        folder: String?,
+        drive: DriveSync.State,
+        onDrive: () -> Unit,
+        onSync: () -> Unit,
+    ) {
+        if (folder == null) {
+            FocusPill("Drive-map koppelen", onClick = onDrive)
+            Text(
+                "De tv houdt een map in Google Drive bij: wat je erin zet, komt vanzelf op de tv.",
+                style = Bis.body(11.sp, color = Bis.RoomDim),
+                modifier = Modifier.padding(top = 4.dp),
+            )
+            return
+        }
+        Text("Drive-map: $folder", style = Bis.body(13.sp, FontWeight.Bold, Bis.Room))
+        val status = when {
+            drive.running && drive.total > 0 -> "Bezig met ophalen… ${drive.done} van ${drive.total}"
+            drive.running -> "Bezig met bijwerken…"
+            else -> drive.message
+        }
+        status?.let { Text(it, style = Bis.body(11.sp, color = Bis.RoomDim)) }
+        Spacer(Modifier.height(6.dp))
+        Row {
+            if (!drive.running) {
+                FocusPill(if (drive.needsLogin) "Opnieuw inloggen" else "Nu bijwerken", onClick = onSync)
+                Spacer(Modifier.width(8.dp))
+            }
+            FocusPill("Andere map", onClick = onDrive)
+        }
+    }
+
+    @Composable
+    private fun FolderList(
+        folders: List<DriveFolder>,
+        current: String?,
+        onPick: (DriveFolder) -> Unit,
+        onUnlink: (() -> Unit)?,
+        onCancel: () -> Unit,
+    ) {
+        val focus = remember { FocusRequester() }
+        LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
+        Row(Modifier.fillMaxSize()) {
+            Column(Modifier.width(300.dp)) {
+                Text("GOOGLE DRIVE", style = Bis.eyebrow())
+                Spacer(Modifier.height(8.dp))
+                Text("Kies een map", style = Bis.heading(32.sp))
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    "De tv haalt de foto's en video's uit deze map op, ook uit submappen. Wat je er later bij zet, " +
+                        "komt vanzelf op de tv; wat je eruit haalt, verdwijnt ook van de tv.",
+                    style = Bis.body(14.sp, color = Bis.Room.copy(alpha = 0.9f)),
+                )
+                Spacer(Modifier.height(20.dp))
+                FocusPill("Annuleren", onClick = onCancel)
+                if (onUnlink != null) {
+                    Spacer(Modifier.height(10.dp))
+                    FocusPill("Geen map meer bijhouden", onClick = onUnlink, accent = Bis.Tomaat)
+                }
+            }
+            Spacer(Modifier.width(36.dp))
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(3),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(8.dp),
+            ) {
+                items(folders, key = { it.id }) { folder ->
+                    val first = folder == folders.first()
+                    FocusCard(
+                        onClick = { onPick(folder) },
+                        shape = RoundedCornerShape(14.dp),
+                        background = if (folder.id == current) Bis.Tomaat else Bis.Emaille2,
+                        modifier = if (first) Modifier.focusRequester(focus) else Modifier,
+                    ) {
+                        Text(
+                            folder.name,
+                            style = Bis.body(15.sp, FontWeight.Medium, if (folder.id == current) Color.White else Bis.Room),
+                            maxLines = 2,
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
+                        )
                     }
                 }
             }

@@ -1,4 +1,4 @@
-# Google Foto's koppelen
+# Google Foto's en Google Drive koppelen
 
 Eenmalig, ongeveer 10 minuten. Google laat apps alleen bij je foto's als je zelf een
 (gratis) "project" aanmaakt. Dat project is van jou; niemand anders kan erbij.
@@ -13,10 +13,11 @@ Kom je er niet uit, maak dan een schermafbeelding en vraag het mij.
 2. Klik bovenaan op de projectkiezer (naast "Google Cloud") › **Nieuw project**.
 3. Naam: `Bis Screensavert` › **Maken**. Kies daarna bovenaan dit nieuwe project.
 
-## 2. De fotokiezer aanzetten
+## 2. De fotokiezer en Drive aanzetten
 
 1. Typ in de zoekbalk bovenaan `Photos Picker API` en klik op het resultaat.
 2. Klik op **Inschakelen**.
+3. Doe hetzelfde voor `Google Drive API`.
 
 ## 3. Toestemmingsscherm instellen
 
@@ -27,6 +28,11 @@ Kom je er niet uit, maak dan een schermafbeelding en vraag het mij.
 4. Contactgegevens: je eigen adres. **Volgende**, vink het akkoord aan, **Maken**.
 5. Ga naar **Doelgroep** (Audience) › **Testgebruikers** › **Gebruikers toevoegen**,
    vul je eigen Gmail-adres in en klik **Opslaan**.
+6. Zodat de koppeling niet elke 7 dagen verloopt: kies bij **Doelgroep** onder
+   *Publicatiestatus* **App publiceren** (of *Naar productie*) en bevestig. Je hoeft de app
+   niet te laten verifiëren; Google toont bij het inloggen dan alleen een waarschuwing.
+   Weigert Google dit, laat hem dan in testmodus: dan vraagt de tv elke 7 dagen opnieuw om
+   in te loggen en wordt de Drive-map tot die tijd niet bijgewerkt.
 
 ## 4. Doorgeefpagina aanzetten (GitHub, eenmalig)
 
@@ -66,6 +72,28 @@ Open op de tv **Bis Screensavert** › **Sleutels invullen**, scan de QR-code en
 3. **Kiezen:** op de tv verschijnt een tweede QR-code. Scan die; Google Foto's opent op je
    telefoon. Vink foto's en video's aan en tik op **Klaar**. De tv haalt ze daarna op.
 
+## Een Drive-map bijhouden
+
+Makkelijker dan elke keer kiezen: zet je foto's in een map in Google Drive en laat de tv die
+map bijhouden.
+
+1. Maak in Google Drive een map, bijvoorbeeld `Tv`, en zet er foto's en video's in. Vanaf je
+   telefoon kan dat met de Drive-app (**+** › **Uploaden**), of vanuit Google Foto's met
+   **Delen** › **Opslaan in Drive**. Submappen mogen ook.
+2. Open op de tv **Foto's beheren** › **Drive-map koppelen**. Was je eerder alleen voor de
+   fotokiezer ingelogd, dan vraagt de tv je één keer opnieuw in te loggen. Laat daarbij het
+   vinkje voor Google Drive aan staan.
+3. Kies de map met de afstandsbediening. De tv haalt alles op.
+
+Daarna gaat het vanzelf: elke keer dat de app of de screensaver start (hooguit eens per half
+uur) kijkt de tv wat er in de map is veranderd. Nieuwe bestanden komen erbij; wat je uit de map
+haalt, verdwijnt ook van de tv. Wat je op de tv zelf verwijdert, haalt hij niet opnieuw op.
+Foto's worden verkleind tot tv-formaat, dus grote camerafoto's nemen weinig ruimte in. Video's
+komen er in hun geheel op; zet er liefst korte in.
+
+Wil je meteen bijwerken: **Foto's beheren** › **Nu bijwerken**. Een andere map kiezen of
+stoppen kan via **Andere map**.
+
 ## Beheren op je telefoon
 
 In **Foto's beheren** staat linksonder een QR-code. Scan die één keer en zet de pagina op
@@ -83,10 +111,10 @@ het beginscherm van je telefoon (Delen › Zet op beginscherm). Het adres blijft
 ## Goed om te weten
 
 - De foto's en video's worden **op de tv opgeslagen**. Ze blijven dus ook als de koppeling
-  verloopt. Nieuwe foto's in een album komen er niet vanzelf bij; die voeg je zelf toe.
-- Zolang je project in de **testmodus** staat (dat is prima), vraagt Google na 7 dagen
-  opnieuw om in te loggen. Dat merk je alleen als je iets toevoegt: de tv toont dan weer
-  een QR-code om in te loggen.
+  verloopt. Nieuwe foto's in een album van Google Foto's komen er niet vanzelf bij; die in
+  een gekoppelde Drive-map wel.
+- Zolang je project in de **testmodus** staat, vraagt Google na 7 dagen opnieuw om in te
+  loggen (zie stap 3.6). Bij **Foto's beheren** staat dan **Opnieuw inloggen**.
 - De Chromecast heeft weinig opslag (een paar GB vrij). Kies liever korte video's.
   In **Foto's beheren** zie je hoeveel ruimte er nog is.
 
@@ -99,5 +127,8 @@ het beginscherm van je telefoon (Delen › Zet op beginscherm). Het adres blijft
 - **Pagina niet gevonden (404) na inloggen**: de doorgeefpagina staat nog niet aan
   (stap 4), of GitHub is nog bezig. Wacht een paar minuten.
 - **"De Google-sleutels kloppen niet"**: plak ze opnieuw via **Sleutels invullen**.
+- **"Zet in Google Cloud de Google Drive API aan"**: stap 2.3 is nog niet gedaan.
+- **"Google gaf geen toegang tot Drive"**: bij het inloggen stond het vinkje voor Drive uit.
+  Kies opnieuw **Drive-map koppelen** en laat het aan staan.
 - **"Toegang geweigerd"** of **"access_denied"**: controleer of je eigen Gmail-adres
   als testgebruiker is toegevoegd (stap 3.5).

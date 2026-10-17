@@ -24,6 +24,7 @@ class ScreenSaverDream : DreamService() {
         controller = SlideshowController(findViewById(R.id.root), scope).also { it.start() }
         // Zolang de screensaver draait, kun je je foto's op je telefoon beheren.
         PhoneLibraryHost.acquire(this)
+        DriveSync.syncIfDue(this)
     }
 
     override fun onDreamingStopped() {

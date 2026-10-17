@@ -25,13 +25,17 @@ class GoogleAuth(private val settings: Settings) {
     val isConfigured get() = !settings.googleClientId.isNullOrBlank() && !settings.googleClientSecret.isNullOrBlank()
     val isSignedIn get() = settings.googleRefreshToken != null
 
+    /** Of de koppeling ook bij je Google Drive mag; wie inlogde voor Drive er was, moet nog een keer inloggen. */
+    val hasDrive get() = isSignedIn && settings.googleScopes?.split(" ")?.contains(DRIVE_SCOPE) == true
+
     /** Het inlogadres voor de QR-code; [tvAddress] is het formulier op de tv dat de code ontvangt. */
     fun authUrl(tvAddress: String): String = "https://accounts.google.com/o/oauth2/v2/auth?" + listOf(
         "client_id" to clientId(),
         "redirect_uri" to REDIRECT,
         "response_type" to "code",
-        "scope" to SCOPE,
+        "scope" to "$PHOTOS_SCOPE $DRIVE_SCOPE",
         "access_type" to "offline",
+        "include_granted_scopes" to "true",
         "prompt" to "consent",
         "state" to tvAddress,
     ).joinToString("&") { (k, v) -> "$k=${URLEncoder.encode(v, "UTF-8")}" }
@@ -81,11 +85,13 @@ class GoogleAuth(private val settings: Settings) {
 
     fun signOut() {
         settings.googleRefreshToken = null
+        settings.googleScopes = null
         accessToken = null
     }
 
     private fun remember(json: JSONObject): String {
         val token = json.getString("access_token")
+        json.optStringOrNull("scope")?.let { settings.googleScopes = it }
         accessToken = token
         accessTokenValidUntil = SystemClock.elapsedRealtime() + (json.optLong("expires_in", 3600) - 120) * 1000
         return token
@@ -104,7 +110,8 @@ class GoogleAuth(private val settings: Settings) {
 
     private companion object {
         const val TOKEN_URL = "https://oauth2.googleapis.com/token"
-        const val SCOPE = "https://www.googleapis.com/auth/photospicker.mediaitems.readonly"
+        const val PHOTOS_SCOPE = "https://www.googleapis.com/auth/photospicker.mediaitems.readonly"
+        const val DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.readonly"
 
         /** De doorgeefpagina (docs/google.html), via GitHub Pages. Moet exact zo in Google Cloud staan. */
         const val REDIRECT = "https://sjoerdjebis.github.io/bis-screensavert/google.html"
@@ -128,7 +135,7 @@ class GoogleLoginForm(context: Context, private val auth: GoogleAuth) : PhoneFor
                 runBlocking { auth.exchange(code) }
                 signedIn = true
                 result.complete(Unit)
-                true to "Gelukt! Kijk weer op de tv: daar verschijnt een nieuwe QR-code om je foto's en video's te kiezen."
+                true to "Gelukt! Kijk weer op de tv om verder te gaan."
             } catch (e: Exception) {
                 val text = e.message ?: "Inloggen bij Google lukte niet."
                 result.completeExceptionally(AuthException(text))

@@ -76,6 +76,25 @@ class Settings(context: Context) {
         get() = prefs.getString("google_refresh_token", null)
         set(value) = prefs.edit().putString("google_refresh_token", value).apply()
 
+    /** De toestemmingen die Google bij het inloggen gaf, met spaties ertussen. */
+    var googleScopes: String?
+        get() = prefs.getString("google_scopes", null)
+        set(value) = prefs.edit().putString("google_scopes", value).apply()
+
+    /** De Drive-map waarvan de tv de foto's en video's bijhoudt. */
+    var driveFolderId: String?
+        get() = prefs.getString("drive_map", null)
+        set(value) = prefs.edit().putString("drive_map", value).apply()
+
+    var driveFolderName: String?
+        get() = prefs.getString("drive_map_naam", null)
+        set(value) = prefs.edit().putString("drive_map_naam", value).apply()
+
+    /** Wanneer de Drive-map voor het laatst is bijgewerkt (millis), 0 als nooit. */
+    var driveLastSync: Long
+        get() = prefs.getLong("drive_bijgewerkt", 0)
+        set(value) = prefs.edit().putLong("drive_bijgewerkt", value).apply()
+
     var pexelsKey: String?
         get() = prefs.getString("pexels_key", null)
         set(value) = prefs.edit().putString("pexels_key", value).apply()

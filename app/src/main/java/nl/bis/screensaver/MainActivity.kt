@@ -77,6 +77,7 @@ class MainActivity : ComponentActivity() {
     override fun onStart() {
         super.onStart()
         PhoneLibraryHost.acquire(this)
+        DriveSync.syncIfDue(this)
         music.start()
         refresh++ // Na terugkomst uit foto's of voorbeeld de tellers opnieuw lezen.
     }
@@ -135,8 +136,8 @@ class MainActivity : ComponentActivity() {
         fun summary(p: Program) = when (p) {
             Program.ART -> "${art.size} kunstwerken uit ${art.map { it.museum }.distinct().size} musea, elk met een korte Nederlandse toelichting."
             Program.AERIALS -> "De luchtopnames van de Apple TV: steden, kusten en bergen van bovenaf."
-            Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's toe te voegen."
-            else "$photoCount foto's en $videoCount video's uit je eigen Google Foto's."
+            Program.PHOTOS -> if (media.isEmpty()) "Nog leeg. Kies OK om foto's en video's uit Google Foto's of Drive toe te voegen."
+            else "$photoCount foto's en $videoCount video's uit Google Foto's en Drive."
             Program.AMBIENT -> if (hasAmbient) "Haardvuur, regen, zee, sterren en meer, in hoge resolutie. In het voorbeeld stem je clips weg met ▼."
             else "Nog niet gekoppeld: kies OK en vul je gratis Pexels- of Pixabay-sleutel in via je telefoon."
             Program.NATURE, Program.HISTORY -> if (curatedCount(p.mode()!!) == 0) {

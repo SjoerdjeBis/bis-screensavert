@@ -1,0 +1,300 @@
+package nl.bis.screensaver
+
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.util.Locale
+
+data class DriveFolder(val id: String, val name: String)
+
+/** Een foto of video in de gekoppelde Drive-map. */
+data class DriveFile(
+    val id: String,
+    val name: String,
+    val isVideo: Boolean,
+    val size: Long,
+    val createdAt: Long,
+    val width: Int,
+    val height: Int,
+)
+
+/** Leest mappen en bestanden uit je Google Drive; alleen lezen, nooit iets veranderen. */
+class DriveClient(private val auth: GoogleAuth) {
+
+    /** Je mappen, de laatst gewijzigde eerst. */
+    suspend fun folders(): List<DriveFolder> {
+        val result = mutableListOf<DriveFolder>()
+        list("mimeType = '$FOLDER' and trashed = false", "files(id,name)", "modifiedTime desc") { o ->
+            result += DriveFolder(o.getString("id"), o.optString("name").ifBlank { "Naamloze map" })
+        }
+        return result
+    }
+
+    /** Alle foto's en video's in de map, ook in submappen (tot een paar lagen diep). */
+    suspend fun files(folderId: String): List<DriveFile> {
+        val result = mutableListOf<DriveFile>()
+        val seen = mutableSetOf<String>()
+        var level = listOf(folderId)
+        repeat(MAX_DEPTH) {
+            val next = mutableListOf<String>()
+            for (id in level) {
+                if (!seen.add(id)) continue
+                list(
+                    "'$id' in parents and trashed = false and " +
+                        "(mimeType = '$FOLDER' or mimeType contains 'image/' or mimeType contains 'video/')",
+                    "files(id,name,mimeType,size,createdTime,imageMediaMetadata(width,height,time),videoMediaMetadata(width,height))",
+                ) { o ->
+                    val mime = o.optString("mimeType")
+                    if (mime == FOLDER) {
+                        next += o.getString("id")
+                        return@list
+                    }
+                    val image = o.optJSONObject("imageMediaMetadata")
+                    val video = o.optJSONObject("videoMediaMetadata")
+                    result += DriveFile(
+                        id = o.getString("id"),
+                        name = o.optString("name"),
+                        isVideo = mime.startsWith("video/"),
+                        size = o.optString("size").toLongOrNull() ?: 0,
+                        createdAt = exifTime(image?.optStringOrNull("time")) ?: isoTime(o.optStringOrNull("createdTime")),
+                        width = image?.optInt("width") ?: video?.optInt("width") ?: 0,
+                        height = image?.optInt("height") ?: video?.optInt("height") ?: 0,
+                    )
+                }
+            }
+            if (next.isEmpty()) return result
+            level = next
+        }
+        return result
+    }
+
+    suspend fun download(file: DriveFile, target: File) {
+        Http.download("$API/files/${file.id}?alt=media&supportsAllDrives=true", target, auth.accessToken())
+    }
+
+    private suspend fun list(query: String, fields: String, orderBy: String? = null, each: (JSONObject) -> Unit) {
+        var pageToken: String? = null
+        do {
+            var url = "$API/files?pageSize=200&supportsAllDrives=true&includeItemsFromAllDrives=true" +
+                "&q=${Http.encode(query)}&fields=${Http.encode("nextPageToken,$fields")}"
+            if (orderBy != null) url += "&orderBy=${Http.encode(orderBy)}"
+            if (pageToken != null) url += "&pageToken=${Http.encode(pageToken)}"
+            val response = Http.request("GET", url, bearer = auth.accessToken())
+            if (response.code == 401) {
+                auth.signOut()
+                throw NeedsLoginException()
+            }
+            if (!response.ok) throw IOException(explain(response))
+            val json = JSONObject(response.body)
+            val files = json.optJSONArray("files")
+            for (i in 0 until (files?.length() ?: 0)) each(files!!.getJSONObject(i))
+            pageToken = json.optStringOrNull("nextPageToken")
+        } while (pageToken != null)
+    }
+
+    private fun explain(response: Http.Response): String = when {
+        response.code == 403 && ("accessNotConfigured" in response.body || "SERVICE_DISABLED" in response.body) ->
+            "Zet in Google Cloud de Google Drive API aan (zie GOOGLE-FOTOS.md, stap 2)."
+        response.code == 403 -> "Google Drive weigert de toegang. Log opnieuw in en vink Drive aan."
+        response.code == 404 -> "De Drive-map bestaat niet meer. Kies een andere map."
+        else -> "Google Drive gaf fout ${response.code}"
+    }
+
+    /** Drive geeft de opnametijd uit de foto als "2019:05:12 14:03:22". */
+    private fun exifTime(value: String?): Long? = value?.let {
+        runCatching { SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US).parse(it)?.time }.getOrNull()
+    }
+
+    private fun isoTime(value: String?): Long =
+        value?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() } ?: 0L
+
+    private companion object {
+        const val API = "https://www.googleapis.com/drive/v3"
+        const val FOLDER = "application/vnd.google-apps.folder"
+        const val MAX_DEPTH = 4
+    }
+}
+
+/**
+ * Houdt de foto's en video's op de tv gelijk met de gekozen Drive-map: wat erbij komt wordt
+ * opgehaald, wat eruit gaat verdwijnt van de tv. Wat je op de tv zelf verwijdert, blijft weg.
+ * Loopt op de achtergrond, ook als je het scherm sluit.
+ */
+object DriveSync {
+    data class State(
+        val running: Boolean = false,
+        val done: Int = 0,
+        val total: Int = 0,
+        /** Uitkomst van de laatste keer, of waarom het niet lukte. */
+        val message: String? = null,
+        val needsLogin: Boolean = false,
+    )
+
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val _state = MutableStateFlow(State())
+    val state: StateFlow<State> = _state
+    @Volatile private var job: Job? = null
+
+    /** Bijwerken als het een tijd geleden is; voor bij het openen van de app of de screensaver. */
+    fun syncIfDue(context: Context) {
+        val settings = Settings(context)
+        if (System.currentTimeMillis() - settings.driveLastSync < INTERVAL_MS) return
+        start(context)
+    }
+
+    /** Begint met bijwerken, of geeft de lopende keer terug; met [restart] (andere map gekozen) begint hij opnieuw. */
+    @Synchronized
+    fun start(context: Context, restart: Boolean = false): Job? {
+        if (restart) job?.cancel() else job?.let { if (it.isActive) return it }
+        val app = context.applicationContext
+        val settings = Settings(app)
+        val folderId = settings.driveFolderId ?: return null
+        val auth = GoogleAuth(settings)
+        if (!auth.hasDrive) {
+            _state.value = State(message = "Log opnieuw in bij Google om de Drive-map bij te werken.", needsLogin = true)
+            return null
+        }
+        return scope.launch {
+            _state.value = State(running = true)
+            _state.value = try {
+                State(message = sync(app, DriveClient(auth), folderId))
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: NeedsLoginException) {
+                State(message = "De koppeling met Google is verlopen. Log opnieuw in.", needsLogin = true)
+            } catch (e: Exception) {
+                State(message = e.message ?: "Bijwerken lukte niet. Probeer het later opnieuw.")
+            }
+        }.also { job = it }
+    }
+
+    private suspend fun sync(context: Context, drive: DriveClient, folderId: String): String {
+        val settings = Settings(context)
+        val library = MediaLibrary(context)
+        val files = drive.files(folderId)
+        val hidden = library.hiddenDriveIds()
+        val wanted = files.filter { MediaLibrary.DRIVE_PREFIX + it.id !in hidden }
+        val wantedIds = wanted.map { MediaLibrary.DRIVE_PREFIX + it.id }.toSet()
+
+        // Niet meer in de map (of uit een eerder gekozen map): weg van de tv.
+        val gone = library.items().filter { it.id.startsWith(MediaLibrary.DRIVE_PREFIX) && it.id !in wantedIds }
+        library.remove(gone.map { it.id }.toSet())
+
+        val present = library.items().map { it.id }.toSet()
+        val todo = wanted.filter { MediaLibrary.DRIVE_PREFIX + it.id !in present }
+        val batch = System.currentTimeMillis()
+        var added = 0
+        var problem: String? = null
+        todo.forEachIndexed { index, file ->
+            _state.value = State(running = true, done = index, total = todo.size)
+            val room = minOf(library.freeBytes() - Storage.MIN_FREE_BYTES, Storage.MAX_MEDIA_BYTES - library.usedBytes())
+            // Een foto wordt verkleind, een video niet: die moet er in zijn geheel bij passen.
+            val needed = if (file.isVideo) file.size else minOf(file.size, PHOTO_BYTES)
+            if (needed > room) {
+                problem = if (file.isVideo && room > PHOTO_BYTES) {
+                    "Niet alles past op de tv; sommige video's zijn te groot."
+                } else {
+                    "De tv is vol (of de grens van ${Storage.MAX_MEDIA_BYTES / 1_000_000_000} GB is bereikt). Niet alles is opgehaald."
+                }
+                return@forEachIndexed
+            }
+            val ok = runCatching { fetch(context, drive, library, file, batch) }
+                .onFailure { if (it is CancellationException || it is NeedsLoginException) throw it }
+                .getOrDefault(false)
+            if (ok) added++ else if (problem == null) problem = "Een paar bestanden konden niet worden opgehaald."
+        }
+        settings.driveLastSync = System.currentTimeMillis()
+        return listOfNotNull(
+            when {
+                added == 0 && gone.isEmpty() -> "Alles is bijgewerkt."
+                else -> listOfNotNull(
+                    "$added nieuw".takeIf { added > 0 },
+                    "${gone.size} weggehaald".takeIf { gone.isNotEmpty() },
+                ).joinToString(", ").replaceFirstChar { it.uppercase() } + "."
+            },
+            problem,
+        ).joinToString(" ")
+    }
+
+    /** Haalt één bestand op. Foto's worden verkleind tot tv-formaat en rechtop gezet. */
+    private suspend fun fetch(context: Context, drive: DriveClient, library: MediaLibrary, file: DriveFile, batch: Long): Boolean {
+        val extension = if (file.isVideo) "mp4" else "jpg"
+        val fileName = "drive-${file.id}.$extension"
+        val target = File(library.dir, fileName)
+        // Eerst naar de cache, zodat een half bestand nooit in de fotomap belandt.
+        val download = File(context.cacheDir, "drive-download")
+        try {
+            drive.download(file, download)
+            withContext(Dispatchers.IO) {
+                if (file.isVideo) move(download, target) else shrink(download, target)
+            }
+        } finally {
+            download.delete()
+        }
+        if (!target.exists()) return false
+        library.add(LocalMedia(MediaLibrary.DRIVE_PREFIX + file.id, fileName, file.isVideo, file.createdAt, file.width, file.height, batch))
+        return true
+    }
+
+    private fun move(source: File, target: File) {
+        if (!source.renameTo(target)) source.copyTo(target, overwrite = true)
+    }
+
+    /** Verkleint tot hooguit 1920×1080 (of 1080×1920 staand) en draait volgens de camera-informatie. */
+    private fun shrink(source: File, target: File) {
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeFile(source.path, bounds)
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) throw IOException("Geen foto: ${source.name}")
+        val rotation = runCatching {
+            when (ExifInterface(source.path).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> 90f
+                ExifInterface.ORIENTATION_ROTATE_180 -> 180f
+                ExifInterface.ORIENTATION_ROTATE_270 -> 270f
+                else -> 0f
+            }
+        }.getOrDefault(0f)
+        val sideways = rotation == 90f || rotation == 270f
+        val width = if (sideways) bounds.outHeight else bounds.outWidth
+        val height = if (sideways) bounds.outWidth else bounds.outHeight
+        val (maxW, maxH) = if (width >= height) 1920 to 1080 else 1080 to 1920
+        var sample = 1
+        while (width / (sample * 2) >= maxW && height / (sample * 2) >= maxH) sample *= 2
+        val decoded = BitmapFactory.decodeFile(source.path, BitmapFactory.Options().apply { inSampleSize = sample })
+            ?: throw IOException("Kon ${source.name} niet lezen")
+        val scale = minOf(1f, maxW.toFloat() / (if (sideways) decoded.height else decoded.width), maxH.toFloat() / (if (sideways) decoded.width else decoded.height))
+        val matrix = Matrix().apply {
+            postRotate(rotation)
+            postScale(scale, scale)
+        }
+        val result = if (rotation == 0f && scale == 1f) decoded else Bitmap.createBitmap(decoded, 0, 0, decoded.width, decoded.height, matrix, true)
+        val partial = File(target.parentFile, target.name + ".deel")
+        try {
+            partial.outputStream().use { result.compress(Bitmap.CompressFormat.JPEG, 90, it) }
+            if (!partial.renameTo(target)) throw IOException("Kon ${target.name} niet opslaan")
+        } finally {
+            partial.delete()
+            if (result !== decoded) result.recycle()
+            decoded.recycle()
+        }
+    }
+
+    /** Een verkleinde foto is hooguit zo groot. */
+    private const val PHOTO_BYTES = 2_000_000L
+    private const val INTERVAL_MS = 30 * 60 * 1000L
+}

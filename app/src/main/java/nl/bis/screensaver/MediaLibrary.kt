@@ -23,17 +23,17 @@ class MediaLibrary(context: Context) {
     val dir = File(context.filesDir, "media").apply { mkdirs() }
     private val indexFile = File(dir, "index.json")
     private val plays = context.applicationContext.getSharedPreferences("bis_afgespeeld", Context.MODE_PRIVATE)
+    private val drive = context.applicationContext.getSharedPreferences("bis_drive", Context.MODE_PRIVATE)
 
     /** Hoe vaak dit item in de screensaver te zien was (geteld sinds versie 0.1.38). */
     fun plays(item: LocalMedia): Int = plays.getInt(item.id, 0)
 
     fun countPlay(item: LocalMedia) = plays.edit().putInt(item.id, plays(item) + 1).apply()
 
-    @Synchronized
-    fun items(): List<LocalMedia> {
+    fun items(): List<LocalMedia> = synchronized(LOCK) {
         if (!indexFile.exists()) return emptyList()
         val array = runCatching { JSONArray(indexFile.readText()) }.getOrElse { return emptyList() }
-        return (0 until array.length()).map { i ->
+        (0 until array.length()).map { i ->
             val o = array.getJSONObject(i)
             LocalMedia(
                 id = o.getString("id"),
@@ -52,8 +52,7 @@ class MediaLibrary(context: Context) {
     fun usedBytes(): Long = dir.listFiles()?.sumOf { it.length() } ?: 0
 
     /** Bestanden die niet (meer) in de index staan, bijvoorbeeld na een afgebroken download. */
-    @Synchronized
-    fun removeOrphans() {
+    fun removeOrphans() = synchronized(LOCK) {
         val known = items().map { it.fileName }.toSet() + indexFile.name
         dir.listFiles()?.filter { it.name !in known }?.forEach { it.delete() }
     }
@@ -110,8 +109,15 @@ class MediaLibrary(context: Context) {
         return Pair(added, message)
     }
 
-    @Synchronized
-    fun delete(ids: Set<String>) {
+    /** Zelf weggehaald. Komt het uit de Drive-map, dan haalt de tv het daar niet opnieuw op. */
+    fun delete(ids: Set<String>) = synchronized(LOCK) {
+        val fromDrive = ids.filter { it.startsWith(DRIVE_PREFIX) }
+        if (fromDrive.isNotEmpty()) drive.edit().putStringSet("verborgen", hiddenDriveIds() + fromDrive).apply()
+        remove(ids)
+    }
+
+    /** Weg van de tv, bijvoorbeeld omdat het niet meer in de Drive-map staat. */
+    fun remove(ids: Set<String>) = synchronized(LOCK) {
         val (gone, keep) = items().partition { it.id in ids }
         gone.forEach {
             file(it).delete()
@@ -120,8 +126,10 @@ class MediaLibrary(context: Context) {
         write(keep)
     }
 
-    @Synchronized
-    private fun add(item: LocalMedia) = write(items() + item)
+    /** Items uit de Drive-map die je op de tv hebt verwijderd. */
+    fun hiddenDriveIds(): Set<String> = drive.getStringSet("verborgen", null).orEmpty()
+
+    fun add(item: LocalMedia) = synchronized(LOCK) { write(items() + item) }
 
     private fun write(items: List<LocalMedia>) {
         val array = JSONArray()
@@ -143,5 +151,11 @@ class MediaLibrary(context: Context) {
     private fun parseTime(value: String?): Long =
         value?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() } ?: 0L
 
+    companion object {
+        /** Ids van items uit Google Drive beginnen hiermee; die uit de fotokiezer niet. */
+        const val DRIVE_PREFIX = "drive:"
 
+        /** Eén slot voor alle exemplaren: de Drive-sync, het fotoscherm en de telefoonpagina schrijven dezelfde index. */
+        private val LOCK = Any()
+    }
 }

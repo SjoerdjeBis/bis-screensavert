@@ -39,7 +39,7 @@ scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
   - Pexels: account op pexels.com, dan **https://www.pexels.com/api/new/** (persoonlijk gebruik).
 - **Muziek** (Jamendo): account op **https://devportal.jamendo.com**, dan *My Applications* ›
   *Create a new application* (naam `Bis Screensavert`, niet-commercieel). Kopieer de Client ID.
-- **Google Foto's**: zie **GOOGLE-FOTOS.md**.
+- **Google Foto's en Drive**: zie **GOOGLE-FOTOS.md**.
 
 ## Zo werkt de app
 
@@ -52,7 +52,7 @@ scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
 - **Luchtopnames:** de aerials van de Apple TV.
 - **Sfeer:** haardvuur, regen, zee, sterren en meer, zonder tekst. Thema's kies je onder
   *Sfeerthema's*.
-- **Mijn foto's & video's:** uit je eigen Google Foto's.
+- **Mijn foto's & video's:** uit je eigen Google Foto's of een map in Google Drive.
 - **Eigen mix:** vink aan wat je wilt zien; de screensaver wisselt het af.
 - **Spotify:** speelt Spotify op de tv, dan zie je hoes, titel en foto's van de artiest
   (OK = pauze, ◀ ▶ = vorige/volgende). Speelt er niets, dan je eigen mix.
