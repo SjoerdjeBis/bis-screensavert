@@ -7,6 +7,13 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+  actions: write
+
+env:
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+  BOT_NAME: kunstdata
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
   fetch:
@@ -19,10 +26,6 @@ jobs:
       - name: Cleveland, Rijksmuseum en vingerafdrukken
         run: python3 tools/fetch_sources.py
       - name: Resultaat vastleggen
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/
-          git diff --cached --quiet || git commit -m "Kunstdata van extra musea bijwerken"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push
+        run: tools/bot_push.sh "Kunstdata van extra musea bijwerken" data/
+      - name: Pull request naar main
+        run: tools/bot_pr.sh "Kunstdata van extra musea bijwerken"
