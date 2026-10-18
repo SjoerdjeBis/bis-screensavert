@@ -8,16 +8,19 @@ import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 
-/** Een sfeerthema met de Engelse zoekterm die Pexels en Pixabay begrijpen. */
-enum class AmbientTheme(val key: String, val label: String, val query: String) {
+/**
+ * Een sfeerthema met de Engelse zoekterm die Pexels, Pixabay en Coverr begrijpen. Bij [rendered]
+ * mogen ook animaties: echte opnames van de ruimte zijn schaars.
+ */
+enum class AmbientTheme(val key: String, val label: String, val query: String, val rendered: Boolean = false) {
     FIRE("haardvuur", "Haardvuur", "fireplace"),
     RAIN("regen", "Regen op het raam", "rain on window"),
     FOREST("bos", "Bos en mist", "foggy forest"),
     SEA("zee", "Zee en golven", "ocean waves"),
     SNOW("sneeuw", "Sneeuw", "snowfall"),
-    STARS("sterren", "Sterrenhemel", "starry night sky"),
+    STARS("sterren", "Sterrenhemel", "starry night sky", rendered = true),
     CITY("stad", "Steden bij nacht", "city at night"),
-    EARTH("aarde", "Aarde vanuit de ruimte", "earth from space"),
+    EARTH("aarde", "Aarde vanuit de ruimte", "earth from space", rendered = true),
     FLOWERS("bloemen", "Bloemen en tuin", "flowers garden"),
     UNDERWATER("onderwater", "Onderwater", "underwater"),
     AUTUMN("herfst", "Herfstbladeren", "autumn leaves"),
@@ -44,6 +47,14 @@ enum class AmbientTheme(val key: String, val label: String, val query: String) {
     SAILING("zeilen", "Zeilboten", "sailing"),
     VINEYARD("wijngaard", "Wijngaarden", "vineyard"),
     THUNDER("onweer", "Onweer", "thunderstorm"),
+    JELLYFISH("kwallen", "Kwallen", "jellyfish"),
+    REEF("koraal", "Koraalrif", "coral reef"),
+    AQUARIUM("aquarium", "Aquarium", "aquarium fish"),
+    BLOSSOM("bloesem", "Kersenbloesem", "cherry blossom"),
+    WATERLILY("waterlelies", "Waterlelies", "water lily"),
+    TERRACES("rijstterrassen", "Rijstterrassen", "rice terraces"),
+    DROPS("druppels", "Waterdruppels", "water drops"),
+    DANDELION("paardenbloemen", "Paardenbloemen", "dandelion"),
 }
 
 /** Een sfeerclip van Pexels, Pixabay of Coverr. */
@@ -93,7 +104,7 @@ class AmbientSource(private val context: Context) : SlideSource {
         // Komt er een bron bij (of gaat er een af), dan meteen een nieuwe lijst in plaats van na een dag.
         val sources = listOf(settings.pexelsKey, settings.pixabayKey, settings.coverrKey)
             .joinToString("") { if (it.isNullOrBlank()) "0" else "1" }
-        val file = File(context.cacheDir, "sfeer-${theme.key}-$sources.json")
+        val file = File(context.cacheDir, "sfeer-${theme.key}-$sources-v2.json")
         val fresh = file.exists() && System.currentTimeMillis() - file.lastModified() < CACHE_MS
         val clips = if (fresh) {
             read(file, theme)
@@ -145,9 +156,14 @@ class AmbientSource(private val context: Context) : SlideSource {
         val hits = JSONObject(Http.getString(url)).optJSONArray("hits") ?: return emptyList()
         return (0 until hits.length()).mapNotNull { i ->
             val h = hits.getJSONObject(i)
+            // Geen AI-beelden; animaties alleen bij de ruimte, anders zijn het vaak nepvuurtjes en -regen.
+            if (h.optBoolean("isAiGenerated")) return@mapNotNull null
+            if (h.optString("type") != "film" && !theme.rendered) return@mapNotNull null
             val videos = h.optJSONObject("videos") ?: return@mapNotNull null
-            val best = listOf("large", "medium").mapNotNull { videos.optJSONObject(it) }
-                .firstOrNull { it.optInt("width") in 1280..1920 && it.optString("url").isNotBlank() }
+            // Bij een 4K-opname is "large" 3840 breed en zit 1080p onder "small": kijk naar alle formaten.
+            val best = videos.keys().asSequence().mapNotNull { videos.optJSONObject(it) }
+                .filter { it.optInt("width") in 1280..1920 && it.optInt("width") > it.optInt("height") && it.optString("url").isNotBlank() }
+                .maxByOrNull { it.optInt("width") }
                 ?: return@mapNotNull null
             AmbientClip(
                 id = "pixabay:${h.getLong("id")}",
