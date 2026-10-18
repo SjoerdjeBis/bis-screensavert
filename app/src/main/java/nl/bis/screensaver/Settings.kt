@@ -65,11 +65,11 @@ class Settings(context: Context) {
         set(value) = prefs.edit().putInt("slide_seconds", value).apply()
 
     var googleClientId: String?
-        get() = prefs.getString("google_client_id", null)
+        get() = prefs.getString("google_client_id", null)?.trim()
         set(value) = prefs.edit().putString("google_client_id", value).apply()
 
     var googleClientSecret: String?
-        get() = prefs.getString("google_client_secret", null)
+        get() = prefs.getString("google_client_secret", null)?.trim()
         set(value) = prefs.edit().putString("google_client_secret", value).apply()
 
     var googleRefreshToken: String?
@@ -96,15 +96,15 @@ class Settings(context: Context) {
         set(value) = prefs.edit().putLong("drive_bijgewerkt", value).apply()
 
     var pexelsKey: String?
-        get() = prefs.getString("pexels_key", null)
+        get() = prefs.getString("pexels_key", null)?.trim() // Een spatie te veel bij het plakken maakt een sleutel ongeldig.
         set(value) = prefs.edit().putString("pexels_key", value).apply()
 
     var pixabayKey: String?
-        get() = prefs.getString("pixabay_key", null)
+        get() = prefs.getString("pixabay_key", null)?.trim()
         set(value) = prefs.edit().putString("pixabay_key", value).apply()
 
     var coverrKey: String?
-        get() = prefs.getString("coverr_key", null)
+        get() = prefs.getString("coverr_key", null)?.trim()
         set(value) = prefs.edit().putString("coverr_key", value).apply()
 
     val hasAmbientKeys get() = !pexelsKey.isNullOrBlank() || !pixabayKey.isNullOrBlank() || !coverrKey.isNullOrBlank()
@@ -136,7 +136,7 @@ class Settings(context: Context) {
         set(value) = prefs.edit().putString("smarttube_lijst", value).apply()
 
     var jamendoClientId: String?
-        get() = prefs.getString("jamendo_id", null)
+        get() = prefs.getString("jamendo_id", null)?.trim()
         set(value) = prefs.edit().putString("jamendo_id", value).apply()
 
     /** Welke muziek de screensaver begeleidt. */

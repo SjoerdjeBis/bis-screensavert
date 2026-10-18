@@ -30,6 +30,9 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -174,6 +177,7 @@ class SlideshowController(
     private var backdropJob: Job? = null
     private var progressJob: Job? = null
     private var soundJob: Job? = null
+    private var upkeepJob: Job? = null
     private var currentArtist: String? = null
     private var currentCoverKey: String? = null
     private var frontBackdrop = 0
@@ -194,6 +198,22 @@ class SlideshowController(
         if (job != null) return
         clock.visibility = if (settings.showClock) View.VISIBLE else View.GONE
         job = scope.launch { run() }
+        upkeepJob = scope.launch {
+            // Tekst en klok staan anders urenlang op dezelfde plek; op een OLED-tv brandt dat in.
+            launch {
+                while (true) {
+                    delay(SHIFT_MS)
+                    shiftOverlays()
+                }
+            }
+            // Ook als de screensaver de hele avond draait, komen nieuwe foto's uit de Drive-map erbij.
+            launch {
+                while (true) {
+                    delay(DRIVE_SYNC_MS)
+                    DriveSync.syncIfDue(context)
+                }
+            }
+        }
         // De muziekmonitor draait altijd: ook om de Jamendo-muziek stil te zetten als Spotify speelt.
         music.start()
         // Alleen bij de kaart Spotify neemt de muziek het scherm over.
@@ -216,7 +236,7 @@ class SlideshowController(
     }
 
     fun release() {
-        listOf(job, musicJob, captionJob, hideMusicJob, backdropJob, progressJob, soundJob).forEach { it?.cancel() }
+        listOf(job, musicJob, captionJob, hideMusicJob, backdropJob, progressJob, soundJob, upkeepJob).forEach { it?.cancel() }
         mixer.release()
         music.stop()
         player.release()
@@ -308,9 +328,11 @@ class SlideshowController(
 
     // ---- Diavoorstelling ----
 
-    private suspend fun run() {
-        var failedInARow = 0
-        while (scope.isActive) {
+    /** De onderdelen voor de komende beelden, volgens het plan van deze ronde. */
+    private val modeQueue = ArrayDeque<Mode>()
+
+    private fun nextMode(): Mode {
+        if (modeQueue.isEmpty()) {
             val plan = MixPlan.plan(
                 forcedProgram ?: settings.program,
                 settings.customModes,
@@ -320,29 +342,49 @@ class SlideshowController(
                     CuratedCollection.assetFor(mode)?.let { CuratedCollection.load(context, it).isEmpty() } == true
                 }.toSet(),
             )
-            for ((mode, count) in plan.rotation) {
-                repeat(count) {
-                    musicVisible.first { !it }
-                    replayHistory()
-                    val shown = try {
-                        sources.getValue(mode).next()?.let { slide ->
-                            history.addLast(slide to mode)
-                            if (history.size > HISTORY_SIZE) history.removeFirst()
-                            show(slide, mode).also { if (!it) history.remove(slide to mode) }
-                        } ?: false
-                    } catch (e: CancellationException) {
-                        throw e
-                    } catch (e: Exception) {
-                        false
-                    }
-                    if (shown) {
-                        failedInARow = 0
-                    } else if (++failedInARow >= MAX_FAILURES) {
-                        showStatus(context.getString(R.string.no_connection))
-                        delay(RETRY_DELAY_MS)
-                        failedInARow = 0
-                    }
-                }
+            plan.rotation.forEach { (mode, count) -> repeat(count) { modeQueue.addLast(mode) } }
+        }
+        return modeQueue.removeFirst()
+    }
+
+    /** Het volgende beeld kiezen en de afbeelding alvast laden; null als de bron niets gaf. */
+    private suspend fun fetchNext(): Pair<Slide, Mode>? = try {
+        val mode = nextMode()
+        sources.getValue(mode).next()?.also { preload(it) }?.let { it to mode }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        null
+    }
+
+    /** Laadt een afbeelding in de cache, zodat hij straks direct in beeld kan. */
+    private suspend fun preload(slide: Slide) {
+        if (slide is Slide.Image) loadImage(slide.url) ?: slide.fallbackUrl?.let { loadImage(it) }
+    }
+
+    private suspend fun run() = coroutineScope {
+        var failedInARow = 0
+        // Terwijl het ene beeld te zien is, wordt het volgende al opgehaald: geen wachten tussendoor.
+        var upcoming: Deferred<Pair<Slide, Mode>?> = async { fetchNext() }
+        while (isActive) {
+            musicVisible.first { !it }
+            replayHistory()
+            val item = upcoming.await()
+            upcoming = async { fetchNext() }
+            val shown = item?.let { (slide, mode) ->
+                history.addLast(slide to mode)
+                if (history.size > HISTORY_SIZE) history.removeFirst()
+                runCatching { show(slide, mode) }
+                    .onFailure { if (it is CancellationException) throw it }
+                    .getOrDefault(false)
+                    .also { if (!it) history.remove(slide to mode) }
+            } ?: false
+            if (shown) {
+                failedInARow = 0
+            } else if (++failedInARow >= MAX_FAILURES) {
+                showStatus(context.getString(R.string.no_connection))
+                delay(RETRY_DELAY_MS)
+                failedInARow = 0
             }
         }
     }
@@ -518,6 +560,18 @@ class SlideshowController(
         return (context.imageLoader.execute(request) as? SuccessResult)?.drawable
     }
 
+
+    /** Schuift alles wat op het beeld staat een paar pixels op; je ziet het niet, het scherm wel. */
+    private fun shiftOverlays() {
+        val range = SHIFT_DP * root.resources.displayMetrics.density
+        listOf(caption, clock, soundCredit, status, musicCover.parent as? View).filterNotNull().forEach { view ->
+            view.animate()
+                .translationX((Math.random().toFloat() * 2 - 1) * range)
+                .translationY((Math.random().toFloat() * 2 - 1) * range)
+                .setDuration(FADE_MS)
+                .start()
+        }
+    }
 
     /** Vult het onderschrift; geeft false als er bij dit beeld niets in beeld hoort. */
     private fun setCaption(slide: Slide, mode: Mode): Boolean {
@@ -721,6 +775,9 @@ class SlideshowController(
         const val PAUSED_MUSIC_MS = 60_000L
         const val MAX_FAILURES = 6
         const val HISTORY_SIZE = 30
+        const val SHIFT_MS = 3 * 60_000L
+        const val SHIFT_DP = 10f
+        const val DRIVE_SYNC_MS = 30 * 60_000L
         const val RETRY_DELAY_MS = 60_000L
     }
 }

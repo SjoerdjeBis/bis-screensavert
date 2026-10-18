@@ -57,6 +57,11 @@
             android:screenOrientation="landscape" />
 
         <activity
+            android:name=".SourcesActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <activity
             android:name=".AmbientActivity"
             android:exported="false"
             android:screenOrientation="landscape" />

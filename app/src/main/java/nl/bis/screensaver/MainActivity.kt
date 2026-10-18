@@ -453,6 +453,11 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, KeysActivity::class.java))
                         })
                     }
+                    item {
+                        FocusPill("Bronnen controleren", onClick = {
+                            startActivity(Intent(this@MainActivity, SourcesActivity::class.java))
+                        })
+                    }
                 }
             }
         }
