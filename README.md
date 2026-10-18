@@ -8,8 +8,8 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
 
 - **App:** Android TV in Kotlin (`app/`). Keuzescherm en beheerschermen in Jetpack Compose, de
   diavoorstelling in Views met Media3. De screensaver is een `DreamService` (`ScreenSaverDream`).
-- **Branch en versies:** alles staat op `claude/elegant-brown-wn493w`; `main` wordt niet gebruikt.
-  Elke push bouwt in GitHub Actions (`build.yml`) en zet `BisScreensavert.apk` op de release
+- **Branch en versies:** `main` is de hoofdbranch; werk op andere branches komt erin via een pull
+  request. GitHub Pages (`docs/`) komt van `main`. Elke push, op welke branch ook, bouwt in GitHub Actions (`build.yml`) en zet `BisScreensavert.apk` op de release
   `laatste`; de app werkt zichzelf daarvanaf bij (`Updater.kt`). Commits van de CI-bot starten geen
   build; draai dan `build.yml` met de hand.
 - **Ondertekening:** `signing/bis-screensaver.jks` is een vaste sleutel voor deze hobby-app, zodat

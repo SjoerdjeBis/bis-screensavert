@@ -40,7 +40,7 @@ Na het inloggen stuurt Google je telefoon naar een kleine pagina van de app op G
 Die geeft de inlog door aan de tv. Zet die pagina zo aan:
 
 1. Ga naar **https://github.com/SjoerdjeBis/bis-screensavert/settings/pages**.
-2. Bij **Source**: **Deploy from a branch**. Bij **Branch**: `claude/elegant-brown-wn493w`
+2. Bij **Source**: **Deploy from a branch**. Bij **Branch**: `main`
    en map `/docs`. Klik **Save**.
 3. Na een paar minuten werkt
    **https://sjoerdjebis.github.io/bis-screensavert/google.html**. Er staat dan
