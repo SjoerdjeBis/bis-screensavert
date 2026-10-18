@@ -30,6 +30,20 @@ enum class AmbientTheme(val key: String, val label: String, val query: String) {
     RIVERS("rivieren", "Rivieren en beken", "river"),
     DESERT("woestijn", "Woestijn", "desert"),
     FIELDS("velden", "Velden en weilanden", "fields"),
+    TULIPS("tulpen", "Tulpenvelden", "tulip fields"),
+    CANALS("grachten", "Grachten", "amsterdam canals"),
+    WINDMILLS("molens", "Windmolens", "windmill"),
+    DUNES("duinen", "Duinen", "sand dunes"),
+    SUNRISE("zonsopkomst", "Zonsopkomst", "sunrise"),
+    BIRDS("vogels", "Vogels in de lucht", "birds flying"),
+    TRAIN("trein", "Uitzicht uit de trein", "train window"),
+    ZEN("zen", "Japanse tuin", "zen garden"),
+    GLACIER("ijs", "Gletsjers en ijs", "glacier"),
+    MOON("maan", "Maan", "moon"),
+    BOKEH("lichtjes", "Lichtjes", "bokeh lights"),
+    SAILING("zeilen", "Zeilboten", "sailing"),
+    VINEYARD("wijngaard", "Wijngaarden", "vineyard"),
+    THUNDER("onweer", "Onweer", "thunderstorm"),
 }
 
 /** Een sfeerclip van Pexels, Pixabay of Coverr. */
