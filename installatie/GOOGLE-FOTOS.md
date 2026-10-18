@@ -88,8 +88,17 @@ map bijhouden.
 Daarna gaat het vanzelf: elke keer dat de app of de screensaver start (hooguit eens per half
 uur) kijkt de tv wat er in de map is veranderd. Nieuwe bestanden komen erbij; wat je uit de map
 haalt, verdwijnt ook van de tv. Wat je op de tv zelf verwijdert, haalt hij niet opnieuw op.
-Foto's worden verkleind tot tv-formaat, dus grote camerafoto's nemen weinig ruimte in. Video's
-komen er in hun geheel op; zet er liefst korte in.
+Foto's worden verkleind tot tv-formaat opgeslagen, dus grote camerafoto's nemen weinig ruimte in.
+Video's worden niet opgeslagen: die speelt de tv rechtstreeks uit Drive af. Ze kosten dus geen
+opslag, maar hebben wel internet nodig. Zonder internet, of als de koppeling met Google is
+verlopen, slaat de screensaver ze over. Video's die al vóór deze versie uit Drive waren
+opgeslagen, haalt de tv bij de eerstvolgende keer bijwerken van de tv af; ze spelen daarna
+gewoon verder via Drive.
+
+Video's die je via de fotokiezer van Google Foto's hebt toegevoegd, blijven op de tv staan.
+Google geeft de app daarvoor alleen een link die na een uur verloopt, dus streamen kan daar
+niet. Wil je ook die streamen: zet ze in de Drive-map en verwijder ze daarna in
+**Foto's beheren** of op je telefoon (snelknop: video's boven 100 MB).
 
 Wil je meteen bijwerken: **Foto's beheren** › **Nu bijwerken**. Een andere map kiezen of
 stoppen kan via **Andere map**.
@@ -115,8 +124,9 @@ het beginscherm van je telefoon (Delen › Zet op beginscherm). Het adres blijft
   een gekoppelde Drive-map wel.
 - Zolang je project in de **testmodus** staat, vraagt Google na 7 dagen opnieuw om in te
   loggen (zie stap 3.6). Bij **Foto's beheren** staat dan **Opnieuw inloggen**.
-- De Chromecast heeft weinig opslag (een paar GB vrij). Kies liever korte video's.
-  In **Foto's beheren** zie je hoeveel ruimte er nog is.
+- De Chromecast heeft weinig opslag (een paar GB vrij). Kies via de fotokiezer liever korte
+  video's; langere zet je beter in de Drive-map. In **Foto's beheren** zie je hoeveel ruimte er
+  nog is.
 
 ## Als het niet lukt
 

@@ -85,7 +85,7 @@ class DriveClient(private val auth: GoogleAuth) {
     }
 
     suspend fun download(file: DriveFile, target: File) {
-        Http.download("$API/files/${file.id}?alt=media&supportsAllDrives=true", target, auth.accessToken())
+        Http.download(mediaUrl(file.id), target, auth.accessToken())
     }
 
     private suspend fun list(query: String, fields: String, orderBy: String? = null, each: (JSONObject) -> Unit) {
@@ -124,16 +124,23 @@ class DriveClient(private val auth: GoogleAuth) {
     private fun isoTime(value: String?): Long =
         value?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() } ?: 0L
 
-    private companion object {
-        const val API = "https://www.googleapis.com/drive/v3"
-        const val FOLDER = "application/vnd.google-apps.folder"
-        const val MAX_DEPTH = 4
+    companion object {
+        private const val API = "https://www.googleapis.com/drive/v3"
+        private const val FOLDER = "application/vnd.google-apps.folder"
+        private const val MAX_DEPTH = 4
+
+        /** De inhoud van een bestand; voor afspelen of downloaden met de inlogsleutel in de header. */
+        fun mediaUrl(fileId: String) = "$API/files/$fileId?alt=media&supportsAllDrives=true"
+
+        /** Alleen naar dit adres gaat de inlogsleutel mee. */
+        const val HOST = "www.googleapis.com"
     }
 }
 
 /**
- * Houdt de foto's en video's op de tv gelijk met de gekozen Drive-map: wat erbij komt wordt
- * opgehaald, wat eruit gaat verdwijnt van de tv. Wat je op de tv zelf verwijdert, blijft weg.
+ * Houdt de foto's en video's op de tv gelijk met de gekozen Drive-map: wat erbij komt, komt op
+ * de tv; wat eruit gaat, verdwijnt. Wat je op de tv zelf verwijdert, blijft weg. Foto's worden
+ * verkleind opgeslagen; video's niet, die speelt de tv rechtstreeks uit Drive af.
  * Loopt op de achtergrond, ook als je het scherm sluit.
  */
 object DriveSync {
@@ -196,28 +203,42 @@ object DriveSync {
         val gone = library.items().filter { it.id.startsWith(MediaLibrary.DRIVE_PREFIX) && it.id !in wantedIds }
         library.remove(gone.map { it.id }.toSet())
 
+        // Video's uit Drive worden gestreamd. Eerder opgeslagen exemplaren maken plaats, met behoud van hun tellingen.
+        var freed = 0L
+        val converted = library.items().filter { it.driveId != null && it.isVideo && !it.streamed && it.id in wantedIds }
+        converted.forEach { item ->
+            val stored = library.file(item)
+            val size = stored.length()
+            library.replace(item.copy(fileName = streamName(item.driveId!!), streamed = true, size = size))
+            stored.delete()
+            freed += size
+        }
+
         val present = library.items().map { it.id }.toSet()
         val todo = wanted.filter { MediaLibrary.DRIVE_PREFIX + it.id !in present }
         val batch = System.currentTimeMillis()
-        var added = 0
+        val (newVideos, photos) = todo.partition { it.isVideo }
+        newVideos.forEach { file ->
+            library.add(
+                LocalMedia(
+                    MediaLibrary.DRIVE_PREFIX + file.id, streamName(file.id), true, file.createdAt,
+                    file.width, file.height, batch, streamed = true, size = file.size,
+                ),
+            )
+        }
+        var added = newVideos.size
         var problem: String? = null
-        todo.forEachIndexed { index, file ->
-            _state.value = State(running = true, done = index, total = todo.size)
+        photos.forEachIndexed { index, file ->
+            _state.value = State(running = true, done = index, total = photos.size)
             val room = minOf(library.freeBytes() - Storage.MIN_FREE_BYTES, Storage.MAX_MEDIA_BYTES - library.usedBytes())
-            // Een foto wordt verkleind, een video niet: die moet er in zijn geheel bij passen.
-            val needed = if (file.isVideo) file.size else minOf(file.size, PHOTO_BYTES)
-            if (needed > room) {
-                problem = if (file.isVideo && room > PHOTO_BYTES) {
-                    "Niet alles past op de tv; sommige video's zijn te groot."
-                } else {
-                    "De tv is vol (of de grens van ${Storage.MAX_MEDIA_BYTES / 1_000_000_000} GB is bereikt). Niet alles is opgehaald."
-                }
+            if (minOf(file.size, PHOTO_BYTES) > room) {
+                problem = "De tv is vol (of de grens van ${Storage.MAX_MEDIA_BYTES / 1_000_000_000} GB is bereikt). Niet alle foto's zijn opgehaald."
                 return@forEachIndexed
             }
             val ok = runCatching { fetch(context, drive, library, file, batch) }
                 .onFailure { if (it is CancellationException || it is NeedsLoginException) throw it }
                 .getOrDefault(false)
-            if (ok) added++ else if (problem == null) problem = "Een paar bestanden konden niet worden opgehaald."
+            if (ok) added++ else if (problem == null) problem = "Een paar foto's konden niet worden opgehaald."
         }
         settings.driveLastSync = System.currentTimeMillis()
         return listOfNotNull(
@@ -228,32 +249,30 @@ object DriveSync {
                     "${gone.size} weggehaald".takeIf { gone.isNotEmpty() },
                 ).joinToString(", ").replaceFirstChar { it.uppercase() } + "."
             },
+            "${converted.size} opgeslagen video('s) worden voortaan gestreamd; ${freed / 1_000_000} MB vrijgemaakt."
+                .takeIf { converted.isNotEmpty() },
             problem,
         ).joinToString(" ")
     }
 
-    /** Haalt één bestand op. Foto's worden verkleind tot tv-formaat en rechtop gezet. */
+    /** Een gestreamde video heeft geen bestand op de tv; deze naam dient alleen als sleutel. */
+    private fun streamName(driveId: String) = "drive-$driveId.stream"
+
+    /** Haalt één foto op, verkleind tot tv-formaat en rechtop gezet. */
     private suspend fun fetch(context: Context, drive: DriveClient, library: MediaLibrary, file: DriveFile, batch: Long): Boolean {
-        val extension = if (file.isVideo) "mp4" else "jpg"
-        val fileName = "drive-${file.id}.$extension"
+        val fileName = "drive-${file.id}.jpg"
         val target = File(library.dir, fileName)
         // Eerst naar de cache, zodat een half bestand nooit in de fotomap belandt.
         val download = File(context.cacheDir, "drive-download")
         try {
             drive.download(file, download)
-            withContext(Dispatchers.IO) {
-                if (file.isVideo) move(download, target) else shrink(download, target)
-            }
+            withContext(Dispatchers.IO) { shrink(download, target) }
         } finally {
             download.delete()
         }
         if (!target.exists()) return false
-        library.add(LocalMedia(MediaLibrary.DRIVE_PREFIX + file.id, fileName, file.isVideo, file.createdAt, file.width, file.height, batch))
+        library.add(LocalMedia(MediaLibrary.DRIVE_PREFIX + file.id, fileName, false, file.createdAt, file.width, file.height, batch))
         return true
-    }
-
-    private fun move(source: File, target: File) {
-        if (!source.renameTo(target)) source.copyTo(target, overwrite = true)
     }
 
     /** Verkleint tot hooguit 1920×1080 (of 1080×1920 staand) en draait volgens de camera-informatie. */

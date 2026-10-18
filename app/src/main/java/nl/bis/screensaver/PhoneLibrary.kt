@@ -62,7 +62,8 @@ class PhoneLibrary(context: Context) : PhoneForm(context, libraryToken(context),
                     .put("opname", item.createdAt)
                     .put("toegevoegd", item.addedAt)
                     .put("getoond", library.plays(item))
-                    .put("grootte", library.file(item).length())
+                    .put("grootte", if (item.streamed) 0 else library.file(item).length())
+                    .put("drive", item.streamed)
                     .put("beeld", "beeld/${item.fileName}"),
             )
         }
@@ -82,7 +83,13 @@ class PhoneLibrary(context: Context) : PhoneForm(context, libraryToken(context),
             if (item.isVideo) {
                 MediaMetadataRetriever().run {
                     try {
-                        setDataSource(file.path)
+                        val driveId = item.driveId
+                        if (item.streamed && driveId != null) {
+                            val token = runBlocking { auth.accessToken() }
+                            setDataSource(DriveClient.mediaUrl(driveId), mapOf("Authorization" to "Bearer $token"))
+                        } else {
+                            setDataSource(file.path)
+                        }
                         getScaledFrameAtTime(1_000_000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC, SIZE, SIZE)
                     } finally {
                         release()

@@ -16,7 +16,14 @@ data class LocalMedia(
     val height: Int,
     /** Wanneer je het toevoegde; alles uit één keer kiezen heeft dezelfde tijd. */
     val addedAt: Long = 0,
-)
+    /** Niet op de tv opgeslagen maar bij het afspelen uit Google Drive gehaald (alleen video's). */
+    val streamed: Boolean = false,
+    /** Grootte in Drive van een gestreamde video. */
+    val size: Long = 0,
+) {
+    /** Het bestands-id in Google Drive, als het daarvandaan komt. */
+    val driveId get() = id.takeIf { it.startsWith(MediaLibrary.DRIVE_PREFIX) }?.removePrefix(MediaLibrary.DRIVE_PREFIX)
+}
 
 /** De eigen foto's en video's op de tv, met een eenvoudige index in JSON. */
 class MediaLibrary(context: Context) {
@@ -43,8 +50,10 @@ class MediaLibrary(context: Context) {
                 width = o.optInt("width"),
                 height = o.optInt("height"),
                 addedAt = o.optLong("added"),
+                streamed = o.optBoolean("stream"),
+                size = o.optLong("size"),
             )
-        }.filter { file(it).exists() }.map { if (it.addedAt > 0) it else it.copy(addedAt = file(it).lastModified()) }
+        }.filter { it.streamed || file(it).exists() }.map { if (it.addedAt > 0) it else it.copy(addedAt = file(it).lastModified()) }
     }
 
     fun file(item: LocalMedia) = File(dir, item.fileName)
@@ -131,6 +140,9 @@ class MediaLibrary(context: Context) {
 
     fun add(item: LocalMedia) = synchronized(LOCK) { write(items() + item) }
 
+    /** Vervangt het item met hetzelfde id, bijvoorbeeld als een opgeslagen video voortaan wordt gestreamd. */
+    fun replace(item: LocalMedia) = synchronized(LOCK) { write(items().map { if (it.id == item.id) item else it }) }
+
     private fun write(items: List<LocalMedia>) {
         val array = JSONArray()
         items.forEach {
@@ -142,7 +154,9 @@ class MediaLibrary(context: Context) {
                     .put("created", it.createdAt)
                     .put("width", it.width)
                     .put("height", it.height)
-                    .put("added", it.addedAt),
+                    .put("added", it.addedAt)
+                    .put("stream", it.streamed)
+                    .put("size", it.size),
             )
         }
         indexFile.writeText(array.toString())

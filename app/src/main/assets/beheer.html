@@ -156,7 +156,7 @@ function teken() {
       if (i.video) { var v = document.createElement("span"); v.className = "video"; v.textContent = "▶"; t.appendChild(v); }
       var l = document.createElement("span");
       l.className = "label";
-      l.textContent = (i.getoond ? i.getoond + "× · " : "") + (i.video ? mb(i.grootte) : (i.opname ? datum(i.opname) : ""));
+      l.textContent = (i.getoond ? i.getoond + "× · " : "") + (i.drive ? "uit Drive" : i.video ? mb(i.grootte) : (i.opname ? datum(i.opname) : ""));
       t.appendChild(l);
       t.onclick = function () {
         if (gekozen[i.id]) delete gekozen[i.id]; else gekozen[i.id] = true;

@@ -27,6 +27,8 @@ sealed interface Slide {
         val clipId: String? = null,
         /** Korte clips in een lus laten lopen tot deze tijd om is. */
         val playForMs: Long? = null,
+        /** Inlogsleutel voor video's die rechtstreeks uit Google Drive komen. */
+        val bearer: String? = null,
     ) : Slide
 }
 

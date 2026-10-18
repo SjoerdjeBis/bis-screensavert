@@ -20,8 +20,11 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.ResolvingDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import coil.imageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
@@ -91,8 +94,23 @@ class SlideshowController(
     private val musicProgress = root.findViewById<ProgressBar>(R.id.music_progress)
     private val musicHint = root.findViewById<TextView>(R.id.music_hint)
 
+    /** Inlogsleutel voor de video die nu uit Google Drive speelt; gaat alleen naar Google mee. */
+    @Volatile private var videoBearer: String? = null
+
     // Kleinere buffer dan standaard: genoeg voor soepel afspelen, zonder veel werkgeheugen.
     private val player = ExoPlayer.Builder(context)
+        .setMediaSourceFactory(
+            DefaultMediaSourceFactory(
+                ResolvingDataSource.Factory(DefaultDataSource.Factory(context)) { spec ->
+                    val token = videoBearer
+                    if (token != null && spec.uri.host == DriveClient.HOST) {
+                        spec.withAdditionalHeaders(mapOf("Authorization" to "Bearer $token"))
+                    } else {
+                        spec
+                    }
+                },
+            ),
+        )
         .setLoadControl(
             DefaultLoadControl.Builder()
                 .setBufferDurationsMs(10_000, 25_000, 1_500, 3_000)
@@ -319,8 +337,9 @@ class SlideshowController(
     }
 
     private suspend fun playVideo(slide: Slide.Video, mode: Mode): Boolean {
+        videoBearer = slide.bearer
         var played = playUntilEnd(slide, mode, slide.url)
-        if (!played && slide.url.startsWith("https://")) {
+        if (!played && slide.bearer == null && slide.url.startsWith("https://")) {
             // Apple's certificaat wordt soms niet vertrouwd; probeer dan zonder https.
             played = playUntilEnd(slide, mode, "http://" + slide.url.removePrefix("https://"))
         }
