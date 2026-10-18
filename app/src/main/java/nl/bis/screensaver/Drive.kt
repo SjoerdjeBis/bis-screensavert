@@ -19,6 +19,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.Instant
+import java.util.Calendar
 import java.util.Locale
 
 data class DriveFolder(val id: String, val name: String)
@@ -29,9 +30,12 @@ data class DriveFile(
     val name: String,
     val isVideo: Boolean,
     val size: Long,
+    /** Opnamedatum uit de foto of de bestandsnaam; 0 als die onbekend is. */
     val createdAt: Long,
     val width: Int,
     val height: Int,
+    /** Wanneer het in Drive is gezet; geen opnamedatum, alleen om oude fouten te herkennen. */
+    val uploadedAt: Long = 0,
 )
 
 /** Leest mappen en bestanden uit je Google Drive; alleen lezen, nooit iets veranderen. */
@@ -72,9 +76,11 @@ class DriveClient(private val auth: GoogleAuth) {
                         name = o.optString("name"),
                         isVideo = mime.startsWith("video/"),
                         size = o.optString("size").toLongOrNull() ?: 0,
-                        createdAt = exifTime(image?.optStringOrNull("time")) ?: isoTime(o.optStringOrNull("createdTime")),
+                        // Niet de uploaddatum: wie een foto eerst downloadt en dan uploadt, krijgt anders de dag van vandaag.
+                        createdAt = exifTime(image?.optStringOrNull("time")) ?: nameTime(o.optString("name")) ?: 0,
                         width = image?.optInt("width") ?: video?.optInt("width") ?: 0,
                         height = image?.optInt("height") ?: video?.optInt("height") ?: 0,
+                        uploadedAt = isoTime(o.optStringOrNull("createdTime")),
                     )
                 }
             }
@@ -116,11 +122,6 @@ class DriveClient(private val auth: GoogleAuth) {
         else -> "Google Drive gaf fout ${response.code}"
     }
 
-    /** Drive geeft de opnametijd uit de foto als "2019:05:12 14:03:22". */
-    private fun exifTime(value: String?): Long? = value?.let {
-        runCatching { SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US).parse(it)?.time }.getOrNull()
-    }
-
     private fun isoTime(value: String?): Long =
         value?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() } ?: 0L
 
@@ -134,6 +135,28 @@ class DriveClient(private val auth: GoogleAuth) {
 
         /** Alleen naar dit adres gaat de inlogsleutel mee. */
         const val HOST = "www.googleapis.com"
+
+        /** Een datum als 20230815 of 2023-08-15 in de naam, zoals PXL_20230815_142233.jpg of IMG-20230815-WA0001.jpg. */
+        private val DATE_IN_NAME = Regex("""(?<!\d)((?:19|20)\d{2})[-_.]?(0[1-9]|1[0-2])[-_.]?(0[1-9]|[12]\d|3[01])(?!\d)""")
+
+        /** De opnametijd zoals camera's die in de foto zetten: "2019:05:12 14:03:22". */
+        fun exifTime(value: String?): Long? = value?.takeIf { it.isNotBlank() }?.let {
+            runCatching { SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US).parse(it.trim())?.time }.getOrNull()
+                ?.takeIf { time -> time > 0 && time <= System.currentTimeMillis() + DAY_MS }
+        }
+
+        /** De datum uit de bestandsnaam, om 12 uur 's middags; null als er geen (geloofwaardige) datum in staat. */
+        fun nameTime(name: String): Long? {
+            val match = DATE_IN_NAME.find(name) ?: return null
+            val (year, month, day) = match.destructured
+            val time = Calendar.getInstance().apply {
+                clear()
+                set(year.toInt(), month.toInt() - 1, day.toInt(), 12, 0)
+            }.timeInMillis
+            return time.takeIf { it <= System.currentTimeMillis() + DAY_MS }
+        }
+
+        private const val DAY_MS = 24 * 60 * 60 * 1000L
     }
 }
 
@@ -214,6 +237,18 @@ object DriveSync {
             freed += size
         }
 
+        // Eerder kregen foto's zonder opnamedatum de uploaddatum; verbeter die waar het nu beter kan.
+        val byId = wanted.associateBy { MediaLibrary.DRIVE_PREFIX + it.id }
+        library.items().forEach { item ->
+            val file = byId[item.id] ?: return@forEach
+            val date = when {
+                file.createdAt > 0 -> file.createdAt
+                item.createdAt == file.uploadedAt -> 0
+                else -> item.createdAt
+            }
+            if (date != item.createdAt) library.replace(item.copy(createdAt = date))
+        }
+
         val present = library.items().map { it.id }.toSet()
         val todo = wanted.filter { MediaLibrary.DRIVE_PREFIX + it.id !in present }
         val batch = System.currentTimeMillis()
@@ -264,16 +299,27 @@ object DriveSync {
         val target = File(library.dir, fileName)
         // Eerst naar de cache, zodat een half bestand nooit in de fotomap belandt.
         val download = File(context.cacheDir, "drive-download")
+        var createdAt = file.createdAt
         try {
             drive.download(file, download)
-            withContext(Dispatchers.IO) { shrink(download, target) }
+            withContext(Dispatchers.IO) {
+                // Wist Drive de opnamedatum niet (bijvoorbeeld bij HEIC), lees hem dan zelf uit de foto.
+                if (createdAt == 0L) createdAt = photoTime(download) ?: 0L
+                shrink(download, target)
+            }
         } finally {
             download.delete()
         }
         if (!target.exists()) return false
-        library.add(LocalMedia(MediaLibrary.DRIVE_PREFIX + file.id, fileName, false, file.createdAt, file.width, file.height, batch))
+        library.add(LocalMedia(MediaLibrary.DRIVE_PREFIX + file.id, fileName, false, createdAt, file.width, file.height, batch))
         return true
     }
+
+    private fun photoTime(source: File): Long? = runCatching {
+        val exif = ExifInterface(source.path)
+        DriveClient.exifTime(exif.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL))
+            ?: DriveClient.exifTime(exif.getAttribute(ExifInterface.TAG_DATETIME))
+    }.getOrNull()
 
     /** Verkleint tot hooguit 1920×1080 (of 1080×1920 staand) en draait volgens de camera-informatie. */
     private fun shrink(source: File, target: File) {

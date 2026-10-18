@@ -100,6 +100,12 @@ Google geeft de app daarvoor alleen een link die na een uur verloopt, dus stream
 niet. Wil je ook die streamen: zet ze in de Drive-map en verwijder ze daarna in
 **Foto's beheren** of op je telefoon (snelknop: video's boven 100 MB).
 
+**De datum in de screensaver** komt uit de foto zelf (de opnamedatum die de camera erin zet).
+Staat die er niet in, dan uit de bestandsnaam, zoals `PXL_20230815_…` of `IMG-20230815-WA…`.
+Lukt beide niet, dan staat er geen datum; de dag van uploaden wordt nooit getoond. Upload je
+foto's daarom liefst rechtstreeks: in de Drive-app **+** › **Uploaden** en kies ze uit je galerij.
+Een foto eerst downloaden en dan uploaden kan de opnamedatum en de originele naam kwijtraken.
+
 Wil je meteen bijwerken: **Foto's beheren** › **Nu bijwerken**. Een andere map kiezen of
 stoppen kan via **Andere map**.
 
