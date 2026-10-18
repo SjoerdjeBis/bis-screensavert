@@ -14,7 +14,7 @@
  {
   "id": "200107928",
   "objectnummer": "SK-C-5",
-  "titel": "Het korporaalschap van kapitein Frans Banninck Cocq en luitenant Willem van Ruytenburch, bekend als de 'Nachtwacht'",
+  "titel": "De Nachtwacht",
   "kunstenaar": "Rembrandt van Rijn",
   "datum": "1642",
   "teksten_nl": [
@@ -26,7 +26,7 @@
  {
   "id": "200107929",
   "objectnummer": "SK-C-6",
-  "titel": "De Staalmeesters: het college van staalmeesters (waardijns) van het Amsterdamse lakenbereidersgilde",
+  "titel": "De waardijns van het Amsterdamse lakenbereidersgilde, bekend als ‘De Staalmeesters’",
   "kunstenaar": null,
   "datum": "1662",
   "teksten_nl": [
@@ -52,7 +52,7 @@
   "objectnummer": "SK-A-3981",
   "titel": "Stilleven met pauwen",
   "kunstenaar": null,
-  "datum": "ca. 1639",
+  "datum": "c. 1639",
   "teksten_nl": [
    "In Rembrandts tijd waren pauwen voedsel voor de welgestelden; het vlees werd onder meer in pasteien verwerkt. Na de slacht moesten de dieren hangend uitbloeden, wat Rembrandt hier in deze voorraadkamer laat zien. Hij was zonder twijfel geboeid door de prachtige tekening op de verentooi, de weelde aan kleuren: blauw, groen en okergeel."
   ],
@@ -74,9 +74,9 @@
  {
   "id": "200107934",
   "objectnummer": "SK-C-216",
-  "titel": "Portret van een paar als Isaak en Rebekka, bekend als 'De Joodse bruid'",
+  "titel": "Isaak en Rebekka, bekend als ‘Het Joodse bruidje’",
   "kunstenaar": null,
-  "datum": "ca. 1665 - ca. 1669",
+  "datum": "c. 1665 - c. 1669",
   "teksten_nl": [
    "Om te voorkomen dat hij zou worden vermoord en zijn vrouw werd ingenomen door koning Abimelech, verhulde Isaak zijn liefde voor Rebekka; zij gaven zich uit voor broer en zus. Maar hun intieme omgang toen ze zich onbespied waanden, verraadde hen. Rembrandt schildert ze in een liefdevol moment. Daarbij werkt hij uitzonderlijk vrij, brengt de verf dik op en krast erin met de achterkant van zijn penseel."
   ],
@@ -98,7 +98,7 @@
  {
   "id": "200107936",
   "objectnummer": "SK-A-4833",
-  "titel": "Portret van Haesje Jacobsdr van Cleyburg (1583-1641). Echtgenote van de Rotterdamse bierbrouwer Dirck Jansz Pesser (1586-1651)",
+  "titel": "Portret van Haesje Jacobsdr van Cleyburg",
   "kunstenaar": "Rembrandt van Rijn",
   "datum": "1634",
   "teksten_nl": [
@@ -110,7 +110,7 @@
  {
   "id": "200107937",
   "objectnummer": "SK-A-3138",
-  "titel": "Titus in monniksdracht",
+  "titel": "Rembrandts zoon Titus in monniksdracht",
   "kunstenaar": "Rembrandt Harmensz van Rijn",
   "datum": "1660",
   "teksten_nl": [
@@ -124,7 +124,7 @@
   "objectnummer": "SK-A-4691",
   "titel": "Zelfportret",
   "kunstenaar": "Rembrandt van Rijn",
-  "datum": "ca. 1628",
+  "datum": "c. 1628",
   "teksten_nl": [
    "Onervaren als hij was, schuwde de jonge Rembrandt het experiment niet. Hier liet hij het licht langs zijn rechterwang schampen. De rest van het gezicht is in schaduwen gehuld. Het duurt even voordat je beseft dat de kunstenaar je scherp aankijkt. Met de achterkant van zijn penseel tekende Rembrandt in de nog natte verflaag, om zo de krullen in zijn wilde haardos te accentueren."
   ],
@@ -146,13 +146,37 @@
  {
   "id": "200108369",
   "objectnummer": "SK-A-2344",
-  "titel": "De melkmeid",
+  "titel": "Het melkmeisje",
   "kunstenaar": "Johannes Vermeer",
   "datum": "c. 1660",
   "teksten_nl": [
    "Geheel verdiept in haar werk schenkt een dienstmeisje melk in. Behalve de witte melkstraal lijkt niets te bewegen. Die alledaagse handeling balde Vermeer samen tot een indrukwekkend schilderij – als een beeld staat de figuur vrij in de lichte ruimte. Vermeer had oog voor hoe het licht in honderden kleurige puntjes over de voorwerpen speelt."
   ],
   "afbeelding": "https://iiif.micr.io/QkOGy/full/max/0/default.jpg",
+  "zoekterm": "Johannes Vermeer"
+ },
+ {
+  "id": "200108370",
+  "objectnummer": "SK-A-1595",
+  "titel": "De liefdesbrief",
+  "kunstenaar": "Johannes Vermeer",
+  "datum": "c. 1669 - c. 1670",
+  "teksten_nl": [
+   "Voor dit schilderij koos Vermeer een opmerkelijk standpunt. Vanuit een schemerig vertrek is een glimp van een kamer te zien met een huiselijke scène. Een rijk geklede vrouw neemt verwachtingsvol een brief aan van een dienstmeisje. Het onderwerp van de brief blijkt wellicht uit het zeegezicht achter hen. De zee werd in de 17de eeuw vaak vergeleken met de liefde, en de minnaar met een schip."
+  ],
+  "afbeelding": "https://iiif.micr.io/DwMQy/full/max/0/default.jpg",
+  "zoekterm": "Johannes Vermeer"
+ },
+ {
+  "id": "200108371",
+  "objectnummer": "SK-A-2860",
+  "titel": "Gezicht op huizen in Delft, bekend als ‘Het straatje’",
+  "kunstenaar": "Johannes Vermeer",
+  "datum": "c. 1658",
+  "teksten_nl": [
+   "Een ongewoon schilderij in Vermeers oeuvre, en als portret van gewone huizen ook bijzonder voor zijn tijd. De compositie is even spannend als evenwichtig. De oude muren met bakstenen, witkalk en scheuren zijn bijna tastbaar. De locatie is Vlamingstraat 40–42 in Delft. In het rechterhuis woonde Vermeers tante Ariaentgen Claes met haar kinderen, van ongeveer 1645 tot haar dood in 1670."
+  ],
+  "afbeelding": "https://iiif.micr.io/wcmnK/full/max/0/default.jpg",
   "zoekterm": "Johannes Vermeer"
  },
  {
@@ -170,7 +194,7 @@
  {
   "id": "200109344",
   "objectnummer": "SK-A-1246",
-  "titel": "Portret van een man, mogelijk Nicolaes Hasselaer (1593-1635). Brouwer, kapitein-majoor van het krijgsvolk binnen Amsterdam",
+  "titel": "Portret van Jan van de Poll (1597-1678)",
   "kunstenaar": "Frans Hals",
   "datum": "c. 1637",
   "teksten_nl": [],
@@ -180,7 +204,7 @@
  {
   "id": "200109345",
   "objectnummer": "SK-A-1247",
-  "titel": "Portret van een vrouw",
+  "titel": "Portret van Duijfje van Gerwen (1618-1658)",
   "kunstenaar": "Frans Hals",
   "datum": "c. 1637",
   "teksten_nl": [],
@@ -192,7 +216,7 @@
   "objectnummer": "SK-A-133",
   "titel": "Portret van een echtpaar, mogelijk Isaac Abrahamsz Massa en Beatrix van der Laen",
   "kunstenaar": null,
-  "datum": "ca. 1622",
+  "datum": "c. 1622",
   "teksten_nl": [
    "Een echtpaar liet zich zelden levensgroot en samen in één schilderij portretteren. En al helemaal niet zo intiem en vrolijk. Voor zo’n gedurfd portret moest de opdrachtgever wel open staan. Dat het pasgetrouwde echtpaar, vermoedelijk Isaac Abrahamsz Massa en Beatrix van der Laen, goed bevriend was met Hals zal daarbij geholpen hebben."
   ],
@@ -202,7 +226,7 @@
  {
   "id": "200109347",
   "objectnummer": "SK-A-135",
-  "titel": "Een schutter die een berkenmeier vasthoudt, bekend als ‘De vrolijke drinker’",
+  "titel": "De vrolijke drinker",
   "kunstenaar": null,
   "datum": "c. 1628 - c. 1630",
   "teksten_nl": [
@@ -226,7 +250,7 @@
  {
   "id": "200109349",
   "objectnummer": "SK-C-556",
-  "titel": "Portret van Lucas de Clercq (ca. 1603-1652)",
+  "titel": "Portret van Lucas de Clercq",
   "kunstenaar": null,
   "datum": "c. 1635",
   "teksten_nl": [
@@ -238,7 +262,7 @@
  {
   "id": "200109350",
   "objectnummer": "SK-C-374",
-  "titel": "Het korporaalschap van kapitein Reynier Reael en luitenant Cornelis Michielsz Blaeuw, Amsterdam, 1637, bekend als 'De magere compagnie'",
+  "titel": "Schutters van wijk XI onder leiding van kapitein Reynier Reael",
   "kunstenaar": "Frans Hals",
   "datum": "1637",
   "teksten_nl": [
@@ -250,7 +274,7 @@
  {
   "id": "200109374",
   "objectnummer": "SK-C-139",
-  "titel": "Maritge Voogt Claesdr (1577-1644). Echtgenote van Pieter Jacobsz Olycan, burgemeester van Haarlem",
+  "titel": "Portret van Maritge Claesdr Vooght",
   "kunstenaar": "Frans Hals",
   "datum": "1639",
   "teksten_nl": [
@@ -322,7 +346,7 @@
   "objectnummer": "SK-A-386",
   "titel": "Interieur met een vrouw die een papegaai voert, beter bekend als ‘De papegaaienkooi’",
   "kunstenaar": "Jan Havicksz Steen",
-  "datum": "ca. 1660 - ca. 1670",
+  "datum": "c. 1660 - c. 1670",
   "teksten_nl": [
    "Dit tafereel barst van leven. Links bakt een vrouw oesters en probeert een ondeugend jongetje een kat te voeren. Rechts spelen twee mannen triktrak. Met zijn kleurgebruik vestigt Steen de aandacht op de vrouw in het midden, die een papegaai een koekje voert. Dankzij de lichtval en met haar groene en paarse kleding steekt ze af tegen de andere, grauwer geschilderde figuren."
   ],
@@ -334,7 +358,7 @@
   "objectnummer": "SK-C-232",
   "titel": "Het dronken paar",
   "kunstenaar": "Jan Havicksz Steen",
-  "datum": "ca. 1655 - ca. 1665",
+  "datum": "c. 1655 - c. 1665",
   "teksten_nl": [
    "Een man en een vrouw zijn zo dronken dat ze niet doorhebben dat ze worden beroofd. Hun dwaasheid<BR />wordt onderstreept door het prentje op het schot. Daarop staat een uil, die in de 17de eeuw gold als een<BR />dwaas dier. Hij kan immers overdag niets zien, zelfs niet met een kaars of bril. De boodschap: het dronken<BR />paar is net zo blind als hij."
   ],
@@ -346,7 +370,7 @@
   "objectnummer": "SK-C-230",
   "titel": "De zieke vrouw",
   "kunstenaar": "Jan Havicksz Steen",
-  "datum": "ca. 1663 - ca. 1666",
+  "datum": "c. 1663 - c. 1666",
   "teksten_nl": [
    "Afgemat door de koorts legt de jonge vrouw haar hoofd op het kussen. Heeft ze soms liefdesverdriet, is ze zwanger? Om daarachter te komen smoorden kwakzalvers een reepje kleding van de vrouw in een stoofje – de geur zou het geheim verraden. Hier laat Jan Steen zo’n charlatan zien tijdens zijn diagnose. Zijn ouderwetse kleding maakt hem tot een schertsfiguur."
   ],
@@ -356,7 +380,7 @@
  {
   "id": "20015868",
   "objectnummer": "SK-A-384",
-  "titel": "Prinsjesdag: het gezelschap viert de verjaardag van prins Willem III",
+  "titel": "Prinsjesdag",
   "kunstenaar": "Jan Havicksz Steen",
   "datum": "1660 - 1679",
   "teksten_nl": [
@@ -420,6 +444,18 @@
   "zoekterm": "Vincent van Gogh"
  },
  {
+  "id": "200109794",
+  "objectnummer": "SK-A-3262",
+  "titel": "Zelfportret",
+  "kunstenaar": "Vincent van Gogh",
+  "datum": "1887",
+  "teksten_nl": [
+   "Nadat hij van zijn broer Theo had gehoord over de nieuwe kleurige Franse schilderkunst ging Vincent in 1886 in Parijs wonen. Al snel probeerde hij de Franse stijl uit op een aantal zelfportretten. Dit deed hij vooral om de kosten voor een model uit te sparen. Hier schilderde hij zichzelf als een mondain geklede Parijzenaar, met losse, ritmische penseelstreken in opvallende kleuren."
+  ],
+  "afbeelding": "https://iiif.micr.io/bTpft/full/max/0/default.jpg",
+  "zoekterm": "Vincent van Gogh"
+ },
+ {
   "id": "200672685",
   "objectnummer": "SK-C-1843",
   "titel": "Gezicht op het Singel, Amsterdam",
@@ -472,7 +508,7 @@
   "objectnummer": "SK-C-211",
   "titel": "De molen bij Wijk bij Duurstede",
   "kunstenaar": "Jacob Isaacksz van Ruisdael",
-  "datum": "ca. 1668 - ca. 1670",
+  "datum": "c. 1668 - c. 1670",
   "teksten_nl": [
    "Majesteitelijk rijst de molen omhoog, hij trotseert de donkere regenwolken en maakt het slot en de kerk van Wijk bij Duurstede nietig. Op de voorgrond stroomt de Lek. Terecht is dit een wereldberoemd schilderij. Ruisdael verenigde er op een indrukwekkende wijze alle Hollandse elementen in – het laagland, het water en de lucht – en hij laat ze samenkomen in de al even Hollandse molen."
   ],
@@ -506,7 +542,7 @@
   "objectnummer": "SK-A-349",
   "titel": "Winterlandschap",
   "kunstenaar": "Jacob Isaacksz van Ruisdael",
-  "datum": "ca. 1665",
+  "datum": "c. 1665",
   "teksten_nl": [
    "Ongeveer 25 winterlandschappen schilderde Ruisdael. In deze voorstelling domineren de donkere onheilspellende wolken, die van links worden beschenen door de laagstaande zon. De dik ingepakte mensen op het ijs steken nietig af tegen deze onbarmhartige natuur. In zo’n winterlandschap van Ruisdael zou een vrolijke menigte schaatsers niet op zijn plaats zijn."
   ],
@@ -596,7 +632,7 @@
   "objectnummer": "SK-A-156",
   "titel": "Een watermolen",
   "kunstenaar": "Meindert Hobbema",
-  "datum": "ca. 1664",
+  "datum": "c. 1664",
   "teksten_nl": [
    "Hobbema leerde landschappen schilderen bij Jacob van Ruisdael. Hun werken lijken in veel opzichten op elkaar, behalve dat die van Hobbema vriendelijker ogen, lichter. Jonge boomtoppen strekken zich hoog uit in de lucht, de bladeren glanzen in de zon. Een watermolen die Hobbema in het oosten van het land<BR />getekend had, leverde hem het onderwerp voor zijn schilderij."
   ],
@@ -608,7 +644,7 @@
   "objectnummer": "SK-C-144",
   "titel": "Een watermolen",
   "kunstenaar": "Meindert Hobbema",
-  "datum": "ca. 1664",
+  "datum": "c. 1664",
   "teksten_nl": [
    "Hobbema schilderde meer dan dertig ‘portretten’ van watermolens, naar tekeningen die hij in het oosten van Nederland maakte. Dezelfde molen tekende hij vanuit meerdere gezichtspunten, zodat men precies kon zien hoe hij in elkaar zat. Hier ging zijn interesse vooral uit naar de technische constructie van de watertoevoer, die muisgrijs geverfd afsteekt tegen het landschap."
   ],
@@ -630,9 +666,9 @@
  {
   "id": "200108162",
   "objectnummer": "SK-A-1320",
-  "titel": "IJsvermaak bij een dorp",
+  "titel": "Schaatsenrijden in een dorp",
   "kunstenaar": null,
-  "datum": "ca. 1610",
+  "datum": "c. 1610",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/NafaR/full/max/0/default.jpg",
   "zoekterm": "Hendrick Avercamp"
@@ -640,7 +676,7 @@
  {
   "id": "200108163",
   "objectnummer": "SK-A-1718",
-  "titel": "Winterlandschap met ijsvermaak",
+  "titel": "Winterlandschap met schaatsers",
   "kunstenaar": "Hendrick Avercamp",
   "datum": "c. 1608",
   "teksten_nl": [
@@ -672,11 +708,21 @@
   "zoekterm": "Hendrick Avercamp"
  },
  {
+  "id": "200109389",
+  "objectnummer": "SK-A-181",
+  "titel": "Zelfportret?",
+  "kunstenaar": null,
+  "datum": "1648 - 1649",
+  "teksten_nl": [],
+  "afbeelding": "https://iiif.micr.io/uXKow/full/max/0/default.jpg",
+  "zoekterm": "Pieter de Hooch"
+ },
+ {
   "id": "200109390",
   "objectnummer": "SK-C-150",
   "titel": "Een gezelschap op de plaats achter een huis",
   "kunstenaar": "Pieter de Hooch",
-  "datum": "ca. 1663 - ca. 1665",
+  "datum": "c. 1663 - c. 1665",
   "teksten_nl": [
    "In de luwte van de schaduw knijpt een vrouw een citroentje uit in haar glas, terwijl de man haar blik probeert te vangen. Misschien wil ze haar hoofd koel houden: in de 17de eeuw dachten mensen dat citroenen hevige verliefdheid konden verminderen. Twee dienstbodes zijn druk in de weer: één brengt drank terwijl de ander een ketel schuurt."
   ],
@@ -698,7 +744,7 @@
  {
   "id": "200109392",
   "objectnummer": "SK-C-147",
-  "titel": "Het aanreiken van een brief in een voorhuis",
+  "titel": "Het aanreiken van een brief in het voorhuis",
   "kunstenaar": "Pieter de Hooch",
   "datum": "1670",
   "teksten_nl": [
@@ -712,7 +758,7 @@
   "objectnummer": "SK-C-149",
   "titel": "Een moeder die het haar van haar kind reinigt, bekend als ‘Moedertaak’",
   "kunstenaar": "Pieter de Hooch",
-  "datum": "ca. 1660 - ca. 1661",
+  "datum": "c. 1660 - c. 1661",
   "teksten_nl": [
    "Een moeder onderzoekt haar kind grondig op luizen. Ze zitten in een sober Hollands interieur, met Delfts blauwe tegeltjes en een bedstee. Rechtsvoor staat een ‘kakstoel’, een kinderstoel met ingebouwde po. Door de deur is een glimp van de zonnige achterkamer en de tuin te zien. Dit soort doorkijkjes waren de specialiteit van De Hooch."
   ],
@@ -734,7 +780,7 @@
  {
   "id": "200107963",
   "objectnummer": "SK-A-359",
-  "titel": "Interieur van de Sint Bavokerk te Haarlem, gezien vanuit de zuidelijke kooromgang door het koor en de noordelijke kooromgang met het grote orgel",
+  "titel": "Interieur van de Sint-Bavokerk in Haarlem",
   "kunstenaar": "Pieter Jansz Saenredam",
   "datum": "1636-04-15",
   "teksten_nl": [
@@ -758,7 +804,7 @@
  {
   "id": "200107965",
   "objectnummer": "SK-C-217",
-  "titel": "Interieur van de Sint-Odulphuskerk te Assendelft, gezien vanuit het koor naar het westen",
+  "titel": "Interieur van de Sint-Odulphuskerk in Assendelft",
   "kunstenaar": "Pieter Jansz Saenredam",
   "datum": "1649-10-02",
   "teksten_nl": [
@@ -794,7 +840,7 @@
   "objectnummer": "SK-A-1189",
   "titel": "De westelijke traveeën van de zuidelijke beuk van de Mariakerk te Utrecht",
   "kunstenaar": null,
-  "datum": "ca. 1640 - ca. 1645",
+  "datum": "c. 1640 - c. 1645",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/dEmKt/full/max/0/default.jpg",
   "zoekterm": "Pieter Jansz. Saenredam"
@@ -802,7 +848,7 @@
  {
   "id": "200108302",
   "objectnummer": "SK-A-1328",
-  "titel": "De Gele Rijders",
+  "titel": "Rijdende artillerie",
   "kunstenaar": "George Hendrik Breitner",
   "datum": "1885 - 1886",
   "teksten_nl": [
@@ -814,7 +860,7 @@
  {
   "id": "200108304",
   "objectnummer": "SK-A-3584",
-  "titel": "Meisje in Kimono (Geesje Kwak?)",
+  "titel": "Meisje in witte kimono",
   "kunstenaar": "George Hendrik Breitner",
   "datum": "1894",
   "teksten_nl": [
@@ -846,7 +892,7 @@
  {
   "id": "200108308",
   "objectnummer": "SK-A-3546",
-  "titel": "Buurtje in de Amsterdamse Jordaan",
+  "titel": "De Lauriergracht bij de Tweede Laurierdwarsstraat",
   "kunstenaar": null,
   "datum": "1917 - 1918",
   "teksten_nl": [],
@@ -868,7 +914,7 @@
   "objectnummer": "SK-A-2979",
   "titel": "Winter in Amsterdam",
   "kunstenaar": null,
-  "datum": "ca. 1900 - ca. 1901",
+  "datum": "c. 1900 - c. 1901",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/kPAhS/full/max/0/default.jpg",
   "zoekterm": "George Hendrik Breitner"
@@ -898,7 +944,7 @@
   "objectnummer": "SK-A-3545",
   "titel": "De Leidsegracht te Amsterdam",
   "kunstenaar": null,
-  "datum": "ca. 1880 - ca. 1923",
+  "datum": "c. 1880 - c. 1923",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/pcOPg/full/max/0/default.jpg",
   "zoekterm": "George Hendrik Breitner"
@@ -920,7 +966,7 @@
   "objectnummer": "SK-A-2670",
   "titel": "Pinken in de branding",
   "kunstenaar": "Hendrik Willem Mesdag",
-  "datum": "ca. 1875 - ca. 1885",
+  "datum": "c. 1875 - c. 1885",
   "teksten_nl": [
    "Mesdag geeft een inkijkje in het leven van de vissers uit het dorp Scheveningen. Hun houten schepen met platte bodem, ‘pinken’, konden bij gebrek aan een haven makkelijk het strand op worden getrokken. Op de voorgrond steken de ankers in het zand. Meteen bij aankomst kochten de toegestroomde vrouwen de verse vis bij opbod. Vervolgens gingen ze met karren langs de huizen om hun waar te verkopen."
   ],
@@ -932,7 +978,7 @@
   "objectnummer": "SK-A-2280",
   "titel": "Vuurtoren in de branding",
   "kunstenaar": "Hendrik Willem Mesdag",
-  "datum": "ca. 1900 - ca. 1907",
+  "datum": "c. 1900 - c. 1907",
   "teksten_nl": [
    "Het vissersdorp Scheveningen groeide vanaf 1870 in rap tempo uit tot een moderne badplaats. Maar Mesdag verbeeldde zelden de boulevard of bijvoorbeeld de nieuwe haven van 1904. Hij schilderde liever het traditionele vissersleven. Dit schilderij vormt een uitzondering: een vuurtoren of eigenlijk een lichtbaken. Seinlichten, havenhoofden en de vuurtoren werden in Scheveningen pas aan het begin van de 20ste eeuw aangelegd."
   ],
@@ -1058,7 +1104,7 @@
   "objectnummer": "SK-A-2436",
   "titel": "Het atelier van de Haarlemse schilder Pieter Frederik van Os",
   "kunstenaar": "Anton Mauve",
-  "datum": "ca. 1856 - ca. 1857",
+  "datum": "c. 1856 - c. 1857",
   "teksten_nl": [
    "Dit schildersatelier bevond zich in het stadhuis van Haarlem. Alle ingrediënten van een atelier zijn aanwezig: tekeningen naar naaktmodel, een landschap bij avond en wat gipsafgietsels. Een kleine schets van een bok, een hertengewei en een hoefijzer maken duidelijk dat Van Os vooral een dierschilder was. Een jonge leerling knielt voor de monumentale 17de-eeuwse schouw en neemt de tekeningenportefeuille door."
   ],
@@ -1068,7 +1114,7 @@
  {
   "id": "200109456",
   "objectnummer": "SK-A-2430",
-  "titel": "Heide te Laren",
+  "titel": "Heide bij Laren",
   "kunstenaar": "Anton Mauve",
   "datum": "1887",
   "teksten_nl": [
@@ -1082,7 +1128,7 @@
   "objectnummer": "SK-A-2524",
   "titel": "De moestuin",
   "kunstenaar": "Anton Mauve",
-  "datum": "ca. 1885 - ca. 1888",
+  "datum": "c. 1885 - c. 1888",
   "teksten_nl": [
    "Mauve noemde zichzelf een echte ‘buitenman’. Vanaf 1884 schilderde hij met regelmaat de groente-en fruittuintjes bij boerderijen. Hij gebruikte hiervoor een helder palet, in plaats van de grijze tonen van een paar jaar eerder. De moestuin laat een enorme rijkdom aan groenschakeringen zien. De witte accenten van het linnengoed en de muts van de vrouw geven diepte en frisheid."
   ],
@@ -1152,6 +1198,16 @@
   "zoekterm": "Anton Mauve"
  },
  {
+  "id": "20027554",
+  "objectnummer": "SK-A-2435",
+  "titel": "Paard",
+  "kunstenaar": null,
+  "datum": "1860 - 1888",
+  "teksten_nl": [],
+  "afbeelding": "https://iiif.micr.io/cUEzD/full/max/0/default.jpg",
+  "zoekterm": "Anton Mauve"
+ },
+ {
   "id": "20028284",
   "objectnummer": "SK-A-2432",
   "titel": "Huisje aan een sloot",
@@ -1159,16 +1215,6 @@
   "datum": "1870 - 1888",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/UBeRd/full/max/0/default.jpg",
-  "zoekterm": "Anton Mauve"
- },
- {
-  "id": "20028285",
-  "objectnummer": "SK-A-3184",
-  "titel": "Herderin met kudde schapen",
-  "kunstenaar": null,
-  "datum": "ca. 1870 - ca. 1888",
-  "teksten_nl": [],
-  "afbeelding": "https://iiif.micr.io/EyNmc/full/max/0/default.jpg",
   "zoekterm": "Anton Mauve"
  },
  {
@@ -1270,6 +1316,16 @@
   "zoekterm": "Jacob Maris"
  },
  {
+  "id": "20027562",
+  "objectnummer": "SK-A-2466",
+  "titel": "De Schreierstoren met de brug over de Gelderse Kade te Amsterdam",
+  "kunstenaar": null,
+  "datum": "1872 - 1876",
+  "teksten_nl": [],
+  "afbeelding": "https://iiif.micr.io/EGLQw/full/max/0/default.jpg",
+  "zoekterm": "Jacob Maris"
+ },
+ {
   "id": "20027563",
   "objectnummer": "SK-A-2469",
   "titel": "Meisje aan de piano",
@@ -1284,27 +1340,17 @@
   "objectnummer": "SK-A-2471",
   "titel": "Landschap met schuit",
   "kunstenaar": null,
-  "datum": "ca. 1886",
+  "datum": "c. 1886",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/vfUxf/full/max/0/default.jpg",
   "zoekterm": "Jacob Maris"
  },
  {
-  "id": "20027565",
-  "objectnummer": "SK-A-2472",
-  "titel": "Huizen aan de Prins Hendrikkade te Amsterdam op een mistige dag",
-  "kunstenaar": null,
-  "datum": "1899",
-  "teksten_nl": [],
-  "afbeelding": "https://iiif.micr.io/RssvY/full/max/0/default.jpg",
-  "zoekterm": "Jacob Maris"
- },
- {
   "id": "200108271",
   "objectnummer": "SK-A-1786",
-  "titel": "Portret van Helena van der Schalcke (1646-1671)",
+  "titel": "Helena van der Schalcke",
   "kunstenaar": "Gerard ter Borch",
-  "datum": "ca. 1648",
+  "datum": "c. 1648",
   "teksten_nl": [
    "Koopmansdochter Helena van der Schalcke was hooguit drie jaar oud toen ze hier werd geportretteerd. Haar zijden, met strikken versierde jurk en rieten tasje lijken op volwassenenkleding. Maar op haar rug is nog een stuk van de leiband te zien: een slip waaraan<BR />kinderen konden worden vastgehouden. De rode anjer in haar hand stond symbool voor de hoop op een eeuwig leven. Helaas stierf Helena op 24-jarige leeftijd."
   ],
@@ -1314,9 +1360,9 @@
  {
   "id": "200108272",
   "objectnummer": "SK-A-1785",
-  "titel": "Johanna Bardoel (gest. na 1667). Echtgenote van Gerard van der Schalcke.",
+  "titel": "Portret van Johanna Bardoel (gest. na 1667)",
   "kunstenaar": null,
-  "datum": "ca. 1644",
+  "datum": "c. 1644",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/vnkjW/full/max/0/default.jpg",
   "zoekterm": "Gerard ter Borch (II)"
@@ -1324,7 +1370,7 @@
  {
   "id": "200108273",
   "objectnummer": "SK-A-1784",
-  "titel": "Gerard Abrahamsz van der Schalcke (1609-67). Lakenkoopman te Haarlem",
+  "titel": "Portret van Gerard Abrahamsz van der Schalcke (1609-1667)",
   "kunstenaar": null,
   "datum": "1644",
   "teksten_nl": [],
@@ -1334,9 +1380,9 @@
  {
   "id": "200108274",
   "objectnummer": "SK-A-4038",
-  "titel": "Zittende jonge vrouw in het kostuum van een boerenmeisje. Waarschijnlijk Gesina (1631-1690), halfzuster van de schilder",
+  "titel": "Vrouw in boerenkostuum",
   "kunstenaar": "Gerard ter Borch",
-  "datum": "ca. 1648 - ca. 1650",
+  "datum": "c. 1648 - c. 1650",
   "teksten_nl": [
    "Ter Borch schilderde waarschijnlijk zijn halfzus Gesina ter Borch, die eveneens kunstenaar was. Zij zat wel vaker model voor hem. In de 17de eeuw zou men haar onmiddellijk herkennen als ongetrouwde boerendochter vanwege haar opgestoken vlechten en rode haarband. In haar hand houdt ze een bedrukt blad papier, waar ze even van opkijkt."
   ],
@@ -1346,9 +1392,9 @@
  {
   "id": "200108276",
   "objectnummer": "SK-A-4039",
-  "titel": "Vrouw voor een spiegel",
+  "titel": "Vrouw voor de spiegel",
   "kunstenaar": "Gerard ter Borch",
-  "datum": "ca. 1650",
+  "datum": "c. 1650",
   "teksten_nl": [
    "Een jongetje houdt de vrouw in de satijnen jurk een spiegel voor. Zij kijkt omhoog naar een vrouw, die juist eenvoudig is gekleed. De spiegel was in de 17de eeuw een teken van ijdelheid en vergankelijkheid. Dit schilderij is een waarschuwing: jeugd en schoonheid<BR />zijn maar tijdelijk. Waarschijnlijk stond Ter Borchs zus Gesina, zelf ook kunstenaar, model voor beide vrouwen en zijn broer Moses voor de jongen."
   ],
@@ -1358,7 +1404,7 @@
  {
   "id": "200108277",
   "objectnummer": "SK-A-404",
-  "titel": "Interieur met drie figuren die met elkaar in gesprek zijn; bekend als 'De vaderlijke vermaning'",
+  "titel": "Galante conversatie, bekend als ‘De vaderlijke vermaning’",
   "kunstenaar": "Gerard ter Borch II",
   "datum": "c. 1654 - c. 1655",
   "teksten_nl": [
@@ -1370,7 +1416,7 @@
  {
   "id": "20026690",
   "objectnummer": "SK-A-2417",
-  "titel": "François de Vicq (1646-1707), sedert 1697 herhaaldelijk burgemeester van Amsterdam",
+  "titel": "Portret van François de Vicq (1646-1707)",
   "kunstenaar": null,
   "datum": "1670",
   "teksten_nl": [],
@@ -1380,7 +1426,7 @@
  {
   "id": "20026691",
   "objectnummer": "SK-A-2418",
-  "titel": "Aletta Pancras (1649-1707). Echtgenote van François de Vicq",
+  "titel": "Portret van Aletta Pancras (1649-1707)",
   "kunstenaar": null,
   "datum": "1670",
   "teksten_nl": [],
@@ -1392,7 +1438,7 @@
   "objectnummer": "SK-A-3842",
   "titel": "Godard van Reede (1588-1648), heer van Nederhorst. Gevolmachtigde van de provincie Utrecht bij de vredesonderhandeling te Munster (1646-48)",
   "kunstenaar": null,
-  "datum": "ca. 1646 - ca. 1648",
+  "datum": "c. 1646 - c. 1648",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/eJYvW/full/max/0/default.jpg",
   "zoekterm": "Gerard ter Borch (II)"
@@ -1444,7 +1490,7 @@
   "objectnummer": "SK-C-89",
   "titel": "Ezeldrijvers bij een Italiaanse ruïne",
   "kunstenaar": "Jan Asselijn",
-  "datum": "ca. 1650",
+  "datum": "c. 1650",
   "teksten_nl": [
    "Asselijn was in Rome geweest en had er zijn indrukken in tekeningen vastgelegd. Terug in Amsterdam ontstond dit gezicht op een reusachtig aquaduct. Deze vergane glorie van de Romeinse oudheid biedt nu plaats aan eenvoudige plattelandsmensen en hun kuddes. Een wandelaar doet in het tegenlicht onder een boog zijn behoefte, net als de ezelin op de voorgrond."
   ],
@@ -1454,7 +1500,7 @@
  {
   "id": "200108146",
   "objectnummer": "SK-A-4",
-  "titel": "De bedreigde zwaan; later opgevat als allegorie op Johan de Witt",
+  "titel": "De bedreigde zwaan",
   "kunstenaar": "Jan Asselijn",
   "datum": "c. 1650",
   "teksten_nl": [
@@ -1512,7 +1558,7 @@
  {
   "id": "200107889",
   "objectnummer": "SK-A-711",
-  "titel": "Koeien in de weide bij een boerderij",
+  "titel": "Koeien in de wei bij een boerderij",
   "kunstenaar": "Paulus Potter",
   "datum": "1653",
   "teksten_nl": [
@@ -1544,7 +1590,7 @@
  {
   "id": "20026074",
   "objectnummer": "SK-C-206",
-  "titel": "Vier jonge stieren in de weide",
+  "titel": "Vier jonge stieren in de wei",
   "kunstenaar": "Paulus Potter",
   "datum": "1651",
   "teksten_nl": [
@@ -1556,7 +1602,7 @@
  {
   "id": "20026075",
   "objectnummer": "SK-C-205",
-  "titel": "Twee paarden in de weide bij een hek",
+  "titel": "Twee paarden in de wei bij een hek",
   "kunstenaar": "Paulus Potter",
   "datum": "1649",
   "teksten_nl": [
@@ -1580,7 +1626,7 @@
   "objectnummer": "SK-A-2393",
   "titel": "Gevecht tijdens de zeeslag bij Kijkduin",
   "kunstenaar": "Willem van de Velde II",
-  "datum": "ca. 1675",
+  "datum": "c. 1675",
   "teksten_nl": [
    "Het Nachtelijk gevecht wordt dit schilderij traditioneel genoemd. In werkelijkheid vond de zeeslag bij Kijkduin overdag plaats, op 21 augustus 1673. Cornelis Tromp voer op de Gouden Leeuw en zijn tegenstander Sir Edward Spragg op de Royal Prince. Het gevecht gaat deels verscholen achter rookwolken en kruitdampen. Rechts zinkt het Hollandse admiraalsschip, maar Tromp zet de strijd voort vanaf een buitgemaakt schip."
   ],
@@ -1590,9 +1636,9 @@
  {
   "id": "200108358",
   "objectnummer": "SK-A-438",
-  "titel": "De verovering van het Engelse admiraalsschip de 'Royal Prince' 13 juni 1666, tijdens de Vierdaagse Zeeslag, 11-14 juni 1666: episode uit de Tweede Engelse Zeeoorlog (1665-67)",
+  "titel": "De verovering van de Royal Prince",
   "kunstenaar": "Willem van de Velde II",
-  "datum": "ca. 1670",
+  "datum": "c. 1670",
   "teksten_nl": [
    "Op 13 juni 1666, de derde dag van de Vierdaagse Zeeslag, voer het Engelse admiraalsschip Royal Prince voor de Engelse kust vast op een zandbank. Het viel in handen van Cornelis Tromp, die de bemanning gevangennam en overbracht naar zijn schip, de Gouda (links). Op last van admiraal De Ruyter moest Tromp zijn buit in brand steken. Liever had hij het in triomf naar Nederland gesleept."
   ],
@@ -1602,7 +1648,7 @@
  {
   "id": "200108359",
   "objectnummer": "SK-A-1848",
-  "titel": "Een schip in volle zee bij vliegende storm, bekend als 'De windstoot'",
+  "titel": "Een schip in volle zee bij vliegende storm, bekend als ‘De windstoot’",
   "kunstenaar": "Willem van de Velde II",
   "datum": "c. 1680",
   "teksten_nl": [
@@ -1640,7 +1686,7 @@
   "objectnummer": "SK-A-722",
   "titel": "Schepen voor de kust tijdens windstilte",
   "kunstenaar": null,
-  "datum": "ca. 1650 - ca. 1707",
+  "datum": "c. 1650 - c. 1707",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/XTnue/full/max/0/default.jpg",
   "zoekterm": "Willem van de Velde (II)"
@@ -1720,7 +1766,7 @@
  {
   "id": "200367359",
   "objectnummer": "SK-A-5098",
-  "titel": "Een testje aardbeien op een stenen plint",
+  "titel": "Een bakje aardbeien op een stenen plint",
   "kunstenaar": "Adriaen Coorte",
   "datum": "1696",
   "teksten_nl": [
@@ -1804,7 +1850,7 @@
  {
   "id": "200109431",
   "objectnummer": "SK-A-2326",
-  "titel": "Een luitspeler, bekend als 'De serenade'",
+  "titel": "De serenade",
   "kunstenaar": "Judith Leyster",
   "datum": "1629",
   "teksten_nl": [
@@ -1816,7 +1862,7 @@
  {
   "id": "20014007",
   "objectnummer": "SK-A-1685",
-  "titel": "De vrolijke drinker",
+  "titel": "Pekelharing",
   "kunstenaar": "Judith Leyster",
   "datum": "1629",
   "teksten_nl": [
@@ -1842,7 +1888,7 @@
   "objectnummer": "SK-A-185",
   "titel": "Arcadisch landschap met vissers",
   "kunstenaar": "Jan van Huysum",
-  "datum": "ca. 1700 - ca. 1749",
+  "datum": "c. 1700 - c. 1749",
   "teksten_nl": [
    "Deze twee schilderijtjes zijn geschilderd op koper, waardoor Van Huysum een bijzonder glad en glanzend resultaat kon bereiken. Ze stellen arcadische, oftewel idyllische landschappen voor met tempels en figuren uit de klassieke oudheid. Het zijn kleine pronkstukken voor de verzameling van een liefhebber."
   ],
@@ -1878,7 +1924,7 @@
   "objectnummer": "SK-C-155",
   "titel": "Stilleven met bloemen en vruchten",
   "kunstenaar": "Jan van Huysum",
-  "datum": "ca. 1728",
+  "datum": "c. 1728",
   "teksten_nl": [
    "Naarmate zijn loopbaan vorderde, werden Van Huysums bloemstillevens steeds uitbundiger. Zijn kleuren werden lichter en transparanter en hij plaatste zijn stillevens tegen een parkachtige achtergrond. De vruchten, wijntak en stokroos zijn hier zo losjes en in wankel evenwicht gerangschikt, dat alles van de marmeren plint af dreigt te vallen."
   ],
@@ -1900,7 +1946,7 @@
   "objectnummer": "SK-C-561",
   "titel": "Stilleven met bloemen en vruchten",
   "kunstenaar": "Jan van Huysum",
-  "datum": "ca. 1721",
+  "datum": "c. 1721",
   "teksten_nl": [
    "Het bloemstilleven was een heel geliefd genre in de 18de eeuw, en Van Huysum bracht het tot grote hoogte. Dit schilderij vulde hij bijna tot de randen met bloemen en vruchten. Het blad links heeft een vreemde kleur. Dat komt doordat de gele kleurstof die Van Huysum met blauw mengde om groen te maken, onder invloed van het (zon)licht vervaagde. Daarom zijn de oorspronkelijk groene partijen in dit schilderij nu blauw."
   ],
@@ -1912,7 +1958,7 @@
   "objectnummer": "SK-C-120",
   "titel": "Portret van een jonge man, mogelijk Jacob Francken (1627-na 1656)",
   "kunstenaar": null,
-  "datum": "ca. 1651",
+  "datum": "c. 1651",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/aRoEK/full/max/0/default.jpg",
   "zoekterm": "Aelbert Cuyp"
@@ -1970,7 +2016,7 @@
   "kunstenaar": "Jan van Goyen",
   "datum": "1641",
   "teksten_nl": [
-   "De twee gebochelde eiken, fel beschenen door een enkele bundel zonlicht, steken scherp af tegen de<BR />dreigende onweerslucht. Van Goyen tekende de bomen met het penseel en gebruikte dunne, bijna transparante verf voor het gebladerte en dikke, rulle verf voor de gegroefde stammen. Het sobere kleurenschema van het landschap wordt opgefleurd door de blauwe en rode wambuizen van de twee rustende mannen."
+   "De twee gebochelde eiken, fel beschenen door een enkele bundel zonlicht, steken scherp af tegen de dreigende onweerslucht. Van Goyen tekende de bomen met het penseel en gebruikte dunne, bijna transparante verf voor het gebladerte en dikke, rulle verf voor de gegroefde stammen. Het sobere kleurenschema van het landschap wordt opgefleurd door de blauwe en rode wambuizen van de twee rustende mannen."
   ],
   "afbeelding": "https://iiif.micr.io/Hhojx/full/max/0/default.jpg",
   "zoekterm": "Jan van Goyen"
@@ -1978,7 +2024,7 @@
  {
   "id": "200109337",
   "objectnummer": "SK-A-4044",
-  "titel": "Vergezicht over een brede rivier",
+  "titel": "Vergezicht op het Spaarne en het Haarlemmermeer",
   "kunstenaar": null,
   "datum": "in of na 1644",
   "teksten_nl": [],
@@ -2002,7 +2048,7 @@
   "objectnummer": "SK-A-3250",
   "titel": "Gezicht op Arnhem",
   "kunstenaar": null,
-  "datum": "ca. 1644",
+  "datum": "c. 1644",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/QfjMo/full/max/0/default.jpg",
   "zoekterm": "Jan van Goyen"
@@ -2076,7 +2122,7 @@
  {
   "id": "200109182",
   "objectnummer": "SK-A-4839",
-  "titel": "Stilleven",
+  "titel": "Stilleven met een zoutvat",
   "kunstenaar": null,
   "datum": "c. 1640 - c. 1645",
   "teksten_nl": [],
@@ -2110,7 +2156,7 @@
  {
   "id": "20027711",
   "objectnummer": "SK-A-1857",
-  "titel": "Stilleven",
+  "titel": "Stilleven met een vis",
   "kunstenaar": "Pieter Claesz",
   "datum": "1647",
   "teksten_nl": [
@@ -2144,7 +2190,7 @@
  {
   "id": "20028016",
   "objectnummer": "SK-C-610",
-  "titel": "Stilleven",
+  "titel": "Stilleven met een gebroken glas",
   "kunstenaar": null,
   "datum": "1642",
   "teksten_nl": [],
@@ -2222,7 +2268,7 @@
  {
   "id": "200108246",
   "objectnummer": "SK-A-45",
-  "titel": "Een moeder, vermoedelijk Johanna de Geer (1627-1691), met twee kinderen",
+  "titel": "Caritas: Joanna de Geer (1629-1691) met haar kinderen Cecilia Trip (1660-1728) en Laurens Trip (geb. 1662)",
   "kunstenaar": null,
   "datum": "1662 - 1669",
   "teksten_nl": [],
@@ -2270,7 +2316,7 @@
   "objectnummer": "SK-A-614",
   "titel": "Aeneas kroont Cloanthus",
   "kunstenaar": "Ferdinand Bol",
-  "datum": "ca. 1661 - ca. 1663",
+  "datum": "c. 1661 - c. 1663",
   "teksten_nl": [
    "Dit is een scène uit Vergilius’ Aeneïs, geschilderd in opdracht van de Amsterdamse Admiraliteit. Aeneas eert een van de vier kapiteins die elkaar bestreden in een roeiwedstrijd. Alle vier werden beloond, zelfs de kapitein die zijn roerganger overboord smeet omdat hij een bevel negeerde. In een gedicht op dit schilderij benadrukte Vondel het belang van standvastigheid en edelmoedigheid voor goed bestuur."
   ],
@@ -2280,7 +2326,7 @@
  {
   "id": "200108251",
   "objectnummer": "SK-A-1578",
-  "titel": "Koning Amazia en de man Gods",
+  "titel": "De 'Vorst van het Heir des Heeren' verschijnt aan Jozua bij Jericho (Jozua 5:13)",
   "kunstenaar": null,
   "datum": "1660 - 1663",
   "teksten_nl": [],
@@ -2322,7 +2368,7 @@
   "objectnummer": "SK-A-42",
   "titel": "Zelfportret",
   "kunstenaar": "Ferdinand Bol",
-  "datum": "ca. 1669",
+  "datum": "c. 1669",
   "teksten_nl": [
    "In een geborduurde Japanse kamerjas poseert Bol als man van de wereld. Dit zelfportret schilderde hij vermoedelijk ter gelegenheid van zijn huwelijk met de rijke weduwe Anna van Erckel, een van zijn vroegste opdrachtgevers. De vergulde, versierde lijst hoort bij het schilderij. De grote gebeeldhouwde zonnebloemen symboliseren het huwelijk: zij volgen de zon zoals een mens zijn geliefde."
   ],
@@ -2332,7 +2378,7 @@
  {
   "id": "200108257",
   "objectnummer": "SK-A-46",
-  "titel": "Allegorie op het onderwijs: Margarita Trip (1640-1714) haar zuster Anna Maria Trip (1652- 1681) onderwijzend",
+  "titel": "Margarita Trip die als Minerva haar zuster Anna Maria Trip onderwijst",
   "kunstenaar": "In 1662 betrok de steenrijke familie Trip het statigste particuliere pand van Amsterdam. Boven de haard in een van de privévertrekken hing dit portret van twee van de dochters Trip: Margarita, met helm en borstpantser, als Minerva",
   "datum": "1663",
   "teksten_nl": [
@@ -2346,7 +2392,7 @@
   "objectnummer": "SK-A-250",
   "titel": "De oude drinker",
   "kunstenaar": "Gabriël Metsu",
-  "datum": "ca. 1661 - ca. 1663",
+  "datum": "c. 1661 - c. 1663",
   "teksten_nl": [
    "De oude man met de bierpul kijkt wat lodderig. Op het leitje achter hem staat geturfd hoeveel hij heeft gedronken. De bierton links komt – gezien het merkteken op het hout – van brouwerij Het Rode Hert. Omstreeks 1650 woonde Gabriël Metsu naast deze Amsterdamse bierbrouwerij aan de Prinsengracht."
   ],
@@ -2381,7 +2427,7 @@
   "id": "200109481",
   "objectnummer": "SK-C-177",
   "titel": "De jagersbuit",
-  "kunstenaar": "Gabriel Metsu",
+  "kunstenaar": "Gabriël Metsu",
   "datum": "c. 1658 - c. 1661",
   "teksten_nl": [
    "Deze handwerkende vrouw overweegt een liefdesaanbod. Ze kijkt bedachtzaam naar de vogel die een hoopvolle jager aan haar presenteert. ‘Vogelen’ stond in de 17de eeuw voor het bedrijven van de liefde. Vandaar ook het beeldje van de liefdesgod Cupido op<BR />de kast. De vrouw twijfelt nog tussen geloof en genot: ze kijkt naar het gevogelte, maar reikt tegelijkertijd naar het gebedenboekje op tafel."
@@ -2405,8 +2451,8 @@
   "id": "20028324",
   "objectnummer": "SK-A-2328",
   "titel": "De haringkoopvrouw",
-  "kunstenaar": "Gabriel Metsu",
-  "datum": "ca. 1661 - ca. 1662",
+  "kunstenaar": "Gabriël Metsu",
+  "datum": "c. 1661 - c. 1662",
   "teksten_nl": [
    "Met een kritische blik bekijkt een vrouw de haring die haar wordt aangeboden door een haringkoopvrouw. In tegenstelling tot wat nu gebruikelijk is in Nederland, werd vis in de 17de eeuw voornamelijk in de ochtend en middag gegeten. Daarbij was er een grote aanvoer van verse vis op katholieke vastendagen zoals de vrijdag, aangezien er dan geen vlees werd gegeten."
   ],
@@ -2416,8 +2462,8 @@
  {
   "id": "20028325",
   "objectnummer": "SK-A-249",
-  "titel": "Man en vrouw aan de maaltijd",
-  "kunstenaar": "Gabriel Metsu",
+  "titel": "Man en vrouw aan de ontbijttafel",
+  "kunstenaar": "Gabriël Metsu",
   "datum": "1650 - 1660",
   "teksten_nl": [
    "Op tafel staat een bord met een ham, kaas en brood. Voor het gemiddelde gezin was dit het ontbijt, soms aangevuld met vis. De vrouw staat op het punt om haar fluitglas te vullen met bier. Water werd amper gedronken, maar bier des te meer, de hele dag door. Zowel het maken van brood als het brouwen van bier werd voornamelijk door vrouwen gedaan."
@@ -2534,7 +2580,7 @@
  {
   "id": "20028228",
   "objectnummer": "SK-A-4047",
-  "titel": "Jonge vrouw bij de wieg",
+  "titel": "Vrouw bij de wieg",
   "kunstenaar": "Nicolaes Maes",
   "datum": "1652 - 1662",
   "teksten_nl": [
@@ -2544,25 +2590,27 @@
   "zoekterm": "Nicolaes Maes"
  },
  {
-  "id": "20028233",
-  "objectnummer": "SK-A-3508",
-  "titel": "Portret van een jonge man",
+  "id": "20028229",
+  "objectnummer": "SK-A-245",
+  "titel": "Meisje aan het venster, bekend als 'De peinzende'",
   "kunstenaar": null,
-  "datum": "1670 - 1680",
-  "teksten_nl": [],
-  "afbeelding": "https://iiif.micr.io/YcLRS/full/max/0/default.jpg",
+  "datum": "1650 - 1660",
+  "teksten_nl": [
+   "Uit het venster leunende figuren vormden een populair onderwerp in de 17de eeuw. Hier staart een in gedachten verzonken jong meisje uit het raam, dat is omgeven door abrikozenranken. Haar gezicht en handen steken helder af tegen de donkere achtergrond. Dit licht-donkercontrast leerde Maes van zijn meester Rembrandt. Het warme rood is kenmerkend voor het werk van Maes zelf."
+  ],
+  "afbeelding": "https://iiif.micr.io/tHMDN/full/max/0/default.jpg",
   "zoekterm": "Nicolaes Maes"
  },
  {
-  "id": "200318081",
-  "objectnummer": "SK-A-4888",
-  "titel": "Portret van Pieter Groenendijk",
-  "kunstenaar": "Nicolaes Maes",
-  "datum": "1677 - 1685",
+  "id": "20028230",
+  "objectnummer": "SK-C-176",
+  "titel": "De spinster, een haspel aan de muur",
+  "kunstenaar": null,
+  "datum": "1652 - 1662",
   "teksten_nl": [
-   "Pieter Groenendijk bekleedde een ambt in het stadsbestuur van Leiden. Na zijn huwelijk met de Amsterdamse Petronella Dunois trok zij bij hem in, met het poppenhuis. Na hun dood ging het poppenhuis naar hun erfgename, waarna het telkens in vrouwelijke lijn werd vererfd, tot het in het Rijksmuseum terechtkwam."
+   "Van Rembrandt kennen we geen schilderijen met huiselijke taferelen. Zijn leerling Nicolaes Maes schilderde daarentegen veel deugdzame vrouwen die bezig zijn in huis. Hier spint een oude vrouw wol. Zij heeft zich teruggetrokken in de hoek van een kamer, waar het laatste restje daglicht valt. Deze wijze van belichten nam Maes over van zijn leermeester."
   ],
-  "afbeelding": "https://iiif.micr.io/gnqAd/full/max/0/default.jpg",
+  "afbeelding": "https://iiif.micr.io/FAUuw/full/max/0/default.jpg",
   "zoekterm": "Nicolaes Maes"
  },
  {
@@ -2594,7 +2642,7 @@
   "objectnummer": "SK-A-152",
   "titel": "De stenen brug",
   "kunstenaar": "Jan van der Heyden",
-  "datum": "ca. 1660 - ca. 1672",
+  "datum": "c. 1660 - c. 1672",
   "teksten_nl": [
    "Dit werk toont een niet bestaande gracht. Het is duidelijk geïnspireerd op Amsterdamse voorbeelden, maar Jan van der Heyden zette het geheel naar zijn eigen hand. De gracht gaf hij op een bijzondere manier weer. Deze loopt van de voorgrond naar het midden van de voorstelling. Adriaen van der Velde schilderde de figuren, hij werd hiervoor regelmatig gevraagd door andere kunstenaars."
   ],
@@ -2640,7 +2688,7 @@
   "objectnummer": "SK-A-2568",
   "titel": "Het dansende paar",
   "kunstenaar": null,
-  "datum": "ca. 1635",
+  "datum": "c. 1635",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/vFvZz/full/max/0/default.jpg",
   "zoekterm": "Adriaen van Ostade"
@@ -2662,7 +2710,7 @@
   "objectnummer": "SK-A-2332",
   "titel": "‘De schaatsenrijders’: boerengezelschap in interieur",
   "kunstenaar": "Adriaen van Ostade",
-  "datum": "ca. 1656",
+  "datum": "c. 1656",
   "teksten_nl": [
    "In vergelijking met de vaak kwaadaardig ogende zuiplappen van zijn leermeester Adriaen Brouwer zijn de<BR />landlieden op de schilderijen van Adriaen van Ostade een zachtmoedige mensensoort. Ze drinken en roken, maar de sfeer is meestal vredig. Op de vloer ligt een stel schaatsen; daaraan dankt het schilderij zijn oude, anekdotische titel."
   ],
@@ -2686,7 +2734,7 @@
   "objectnummer": "SK-A-298",
   "titel": "Schildersatelier",
   "kunstenaar": "Adriaen van Ostade",
-  "datum": "ca. 1647 - ca. 1650",
+  "datum": "c. 1647 - c. 1650",
   "teksten_nl": [
    "Rijk is deze schilder niet: zijn atelier bevindt zich in een oud, donker gebouw. Zijn artistieke ambities zijn niet hoog, want op de ezel staat een bescheiden land- schap. Toch heeft hij twee leerjongens. Van Ostade spot hier met zijn eigen specialisatie. Hij schilderde niet zijn eigen atelier, maar verzon een atelier van een eenvoudige schilder die al zijn (Van Ostades) boerentaferelen geschilderd zou kunnen hebben."
   ],
@@ -2696,7 +2744,7 @@
  {
   "id": "200107825",
   "objectnummer": "SK-C-201",
-  "titel": "Een koppel in een interieur",
+  "titel": "Het vertrouwelijk onderhoud",
   "kunstenaar": "Adriaen van Ostade",
   "datum": "1672",
   "teksten_nl": [
@@ -2720,7 +2768,7 @@
   "objectnummer": "SK-A-4093",
   "titel": "Landschap met oude eik",
   "kunstenaar": "Adriaen van Ostade",
-  "datum": "ca. 1639 - ca. 1641",
+  "datum": "c. 1639 - c. 1641",
   "teksten_nl": [
    "De Haarlemmer Adriaen van Ostade schilderde veel genrescènes met boeren, maar ook enkele landschappen. Het dramatische contrast tussen licht en schaduw in dit schilderij verraadt de invloed van Rembrandt."
   ],
@@ -2732,7 +2780,7 @@
   "objectnummer": "SK-A-3281",
   "titel": "Portret van een verzamelaar, mogelijk Constantijn Sennepart (1625-1703)",
   "kunstenaar": null,
-  "datum": "ca. 1665",
+  "datum": "c. 1665",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/umVBv/full/max/0/default.jpg",
   "zoekterm": "Adriaen van Ostade"
@@ -2752,7 +2800,7 @@
   "objectnummer": "SK-A-301",
   "titel": "Een bakker blazend op zijn hoorn",
   "kunstenaar": null,
-  "datum": "ca. 1648",
+  "datum": "c. 1648",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/VdoZQ/full/max/0/default.jpg",
   "zoekterm": "Adriaen van Ostade"
@@ -2796,7 +2844,7 @@
  {
   "id": "20015923",
   "objectnummer": "SK-A-3908",
-  "titel": "De ongelovige Tomas",
+  "titel": "De ongelovige Thomas",
   "kunstenaar": "Hendrick ter Brugghen",
   "datum": "c. 1622",
   "teksten_nl": [
@@ -2890,7 +2938,7 @@
   "objectnummer": "SK-A-4987",
   "titel": "Oostzijdse molen aan het Gein bij maanlicht",
   "kunstenaar": "Piet Mondriaan",
-  "datum": "ca. 1903",
+  "datum": "c. 1903",
   "teksten_nl": [
    "Dit landschap laat goed zien hoe Mondriaan in zijn vroege jaren schatplichtig was aan de Haagse School. Hij had een paar jaar eerder Paul Gabriëls In de maand juli in het Rijksmuseum (te zien in deze zaal) gekopieerd. Hoewel de composities overeenkomsten vertonen is de algemene indruk heel anders. Mondriaan paste de lijnen en kleuren aan om een niet-realistisch, decoratief schilderij te maken."
   ],
@@ -2954,7 +3002,7 @@
  {
   "id": "200107981",
   "objectnummer": "SK-A-4700",
-  "titel": "Portret van Lizzy Ansingh (1875-1959)",
+  "titel": "Portret van Lizzy Ansingh",
   "kunstenaar": "Thérèse Schwartze",
   "datum": "1902",
   "teksten_nl": [
@@ -2976,7 +3024,7 @@
  {
   "id": "200108843",
   "objectnummer": "SK-A-1703",
-  "titel": "Jonge vrouw met hond Puck",
+  "titel": "Jonge Italiaanse vrouw met hond Puck",
   "kunstenaar": "Thérèse Schwartze",
   "datum": "c. 1885 - c. 1886",
   "teksten_nl": [
@@ -3080,7 +3128,7 @@
  {
   "id": "20026981",
   "objectnummer": "SK-A-2948",
-  "titel": "Andries van Wezel (1856-1921). Koopman te Antwerpen, legateerde in 1922 zijn schilderijenverzameling aan het Rijksmuseum",
+  "titel": "Andries van Wezel (1856-1921)",
   "kunstenaar": null,
   "datum": "1912",
   "teksten_nl": [],
@@ -3092,7 +3140,7 @@
   "objectnummer": "SK-A-2950",
   "titel": "Kruikje met pluisbloemen",
   "kunstenaar": "Willem Witsen",
-  "datum": "ca. 1916",
+  "datum": "c. 1916",
   "teksten_nl": [
    "Met maar een paar toetsen witte verf gaf Witsen overtuigend de lichtreflectie weer op het glanzende aardewerken kannetje. Het wollegras en de varenbladen daarentegen lijken zacht en aaibaar. Witsen schilderde dergelijke stillevens omdat sinds het uitbreken van de Eerste Wereldoorlog zijn stadsgezichten en landschappen minder goed verkochten."
   ],
@@ -3161,6 +3209,16 @@
   "datum": "1903",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/OUxNA/full/max/0/default.jpg",
+  "zoekterm": "Jozef Israëls"
+ },
+ {
+  "id": "20027278",
+  "objectnummer": "SK-A-1179",
+  "titel": "'Alleen op de wereld'",
+  "kunstenaar": null,
+  "datum": "1878",
+  "teksten_nl": [],
+  "afbeelding": "https://iiif.micr.io/GcxKN/full/max/0/default.jpg",
   "zoekterm": "Jozef Israëls"
  },
  {
@@ -3244,16 +3302,6 @@
   "zoekterm": "Jozef Israëls"
  },
  {
-  "id": "20028136",
-  "objectnummer": "SK-A-2606",
-  "titel": "Melancholie",
-  "kunstenaar": null,
-  "datum": "1880 - 1899",
-  "teksten_nl": [],
-  "afbeelding": "https://iiif.micr.io/GPwmB/full/max/0/default.jpg",
-  "zoekterm": "Jozef Israëls"
- },
- {
   "id": "200109446",
   "objectnummer": "SK-A-2993",
   "titel": "Boot met knotwilg",
@@ -3312,7 +3360,7 @@
   "objectnummer": "SK-A-4920",
   "titel": "De schaapherderin, bekend als ‘Monumental Conception of Humanity’",
   "kunstenaar": "Matthijs Maris",
-  "datum": "ca. 1885 - ca. 1898",
+  "datum": "c. 1885 - c. 1898",
   "teksten_nl": [
    "Dit grote schilderij van een herderin was bedoeld voor een trappenhuis en moest van onderaf bekeken worden. Zoals bij elk van zijn concepten wilde Maris het liefst  de sporen van het maakproces uitwissen. Hier werkte hij met opeenvolgende lagen dikke verf, die hij in het doek ‘duwde’. Dit creëert een mat oppervlak met een taaie textuur. De lijst werd in opdracht van Maris speciaal voor dit werk gemaakt."
   ],
@@ -3348,11 +3396,21 @@
   "objectnummer": "SK-A-2275",
   "titel": "Beek in het bos bij Oosterbeek",
   "kunstenaar": "Matthijs Maris",
-  "datum": "ca. 1860",
+  "datum": "c. 1860",
   "teksten_nl": [
    "Deze schets ontstond tijdens de vormingsjaren van Matthijs Maris, toen hij samen met zijn broer Jacob ’s zomers in de omgeving van Oosterbeek werkte. De beboste heuvels aan de rand van het Rijndal boden volop schilderachtige plekjes. Het idyllische tafereel doet nog romantisch aan, maar Maris heeft zich wel al grote moeite getroost het zonlicht op het stromende water goed te observeren."
   ],
   "afbeelding": "https://iiif.micr.io/quDwq/full/max/0/default.jpg",
+  "zoekterm": "Matthijs Maris"
+ },
+ {
+  "id": "20028275",
+  "objectnummer": "SK-A-2276",
+  "titel": "De Noord-West-Buitensingel in Den Haag",
+  "kunstenaar": null,
+  "datum": "c. 1863",
+  "teksten_nl": [],
+  "afbeelding": "https://iiif.micr.io/sxTFG/full/max/0/default.jpg",
   "zoekterm": "Matthijs Maris"
  },
  {
@@ -3382,7 +3440,7 @@
   "objectnummer": "SK-A-2995",
   "titel": "Witte koe",
   "kunstenaar": "Willem Maris",
-  "datum": "ca. 1880 - ca. 1910",
+  "datum": "c. 1880 - c. 1910",
   "teksten_nl": [
    "Waarschijnlijk gebruikte Willem Maris dit schilderijtje als voorstudie voor een aantal van zijn grote composities met een koe. De contouren van de koe laten zien dat het dier in lichte kleuren op een donkerbruine ondergrond is geschilderd. Willem Maris was de enige die deze techniek consequent toepaste. De meeste schilders van de Haagse School werkten op een lichte ondergrond."
   ],
@@ -3394,7 +3452,7 @@
   "objectnummer": "SK-A-2706",
   "titel": "Koe aan de slootkant",
   "kunstenaar": "Willem Maris",
-  "datum": "ca. 1885 - ca. 1895",
+  "datum": "c. 1885 - c. 1895",
   "teksten_nl": [
    "Een zinderende zomerdag in de Hollandse polder. Dat is het onderwerp waarmee Willem Maris furore maakte. 17de-eeuwse kunstenaars vonden een tafereel als dit – een koe die verkoeling zoekt in het water – al schilderachtig. Maris schilderde de vacht van de koe afwisselend in dikke en dunne streken, met een natuurlijke lichtval als resultaat."
   ],
@@ -3406,7 +3464,7 @@
   "objectnummer": "SK-A-2277",
   "titel": "Eendjes",
   "kunstenaar": "Willem Maris",
-  "datum": "ca. 1880 - ca. 1907",
+  "datum": "c. 1880 - c. 1907",
   "teksten_nl": [
    "Het riet lijkt hier wel te ruisen. Een moedereend kijkt toe hoe haar kroost het water in plonst. Ze worden weerspiegeld in het water. Maris schildert met snelle verfstreken. Met de uitvinding van de verftube in 1841 werd het voor kunstenaars als Maris veel eenvoudiger om verf mee naar buiten te nemen. In zijn atelier werkte hij de schilderijen daarna verder uit."
   ],
@@ -3428,7 +3486,7 @@
   "objectnummer": "SK-A-2994",
   "titel": "Weide met koeien",
   "kunstenaar": null,
-  "datum": "ca. 1880 - ca. 1910",
+  "datum": "c. 1880 - c. 1910",
   "teksten_nl": [],
   "afbeelding": "https://iiif.micr.io/SvVoT/full/max/0/default.jpg",
   "zoekterm": "Willem Maris"
