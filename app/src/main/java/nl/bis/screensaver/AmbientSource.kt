@@ -160,11 +160,7 @@ class AmbientSource(private val context: Context) : SlideSource {
             if (h.optBoolean("isAiGenerated")) return@mapNotNull null
             if (h.optString("type") != "film" && !theme.rendered) return@mapNotNull null
             val videos = h.optJSONObject("videos") ?: return@mapNotNull null
-            // Bij een 4K-opname is "large" 3840 breed en zit 1080p onder "small": kijk naar alle formaten.
-            val best = videos.keys().asSequence().mapNotNull { videos.optJSONObject(it) }
-                .filter { it.optInt("width") in 1280..1920 && it.optInt("width") > it.optInt("height") && it.optString("url").isNotBlank() }
-                .maxByOrNull { it.optInt("width") }
-                ?: return@mapNotNull null
+            val best = pixabayFormat(videos) ?: return@mapNotNull null
             AmbientClip(
                 id = "pixabay:${h.getLong("id")}",
                 url = best.getString("url"),
@@ -223,3 +219,12 @@ class AmbientSource(private val context: Context) : SlideSource {
         const val CACHE_MS = 24 * 60 * 60 * 1000L
     }
 }
+
+/**
+ * Het beste formaat van een Pixabay-video: liggend, het breedste tot en met 1920 pixels.
+ * Bij een 4K-opname is "large" 3840 breed en zit 1080p onder "small", dus alle formaten bekijken.
+ */
+internal fun pixabayFormat(videos: JSONObject): JSONObject? =
+    videos.keys().asSequence().mapNotNull { videos.optJSONObject(it) }
+        .filter { it.optInt("width") in 1280..1920 && it.optInt("width") > it.optInt("height") && it.optString("url").isNotBlank() }
+        .maxByOrNull { it.optInt("width") }

@@ -29,8 +29,8 @@ jobs:
           # andere branch, dus begon elke build met lege handen (alles opnieuw downloaden en omzetten).
           cache-read-only: false
 
-      - name: App bouwen
-        run: ./gradlew --no-daemon assembleRelease
+      - name: App bouwen en testen
+        run: ./gradlew --no-daemon assembleRelease testReleaseUnitTest
 
       - name: Downloadbestanden maken
         run: |
