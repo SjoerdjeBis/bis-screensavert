@@ -153,6 +153,18 @@ class SlideshowController(
     private var currentImageVote: String? = null
 
     private val skip = Channel<Unit>(Channel.CONFLATED)
+
+    /** De laatst getoonde beelden, nieuwste achteraan, om met ◀ naar terug te gaan. */
+    private val history = ArrayDeque<Pair<Slide, Mode>>()
+
+    /** Welk beeld uit [history] er nu (opnieuw) te zien is; null = gewoon nieuwe beelden. */
+    private var cursor: Int? = null
+
+    /** Wat er echt in beeld is; het volgende kan al aan het laden zijn. */
+    private var visibleSlide: Slide? = null
+
+    /** ◀ of ▶ ingedrukt terwijl er iets laadde: die druk niet vergeten, zoals een gewone ▶. */
+    private var navPending = false
     private val musicVisible = MutableStateFlow(false)
 
     private var job: Job? = null
@@ -212,7 +224,8 @@ class SlideshowController(
 
     /**
      * Afstandsbediening. Bij muziek: OK = pauze, links/rechts = vorige/volgende.
-     * In het voorbeeld (niet in de screensaver) springt rechts naar het volgende beeld.
+     * In het voorbeeld (niet in de screensaver) springt rechts naar het volgende beeld en links
+     * terug naar het vorige.
      */
     fun handleKey(event: KeyEvent, inScreensaver: Boolean): Boolean {
         val up = event.action == KeyEvent.ACTION_UP
@@ -235,7 +248,11 @@ class SlideshowController(
             return false
         }
         if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-            if (up) skip.trySend(Unit)
+            if (up) forward()
+            return true
+        }
+        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+            if (up) back()
             return true
         }
         if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_UP && mixer.nowPlaying.value != null) {
@@ -267,6 +284,28 @@ class SlideshowController(
         return false
     }
 
+    private fun back() {
+        val here = cursor ?: history.indexOfLast { it.first === visibleSlide }.takeIf { it >= 0 } ?: history.lastIndex
+        if (here <= 0) {
+            showStatus("Verder terug gaat niet")
+            scope.launch {
+                delay(2_000)
+                hideStatus()
+            }
+            return
+        }
+        cursor = here - 1
+        navPending = true
+        skip.trySend(Unit)
+    }
+
+    /** Bij teruggaan: een beeld vooruit, tot je weer bij de nieuwe beelden bent. */
+    private fun forward() {
+        cursor?.let { cursor = (it + 1).takeIf { next -> next <= history.lastIndex } }
+        navPending = cursor != null
+        skip.trySend(Unit)
+    }
+
     // ---- Diavoorstelling ----
 
     private suspend fun run() {
@@ -284,8 +323,13 @@ class SlideshowController(
             for ((mode, count) in plan.rotation) {
                 repeat(count) {
                     musicVisible.first { !it }
+                    replayHistory()
                     val shown = try {
-                        sources.getValue(mode).next()?.let { show(it, mode) } ?: false
+                        sources.getValue(mode).next()?.let { slide ->
+                            history.addLast(slide to mode)
+                            if (history.size > HISTORY_SIZE) history.removeFirst()
+                            show(slide, mode).also { if (!it) history.remove(slide to mode) }
+                        } ?: false
                     } catch (e: CancellationException) {
                         throw e
                     } catch (e: Exception) {
@@ -300,6 +344,20 @@ class SlideshowController(
                     }
                 }
             }
+        }
+    }
+
+    /** Na ◀: de eerdere beelden opnieuw, en daarna vanzelf verder tot je weer bij het nieuwste bent. */
+    private suspend fun replayHistory() {
+        while (true) {
+            navPending = false
+            val index = cursor ?: return
+            val (slide, mode) = history.getOrNull(index) ?: run {
+                cursor = null
+                return
+            }
+            show(slide, mode)
+            if (cursor == index) cursor = (index + 1).takeIf { it <= history.lastIndex }
         }
     }
 
@@ -320,6 +378,7 @@ class SlideshowController(
         fade(caption, 0f)
         val duration = settings.slideSeconds * 1000L
         crossfadeTo(drawable, duration)
+        visibleSlide = slide
         currentImageVote = slide.voteId
         delay(FADE_MS)
         if (setCaption(slide, mode)) {
@@ -358,6 +417,7 @@ class SlideshowController(
                 }
                 listener = object : Player.Listener {
                     override fun onRenderedFirstFrame() {
+                        visibleSlide = slide
                         hideStatus()
                         imageShowing = false
                         imageLayers.forEach { fade(it.layer, 0f) }
@@ -411,6 +471,7 @@ class SlideshowController(
      * volgende beeld nog aan het laden was, als skip voor dat volgende beeld: twee verder.
      */
     private fun clearSkips() {
+        if (navPending) return
         while (skip.tryReceive().isSuccess) Unit
     }
 
@@ -472,12 +533,12 @@ class SlideshowController(
             Mode.AMBIENT -> "SFEER"
             Mode.NATURE -> "NATUUR IN NEDERLAND"
             Mode.HISTORY -> (slide as? Slide.Image)?.source ?: "NEDERLAND VAN TOEN"
-        } + if (isPreview && slide is Slide.Image && slide.voteId != null) "      ▼ niet meer tonen   ▶ volgende" else ""
+        } + if (isPreview && slide is Slide.Image && slide.voteId != null) "      ◀ vorige   ▼ niet meer tonen   ▶ volgende" else ""
         captionTitle.text = slide.title
         captionSubtitle.text = slide.subtitle.orEmpty()
         captionSubtitle.visibility = if (bare || slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE
         val body = if (isPreview && slide is Slide.Video && slide.clipId != null) {
-            "▼  niet meer tonen      ▶  volgende"
+            "◀  vorige      ▼  niet meer tonen      ▶  volgende"
         } else {
             slide.body.takeIf { settings.showCaptions }
         }
@@ -659,6 +720,7 @@ class SlideshowController(
         const val BACKDROP_MS = 25_000L
         const val PAUSED_MUSIC_MS = 60_000L
         const val MAX_FAILURES = 6
+        const val HISTORY_SIZE = 30
         const val RETRY_DELAY_MS = 60_000L
     }
 }
