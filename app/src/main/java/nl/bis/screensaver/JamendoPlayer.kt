@@ -124,8 +124,7 @@ class JamendoPlayer(private val context: Context, private val scope: CoroutineSc
 
     /**
      * Rustige, instrumentale nummers in de gekozen stijl, de populairste eerst; een dag bewaard.
-     * Nummers met een tag uit [EXCLUDED_TAGS] vallen af, behalve als er dan te weinig overblijven:
-     * country staat bij Jamendo vaak ook als rock te boek, en dan bleef er niets over.
+     * Geeft Jamendo gesorteerd niets bruikbaars terug, dan nog een keer zonder sortering.
      */
     private suspend fun loadTracks(): List<JamendoTrack> = withContext(Dispatchers.IO) {
         val query = source.query ?: return@withContext emptyList()
@@ -133,40 +132,54 @@ class JamendoPlayer(private val context: Context, private val scope: CoroutineSc
         File(context.cacheDir, "jazz.json").delete() // Van de vroegere jazz.
         val cache = File(context.cacheDir, "muziek_${source.key}.json")
         val fresh = cache.exists() && System.currentTimeMillis() - cache.lastModified() < 24 * 60 * 60 * 1000L
-        val json = if (fresh) {
-            cache.readText()
-        } else {
-            runCatching {
-                Http.getString(
-                    "https://api.jamendo.com/v3.0/tracks/?format=json&limit=200&audioformat=mp32" +
-                        "&order=popularity_total&vocalinstrumental=instrumental&include=musicinfo" +
-                        query + "&client_id=" + Http.encode(clientId),
-                ).also { if ((JSONObject(it).optJSONArray("results")?.length() ?: 0) > 0) cache.writeText(it) }
-            }.getOrElse { if (cache.exists()) cache.readText() else return@withContext emptyList() }
+        if (fresh) {
+            val cached = runCatching { playable(JSONObject(cache.readText())) }.getOrNull()
+            if (!cached.isNullOrEmpty()) return@withContext cached
+            cache.delete() // Een lege of kapotte lijst niet een dag lang bewaren.
         }
-        val results = JSONObject(json).optJSONArray("results") ?: JSONArray()
-        // Een lege lijst (bijvoorbeeld van een eerdere fout) niet een dag lang bewaren.
-        if (results.length() == 0) cache.delete()
-        val all = (0 until results.length()).mapNotNull { i ->
-            val t = results.getJSONObject(i)
-            val audio = t.optStringOrNull("audio") ?: return@mapNotNull null
-            JamendoTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio) to tagsOf(t)
+        for (ordered in listOf(true, false)) {
+            val json = runCatching { Http.getString(tracksUrl(query, clientId, ordered)) }.getOrNull() ?: continue
+            val tracks = runCatching { playable(JSONObject(json)) }.getOrDefault(emptyList())
+            if (tracks.isNotEmpty()) {
+                cache.writeText(json)
+                return@withContext tracks
+            }
         }
-        val calm = all.filter { (_, tags) -> tags.none { it in EXCLUDED_TAGS } }
-        val strict = all.filter { (_, tags) -> tags.none { it in ALWAYS_EXCLUDED } }
-        (if (calm.size >= MIN_TRACKS) calm else strict).map { it.first }
+        emptyList()
     }
 
-    /** Genres, instrumenten en overige tags van een nummer, in kleine letters. */
-    private fun tagsOf(track: JSONObject): List<String> {
-        val tags = track.optJSONObject("musicinfo")?.optJSONObject("tags") ?: return emptyList()
-        return listOf("genres", "instruments", "vartags").flatMap { key ->
-            val list = tags.optJSONArray(key) ?: JSONArray()
-            (0 until list.length()).map { list.optString(it).lowercase() }
-        }
-    }
+    companion object {
+        /** De zoekopdracht bij Jamendo; [ordered] = de populairste eerst. */
+        fun tracksUrl(query: String, clientId: String, ordered: Boolean) =
+            "https://api.jamendo.com/v3.0/tracks/?format=json&limit=200&audioformat=mp32" +
+                (if (ordered) "&order=popularity_total" else "") +
+                "&vocalinstrumental=instrumental&include=musicinfo" + query + "&client_id=" + Http.encode(clientId)
 
-    private companion object {
+        /**
+         * De nummers die de speler gebruikt. Nummers met een tag uit [EXCLUDED_TAGS] vallen af, behalve als
+         * er dan te weinig overblijven: country staat bij Jamendo vaak ook als rock te boek.
+         */
+        fun playable(json: JSONObject): List<JamendoTrack> {
+            val results = json.optJSONArray("results") ?: return emptyList()
+            val all = (0 until results.length()).mapNotNull { i ->
+                val t = results.getJSONObject(i)
+                val audio = t.optStringOrNull("audio") ?: return@mapNotNull null
+                JamendoTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio) to tagsOf(t)
+            }
+            val calm = all.filter { (_, tags) -> tags.none { it in EXCLUDED_TAGS } }
+            val strict = all.filter { (_, tags) -> tags.none { it in ALWAYS_EXCLUDED } }
+            return (if (calm.size >= MIN_TRACKS) calm else strict).map { it.first }
+        }
+
+        /** Genres, instrumenten en overige tags van een nummer, in kleine letters. */
+        private fun tagsOf(track: JSONObject): List<String> {
+            val tags = track.optJSONObject("musicinfo")?.optJSONObject("tags") ?: return emptyList()
+            return listOf("genres", "instruments", "vartags").flatMap { key ->
+                val list = tags.optJSONArray(key) ?: JSONArray()
+                (0 until list.length()).map { list.optString(it).lowercase() }
+            }
+        }
+
         /** Past niet onder een rustige screensaver. */
         val EXCLUDED_TAGS = setOf("filmscore", "energetic", "rnb", "hiphop", "rock", "electronic")
 
