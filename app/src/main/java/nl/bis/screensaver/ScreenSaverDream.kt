@@ -46,7 +46,7 @@ class ScreenSaverDream : DreamService() {
         ) {
             return super.dispatchKeyEvent(event)
         }
-        // Elke andere knop maakt de tv weer wakker.
+        // Elke andere knop (OK, Terug, Home, ▲ ▼) maakt de tv weer wakker; ◀ ▶ bladeren door de beelden.
         if (event.action == KeyEvent.ACTION_UP) finish()
         return true
     }

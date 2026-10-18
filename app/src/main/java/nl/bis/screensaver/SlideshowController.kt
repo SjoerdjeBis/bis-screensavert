@@ -224,8 +224,8 @@ class SlideshowController(
 
     /**
      * Afstandsbediening. Bij muziek: OK = pauze, links/rechts = vorige/volgende.
-     * In het voorbeeld (niet in de screensaver) springt rechts naar het volgende beeld en links
-     * terug naar het vorige.
+     * Rechts springt naar het volgende beeld en links terug naar het vorige, ook in de
+     * screensaver; daar maken de andere knoppen de tv wakker.
      */
     fun handleKey(event: KeyEvent, inScreensaver: Boolean): Boolean {
         val up = event.action == KeyEvent.ACTION_UP
@@ -247,11 +247,11 @@ class SlideshowController(
             }
             return false
         }
-        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+        if (event.keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
             if (up) forward()
             return true
         }
-        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+        if (event.keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
             if (up) back()
             return true
         }

@@ -124,7 +124,8 @@ class JamendoPlayer(private val context: Context, private val scope: CoroutineSc
 
     /**
      * Rustige, instrumentale nummers in de gekozen stijl, de populairste eerst; een dag bewaard.
-     * Nummers met een tag uit [EXCLUDED_TAGS] vallen af.
+     * Nummers met een tag uit [EXCLUDED_TAGS] vallen af, behalve als er dan te weinig overblijven:
+     * country staat bij Jamendo vaak ook als rock te boek, en dan bleef er niets over.
      */
     private suspend fun loadTracks(): List<JamendoTrack> = withContext(Dispatchers.IO) {
         val query = source.query ?: return@withContext emptyList()
@@ -140,16 +141,20 @@ class JamendoPlayer(private val context: Context, private val scope: CoroutineSc
                     "https://api.jamendo.com/v3.0/tracks/?format=json&limit=200&audioformat=mp32" +
                         "&order=popularity_total&vocalinstrumental=instrumental&include=musicinfo" +
                         query + "&client_id=" + Http.encode(clientId),
-                ).also { cache.writeText(it) }
+                ).also { if ((JSONObject(it).optJSONArray("results")?.length() ?: 0) > 0) cache.writeText(it) }
             }.getOrElse { if (cache.exists()) cache.readText() else return@withContext emptyList() }
         }
         val results = JSONObject(json).optJSONArray("results") ?: JSONArray()
-        (0 until results.length()).mapNotNull { i ->
+        // Een lege lijst (bijvoorbeeld van een eerdere fout) niet een dag lang bewaren.
+        if (results.length() == 0) cache.delete()
+        val all = (0 until results.length()).mapNotNull { i ->
             val t = results.getJSONObject(i)
             val audio = t.optStringOrNull("audio") ?: return@mapNotNull null
-            if (tagsOf(t).any { it in EXCLUDED_TAGS }) return@mapNotNull null
-            JamendoTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio)
+            JamendoTrack("jamendo:${t.optString("id")}", t.optString("name"), t.optString("artist_name"), audio) to tagsOf(t)
         }
+        val calm = all.filter { (_, tags) -> tags.none { it in EXCLUDED_TAGS } }
+        val strict = all.filter { (_, tags) -> tags.none { it in ALWAYS_EXCLUDED } }
+        (if (calm.size >= MIN_TRACKS) calm else strict).map { it.first }
     }
 
     /** Genres, instrumenten en overige tags van een nummer, in kleine letters. */
@@ -164,5 +169,11 @@ class JamendoPlayer(private val context: Context, private val scope: CoroutineSc
     private companion object {
         /** Past niet onder een rustige screensaver. */
         val EXCLUDED_TAGS = setOf("filmscore", "energetic", "rnb", "hiphop", "rock", "electronic")
+
+        /** Valt altijd af, ook als er weinig keus is. */
+        val ALWAYS_EXCLUDED = setOf("rnb", "hiphop", "electronic")
+
+        /** Minder rustige nummers dan dit, dan mogen ook rock en de rest erbij. */
+        const val MIN_TRACKS = 20
     }
 }
