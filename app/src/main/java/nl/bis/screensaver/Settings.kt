@@ -109,13 +109,17 @@ class Settings(context: Context) {
 
     val hasAmbientKeys get() = !pexelsKey.isNullOrBlank() || !pixabayKey.isNullOrBlank() || !coverrKey.isNullOrBlank()
 
-    /** Thema's die aan staan; standaard alle. */
+    /** Thema's die aan staan; standaard alle. Thema's die er later bij komen, staan meteen aan. */
     var ambientThemes: Set<AmbientTheme>
         get() {
             val keys = prefs.getStringSet("sfeer_themas", null) ?: return AmbientTheme.entries.toSet()
-            return AmbientTheme.entries.filter { it.key in keys }.toSet()
+            val known = prefs.getStringSet("sfeer_themas_bekend", null) ?: FIRST_THEMES
+            return AmbientTheme.entries.filter { it.key in keys || it.key !in known }.toSet()
         }
-        set(value) = prefs.edit().putStringSet("sfeer_themas", value.map { it.key }.toSet()).apply()
+        set(value) = prefs.edit()
+            .putStringSet("sfeer_themas", value.map { it.key }.toSet())
+            .putStringSet("sfeer_themas_bekend", AmbientTheme.entries.map { it.key }.toSet())
+            .apply()
 
     /** Beelden die je in het voorbeeld hebt weggestemd ("beeld:bron:id"). */
     var blockedImages: Set<String>
@@ -155,6 +159,11 @@ class Settings(context: Context) {
 
     companion object {
         val SLIDE_SECONDS_OPTIONS = listOf(20, 30, 45, 60, 90, 120, 180, 300)
+        /** De thema's van voor er een lijst met bekende thema's werd bewaard. */
+        private val FIRST_THEMES = setOf(
+            "haardvuur", "regen", "bos", "zee", "sneeuw", "sterren",
+            "stad", "aarde", "bloemen", "onderwater", "herfst", "kaarslicht",
+        )
         const val DEFAULT_PLAYLIST = "PLda8vj-D2CNsgAYRi18ZZ2u3fJyAdqqTG"
     }
 }

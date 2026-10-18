@@ -22,6 +22,14 @@ enum class AmbientTheme(val key: String, val label: String, val query: String) {
     UNDERWATER("onderwater", "Onderwater", "underwater"),
     AUTUMN("herfst", "Herfstbladeren", "autumn leaves"),
     CANDLE("kaarslicht", "Kaarslicht", "candle light"),
+    WATERFALL("watervallen", "Watervallen", "waterfall"),
+    CLOUDS("wolken", "Wolken", "clouds timelapse"),
+    SUNSET("zonsondergang", "Zonsondergang aan zee", "sunset beach"),
+    MOUNTAINS("bergen", "Bergen", "mountains"),
+    LAKES("meren", "Meren", "lake"),
+    RIVERS("rivieren", "Rivieren en beken", "river"),
+    DESERT("woestijn", "Woestijn", "desert"),
+    FIELDS("velden", "Velden en weilanden", "fields"),
 }
 
 /** Een sfeerclip van Pexels, Pixabay of Coverr. */
