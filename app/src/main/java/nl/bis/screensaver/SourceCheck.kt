@@ -86,29 +86,36 @@ class SourceCheck(context: Context) {
         }
     }
 
+    /** Precies wat de speler doet: dezelfde aanvraag en hetzelfde filter, zo nodig ook zonder sortering. */
     private suspend fun jamendo(): SourceResult {
         val id = settings.jamendoClientId?.takeIf { it.isNotBlank() } ?: return off("Geen Client ID ingevuld.")
         val source = settings.musicSource
         // Bij Spotify zoekt de app niets bij Jamendo; test dan de sleutel met piano.
         val style = source.takeIf { it.query != null } ?: MusicSource.PIANO
-        val response = Http.request(
-            "GET",
-            "https://api.jamendo.com/v3.0/tracks/?format=json&limit=200&audioformat=mp32" +
-                "&vocalinstrumental=instrumental" + style.query + "&client_id=" + Http.encode(id),
-        )
-        if (!response.ok) return failed("Jamendo gaf fout ${response.code}.")
-        val json = JSONObject(response.body)
-        val headers = json.optJSONObject("headers")
-        if (headers?.optString("status") != "success") {
-            return failed("Jamendo weigert: ${headers?.optString("error_message")?.ifBlank { null } ?: "onbekende fout"}.")
-        }
-        val count = json.optJSONArray("results")?.length() ?: 0
         val label = style.label.lowercase()
-        return when {
-            count == 0 -> failed("Sleutel werkt, maar Jamendo vindt geen $label-nummers.")
-            source == MusicSource.SPOTIFY -> ok("Werkt ($count $label-nummers); de muziekbron staat nu op Spotify.")
-            else -> ok("Werkt: $count $label-nummers gevonden.")
+        val steps = mutableListOf<String>()
+        for (ordered in listOf(true, false)) {
+            val response = Http.request("GET", JamendoPlayer.tracksUrl(style.query!!, id, ordered))
+            val how = if (ordered) "populairste eerst" else "zonder sortering"
+            if (!response.ok) {
+                steps += "$how: fout ${response.code}"
+                continue
+            }
+            val json = JSONObject(response.body)
+            val headers = json.optJSONObject("headers")
+            if (headers?.optString("status") != "success") {
+                steps += "$how: ${headers?.optString("error_message")?.ifBlank { null } ?: "geweigerd"}"
+                continue
+            }
+            val found = json.optJSONArray("results")?.length() ?: 0
+            val playable = JamendoPlayer.playable(json).size
+            if (playable > 0) {
+                val note = if (source == MusicSource.SPOTIFY) "; de muziekbron staat nu op Spotify" else ""
+                return ok("Werkt: $playable speelbare $label-nummers ($how, $found gevonden)$note.")
+            }
+            steps += "$how: $found gevonden, 0 speelbaar"
         }
+        return failed("Geen speelbare $label-nummers. ${steps.joinToString("; ")}.")
     }
 
     private suspend fun google(): SourceResult {
