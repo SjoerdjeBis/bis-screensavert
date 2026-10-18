@@ -103,7 +103,11 @@ class Settings(context: Context) {
         get() = prefs.getString("pixabay_key", null)
         set(value) = prefs.edit().putString("pixabay_key", value).apply()
 
-    val hasAmbientKeys get() = !pexelsKey.isNullOrBlank() || !pixabayKey.isNullOrBlank()
+    var coverrKey: String?
+        get() = prefs.getString("coverr_key", null)
+        set(value) = prefs.edit().putString("coverr_key", value).apply()
+
+    val hasAmbientKeys get() = !pexelsKey.isNullOrBlank() || !pixabayKey.isNullOrBlank() || !coverrKey.isNullOrBlank()
 
     /** Thema's die aan staan; standaard alle. */
     var ambientThemes: Set<AmbientTheme>

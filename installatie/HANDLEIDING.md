@@ -33,10 +33,13 @@ app opnieuw **Screensaver instellen** en vul alleen de poort in. Koppelen hoeft 
 Sommige onderdelen hebben een gratis sleutel nodig. Kies op het keuzescherm **Sleutels invullen**,
 scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
 
-- **Sfeer** (Pixabay en/of Pexels; één is genoeg):
+- **Sfeer** (Pixabay, Pexels en/of Coverr; één is genoeg, meer geeft meer keus):
   - Pixabay: maak een account op pixabay.com en ga naar **https://pixabay.com/api/docs/**.
     Ingelogd staat je sleutel bij "Parameters" › "key".
   - Pexels: account op pexels.com, dan **https://www.pexels.com/api/new/** (persoonlijk gebruik).
+  - Coverr: account op coverr.co, dan **https://coverr.co/developers** › app toevoegen. Plak de
+    *API Key* (niet de ID). Een nieuwe app mag 50 verzoeken per uur; de tv gebruikt er één per
+    thema per dag.
 - **Muziek** (Jamendo): account op **https://devportal.jamendo.com**, dan *My Applications* ›
   *Create a new application* (naam `Bis Screensavert`, niet-commercieel). Kopieer de Client ID.
 - **Google Foto's en Drive**: zie **GOOGLE-FOTOS.md**.

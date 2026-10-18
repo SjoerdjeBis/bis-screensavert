@@ -16,6 +16,7 @@ class KeyServer(context: Context, private val onSaved: (List<String>) -> Unit) :
         val saved = mutableListOf<String>()
         form["pexels"]?.takeIf { it.isNotEmpty() }?.let { settings.pexelsKey = it; saved += "Pexels" }
         form["pixabay"]?.takeIf { it.isNotEmpty() }?.let { settings.pixabayKey = it; saved += "Pixabay" }
+        form["coverr"]?.takeIf { it.isNotEmpty() }?.let { settings.coverrKey = it; saved += "Coverr" }
         form["jamendo"]?.takeIf { it.isNotEmpty() }?.let { settings.jamendoClientId = it; saved += "Jamendo" }
         val googleId = form["google_id"]?.takeIf { it.isNotEmpty() }
         val googleSecret = form["google_secret"]?.takeIf { it.isNotEmpty() }
@@ -54,6 +55,7 @@ $notice
 <fieldset><legend>Sfeerbeelden</legend>
 ${field("pexels", "Pexels API-sleutel", !settings.pexelsKey.isNullOrBlank(), "Maak er een op <a href=https://www.pexels.com/api/new/>pexels.com/api/new</a>.")}
 ${field("pixabay", "Pixabay API-sleutel", !settings.pixabayKey.isNullOrBlank(), "Ingelogd te vinden op <a href=https://pixabay.com/api/docs/>pixabay.com/api/docs</a>, bij \"key\".")}
+${field("coverr", "Coverr API Key", !settings.coverrKey.isNullOrBlank(), "Maak een app aan op <a href=https://coverr.co/developers>coverr.co/developers</a> en plak de \"API Key\" (niet de ID).")}
 </fieldset>
 <fieldset><legend>Muziek</legend>
 ${field("jamendo", "Jamendo Client ID", !settings.jamendoClientId.isNullOrBlank(), "Maak een app aan op <a href=https://devportal.jamendo.com>devportal.jamendo.com</a>.")}

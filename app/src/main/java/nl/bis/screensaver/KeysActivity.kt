@@ -88,6 +88,7 @@ class KeysActivity : ComponentActivity() {
                         listOf(
                             "Pexels" to !settings.pexelsKey.isNullOrBlank(),
                             "Pixabay" to !settings.pixabayKey.isNullOrBlank(),
+                            "Coverr" to !settings.coverrKey.isNullOrBlank(),
                             "Jamendo (muziek)" to !settings.jamendoClientId.isNullOrBlank(),
                             "Google Foto's" to (settings.googleClientId != null && settings.googleClientSecret != null),
                         )

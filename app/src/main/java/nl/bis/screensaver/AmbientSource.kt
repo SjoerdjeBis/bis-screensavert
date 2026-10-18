@@ -6,6 +6,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 
 /** Een sfeerthema met de Engelse zoekterm die Pexels en Pixabay begrijpen. */
 enum class AmbientTheme(val key: String, val label: String, val query: String) {
@@ -23,7 +24,7 @@ enum class AmbientTheme(val key: String, val label: String, val query: String) {
     CANDLE("kaarslicht", "Kaarslicht", "candle light"),
 }
 
-/** Een sfeerclip van Pexels of Pixabay. */
+/** Een sfeerclip van Pexels, Pixabay of Coverr. */
 data class AmbientClip(
     val id: String,
     val url: String,
@@ -33,7 +34,7 @@ data class AmbientClip(
 )
 
 /**
- * Sfeerbeelden van Pexels en Pixabay: gratis 4K-clips, zonder reclame. Per thema worden een
+ * Sfeerbeelden van Pexels, Pixabay en Coverr: gratis clips, zonder reclame. Per thema worden een
  * paar clips na elkaar getoond. Korte clips lopen in een lus, zodat elke clip lang genoeg staat.
  * Weggestemde clips en uitgezette thema's komen niet meer voorbij.
  */
@@ -67,14 +68,24 @@ class AmbientSource(private val context: Context) : SlideSource {
 
     private suspend fun clips(theme: AmbientTheme): List<AmbientClip> {
         cache[theme]?.let { return it }
-        val file = File(context.cacheDir, "sfeer-${theme.key}.json")
+        // Komt er een bron bij (of gaat er een af), dan meteen een nieuwe lijst in plaats van na een dag.
+        val sources = listOf(settings.pexelsKey, settings.pixabayKey, settings.coverrKey)
+            .joinToString("") { if (it.isNullOrBlank()) "0" else "1" }
+        val file = File(context.cacheDir, "sfeer-${theme.key}-$sources.json")
         val fresh = file.exists() && System.currentTimeMillis() - file.lastModified() < CACHE_MS
         val clips = if (fresh) {
             read(file, theme)
         } else {
+            // Coverr staat maar 50 verzoeken per uur toe; lukt het even niet, bewaar de lijst dan niet een dag zonder Coverr.
+            val fromCoverr = runCatching { coverr(theme) }
             val fetched = runCatching { pexels(theme) }.getOrDefault(emptyList()) +
-                runCatching { pixabay(theme) }.getOrDefault(emptyList())
-            if (fetched.isNotEmpty()) write(file, fetched) else if (file.exists()) return read(file, theme)
+                runCatching { pixabay(theme) }.getOrDefault(emptyList()) +
+                fromCoverr.getOrDefault(emptyList())
+            if (fetched.isNotEmpty() && fromCoverr.isSuccess) {
+                write(file, fetched)
+            } else if (fetched.isEmpty() && file.exists()) {
+                return read(file, theme)
+            }
             fetched
         }
         cache[theme] = clips
@@ -122,6 +133,31 @@ class AmbientSource(private val context: Context) : SlideSource {
                 theme = theme,
                 maker = h.optStringOrNull("user"),
                 source = "Pixabay",
+            )
+        }
+    }
+
+    /**
+     * Coverr: rustige, filmische clips. De link heet altijd 1080p.mp4, dus alleen liggende clips die
+     * minstens zo hoog zijn; geen AI-beelden. Eén verzoek per thema per dag past ruim in de 50 per uur.
+     */
+    private suspend fun coverr(theme: AmbientTheme): List<AmbientClip> {
+        val key = settings.coverrKey?.takeIf { it.isNotBlank() } ?: return emptyList()
+        val url = "https://api.coverr.co/videos?page_size=40&urls=true&query=" + Http.encode(theme.query)
+        val response = Http.request("GET", url, bearer = key)
+        if (!response.ok) throw IOException("Coverr gaf fout ${response.code}")
+        val hits = JSONObject(response.body).optJSONArray("hits") ?: return emptyList()
+        return (0 until hits.length()).mapNotNull { i ->
+            val h = hits.getJSONObject(i)
+            if (h.optBoolean("is_vertical") || h.optBoolean("is_ai_generated") || h.optBoolean("is_premium")) return@mapNotNull null
+            if (h.optInt("max_height") < 1080) return@mapNotNull null
+            val mp4 = h.optJSONObject("urls")?.optStringOrNull("mp4") ?: return@mapNotNull null
+            AmbientClip(
+                id = "coverr:${h.optString("id")}",
+                url = mp4,
+                theme = theme,
+                maker = null,
+                source = "Coverr",
             )
         }
     }
