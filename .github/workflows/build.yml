@@ -24,6 +24,10 @@ jobs:
           java-version: "17"
 
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          # Standaard bewaart deze stap de cache alleen vanaf de hoofdbranch; wij bouwen op een
+          # andere branch, dus begon elke build met lege handen (alles opnieuw downloaden en omzetten).
+          cache-read-only: false
 
       - name: App bouwen
         run: ./gradlew --no-daemon assembleRelease
