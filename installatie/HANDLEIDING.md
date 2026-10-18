@@ -68,7 +68,7 @@ sleutels invullen.
 
 **In het voorbeeld** (een kaart gekozen, nog niet als screensaver):
 **◀** vorig beeld (tot 30 terug), **▶** volgend beeld, **▼** dit beeld nooit meer tonen (werkt ook in je mix), **▲** dit nummer
-nooit meer spelen. In de echte screensaver maakt elke knop de tv wakker.
+nooit meer spelen. In de echte screensaver werken **◀** en **▶** ook; met OK, Terug of Home maak je de tv wakker.
 
 ## Goed om te weten
 
