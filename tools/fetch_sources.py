@@ -1,0 +1,343 @@
+"""Haalt kunstwerken op bij extra musea en berekent beeld-vingerafdrukken tegen dubbelingen.
+
+Draait in GitHub Actions (vanuit de ontwikkelomgeving zijn de API's niet bereikbaar).
+
+Resultaat:
+  data/cma_raw.json     – Cleveland Museum of Art (open access, CC0), Engelse teksten
+  data/rijks_raw.json   – Rijksmuseum (Linked Art), Nederlandse teksten
+  data/hashes.json      – "<bron>:<id>" -> dHash van de afbeelding, voor alle bronnen
+  data/debug/*.json     – een paar ruwe antwoorden, om de datavorm te kunnen controleren
+"""
+import io
+import json
+import os
+import sys
+import time
+import urllib.parse
+import urllib.error
+import urllib.request
+
+from PIL import Image
+
+UA = "BisScreensavert/1.0 (persoonlijke screensaver; github.com/SjoerdjeBis)"
+os.makedirs("data/debug", exist_ok=True)
+
+
+def get(url, accept="application/json", timeout=60):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def get_json(url, accept="application/json"):
+    return json.loads(get(url, accept))
+
+
+def debug(name, data):
+    with open(f"data/debug/{name}.json", "w") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+
+
+def dhash(image_bytes, size=8):
+    """Verschil-hash: gelijke of bijna gelijke afbeeldingen geven (bijna) dezelfde 64 bits."""
+    img = Image.open(io.BytesIO(image_bytes)).convert("L").resize((size + 1, size), Image.LANCZOS)
+    px = list(img.tobytes())
+    bits = 0
+    for y in range(size):
+        for x in range(size):
+            bits = (bits << 1) | (px[y * (size + 1) + x] > px[y * (size + 1) + x + 1])
+    return f"{bits:016x}"
+
+
+# ---------- Cleveland Museum of Art ----------
+
+def fetch_cma(limit=1000):
+    params = {
+        "type": "Painting",
+        "has_image": 1,
+        "cc0": 1,
+        "limit": limit,
+        "fields": "id,accession_number,title,creation_date,creators,description,wall_description,"
+                  "did_you_know,images,culture,department,type",
+    }
+    data = get_json("https://openaccess-api.clevelandart.org/api/artworks/?" + urllib.parse.urlencode(params))
+    items = data.get("data", [])
+    debug("cma_eerste", items[:2])
+    out = []
+    for a in items:
+        text = a.get("wall_description") or a.get("description")
+        web = ((a.get("images") or {}).get("web") or {}).get("url")
+        if not text or not web or len(text) < 150:
+            continue
+        out.append({
+            "id": a["id"],
+            "titel_en": a.get("title"),
+            "kunstenaar": ((a.get("creators") or [{}])[0] or {}).get("description"),
+            "datum": a.get("creation_date"),
+            "tekst_en": text,
+            "afbeelding": web,
+            "afbeelding_groot": ((a.get("images") or {}).get("print") or {}).get("url") or web,
+            "cultuur": a.get("culture"),
+        })
+    print(f"CMA: {len(items)} schilderijen, {len(out)} met tekst en afbeelding")
+    return out
+
+
+# ---------- Rijksmuseum (Linked Art) ----------
+
+RIJKS_MAKERS = [
+    "Rembrandt van Rijn", "Johannes Vermeer", "Frans Hals", "Jan Steen", "Vincent van Gogh",
+    "Jacob Isaacksz. van Ruisdael", "Meindert Hobbema", "Hendrick Avercamp", "Pieter de Hooch",
+    "Pieter Jansz. Saenredam", "George Hendrik Breitner", "Isaac Israëls", "Hendrik Willem Mesdag",
+    "Johan Barthold Jongkind", "Jan Hendrik Weissenbruch", "Anton Mauve", "Jacob Maris",
+    "Gerard ter Borch (II)", "Jan Asselijn", "Paulus Potter", "Willem van de Velde (II)",
+    "Adriaen Coorte", "Rachel Ruysch", "Judith Leyster", "Jan van Huysum", "Aelbert Cuyp",
+    "Jan van Goyen", "Pieter Claesz.", "Willem Claesz. Heda", "Carel Fabritius",
+    "Jan Davidsz. de Heem", "Gerard Dou", "Ferdinand Bol", "Gabriël Metsu", "Nicolaes Maes",
+    "Jan van der Heyden", "Adriaen van Ostade", "Hendrick ter Brugghen", "Dirck van Baburen",
+    "Jan Toorop", "Piet Mondriaan", "Floris Verster", "Suze Robertson", "Thérèse Schwartze",
+    "Willem Witsen", "Jozef Israëls", "Matthijs Maris", "Willem Maris", "Charley Toorop",
+]
+
+LA = 'application/ld+json;profile="https://linked.art/ns/v1/linked-art.json"'
+
+
+def rijks_search(maker, max_items=12):
+    url = "https://data.rijksmuseum.nl/search/collection?" + urllib.parse.urlencode(
+        {"creator": maker, "type": "painting", "imageAvailable": "true"})
+    data = get_json(url, "application/ld+json")
+    return [i["id"] for i in data.get("orderedItems", [])][:max_items], data
+
+
+def first(lst):
+    return lst[0] if lst else None
+
+
+def lang_of(entry):
+    labels = " ".join((l.get("_label") or l.get("id") or "") for l in entry.get("language", []))
+    if "Dutch" in labels or "300388256" in labels or "nl" == labels.strip():
+        return "nl"
+    if "English" in labels or "300388277" in labels:
+        return "en"
+    return "?"
+
+
+RIJKS_VARIANTEN = [
+    ("", LA),
+    ("", "application/ld+json"),
+    ("?_profile=la&_mediatype=application/ld%2Bjson", "*/*"),
+    ("", "application/json"),
+]
+
+
+def diagnose_rijks(obj_url):
+    """Legt vast wat het Rijksmuseum per vraagvorm teruggeeft."""
+    result = {}
+    for suffix, accept in RIJKS_VARIANTEN:
+        try:
+            req = urllib.request.Request(obj_url + suffix, headers={"User-Agent": UA, "Accept": accept})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                body = r.read()
+                result[f"{suffix} | {accept}"] = {"status": r.status, "url": r.geturl(),
+                                                   "type": r.headers.get("content-type"), "begin": body[:300].decode("utf-8", "replace")}
+        except Exception as e:  # noqa: BLE001
+            result[f"{suffix} | {accept}"] = str(e)
+    debug("rijks_varianten", result)
+
+
+def fetch_la(url):
+    """Haalt een Linked Art-document op; probeert de vraagvormen die het Rijksmuseum begrijpt."""
+    last = None
+    for suffix, accept in RIJKS_VARIANTEN:
+        try:
+            return get_json(url + suffix, accept)
+        except Exception as e:  # noqa: BLE001
+            last = e
+    raise ValueError(f"geen JSON voor {url}: {last}")
+
+
+DUTCH = "300388256"
+LABEL_TEXT = "300048722"
+
+
+def is_dutch(entry):
+    return any(DUTCH in (l.get("id") or "") for l in entry.get("language", []))
+
+
+def classified(entry, aat):
+    return any(aat in (c.get("id") or "") for c in entry.get("classified_as", []))
+
+
+def walk_parts(entry):
+    yield entry
+    for part in entry.get("part", []):
+        yield from walk_parts(part)
+
+
+def rijks_object(obj_url):
+    obj = fetch_la(obj_url)
+    if not os.path.exists("data/debug/rijks_object_ruw.json"):
+        debug("rijks_object_ruw", obj)
+    names = [n for n in obj.get("identified_by", []) if n.get("type") == "Name"]
+    ids = [n for n in obj.get("identified_by", []) if n.get("type") == "Identifier"]
+    title_nl = next((n["content"] for n in names if is_dutch(n)), None) or (names[0]["content"] if names else None)
+    # De zaaltekst staat in subject_of, als onderdeel met het type 'label text'.
+    label = None
+    for subject in obj.get("subject_of", []):
+        if not is_dutch(subject):
+            continue
+        for part in walk_parts(subject):
+            if part.get("content") and classified(part, LABEL_TEXT):
+                label = label or part["content"]
+    produced = obj.get("produced_by") or {}
+    maker = None
+    for part in [produced] + produced.get("part", []):
+        for c in part.get("carried_out_by", []):
+            maker = maker or c.get("_label")
+    if not maker:
+        for subject in obj.get("subject_of", []):
+            for part in walk_parts(subject):
+                text = part.get("content") or ""
+                if " (" in text and ")," in text and not maker:
+                    maker = text.split(" (")[0]
+    timespan = produced.get("timespan") or {}
+    date = next((n.get("content") for n in timespan.get("identified_by", [])), None)
+    image = None
+    for shown in obj.get("shows", []):
+        try:
+            visual = fetch_la(shown["id"])
+            if not os.path.exists("data/debug/rijks_visual.json"):
+                debug("rijks_visual", visual)
+            for d in visual.get("digitally_shown_by", []):
+                digital = fetch_la(d["id"]) if not d.get("access_point") else d
+                if not os.path.exists("data/debug/rijks_digital.json"):
+                    debug("rijks_digital", digital)
+                for ap in digital.get("access_point", []):
+                    image = image or ap.get("id")
+        except Exception as e:  # noqa: BLE001
+            print("  beeld niet gevonden:", e)
+    return obj, {
+        "id": obj_url.rsplit("/", 1)[-1],
+        "objectnummer": first([i["content"] for i in ids]),
+        "titel": title_nl,
+        "kunstenaar": maker,
+        "datum": date,
+        "teksten_nl": [label] if label else [],
+        "afbeelding": image,
+    }
+
+
+def fetch_rijks():
+    out, debugged = [], 0
+    for maker in RIJKS_MAKERS:
+        try:
+            urls, raw = rijks_search(maker)
+        except Exception as e:  # noqa: BLE001
+            print(f"Rijks zoeken {maker}: fout {e}")
+            continue
+        if debugged == 0:
+            debug("rijks_zoek", raw)
+        print(f"Rijks {maker}: {len(urls)}")
+        for u in urls:
+            try:
+                obj, item = rijks_object(u)
+            except Exception as e:  # noqa: BLE001
+                import traceback
+                print(f"  {u}: fout {e}")
+                if not os.path.exists("data/debug/rijks_fout.txt"):
+                    open("data/debug/rijks_fout.txt", "w").write(u + "\n" + traceback.format_exc())
+                continue
+            if debugged < 3:
+                debug(f"rijks_object_{debugged}", obj)
+                debugged += 1
+            item["zoekterm"] = maker
+            out.append(item)
+            time.sleep(0.2)
+    with_text = [o for o in out if o["teksten_nl"] and o["afbeelding"]]
+    print(f"Rijks: {len(out)} objecten, {len(with_text)} met Nederlandse tekst en afbeelding")
+    return out
+
+
+# ---------- vingerafdrukken ----------
+
+def thumb_url(source, item):
+    if source == "aic":
+        return f"https://www.artic.edu/iiif/2/{item['image_id']}/full/200,/0/default.jpg"
+    if source == "rijks":
+        url = item.get("afbeelding") or ""
+        return url.replace("/full/max/", "/full/200,/") if "/full/" in url else url
+    return item.get("afbeelding")
+
+
+def fingerprints(sources):
+    try:
+        hashes = json.load(open("data/hashes.json"))
+    except FileNotFoundError:
+        hashes = {}
+    for source, items in sources.items():
+        for item in items:
+            key = f"{source}:{item['id']}"
+            url = thumb_url(source, item)
+            if key in hashes or not url:
+                continue
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": UA, "AIC-User-Agent": UA, "Accept": "image/*"})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    hashes[key] = dhash(r.read())
+            except Exception as e:  # noqa: BLE001
+                print(f"hash {key}: fout {e}")
+            time.sleep(0.1)
+    with open("data/hashes.json", "w") as f:
+        json.dump(hashes, f, indent=0, sort_keys=True)
+    print(f"{len(hashes)} vingerafdrukken")
+
+
+def diagnose_aic(items):
+    """Probeert één AIC-afbeelding met verschillende headers en legt de statuscodes vast."""
+    if not items:
+        return
+    url = f"https://www.artic.edu/iiif/2/{items[0]['image_id']}/full/200,/0/default.jpg"
+    variants = {
+        "eigen": {"User-Agent": UA, "Accept": "image/*"},
+        "met_aic_header": {"User-Agent": UA, "AIC-User-Agent": UA, "Accept": "image/*"},
+        "okhttp": {"User-Agent": "okhttp/4.12.0"},
+        "browser": {"User-Agent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/126 Mobile Safari/537.36",
+                    "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"},
+        "geen": {},
+    }
+    result = {"url": url}
+    for name, headers in variants.items():
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
+                result[name] = r.status
+        except urllib.error.HTTPError as e:
+            result[name] = f"{e.code} {e.headers.get('server')} {e.headers.get('cf-mitigated')}"
+        except Exception as e:  # noqa: BLE001
+            result[name] = str(e)
+    debug("aic_afbeelding", result)
+    print("AIC-afbeelding:", result)
+
+
+def main():
+    wanted = set(sys.argv[1:]) or {"cma", "rijks"}
+    sources = {"aic": json.load(open("data/aic_raw.json"))}
+    diagnose_aic(sources["aic"])
+    if "cma" in wanted and not os.path.exists("data/cma_raw.json"):
+        try:
+            sources["cma"] = fetch_cma()
+            json.dump(sources["cma"], open("data/cma_raw.json", "w"), ensure_ascii=False, indent=1)
+        except Exception as e:  # noqa: BLE001
+            print("CMA mislukt:", e)
+    if "cma" not in sources and os.path.exists("data/cma_raw.json"):
+        sources["cma"] = json.load(open("data/cma_raw.json"))
+    if "rijks" in wanted:
+        try:
+            sources["rijks"] = fetch_rijks()
+            json.dump(sources["rijks"], open("data/rijks_raw.json", "w"), ensure_ascii=False, indent=1)
+        except Exception as e:  # noqa: BLE001
+            print("Rijks mislukt:", e)
+    fingerprints(sources)
+
+
+if __name__ == "__main__":
+    main()

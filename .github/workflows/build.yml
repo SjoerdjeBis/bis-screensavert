@@ -1,0 +1,50 @@
+name: Bouw Bis ScreenSaver
+
+on:
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bouw-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          # Standaard bewaart deze stap de cache alleen vanaf de hoofdbranch; wij bouwen op een
+          # andere branch, dus begon elke build met lege handen (alles opnieuw downloaden en omzetten).
+          cache-read-only: false
+
+      - name: App bouwen en testen
+        run: ./gradlew --no-daemon assembleRelease testReleaseUnitTest
+
+      - name: Downloadbestanden maken
+        run: |
+          # De app los, met het versienummer erbij, voor Downloader en het bijwerken vanaf de tv.
+          cp app/build/outputs/apk/release/app-release.apk BisScreensavert.apk
+          echo "{\"versionCode\": ${{ github.run_number }}, \"versionName\": \"0.1.${{ github.run_number }}\"}" > versie.json
+
+      - name: Downloadpagina bijwerken
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete laatste --yes --cleanup-tag || true
+          gh release create laatste BisScreensavert.apk versie.json \
+            --target "${{ github.sha }}" \
+            --title "Bis Screensavert – laatste versie" \
+            --notes "Versie 0.1.${{ github.run_number }} (branch ${{ github.ref_name }}). Installeren en gebruik: installatie/HANDLEIDING.md in de repository." \
+            --prerelease
