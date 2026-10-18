@@ -10,8 +10,10 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
   diavoorstelling in Views met Media3. De screensaver is een `DreamService` (`ScreenSaverDream`).
 - **Branch en versies:** `main` is de hoofdbranch; werk op andere branches komt erin via een pull
   request. GitHub Pages (`docs/`) komt van `main`. Elke push, op welke branch ook, bouwt in GitHub Actions (`build.yml`) en zet `BisScreensavert.apk` op de release
-  `laatste`; de app werkt zichzelf daarvanaf bij (`Updater.kt`). Commits van de CI-bot starten geen
-  build; draai dan `build.yml` met de hand.
+  `laatste`; de app werkt zichzelf daarvanaf bij (`Updater.kt`). `main` is beschermd: alleen met een
+  groene build. De databots (`kunstdata.yml`, `extra.yml`) pushen daarom op `main` naar een eigen
+  branch `bot/…`, maken een pull request, starten de build met de hand (pushes van de bot doen dat
+  niet zelf) en voegen samen via auto-merge (`tools/bot_*.sh`). Op andere branches pushen ze direct.
 - **Ondertekening:** `signing/bis-screensaver.jks` is een vaste sleutel voor deze hobby-app, zodat
   updates over de vorige versie heen installeren. Niet hergebruiken voor iets anders.
 - **Zelf instellen als screensaver:** `SelfSetup.kt` koppelt via Draadloze foutopsporing met de
