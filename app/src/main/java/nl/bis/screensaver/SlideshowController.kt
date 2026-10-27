@@ -444,7 +444,8 @@ class SlideshowController(
         hideStatus()
         fade(caption, 0f)
         val duration = settings.slideSeconds * 1000L
-        crossfadeTo(drawable, duration)
+        // Een schilderij of historische foto hoort stil en helemaal in beeld te staan; alleen de rest zoomt langzaam in.
+        crossfadeTo(drawable, duration, zoom = mode != Mode.ART && mode != Mode.HISTORY)
         visibleSlide = slide
         currentImageVote = slide.voteId
         delay(FADE_MS)
@@ -548,13 +549,19 @@ class SlideshowController(
      * beide lagen tegelijk doorzichtig: anders schijnt het laatste beeld van een eerdere video
      * erdoorheen. Na een video komt de foto gewoon over het stilstaande videobeeld heen.
      */
-    private fun crossfadeTo(drawable: Drawable, durationMs: Long) {
+    private fun crossfadeTo(drawable: Drawable, durationMs: Long, zoom: Boolean) {
         val current = imageLayers[frontImage]
         val nextIndex = 1 - frontImage
         val next = imageLayers[nextIndex]
         next.image.setImageDrawable(drawable)
         next.background.setImageDrawable(drawable)
-        kenBurns(next.image, durationMs + FADE_MS)
+        if (zoom) {
+            kenBurns(next.image, durationMs + FADE_MS)
+        } else {
+            next.image.animate().cancel()
+            next.image.scaleX = 1f
+            next.image.scaleY = 1f
+        }
         current.layer.animate().cancel()
         next.layer.animate().cancel()
         when {
