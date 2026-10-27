@@ -158,7 +158,7 @@ class Settings(context: Context) {
         set(value) = prefs.edit().putStringSet("weggestemde_nummers", value).apply()
 
     companion object {
-        val SLIDE_SECONDS_OPTIONS = listOf(20, 30, 45, 60, 90, 120, 180, 300)
+        val SLIDE_SECONDS_OPTIONS = listOf(10, 15, 20, 30, 45, 60, 90, 120, 180, 300)
         /** De thema's van voor er een lijst met bekende thema's werd bewaard. */
         private val FIRST_THEMES = setOf(
             "haardvuur", "regen", "bos", "zee", "sneeuw", "sterren",

@@ -70,8 +70,10 @@ zwijgt die muziek. Bij elk nieuw nummer staat linksboven
 sleutels invullen.
 
 **In het voorbeeld** (een kaart gekozen, nog niet als screensaver):
-**◀** vorig beeld (tot 30 terug), **▶** volgend beeld, **▼** dit beeld nooit meer tonen (werkt ook in je mix), **▲** dit nummer
-nooit meer spelen. In de echte screensaver werken **◀** en **▶** ook; met OK, Terug of Home maak je de tv wakker.
+**◀** vorig beeld (tot 30 terug), **▶** volgend beeld, **▲** tekst verbergen of weer tonen, **▼** dit beeld
+nooit meer tonen (werkt ook in je mix). **▲ ingedrukt houden** stemt het nummer weg dat speelt (bij een video
+of sfeerclip is gewoon **▲** genoeg). In de echte screensaver werken **◀**, **▶** en **▲** (tekst) ook; met OK,
+Terug of Home maak je de tv wakker.
 
 ## Goed om te weten
 
