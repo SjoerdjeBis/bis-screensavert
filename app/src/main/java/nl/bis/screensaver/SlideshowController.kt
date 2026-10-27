@@ -275,15 +275,20 @@ class SlideshowController(
             if (up) back()
             return true
         }
-        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_UP && mixer.nowPlaying.value != null) {
-            if (up) {
-                mixer.blockCurrentTrack()
-                showStatus("Nummer weggestemd")
-                scope.launch {
-                    delay(2_000)
-                    hideStatus()
-                }
+        // ▲ bij een beeld met tekst: tekst weg (om het werk goed te zien) of weer terug.
+        // In het voorbeeld met muziek: ▲ ingedrukt houden stemt het nummer weg.
+        if (event.keyCode == KeyEvent.KEYCODE_DPAD_UP && imageShowing && captionAvailable) {
+            if (!inScreensaver && mixer.nowPlaying.value != null && event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 1) {
+                upHeld = true
+                blockTrack()
+            } else if (up) {
+                if (!upHeld) toggleCaption()
+                upHeld = false
             }
+            return true
+        }
+        if (!inScreensaver && event.keyCode == KeyEvent.KEYCODE_DPAD_UP && mixer.nowPlaying.value != null) {
+            if (up) blockTrack()
             return true
         }
         val clip = currentClipId
@@ -302,6 +307,26 @@ class SlideshowController(
             return true
         }
         return false
+    }
+
+    /** Of het beeld dat nu te zien is een onderschrift heeft dat je met ▲ kunt tonen en verbergen. */
+    private var captionAvailable = false
+
+    /** ▲ wordt ingedrukt gehouden (nummer wegstemmen), dus bij loslaten de tekst niet omschakelen. */
+    private var upHeld = false
+
+    private fun toggleCaption() {
+        captionJob?.cancel()
+        fade(caption, if (caption.alpha > 0.5f) 0f else 1f)
+    }
+
+    private fun blockTrack() {
+        mixer.blockCurrentTrack()
+        showStatus("Nummer weggestemd")
+        scope.launch {
+            delay(2_000)
+            hideStatus()
+        }
     }
 
     private fun back() {
@@ -423,7 +448,8 @@ class SlideshowController(
         visibleSlide = slide
         currentImageVote = slide.voteId
         delay(FADE_MS)
-        if (setCaption(slide, mode)) {
+        captionAvailable = setCaption(slide, mode)
+        if (captionAvailable) {
             fade(caption, 1f)
             // Na een tijdje verdwijnt de tekst, zodat je daarna het hele werk ziet.
             if (duration > IMAGE_CAPTION_MS + FADE_MS) {
@@ -561,15 +587,28 @@ class SlideshowController(
     }
 
 
-    /** Schuift alles wat op het beeld staat een paar pixels op; je ziet het niet, het scherm wel. */
+    /** Waar het onderschrift bij het volgende beeld komt te staan (tegen inbranden). */
+    private var captionShiftX = 0f
+    private var captionShiftY = 0f
+
+    /**
+     * Schuift alles wat op het beeld staat een paar pixels op; je ziet het niet, het scherm wel.
+     * Het onderschrift verspringt pas bij het volgende beeld, als het onzichtbaar is; klok en
+     * muziek glijden zo langzaam dat je het niet ziet bewegen.
+     */
     private fun shiftOverlays() {
         val range = SHIFT_DP * root.resources.displayMetrics.density
-        listOf(caption, clock, soundCredit, status, musicCover.parent as? View).filterNotNull().forEach { view ->
-            view.animate()
-                .translationX((Math.random().toFloat() * 2 - 1) * range)
-                .translationY((Math.random().toFloat() * 2 - 1) * range)
-                .setDuration(FADE_MS)
-                .start()
+        fun offset() = (Math.random().toFloat() * 2 - 1) * range
+        captionShiftX = offset()
+        captionShiftY = offset()
+        listOf(soundCredit, status).forEach { view ->
+            if (view.alpha == 0f || view.visibility != View.VISIBLE) {
+                view.translationX = offset()
+                view.translationY = offset()
+            }
+        }
+        listOf(clock, musicCover.parent as? View).filterNotNull().forEach { view ->
+            view.animate().translationX(offset()).translationY(offset()).setDuration(SHIFT_GLIDE_MS).start()
         }
     }
 
@@ -578,6 +617,9 @@ class SlideshowController(
         // Sfeerbeelden zonder tekst; alleen in het voorbeeld de knoppen om weg te stemmen.
         val bare = mode == Mode.AMBIENT
         if (bare && !isPreview) return false
+        // Het onderschrift is hier nog onzichtbaar: het mag nu ongezien een paar pixels verspringen.
+        caption.translationX = captionShiftX
+        caption.translationY = captionShiftY
         captionEyebrow.visibility = if (bare) View.GONE else View.VISIBLE
         captionTitle.visibility = if (bare) View.GONE else View.VISIBLE
         captionEyebrow.text = when (mode) {
@@ -587,12 +629,12 @@ class SlideshowController(
             Mode.AMBIENT -> "SFEER"
             Mode.NATURE -> "NATUUR IN NEDERLAND"
             Mode.HISTORY -> (slide as? Slide.Image)?.source ?: "NEDERLAND VAN TOEN"
-        } + if (isPreview && slide is Slide.Image && slide.voteId != null) "      ◀ vorige   ▼ niet meer tonen   ▶ volgende" else ""
+        } + if (isPreview && slide is Slide.Image && slide.voteId != null) "     ◀ ▶ bladeren · ▲ tekst · ▼ weg" else ""
         captionTitle.text = slide.title
         captionSubtitle.text = slide.subtitle.orEmpty()
         captionSubtitle.visibility = if (bare || slide.subtitle.isNullOrBlank()) View.GONE else View.VISIBLE
         val body = if (isPreview && slide is Slide.Video && slide.clipId != null) {
-            "◀  vorige      ▼  niet meer tonen      ▶  volgende"
+            "◀ ▶ bladeren · ▼ weg"
         } else {
             slide.body.takeIf { settings.showCaptions }
         }
@@ -777,6 +819,7 @@ class SlideshowController(
         const val HISTORY_SIZE = 30
         const val SHIFT_MS = 3 * 60_000L
         const val SHIFT_DP = 10f
+        const val SHIFT_GLIDE_MS = 30_000L
         const val DRIVE_SYNC_MS = 30 * 60_000L
         const val RETRY_DELAY_MS = 60_000L
     }
