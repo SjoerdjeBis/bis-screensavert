@@ -10,6 +10,7 @@ enum class Mode(val key: String, val label: String) {
     AMBIENT("sfeer", "Sfeer"),
     NATURE("natuur", "Natuur"),
     HISTORY("toen", "Nederland van toen"),
+    PORTALS("portalen", "Portalen"),
 }
 
 /** De keuzes op het keuzescherm. */
@@ -20,6 +21,7 @@ enum class Program(val key: String, val title: String) {
     PHOTOS("fotos", "Mijn foto's & video's"),
     NATURE("natuur", "Natuur"),
     HISTORY("toen", "Toen"),
+    PORTALS("portalen", "Portalen"),
     CUSTOM("eigen", "Eigen mix"),
     SPOTIFY("spotify", "Spotify"),
 }

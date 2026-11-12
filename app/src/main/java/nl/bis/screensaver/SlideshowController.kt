@@ -148,6 +148,7 @@ class SlideshowController(
         Mode.PHOTOS to PhotoSource(context),
         Mode.AMBIENT to AmbientSource(context),
         Mode.NATURE to CuratedSource(context, "natuur"),
+        Mode.PORTALS to PortalSource(context),
         Mode.HISTORY to CuratedSource(context, "toen", onThisDay = true),
     )
     private var currentClipId: String? = null
@@ -635,6 +636,7 @@ class SlideshowController(
             Mode.PHOTOS -> if (slide is Slide.Video) "MIJN VIDEO'S" else "MIJN FOTO'S"
             Mode.AMBIENT -> "SFEER"
             Mode.NATURE -> "NATUUR IN NEDERLAND"
+            Mode.PORTALS -> "PORTALEN"
             Mode.HISTORY -> (slide as? Slide.Image)?.source ?: "NEDERLAND VAN TOEN"
         } + if (isPreview && slide is Slide.Image && slide.voteId != null) "     ◀ ▶ bladeren · ▲ tekst · ▼ weg" else ""
         captionTitle.text = slide.title
