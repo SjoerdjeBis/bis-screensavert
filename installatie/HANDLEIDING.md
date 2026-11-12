@@ -56,8 +56,8 @@ scan de QR-code en plak ze op je telefoon. Lege velden laat de tv zoals ze zijn.
 - **Sfeer:** haardvuur, regen, zee, sterren en meer, zonder tekst. Thema's kies je onder
   *Sfeerthema's*.
 - **Mijn foto's & video's:** uit je eigen Google Foto's of een map in Google Drive.
-- **Portalen:** vluchten van een minuut door verzonnen 3D-werelden, telkens door een portaal de volgende
-  in. Het zijn opnames van [Portals](https://github.com/emollick/ai-portals) van Ethan Mollick
+- **Portalen:** vluchten van anderhalve minuut door telkens twee verzonnen 3D-werelden, door een portaal
+  de ene in de andere. Het zijn opnames van [Portals](https://github.com/emollick/ai-portals) van Ethan Mollick
   (CC BY-NC-SA 4.0); de tv streamt ze en slaat niets op. Ook te kiezen in je eigen mix.
 - **Eigen mix:** vink aan wat je wilt zien; de screensaver wisselt het af.
 - **Spotify:** speelt Spotify op de tv, dan zie je hoes, titel en foto's van de artiest

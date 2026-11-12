@@ -34,9 +34,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Bis">
 
-        <!-- Het keuzescherm, vanaf het startscherm van de tv. -->
+        <!-- Het keuzescherm, vanaf het startscherm van de tv. clearTaskOnLaunch: wie de app opent, komt altijd
+             hier, ook als hij hem verliet in het voorbeeld of een ander scherm. -->
         <activity
             android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>

@@ -1,20 +1,28 @@
 // Neemt één clip op uit Portals (https://github.com/emollick/ai-portals, CC BY-NC-SA 4.0): de vlucht door een
-// wereld en door het portaal de volgende in. De site tekent live in de browser en wil een grafische kaart; hier
-// draait hij zonder, dus traag. Daarom een virtuele klok: elk beeld is precies 1/fps seconde, hoe lang het
-// tekenen ook duurt, en het resultaat is een vloeiende video.
+// wereld, door het portaal, en door de volgende wereld tot die zijn eigen einde nadert. De site tekent live in de
+// browser en wil een grafische kaart; hier draait hij zonder, dus traag. Daarom een virtuele klok: elk beeld is
+// precies 1/fps seconde, hoe lang het tekenen ook duurt, en het resultaat is een vloeiende video.
 //
-// Gebruik: node record.mjs <map met ai-portals> <wereld> <volgende wereld> <uit.mp4> [seconden] [fps] [breedte] [hoogte]
-// Omgeving: PLAYWRIGHT (pad naar playwright/index.mjs), MAX_UREN (bij te traag tekenen stapt hij terug naar 720p).
+// Gebruik: node record.mjs <map met ai-portals> <wereld> <tweede wereld> <uit.mp4> [fps] [breedte] [hoogte]
+// Omgeving: PLAYWRIGHT (pad naar playwright/index.mjs); MAX_UREN (zoveel mag de opname duren: is de
+// schatting hoger, dan zonder kantgladmaken, en anders in 720p; loopt hij toch uit, dan stopt hij op tijd).
 import http from 'node:http';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 
-const [root, world, next, out, secondsArg = '60', fpsArg = '24', wArg = '1920', hArg = '1080'] = process.argv.slice(2);
-if (!out) { console.error('gebruik: node record.mjs <ai-portals> <wereld> <volgende> <uit.mp4> [seconden] [fps] [breedte] [hoogte]'); process.exit(2); }
-const seconds = Number(secondsArg), fps = Number(fpsArg);
+const [root, world, next, out, fpsArg = '24', wArg = '1920', hArg = '1080'] = process.argv.slice(2);
+if (!out) { console.error('gebruik: node record.mjs <ai-portals> <wereld> <tweede wereld> <uit.mp4> [fps] [breedte] [hoogte]'); process.exit(2); }
+const fps = Number(fpsArg);
 let width = Number(wArg), height = Number(hArg);
 const maxHours = Number(process.env.MAX_UREN || 0);
+// Het portaal en de tweede wereld tekenen trager dan het begin waarop de schatting is gebaseerd (gemeten: tot 1,9 keer).
+const SAFETY = 2;
+// Nooit langer dan dit, ook als de tweede wereld niet ophoudt.
+const MAX_SECONDS = 180;
+// Zo ver voor het eind van de tweede wereld stopt de clip: zonder wereld erachter remt de vlucht daar af.
+const END_METRES = 50;
 const { chromium } = await import(process.env.PLAYWRIGHT || 'playwright');
 
 // Alleen deze map, alleen op deze machine.
@@ -69,9 +77,11 @@ async function open(w, h, aa) {
 
 const frame = (page) => page.evaluate(() => { window.__step(); return document.getElementById('view').toDataURL('image/jpeg', 0.95).split(',')[1]; });
 
-const total = Math.round(seconds * fps);
+// Hoe lang de clip ongeveer wordt: de rest van de eerste wereld plus de hele tweede.
+const plannedSeconds = (p) => p.evaluate(() => { const e = window.__engine; return e.cur.duration * (1 - (e.stats.u || 0)) + e.next.duration; });
+
 // Van mooi naar snel: met kantgladmaken, zonder, en dan in 720p. De eerste die binnen de tijd past, wint.
-const profiles = [[width, height, 2], [width, height, 0], [1280, 720, 2]].filter(([w], i) => i === 0 || maxHours > 0 && (w < width || i === 1));
+const profiles = [[width, height, 2], [width, height, 0], [1280, 720, 2]].filter(([w], i) => i === 0 || (maxHours > 0 && (w < width || i === 1)));
 let browser, page, first = [], startedAt = Date.now(), aa = 2;
 for (const [i, [w, h, samples]] of profiles.entries()) {
   ({ browser, page } = await open(w, h, samples));
@@ -80,26 +90,36 @@ for (const [i, [w, h, samples]] of profiles.entries()) {
   // De eerste drie beelden tellen niet mee: daarin worden de shaders nog gebouwd.
   let timed = 0;
   for (let k = 0; k < 8; k++) { if (k === 3) timed = Date.now(); first.push(Buffer.from(await frame(page), 'base64')); }
-  const hours = ((Date.now() - timed) / 5) * total / 3.6e6;
-  console.log(`schatting op ${w}x${h}, aa ${samples}: ${hours.toFixed(1)} uur`);
+  const frames = (await plannedSeconds(page)) * fps;
+  const hours = ((Date.now() - timed) / 5) * frames * SAFETY / 3.6e6;
+  console.log(`schatting op ${w}x${h}, aa ${samples}: ${hours.toFixed(1)} uur (met marge) voor ${(frames / fps).toFixed(0)} s`);
   if (hours <= maxHours) break;
   await browser.close();
 }
 
-const fadeAt = Math.max(0, seconds - 1);
-const ffmpeg = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
-  // H.264 High in 8 bit met gematigde bitrate: wat een Chromecast zonder haperen afspeelt en streamt.
-  '-vf', `fade=t=out:st=${fadeAt}:d=1,format=yuv420p`, '-c:v', 'libx264', '-profile:v', 'high', '-level', '4.1', '-preset', 'slow',
-  '-crf', '20', '-maxrate', '9M', '-bufsize', '18M', '-g', String(fps * 2), '-movflags', '+faststart', '-an', out], { stdio: ['pipe', 'inherit', 'inherit'] });
-const write = async (jpeg) => { if (!ffmpeg.stdin.write(jpeg)) await new Promise((r) => ffmpeg.stdin.once('drain', r)); };
-
-for (let i = 0; i < total; i++) {
-  await write(i < first.length ? first[i] : Buffer.from(await frame(page), 'base64'));
-  if ((i + 1) % (fps * 5) === 0) console.log(`${i + 1}/${total} beelden, ${((Date.now() - startedAt) / 60000).toFixed(0)} min`);
+// Beelden eerst naar schijf: pas aan het eind is bekend hoe lang de clip is, en dus waar het uitfaden begint.
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'portaal-'));
+let count = 0, reason = 'tweede wereld aan het eind';
+const save = (jpeg) => fs.writeFileSync(path.join(dir, `${String(count++).padStart(5, '0')}.jpg`), jpeg);
+first.forEach(save);
+for (;;) {
+  save(Buffer.from(await frame(page), 'base64'));
+  const s = await page.evaluate((id) => { const e = window.__engine; return { second: e.cur.def.id === id, left: e.cur.path.length - e.cur.dist }; }, next);
+  if (s.second && s.left <= END_METRES) break;
+  if (count >= MAX_SECONDS * fps) { reason = 'maximale lengte'; break; }
+  if (maxHours > 0 && (Date.now() - startedAt) / 3.6e6 > maxHours * 1.1) { reason = 'tijd op'; break; }
+  if (count % (fps * 10) === 0) console.log(`${count / fps} s opgenomen, ${((Date.now() - startedAt) / 60000).toFixed(0)} min`);
 }
-const info = await page.evaluate(() => { const e = window.__engine; return { now: e.cur.def.id, name: e.cur.def.name }; });
-ffmpeg.stdin.end();
-const code = await new Promise((r) => ffmpeg.on('close', r));
+const info = await page.evaluate(() => ({ now: window.__engine.cur.def.id }));
 await browser.close(); server.close();
+console.log(`gestopt na ${(count / fps).toFixed(1)} s: ${reason}`);
+
+const seconds = count / fps;
+const ffmpeg = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(dir, '%05d.jpg'),
+  // H.264 High in 8 bit met gematigde bitrate: wat een Chromecast zonder haperen afspeelt en streamt.
+  '-vf', `fade=t=out:st=${Math.max(0, seconds - 1.5)}:d=1.5,format=yuv420p`, '-c:v', 'libx264', '-profile:v', 'high', '-level', '4.1', '-preset', 'slow',
+  '-crf', '20', '-maxrate', '9M', '-bufsize', '18M', '-g', String(fps * 2), '-movflags', '+faststart', '-an', out], { stdio: 'inherit' });
+const code = await new Promise((r) => ffmpeg.on('close', r));
+fs.rmSync(dir, { recursive: true, force: true });
 if (code !== 0) { console.error('ffmpeg gaf fout', code); process.exit(1); }
-console.log(JSON.stringify({ world, next, eindigtIn: info.now, width, height, aa, fps, seconds, bytes: fs.statSync(out).size }));
+console.log(JSON.stringify({ world, next, eindigtIn: info.now, reason, width, height, aa, fps, seconds, bytes: fs.statSync(out).size }));

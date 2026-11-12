@@ -21,7 +21,7 @@ object MixPlan {
             Program.AMBIENT -> Plan(listOf(Mode.AMBIENT to 1), "Sfeerbeelden: telkens een paar clips van hetzelfde thema na elkaar.")
             Program.NATURE -> Plan(listOf(Mode.NATURE to 1), "De mooiste natuurfoto's van vogels, insecten en planten in Nederland, met de Nederlandse naam.")
             Program.HISTORY -> Plan(listOf(Mode.HISTORY to 1), "Zwart-witfoto's uit het Nationaal Archief, bij voorkeur van deze dag in een ander jaar.")
-            Program.PORTALS -> Plan(listOf(Mode.PORTALS to 1), "Vluchten van een minuut door verzonnen 3D-werelden, telkens door een portaal de volgende in. In het voorbeeld stem je clips weg met ▼.")
+            Program.PORTALS -> Plan(listOf(Mode.PORTALS to 1), "Vluchten door telkens twee verzonnen 3D-werelden, door een portaal de ene in de andere. In het voorbeeld stem je clips weg met ▼.")
             Program.CUSTOM, Program.SPOTIFY -> {
                 val modes = customModes.ifEmpty { setOf(Mode.ART) }
                 val names = Mode.entries.filter { it in modes }.joinToString(", ") { it.label.lowercase() }

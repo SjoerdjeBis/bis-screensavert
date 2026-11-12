@@ -7,7 +7,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-/** Een clip van een minuut: de vlucht door een wereld en door het portaal de volgende in. */
+/** Een clip: de vlucht door een wereld, door het portaal, en door de volgende wereld. */
 data class PortalClip(val id: String, val name: String, val url: String)
 
 /**
