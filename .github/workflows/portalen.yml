@@ -1,19 +1,20 @@
 name: Portalen opnemen
 
-# Neemt clips van een minuut op uit Portals (github.com/emollick/ai-portals, CC BY-NC-SA 4.0) en zet ze op
-# de release "portalen", waar de app ze vandaan streamt. Zonder grafische kaart kost één clip uren, dus elke
-# wereld krijgt een eigen job.
+# Neemt clips op uit Portals (github.com/emollick/ai-portals, CC BY-NC-SA 4.0) en zet ze op de release
+# "portalen", waar de app ze vandaan streamt. Elke clip is een paar werelden: de eerste helemaal, het portaal en
+# de tweede helemaal (zo'n 80 tot 110 seconden). Zonder grafische kaart kost één clip uren, dus elk paar krijgt
+# een eigen job.
 on:
   workflow_dispatch:
     inputs:
       werelden:
-        description: "Welke werelden (JSON-lijst met id's); [] = de openingswerelden van het project"
+        description: "Welke werelden, per twee een clip (JSON-lijst met id's); [] = de openingswerelden van het project"
         required: false
         default: "[]"
-      seconden:
-        description: "Lengte van elke clip"
+      vervangen:
+        description: "ja = na afloop alle andere clips van de release weghalen; nee = erbij zetten"
         required: false
-        default: "60"
+        default: "nee"
 
 permissions:
   contents: write
@@ -65,14 +66,29 @@ jobs:
           command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
       - name: Clip opnemen
         env:
-          # De schatting telt het portaal (een tweede wereld in beeld) niet mee, vandaar de ruime marge onder de
-          # 350 minuten van de job. Past het niet, dan zonder kantgladmaken, en anders in 720p.
-          MAX_UREN: "3.4"
-          SECONDEN: ${{ inputs.seconden }}
+          # Opnametijd binnen de 350 minuten van de job, met ruimte voor coderen en uploaden. De schatting rekent
+          # al met een marge voor het zwaardere portaal; past het niet, dan zonder kantgladmaken, en anders 720p.
+          MAX_UREN: "4.6"
         run: |
           cd tools/portalen
-          node record.mjs ../../portals "${{ matrix.clip.wereld }}" "${{ matrix.clip.volgende }}" "${{ matrix.clip.wereld }}.mp4" "$SECONDEN" 24 1920 1080
+          node record.mjs ../../portals "${{ matrix.clip.wereld }}" "${{ matrix.clip.volgende }}" "${{ matrix.clip.naam }}.mp4" 24 1920 1080
       - name: Op de release zetten
         env:
           TITEL: ${{ matrix.clip.titel }}
-        run: gh release upload portalen "tools/portalen/${{ matrix.clip.wereld }}.mp4#${TITEL}" --clobber
+        run: gh release upload portalen "tools/portalen/${{ matrix.clip.naam }}.mp4#${TITEL}" --clobber
+
+  opruimen:
+    needs: [lijst, opnemen]
+    # Alleen als alles gelukt is: anders blijven de oude clips staan.
+    if: inputs.vervangen == 'ja' && success()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Andere clips van de release weghalen
+        env:
+          LIJST: ${{ needs.lijst.outputs.lijst }}
+        run: |
+          keep=$(echo "$LIJST" | jq -r '.[].naam + ".mp4"')
+          gh release view portalen --json assets --jq '.assets[].name' | while read -r name; do
+            if ! grep -qxF "$name" <<< "$keep"; then gh release delete-asset portalen "$name" --yes; fi
+          done
