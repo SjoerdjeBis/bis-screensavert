@@ -367,7 +367,16 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier,
                         onFocus = { smartTubeFocused = true },
                         onClick = { openSmartTube(settings.smartTubePlaylist) },
-                    ) { Canvas(Modifier.fillMaxSize()) { drawPlaylist(this) } }
+                    ) {
+                        // Het eigen plaatje als het niet te laden is.
+                        Canvas(Modifier.fillMaxSize()) { drawPlaylist(this) }
+                        AsyncImage(
+                            model = SMARTTUBE_IMAGE,
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                    }
                 }
 
                 Spacer(Modifier.height(4.dp))
@@ -572,14 +581,14 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, shape = RoundedCornerShape(22.dp), modifier = modifier.width(272.dp).height(176.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, shape = RoundedCornerShape(22.dp), modifier = modifier.width(272.dp).height(136.dp)) { focused ->
             Column {
-                Box(Modifier.fillMaxWidth().height(104.dp)) {
+                Box(Modifier.fillMaxWidth().height(76.dp)) {
                     picture()
                     if (active) Tag("ACTIEF", modifier = Modifier.align(Alignment.TopEnd).padding(10.dp))
                 }
-                Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-                    Text(title, style = Bis.heading(22.sp, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.92f)), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Column(Modifier.padding(horizontal = 16.dp, vertical = 6.dp)) {
+                    Text(title, style = Bis.heading(21.sp, if (focused) Bis.Room else Bis.Room.copy(alpha = 0.92f)), maxLines = 1, overflow = TextOverflow.Ellipsis)
                     Spacer(Modifier.height(2.dp))
                     Text(status, style = Bis.body(12.sp, color = Bis.RoomDim), maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
@@ -597,7 +606,7 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         picture: @Composable () -> Unit,
     ) {
-        FocusCard(onClick = onClick, onFocus = onFocus, shape = RoundedCornerShape(16.dp), modifier = modifier.width(112.dp).height(78.dp)) { focused ->
+        FocusCard(onClick = onClick, onFocus = onFocus, shape = RoundedCornerShape(16.dp), modifier = modifier.width(112.dp).height(70.dp)) { focused ->
             picture()
             if (active) Box(Modifier.align(Alignment.TopEnd).padding(6.dp).size(10.dp).background(Bis.Boter, CircleShape))
             Text(
@@ -765,6 +774,9 @@ private fun drawHills(scope: DrawScope, back: Color, front: Color) = with(scope)
     }
     drawPath(near, front)
 }
+
+/** Het plaatje op de SmartTube-kaart; de tv haalt het zelf op en bewaart het. */
+private const val SMARTTUBE_IMAGE = "https://i.pinimg.com/736x/99/41/48/99414866ca9c2788cb616e46be2d5e0c.jpg"
 
 /** Een portaal: lichtende ringen in het donker. */
 private fun drawPortal(scope: DrawScope) = with(scope) {
