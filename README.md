@@ -14,6 +14,10 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
   groene build. De databots (`kunstdata.yml`, `extra.yml`) pushen daarom op `main` naar een eigen
   branch `bot/…`, maken een pull request, starten de build met de hand (pushes van de bot doen dat
   niet zelf) en voegen samen via auto-merge (`tools/bot_*.sh`). Op andere branches pushen ze direct.
+- **Portalen:** de site Portals tekent live met three.js en wil een grafische kaart; een Chromecast trekt dat
+  niet. `tools/portalen/record.mjs` neemt de vluchten daarom vooraf op (headless Chromium met een virtuele
+  klok, ffmpeg naar H.264 1080p) en de workflow `portalen.yml` zet ze op de release `portalen`, één job per
+  wereld. `PortalSource` streamt ze van die release.
 - **Ondertekening:** `signing/bis-screensaver.jks` is een vaste sleutel voor deze hobby-app, zodat
   updates over de vorige versie heen installeren. Niet hergebruiken voor iets anders.
 - **Zelf instellen als screensaver:** `SelfSetup.kt` koppelt via Draadloze foutopsporing met de

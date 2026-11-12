@@ -1,0 +1,78 @@
+name: Portalen opnemen
+
+# Neemt clips van een minuut op uit Portals (github.com/emollick/ai-portals, CC BY-NC-SA 4.0) en zet ze op
+# de release "portalen", waar de app ze vandaan streamt. Zonder grafische kaart kost één clip uren, dus elke
+# wereld krijgt een eigen job.
+on:
+  workflow_dispatch:
+    inputs:
+      werelden:
+        description: "Welke werelden (JSON-lijst met id's); [] = de openingswerelden van het project"
+        required: false
+        default: "[]"
+      seconden:
+        description: "Lengte van elke clip"
+        required: false
+        default: "60"
+
+permissions:
+  contents: write
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  # De versie van Portals waarmee de opnames zijn getest.
+  PORTALS_COMMIT: 210133f4e718acb7b461f2a40c90661a40a2397f
+
+jobs:
+  lijst:
+    runs-on: ubuntu-latest
+    outputs:
+      lijst: ${{ steps.kies.outputs.lijst }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Portals ophalen
+        run: |
+          git clone https://github.com/emollick/ai-portals.git portals
+          git -C portals checkout "$PORTALS_COMMIT"
+      - id: kies
+        env:
+          WERELDEN: ${{ inputs.werelden }}
+        run: echo "lijst=$(node tools/portalen/kies.mjs portals "$WERELDEN")" >> "$GITHUB_OUTPUT"
+      - name: Release klaarzetten
+        run: |
+          gh release view portalen >/dev/null 2>&1 || gh release create portalen --prerelease \
+            --title "Portalen – clips voor de screensaver" \
+            --notes "Vluchten van een minuut door de werelden van [Portals](https://github.com/emollick/ai-portals) van Ethan Mollick, opgenomen met tools/portalen. Licentie: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); delen en bewerken mag niet-commercieel, met naamsvermelding en onder dezelfde licentie. De app Bis Screensavert streamt deze bestanden."
+
+  opnemen:
+    needs: lijst
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        clip: ${{ fromJSON(needs.lijst.outputs.lijst) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Portals ophalen
+        run: |
+          git clone https://github.com/emollick/ai-portals.git portals
+          git -C portals checkout "$PORTALS_COMMIT"
+      - name: Browser en ffmpeg
+        run: |
+          npm install --no-save --prefix tools/portalen playwright@^1.50.0
+          npx --prefix tools/portalen playwright install --with-deps chromium
+          command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - name: Clip opnemen
+        env:
+          # De schatting telt het portaal (een tweede wereld in beeld) niet mee, vandaar de ruime marge onder de
+          # 350 minuten van de job. Past het niet, dan zonder kantgladmaken, en anders in 720p.
+          MAX_UREN: "3.4"
+          SECONDEN: ${{ inputs.seconden }}
+        run: |
+          cd tools/portalen
+          node record.mjs ../../portals "${{ matrix.clip.wereld }}" "${{ matrix.clip.volgende }}" "${{ matrix.clip.wereld }}.mp4" "$SECONDEN" 24 1920 1080
+      - name: Op de release zetten
+        env:
+          TITEL: ${{ matrix.clip.titel }}
+        run: gh release upload portalen "tools/portalen/${{ matrix.clip.wereld }}.mp4#${TITEL}" --clobber

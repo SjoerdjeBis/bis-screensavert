@@ -145,7 +145,7 @@ class MainActivity : ComponentActivity() {
             } else {
                 MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
             }
-            Program.CUSTOM, Program.SPOTIFY -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
+            Program.CUSTOM, Program.SPOTIFY, Program.PORTALS -> MixPlan.plan(p, customModes, media.isNotEmpty(), hasAmbient).summary
         }
 
         fun choose(p: Program) {
@@ -219,6 +219,7 @@ class MainActivity : ComponentActivity() {
                         }
                         Program.AERIALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawLandscape(this, hour) }
                         Program.AMBIENT -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawFire(this) }
+                        Program.PORTALS -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawPortal(this) }
                         Program.SPOTIFY -> Canvas(Modifier.fillMaxSize().alpha(0.6f)) { drawRecord(this) }
                         Program.NATURE, Program.HISTORY -> heroes[p.mode()]?.let {
                             AsyncImage(
@@ -297,7 +298,7 @@ class MainActivity : ComponentActivity() {
                 // Rij 1: wat je los kunt kiezen. Rij 2: combinaties en andere apps.
                 val rows = listOf(
                     listOf(Program.ART, Program.NATURE, Program.HISTORY, Program.AERIALS, Program.AMBIENT, Program.PHOTOS),
-                    listOf(Program.CUSTOM, Program.SPOTIFY),
+                    listOf(Program.CUSTOM, Program.SPOTIFY, Program.PORTALS),
                 )
                 rows.forEachIndexed { index, row ->
                     Row(
@@ -341,6 +342,7 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
                                     Program.AMBIENT -> Canvas(Modifier.fillMaxSize()) { drawFire(this) }
+                                    Program.PORTALS -> Canvas(Modifier.fillMaxSize()) { drawPortal(this) }
                                     Program.CUSTOM -> Canvas(Modifier.fillMaxSize()) { drawMixStripes(this, customModes) }
                                     Program.SPOTIFY -> Canvas(Modifier.fillMaxSize()) { drawRecord(this) }
                                 Program.NATURE, Program.HISTORY -> {
@@ -599,6 +601,7 @@ class MainActivity : ComponentActivity() {
         Program.PHOTOS -> if (photos + videos == 0) "Nog leeg: voeg toe" else "$photos foto's · $videos video's"
         Program.CUSTOM -> customLabel(custom).replaceFirstChar { it.uppercase() }
         Program.NATURE, Program.HISTORY -> ""
+        Program.PORTALS -> "Vluchten door verzonnen werelden"
         Program.SPOTIFY -> when {
             !hasMusicAccess -> "Nog geen toegang: kies OK"
             nowPlaying != null -> "Nu: ${nowPlaying.title}"
@@ -625,6 +628,7 @@ class MainActivity : ComponentActivity() {
         Mode.AMBIENT -> "sfeer"
         Mode.NATURE -> "natuur"
         Mode.HISTORY -> "toen"
+        Mode.PORTALS -> "portalen"
     }
 }
 
@@ -636,6 +640,7 @@ private fun Program.mode(): Mode? = when (this) {
     Program.PHOTOS -> Mode.PHOTOS
     Program.NATURE -> Mode.NATURE
     Program.HISTORY -> Mode.HISTORY
+    Program.PORTALS -> Mode.PORTALS
     Program.CUSTOM, Program.SPOTIFY -> null
 }
 
@@ -735,6 +740,17 @@ private fun drawHills(scope: DrawScope, back: Color, front: Color) = with(scope)
     drawPath(near, front)
 }
 
+/** Een portaal: lichtende ringen in het donker. */
+private fun drawPortal(scope: DrawScope) = with(scope) {
+    drawRect(Color(0xFF14102A))
+    val center = Offset(size.width * 0.5f, size.height * 0.52f)
+    val radius = size.minDimension * 0.42f
+    listOf(1f to Color(0xFF3B2A7A), 0.78f to Color(0xFF7A5CC2), 0.56f to Color(0xFFB79BFF), 0.36f to Color(0xFFF6EFE0)).forEach { (part, color) ->
+        drawCircle(color, radius * part, center)
+    }
+    drawCircle(Color(0xFF14102A), radius * 0.2f, center)
+}
+
 /** Drie banen in de kleuren van de gekozen onderdelen. */
 private fun drawMixStripes(scope: DrawScope, modes: Set<Mode>) = with(scope) {
     drawRect(Bis.Emaille3)
@@ -746,6 +762,7 @@ private fun drawMixStripes(scope: DrawScope, modes: Set<Mode>) = with(scope) {
             Mode.AMBIENT -> Color(0xFFD9822B)
             Mode.NATURE -> Color(0xFF5E8C4A)
             Mode.HISTORY -> Color(0xFFB8A88A)
+            Mode.PORTALS -> Color(0xFF7A5CC2)
         }
     }
     val band = size.height / (colors.size + 1)

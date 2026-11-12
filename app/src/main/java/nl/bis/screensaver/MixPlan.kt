@@ -21,11 +21,12 @@ object MixPlan {
             Program.AMBIENT -> Plan(listOf(Mode.AMBIENT to 1), "Sfeerbeelden: telkens een paar clips van hetzelfde thema na elkaar.")
             Program.NATURE -> Plan(listOf(Mode.NATURE to 1), "De mooiste natuurfoto's van vogels, insecten en planten in Nederland, met de Nederlandse naam.")
             Program.HISTORY -> Plan(listOf(Mode.HISTORY to 1), "Zwart-witfoto's uit het Nationaal Archief, bij voorkeur van deze dag in een ander jaar.")
+            Program.PORTALS -> Plan(listOf(Mode.PORTALS to 1), "Vluchten van een minuut door verzonnen 3D-werelden, telkens door een portaal de volgende in. In het voorbeeld stem je clips weg met ▼.")
             Program.CUSTOM, Program.SPOTIFY -> {
                 val modes = customModes.ifEmpty { setOf(Mode.ART) }
                 val names = Mode.entries.filter { it in modes }.joinToString(", ") { it.label.lowercase() }
                 Plan(
-                    Mode.entries.filter { it in modes }.map { it to if (it == Mode.AERIALS) 1 else if (it == Mode.AMBIENT) 3 else 2 },
+                    Mode.entries.filter { it in modes }.map { it to if (it == Mode.AERIALS || it == Mode.PORTALS) 1 else if (it == Mode.AMBIENT) 3 else 2 },
                     if (program == Program.SPOTIFY) {
                         "Speelt Spotify op de tv, dan zie je de hoes, het nummer en foto's van de artiest. Speelt er niets, dan je eigen mix ($names)."
                     } else {
