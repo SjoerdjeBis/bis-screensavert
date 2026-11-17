@@ -34,4 +34,3 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
   - Natuur en Toen: workflow *Toen en Natuur ophalen* (`tools/fetch_extra.py`, keurt op formaat,
     scherpte, contrast en dubbelingen) en `tools/build_extra.py` maken `natuur.json` en `toen.json`.
   - Sfeer (Pexels/Pixabay), muziek (Jamendo, `JamendoPlayer`) en artiestfoto's (TheAudioDB, Deezer) komen live.
-- **Iconen:** `design/icoon/`.
