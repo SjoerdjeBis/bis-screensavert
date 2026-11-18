@@ -18,6 +18,10 @@ Een eigen screensaver voor Chromecast met Google TV, in de Bis-huisstijl. Gebrui
   niet. `tools/portalen/record.mjs` neemt de vluchten daarom vooraf op (headless Chromium met een virtuele
   klok, ffmpeg naar H.264 1080p). Elke clip is een paar werelden: de eerste helemaal, het portaal, de tweede
   helemaal. De workflow `portalen.yml` zet ze op de release `portalen`, één job per paar. `PortalSource` streamt ze van die release.
+  Werelden kiezen: nooit een wereld die al in een clip op de release zit; band 5 eerst, daarna band 4; liefst in één
+  clip twee verschillende soorten werelden. De AI-grapjes (`set: "ai-in-jokes"`) doen gewoon mee. Van de film-
+  en tv-werelden (`category: "screen"`) alleen deze: Harry Potter, Inception, Coco, Inside Out, Interstellar,
+  Monsters Inc., The Lord of the Rings, Up, The Good Place, Severance, Lost en DuckTales.
 - **Ondertekening:** `signing/bis-screensaver.jks` is een vaste sleutel voor deze hobby-app, zodat
   updates over de vorige versie heen installeren. Niet hergebruiken voor iets anders.
 - **Zelf instellen als screensaver:** `SelfSetup.kt` koppelt via Draadloze foutopsporing met de
